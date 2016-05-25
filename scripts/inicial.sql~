@@ -209,10 +209,8 @@ insert into ciudad(id, id_region, descripcion)values
 (null, 2, 'San justo'),
 (null, 2, 'Villa luzuriaga');
 
--- Creacion del usuario
 
-CREATE USER 'usuarioeditorial'@'localhost' IDENTIFIED BY 'usuarioeditorial';
 
-GRANT ALL ON editorialjr.* TO 'usuarioeditorial'@'localhost';
+
 
 
