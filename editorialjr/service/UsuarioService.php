@@ -1,38 +1,44 @@
 <?php
 
 require_once(__DIR__."/../common/DataAccess.php");
+require_once(__DIR__."/../model/UsuarioModel.php");
 
+/**
+	Clase que agrupa el modelado del objeto y los métodos que implementa.
+**/
 class UsuarioService{
-
-/*	private $dataAccess = null;
-
-	function __construct(){
-
-		$dataAccess = new DataAccess;		
-
-		if(is_null($dataAccess)){
-			die("DataAccess null");	
-		}
-	}
-*/	
+	
 	/**
-		Obtiene un usuario por Id
+		Obtiene un usuario por email
 		Devuelve el usuario de la BD
-		TODO: Devolver objeto usuario
 	**/
-	public function getUsuarioById($id){
+	public function getUsuarioByEmail($email){
 		
-		$dataAccess = new DataAccess;		
-		
-		$sql = " select * from usuarios where idusuario = $id";
+		$sql = " SELECT 
+					id,
+	    			id_estado_usuario,
+	    			id_rol,
+	    			email,
+	    			pass,
+	    			nombre,
+	    			apellido
+				FROM usuario
+				WHERE email = '$email' and id_estado_usuario = 1;";
 
-		$usuario = $dataAccess->getOneResult($sql);
+		$usuarioBD = DataAccess::getOneResult($sql);
 
-		return $usuario;
+		/* Convierto el resultado de la BD a un objeto modelado */
+		$usuarioModel = new UsuarioModel;
+		$usuarioModel->id = $usuarioBD["id"];
+		$usuarioModel->email = $usuarioBD["email"];
+		$usuarioModel->pass = $usuarioBD["pass"];
+		$usuarioModel->nombre = $usuarioBD["nombre"];
+		$usuarioModel->apellido = $usuarioBD["apellido"];
+		$usuarioModel->id_estado_usuario = $usuarioBD["id_estado_usuario"];
+		$usuarioModel->id_rol = $usuarioBD["id_rol"];
+
+		return $usuarioModel;
 	}
 }
-
-//$usuarioService = new UsuarioService;
-//$usuarioService->getUsuarioById(1);
 
 ?>

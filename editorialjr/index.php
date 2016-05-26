@@ -1,12 +1,11 @@
 <?php
 
 require_once(__DIR__."/service/UsuarioService.php");
+require_once(__DIR__."/model/UsuarioModel.php");
 
-$usuarioService = new UsuarioService;
-$usuario = $usuarioService->getUsuarioById(1);
+$usuario = UsuarioService::getUsuarioByEmail('admin@editorialjr.com');
 
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +16,7 @@ $usuario = $usuarioService->getUsuarioById(1);
 		<div>
 			<p>
 				Usuario:
-				<?php echo $usuario["nombre"] ?>
+				<?php echo $usuario->email ?>
 			</p>
 		</div>
 	</body>

@@ -211,8 +211,13 @@ insert into ciudad(id, id_region, descripcion)values
 
 -- Creacion del usuario
 
+DROP USER usuarioeditorial@localhost;
+
 CREATE USER 'usuarioeditorial'@'localhost' IDENTIFIED BY 'usuarioeditorial';
 
 GRANT ALL ON editorialjr.* TO 'usuarioeditorial'@'localhost';
 
+-- Creacion de usuario admin
+
+INSERT INTO usuario (`id_estado_usuario`, `id_rol`, `email`, `pass`, `nombre`, `apellido`) VALUES ('1', '1', 'admin@editorialjr.com', '21232f297a57a5a743894a0e4a801fc3', 'Administrador', 'Admin');
 

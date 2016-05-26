@@ -10,7 +10,7 @@ class DataAccess{
 	**/
 	public function connect(){
 		
-		$mysqli = new mysqli("localhost","test","test", "tp5");		
+		$mysqli = new mysqli("localhost","usuarioeditorial","usuarioeditorial", "editorialjr");		
 
 		if ($mysqli->connect_errno) {
 			die("Error: Fallo al conectarse a MySQL debido a: \nErrno: " . $mysqli->connect_errno . "\nError: " . $mysqli->connect_error . "\n");
@@ -33,10 +33,10 @@ class DataAccess{
 			}
 
 			if ($query->num_rows === 0) {
-			    die("La consulta no devolvió resultados.");
+			    return null;
 			}
 
- 				if ($query->num_rows !== 1) {
+ 				if ($query->num_rows > 1) {
 			    die("La consulta devolvió mas de un resultado.");
 			}
 
@@ -90,7 +90,7 @@ class DataAccess{
 	}
 
 	/**
-		Ejecuta una sentencia sql. Ej: insert, update, delete
+		Ejecuta una sentencia sql. Ej: insert, update
 	**/
 	public function execute($sql){
 		
@@ -99,6 +99,8 @@ class DataAccess{
 		try{
 
 			$connection->query($sql);
+
+			return true;
 
 		}catch(Exception $e){
 			die("Ha ocurrido un error: " . $e);
