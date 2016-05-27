@@ -71,7 +71,7 @@ class DataAccess{
 			    die("La consulta no devolvió resultados.");
 			}
 
-			$array = null;
+			$array = array();
 
 			while ($result = $query->fetch_assoc()) {
 				array_push($array, $result);

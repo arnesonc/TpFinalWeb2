@@ -1,10 +1,22 @@
 <?php
 
 require_once(__DIR__."/service/UsuarioService.php");
-require_once(__DIR__."/model/UsuarioModel.php");
+require_once(__DIR__."/service/RolService.php");
+//require_once(__DIR__."/model/UsuarioModel.php");
+require_once(__DIR__."/model/RolModel.php");
 
 $usuario = UsuarioService::getUsuarioByEmail('admin@editorialjr.com');
 
+$rol = RolService::getRolById(1);
+
+echo $rol->id."\n".$rol->descripcion."\n";
+
+$array = RolService::getAllRoles();
+
+var_dump($array);
+
+//var_dump($usuario->getRol());
+ 
 ?>
 
 <!DOCTYPE html>
