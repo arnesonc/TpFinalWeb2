@@ -29,10 +29,14 @@ var_dump($array);
 		<script type="text/javascript" src="js/editorialjr.js"></script>
 		<div>
 			<p>
-				<button id="btnTest">Test Ajax</button>
+				
 				Usuario:
-				<?php //echo $usuario->email ?>
+				<?php echo $usuario->email ?>
 			</p>
+		</div>
+		<div>
+			<button id="btnTest">Test Ajax</button>
+			<span id="spnTestAjax"></span>
 		</div>
 	</body>
 </html>
