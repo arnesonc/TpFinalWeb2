@@ -4,6 +4,6 @@
 <meta charset="UTF-8">
 </head>
 <body>
-		<h3>Error: No ha iniciado sesión.</h3>
+	<h3>Error: No ha iniciado sesión.</h3>
 </body>
 </html>
