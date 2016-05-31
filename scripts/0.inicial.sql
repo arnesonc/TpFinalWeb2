@@ -211,7 +211,7 @@ insert into ciudad(id, id_region, descripcion)values
 
 -- Creacion del usuario
 
--- DROP USER usuarioeditorial@localhost;
+DROP USER usuarioeditorial@localhost;
 
 CREATE USER 'usuarioeditorial'@'localhost' IDENTIFIED BY 'usuarioeditorial';
 
