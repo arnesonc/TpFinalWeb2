@@ -50,7 +50,8 @@ class UsuarioService{
 	}
 	
 	/**
-	 *  Crea un usuario a partir de un objeto UsuarioModel si pasa las validaciones
+	 *  Crea un usuario a partir de un objeto UsuarioModel si pasa las validaciones, caso contrario devuelve
+	 *  el mensaje de validacion correspondiente
 	 **/
 	public function createUsuario($usuarioModel){
 		
@@ -131,6 +132,31 @@ class UsuarioService{
 
 		}catch(Exception $e){
 			
+			//FIXME: agregar log de errores
+			echo $e;
+			return false;
+		}
+		
+		return true;
+	}
+	
+	/**
+	 * Inactiva un usuario por su id
+	 * */
+	public function disableUsuario($idUsuario){
+		
+		$sql = "UPDATE usuario
+				SET
+				id_estado_usuario = 2
+				WHERE id = $idUsuario;";
+		
+		try{
+				
+			// Ejecuta el update en la BD
+			$this->dataAccess->execute($sql);
+		
+		}catch(Exception $e){
+				
 			//FIXME: agregar log de errores
 			echo $e;
 			return false;

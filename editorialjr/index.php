@@ -36,8 +36,6 @@ if(1 == 2){
 	echo "creado: $creado";
 }
 
-
-
 //$val = new ValidationHelper;
 
 //echo $val->validateText("ger", 1, 10);
