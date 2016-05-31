@@ -5,6 +5,14 @@ require_once(__DIR__."/service/RolService.php");
 require_once(__DIR__."/model/UsuarioModel.php");
 require_once(__DIR__."/common/ValidationHelper.php");
 
+require_once(__DIR__."/config/log4php/src/main/php/Logger.php");
+Logger::configure(dirname(__FILE__).'/config/log4php.properties');
+
+$logger = Logger::getRootLogger();
+$logger->debug("Hello World!");
+$logger->error("Hello World! Error");
+
+
 //require_once(__DIR__."/model/RolModel.php");
 /*
 $rolService = new RolService;
