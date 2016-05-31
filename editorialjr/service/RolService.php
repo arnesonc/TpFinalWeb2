@@ -5,6 +5,12 @@ require_once(__DIR__."/../model/RolModel.php");
 
 class RolService{
 	
+	private $dataAccess = null;
+	
+	public function __construct(){
+		$this->dataAccess = new DataAccess;
+	}
+	
 	/*
 	 * Obtiene un usuario por su id y devuelve un objeto UsuarioModel
 	 * */
@@ -12,9 +18,9 @@ class RolService{
 		
 		$sql = " SELECT id, descripcion FROM rol WHERE id = $idRol;";
 		
-		$rolDB = DataAccess::getOneResult($sql);
+		$rolDB = $this->dataAccess->getOneResult($sql);
 		
-		return self::convertRolDBToRolModel($rolDB);
+		return $this->convertRolDBToRolModel($rolDB);
 	}
 	
 	/*
@@ -23,14 +29,14 @@ class RolService{
 	public function getAllRoles(){
 		$sql = " SELECT id, descripcion FROM rol;";
 		
-		$rolDBArray = DataAccess::getMultipleResults($sql);
+		$rolDBArray = $this->dataAccess->getMultipleResults($sql);
 		
 		$arrayRolModel = array();
 		
 		foreach ($rolDBArray as $rolDB) {
-			$rol = self::convertRolDBToRolModel($rolDB);
+			$rolModel = $this->convertRolDBToRolModel($rolDB);
 			
-			$arrayRolModel[] = $rol;
+			$arrayRolModel[] = $rolModel;
 		}
 		
 		return $arrayRolModel;
@@ -50,4 +56,4 @@ class RolService{
 	}
 }
 
-php?>
+?>

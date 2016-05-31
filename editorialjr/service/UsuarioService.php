@@ -8,6 +8,12 @@ require_once(__DIR__."/../model/UsuarioModel.php");
 **/
 class UsuarioService{
 	
+	private $dataAccess = null;
+	
+	function __construct(){
+		$this->dataAccess = new DataAccess;
+	}
+	
 	/**
 		Obtiene un usuario por email
 		Devuelve el usuario de la BD
@@ -25,8 +31,10 @@ class UsuarioService{
 				FROM usuario
 				WHERE email = '$email' and id_estado_usuario = 1;";
 
-		$usuarioBD = DataAccess::getOneResult($sql);
+		//$usuarioBD = DataAccess::getOneResult($sql);
 
+		$usuarioBD = $this->dataAccess->getOneResult($sql);
+		
 		/* Convierto el resultado de la BD a un objeto modelado */
 		$usuarioModel = new UsuarioModel;
 		$usuarioModel->id = $usuarioBD["id"];
@@ -36,7 +44,7 @@ class UsuarioService{
 		$usuarioModel->apellido = $usuarioBD["apellido"];
 		$usuarioModel->id_estado_usuario = $usuarioBD["id_estado_usuario"];
 		$usuarioModel->id_rol = $usuarioBD["id_rol"];
-
+		
 		return $usuarioModel;
 	}
 }

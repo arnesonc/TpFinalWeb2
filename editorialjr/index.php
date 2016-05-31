@@ -4,18 +4,21 @@ require_once(__DIR__."/service/UsuarioService.php");
 require_once(__DIR__."/service/RolService.php");
 //require_once(__DIR__."/model/UsuarioModel.php");
 //require_once(__DIR__."/model/RolModel.php");
-/*
-$usuario = UsuarioService::getUsuarioByEmail('admin@editorialjr.com');
 
-$rol = RolService::getRolById(1);
+$rolService = new RolService;
+
+$rol = $rolService->getRolById(1);
 
 echo $rol->id."\n".$rol->descripcion."\n";
 
-$array = RolService::getAllRoles();
+$array = $rolService->getAllRoles();
 
 var_dump($array);
-*/
-//var_dump($usuario->getRol());
+
+$usuarioService = new UsuarioService;
+$usuario = $usuarioService->getUsuarioByEmail('admin@editorialjr.com');
+
+var_dump($usuario->getRol());
  
 ?>
 
@@ -29,10 +32,13 @@ var_dump($array);
 		<script type="text/javascript" src="js/editorialjr.js"></script>
 		<div>
 			<p>
-				
 				Usuario:
-				<?php echo $usuario->email ?>
+				<?php echo $usuario->email . " Rol: " . $usuario->getRol()->descripcion; ?>
 			</p>
+		</div>
+		<div>
+		<button id="btnObtenerUsuarioAdmin">Obtener usuario admin</button>
+		<span id="spnUsuarioAdmin"></span>
 		</div>
 		<div>
 			<button id="btnTest">Test Ajax</button>

@@ -10,7 +10,7 @@ class UsuarioModel{
 	public $apellido;
 	public $id_estado_usuario;
 	public $id_rol;
-	/* esta privado para obligar a usar el objeto $rol del modo $usuario->rol->descripcion */
+	/* esta privado para obligar a usar el objeto $rol del modo $usuario->getRol()->descripcion */
 	private $rol;
 	public $estado_usuario;
 	
@@ -21,11 +21,10 @@ class UsuarioModel{
 	 * */
 	public function getRol(){
 
-		//FIXME: aun no funciona correctamente porque el objeto entero esta en null
-		
 		/* Si no esta instanciado, lo voy a buscar */
 		if(is_null($rol)){
-			$rol = RolService::getRolById($id_rol);
+			$rolService = new RolService;
+			$rol = $rolService->getRolById($this->id_rol);
 		}
 		
 		return $rol;

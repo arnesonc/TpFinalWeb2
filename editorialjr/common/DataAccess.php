@@ -10,7 +10,9 @@ class DataAccess{
 	**/
 	public function connect(){
 		
-		$mysqli = new mysqli("localhost","usuarioeditorial","usuarioeditorial", "editorialjr");		
+		$params = parse_ini_file(__DIR__."/../config/db.ini");
+		
+		$mysqli = new mysqli($params["host"], $params["user"], $params["pass"], $params["schema"]);		
 
 		if ($mysqli->connect_errno) {
 			die("Error: Fallo al conectarse a MySQL debido a: \nErrno: " . $mysqli->connect_errno . "\nError: " . $mysqli->connect_error . "\n");
