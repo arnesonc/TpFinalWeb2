@@ -10,7 +10,7 @@ Logger::configure(dirname(__FILE__).'/config/log4php.properties');
 
 $logger = Logger::getRootLogger();
 $logger->debug("Hello World!");
-$logger->error("Hello World! Error");
+$logger->error("Error");
 
 
 //require_once(__DIR__."/model/RolModel.php");
