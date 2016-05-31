@@ -65,7 +65,22 @@ class UsuarioService{
 			//En caso de ser invalido devuelve un mensaje de validacion
 			$result= $message;
 		}
+
 		return $result;
+	}
+
+	/**
+	* Crea un usuario a partir de los datos parametizados (por separado)
+	**/
+	public function createUsuarioParametros($email, $pass, $nombre, $apellido){
+		
+		$usuarioModel = new UsuarioModel;
+		$usuarioModel->email = $email;
+		$usuarioModel->pass = $pass;
+		$usuarioModel->nombre = $nombre;
+		$usuarioModel->apellido = $apellido;
+
+		return $this->createUsuario($usuarioModel);
 	}
 	
 	/**

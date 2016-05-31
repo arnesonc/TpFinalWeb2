@@ -213,7 +213,7 @@ insert into ciudad(id, id_region, descripcion)values
 
 -- DROP USER usuarioeditorial@localhost;
 
-CREATE USER IF NOT EXISTS 'usuarioeditorial'@'localhost' IDENTIFIED BY 'usuarioeditorial';
+CREATE USER 'usuarioeditorial'@'localhost' IDENTIFIED BY 'usuarioeditorial';
 
 GRANT ALL ON editorialjr.* TO 'usuarioeditorial'@'localhost';
 
