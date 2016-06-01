@@ -14,25 +14,22 @@ class DataAccess{
 	public function connect(){
 		
 		$params = parse_ini_file(__DIR__."/../config/db.ini");
-		
 		$mysqli = new mysqli($params["host"], $params["user"], $params["pass"], $params["schema"]);		
-		
 		if ($mysqli->connect_errno) {
-			
-			$message = "Error: Fallo al conectarse a MySQL debido a: \nErrno: " . $mysqli->connect_errno . "\nError: " . $mysqli->connect_error . "\n";
+			$message = "\n Error: Fallo al conectarse a MySQL debido a: \nErrno: " . $mysqli->connect_errno . "\nError: " . $mysqli->connect_error . "\n";
 			$logger = Logger::getRootLogger();
 			$logger->error($message);
 			throw new Exception($message);
 		}
 		
-		return $mysqli;
+		return $mysqli; 
 	}
 
 	/**
 		Realiza una consulta que espera obtener como resultado solo un registro
 	**/
 	public function getOneResult($sql){
-
+		
 		$connection = $this->connect();
 		$logger = Logger::getRootLogger();
 		

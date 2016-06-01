@@ -2,6 +2,7 @@
 
 require_once(__DIR__."/service/UsuarioService.php");
 require_once(__DIR__."/service/RolService.php");
+require_once(__DIR__."/service/ImagenService.php");
 require_once(__DIR__."/model/UsuarioModel.php");
 require_once(__DIR__."/common/ValidationHelper.php");
 
@@ -34,7 +35,7 @@ $usuarioService = new UsuarioService;
 
 $usuarioService = new UsuarioService;
 
-if(1 == 1){
+if(1 == 2){
 	$usuarioModel = new UsuarioModel;
 	$usuarioModel->email = "redactor@redactor.com";
 	$usuarioModel->pass = "1234";
@@ -53,6 +54,9 @@ if(1 == 1){
 
 //echo $val->validateText("ger", 1, 10);
 
+$imagenService = new ImagenService;
+
+var_dump ($imagenService->getImagenById(4));
 ?>
 
 <!DOCTYPE html>

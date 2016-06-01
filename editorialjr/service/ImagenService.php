@@ -2,7 +2,7 @@
 require_once(__DIR__."/../config/log4php/src/main/php/Logger.php");
 Logger::configure(dirname(__FILE__).'/../config/log4php.properties');
 require_once(__DIR__."/../common/DataAccess.php");
-require_once(__DIR__."/../model/RolModel.php");
+require_once(__DIR__."/../model/ImagenModel.php");
 
 class ImagenService{
 	
@@ -22,13 +22,39 @@ class ImagenService{
 		
 		}catch(Exception $e){
 			$logger = Logger::getRootLogger();
-			$logger->error($mensaje);
+			$logger->error($e);
 			return null;
 		
 		}
 		return $this->convertImagenDBToImagenModel($imagenDB);
 	}
 
+	public function getAllImagesByIdArticulo($idArticulo){
+	
+		$sql = " SELECT id, url, id_articulo FROM imagen I  WHERE I.id_articulo = $idArticulo;";
+	
+		try{
+	
+			$imagenDBArray = $this->dataAccess->getMultipleResults($sql);
+	
+		}catch(Exception $e){
+			$logger = Logger::getRootLogger();
+			$logger->error($mensaje);
+			return null;
+		}
+	
+	
+		$arrayImagenModel = array();
+	
+		foreach ($imagenDBArray as $imagenDB) {
+	
+			$imagenModel = $this->convertImagenDBToImagenModel($imagenDB);
+	
+			$arrayImagenModel[] = $imagenModel;
+		}
+	
+		return $arrayImagenModel;
+	}
 	
 	private function convertImagenDBToImagenModel($imagenDB){
 	
@@ -41,32 +67,7 @@ class ImagenService{
 		
 	}
 	
-	public function getAllImagesByIdArticulo($idArticulo){
-		
-		$sql = " SELECT id, url, id_articulo FROM imagen I  WHERE I.id_articulo = $idArticulo;";
-	
-		try{
-				
-			$imagenDBArray = $this->dataAccess->getMultipleResults($sql);
-	
-		}catch(Exception $e){
-			$logger = Logger::getRootLogger();
-			$logger->error($mensaje);
-			return null;	
-		}
-	
-	
-		$arrayImagenModel = array();
-	
-		foreach ($imagenDBArray as $imagenDB) {
-	
-			$imagenModel = $this->convertImagenDBToImagenModel($imagenDB);
-				
-			$arrayImagenModel[] = $imagenModel;
-		}
-	
-		return $arrayImagenModel;
-	}
+
 	
 }
 
