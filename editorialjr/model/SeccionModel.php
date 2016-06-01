@@ -1,10 +1,13 @@
 <?php
+
+require_once(__DIR__."/../common/LoggerHelper.php");
+
 class SeccionModel{
 	public $id;
-	public $idCiente;
-	public $idPublicacion;
-	public $tipoSuscripcion;
-	public $precio;
-	public $fecha;
+	public $id_numero;
+	public $nombre;
+	
+	//FIXME: Completar cuando exista el service
+	private $numero;
 }
 ?>

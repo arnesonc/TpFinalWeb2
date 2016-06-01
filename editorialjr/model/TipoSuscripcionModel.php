@@ -1,6 +1,6 @@
 <?php
  class TipoSuscripcionModel{
  	public $id;
- 	public $cantidadMeses;
+ 	public $cantidad_meses;
  }
  ?>

@@ -5,7 +5,7 @@ class ImagenModel{
 	public $id_articulo;
 	public $url;
 	
-	//FIXME: Completar cuando exista el service de articulo
+	//FIXME: Completar cuando exista el service
 	private $articulo;
 }
 ?>
