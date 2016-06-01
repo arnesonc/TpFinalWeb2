@@ -6,12 +6,17 @@ require_once(__DIR__."/service/ImagenService.php");
 require_once(__DIR__."/model/UsuarioModel.php");
 require_once(__DIR__."/common/ValidationHelper.php");
 
-require_once(__DIR__."/config/log4php/src/main/php/Logger.php");
-Logger::configure(dirname(__FILE__).'/config/log4php.properties');
+/* Usar siempre solo este require para logger */
+require_once(__DIR__."/common/LoggerHelper.php");
 
-//$logger = Logger::getRootLogger();
-//$logger->debug("Hello World!");
-//$logger->error("Error");
+/* asi se obtiene el logger */
+$logger = Logger::getRootLogger();
+
+/* asi se usa el logger de debug (solo para debug) */
+$logger->debug("Hello World!");
+
+/* asi se usa el logger de errores (se pone en los catch y se loguea la excepcion) */
+$logger->error("Error");
 
 
 //require_once(__DIR__."/model/RolModel.php");

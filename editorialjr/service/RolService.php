@@ -2,9 +2,7 @@
 
 require_once(__DIR__."/../common/DataAccess.php");
 require_once(__DIR__."/../model/RolModel.php");
-
-require_once(__DIR__."/../config/log4php/src/main/php/Logger.php");
-Logger::configure(dirname(__FILE__).'/../config/log4php.properties');
+require_once(__DIR__."/../common/LoggerHelper.php");
 
 class RolService{
 	

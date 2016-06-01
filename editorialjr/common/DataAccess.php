@@ -1,7 +1,6 @@
 <?php
 
-require_once(__DIR__."/../config/log4php/src/main/php/Logger.php");
-Logger::configure(dirname(__FILE__).'/../config/log4php.properties');
+require_once(__DIR__."/LoggerHelper.php");
 
 /**
 	Clase que posee métodos para acceder a la base de datos
