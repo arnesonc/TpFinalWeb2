@@ -1,4 +1,6 @@
 <?php
+require_once(__DIR__."/../config/log4php/src/main/php/Logger.php");
+Logger::configure(dirname(__FILE__).'/../config/log4php.properties');
 
 require_once(__DIR__."/../common/DataAccess.php");
 require_once(__DIR__."/../common/ValidationHelper.php");
@@ -147,9 +149,9 @@ class UsuarioService{
 
 		}catch(Exception $e){
 			
-			//FIXME: agregar log de errores
-			echo $e;
+			$logger->error($e);
 			return false;
+			
 		}
 		
 		return true;
@@ -171,10 +173,10 @@ class UsuarioService{
 			$this->dataAccess->execute($sql);
 		
 		}catch(Exception $e){
-				
-			//FIXME: agregar log de errores
-			echo $e;
+
+			$logger->error($e);
 			return false;
+		
 		}
 		
 		return true;

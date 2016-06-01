@@ -6,6 +6,7 @@ require_once(__DIR__."/../model/RolModel.php");
 class RolService{
 	
 	private $dataAccess = null;
+	private $mensaje = "ha ocurrido un error.";
 	
 	public function __construct(){
 		$this->dataAccess = new DataAccess;
@@ -18,8 +19,15 @@ class RolService{
 		
 		$sql = " SELECT id, descripcion FROM rol WHERE id = $idRol;";
 		
-		$rolDB = $this->dataAccess->getOneResult($sql);
+		try{
 		
+			$rolDB = $this->dataAccess->getOneResult($sql);			
+		
+		}catch(Exception $e){
+			
+			throw new Exception($mensaje);
+		
+		}
 		return $this->convertRolDBToRolModel($rolDB);
 	}
 	
@@ -29,11 +37,21 @@ class RolService{
 	public function getAllRoles(){
 		$sql = " SELECT id, descripcion FROM rol;";
 		
-		$rolDBArray = $this->dataAccess->getMultipleResults($sql);
+		try{
+			
+			$rolDBArray = $this->dataAccess->getMultipleResults($sql);
+		
+		}catch(Exception $e){
+			
+			throw new Exception($mensaje);	
+		
+		}
+		
 		
 		$arrayRolModel = array();
 		
 		foreach ($rolDBArray as $rolDB) {
+		
 			$rolModel = $this->convertRolDBToRolModel($rolDB);
 			
 			$arrayRolModel[] = $rolModel;

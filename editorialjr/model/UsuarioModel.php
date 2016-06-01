@@ -24,7 +24,11 @@ class UsuarioModel{
 		/* Si no esta instanciado, lo voy a buscar */
 		if(is_null($rol)){
 			$rolService = new RolService;
-			$rol = $rolService->getRolById($this->id_rol);
+			try{
+				$rol = $rolService->getRolById($this->id_rol);
+			}catch(Exeption $e){
+				throw $e;
+			}
 		}
 		
 		return $rol;

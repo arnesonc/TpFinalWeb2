@@ -14,7 +14,7 @@ $logger->error("Error");
 
 
 //require_once(__DIR__."/model/RolModel.php");
-/*
+
 $rolService = new RolService;
 
 $rol = $rolService->getRolById(1);
@@ -24,15 +24,15 @@ echo $rol->id."\n".$rol->descripcion."\n";
 $array = $rolService->getAllRoles();
 
 var_dump($array);
-*/
-$usuarioService = new UsuarioService;
-//$usuario = $usuarioService->getUsuarioByEmail('admin@editorialjr.com');
 
-//var_dump($usuario->getRol());
+$usuarioService = new UsuarioService;
+$usuario = $usuarioService->getUsuarioByEmail('admin@editorialjr.com');
+
+var_dump($usuario->getRol());
 
 // para probar el create quitar el if o poner 1 == 1
 
-if(1 == 2){
+if(1 == 1){
 	$usuarioModel = new UsuarioModel;
 	$usuarioModel->email = "redactor@redactor.com";
 	$usuarioModel->pass = "1234";

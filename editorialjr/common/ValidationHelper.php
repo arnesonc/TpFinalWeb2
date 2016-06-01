@@ -17,6 +17,14 @@ class ValidationHelper{
 			return false;
 		}
 	}
+	
+	public function validateNumber($value){
+		if(is_numeric($value)){
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 
 ?>
