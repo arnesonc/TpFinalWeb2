@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__."/../service/EstadoClienteService.php");
+
 class ClienteModel{
 
 	public $id;
@@ -14,6 +16,21 @@ class ClienteModel{
 	public $departamento;
 	public $codigo_postal;
 	public $detalle_direccion;
+	
+	private $estado_cliente;
+	
+	/**
+	 * Obtiene un objeto EstadoClienteModel, si lo tiene en memoria devuelve ese, si no, lo va a buscar a la base de datos
+	 * */
+	public function getEstadoCliente(){
+		
+		if(is_null($this->estado_cliente)){
+			$estadoClienteService = new EstadoClienteService;
+			$this->estado_cliente = $estadoClienteService->getEstadoClienteById($this->id_estado_cliente);
+		}
+		
+		return $this->estado_cliente;
+	}
 }
 
 ?>
