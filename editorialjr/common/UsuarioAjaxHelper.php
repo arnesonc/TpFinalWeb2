@@ -17,6 +17,6 @@ switch($metodo){
 		echo "Método inexistente en el switch de UsuarioAjaxHelper.php";
 }
 
-echo $result->nombre;
+echo json_encode($result);
 
 ?>

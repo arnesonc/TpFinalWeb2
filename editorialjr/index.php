@@ -10,13 +10,13 @@ require_once(__DIR__."/common/ValidationHelper.php");
 require_once(__DIR__."/common/LoggerHelper.php");
 
 /* asi se obtiene el logger */
-$logger = Logger::getRootLogger();
+//$logger = Logger::getRootLogger();
 
 /* asi se usa el logger de debug (solo para debug) */
-$logger->debug("Hello World!");
+//$logger->debug("Hello World!");
 
 /* asi se usa el logger de errores (se pone en los catch y se loguea la excepcion) */
-$logger->error("Error");
+//$logger->error("Error");
 
 
 //require_once(__DIR__."/model/RolModel.php");
@@ -59,9 +59,9 @@ if(1 == 2){
 
 //echo $val->validateText("ger", 1, 10);
 
-$imagenService = new ImagenService;
+//$imagenService = new ImagenService;
 
-var_dump ($imagenService->getImagenById(4));
+//var_dump ($imagenService->getImagenById(4));
 ?>
 
 <!DOCTYPE html>

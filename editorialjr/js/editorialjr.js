@@ -20,9 +20,9 @@ $(document).ready(function (){
 	        url  : 'common/UsuarioAjaxHelper.php',
 	        data : { metodo: "getUsuarioByEmail", emailUsuario: 'admin@editorialjr.com' },
 	        type : 'POST',
-	        //dataType : "json",
+	        dataType : "json",
 	        success : function(result) {
-	                    $("#spnUsuarioAdmin").html(result);
+	                    $("#spnUsuarioAdmin").html(result.nombre);
 	                  },
 	        error : function(error) {
 	        	alert("Ups, ocurrio un error! " + error);
