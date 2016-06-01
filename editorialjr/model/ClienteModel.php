@@ -12,7 +12,7 @@ class ClienteModel{
 	public $nombre;
 	public $apellido;
 	public $calle;
-	public $numero;
+	public $numero_calle;
 	public $piso;
 	public $departamento;
 	public $codigo_postal;

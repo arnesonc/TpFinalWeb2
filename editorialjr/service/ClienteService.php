@@ -61,7 +61,7 @@ class ClienteService{
 		$clienteModel->nombre = $clienteDB["nombre"];
 		$clienteModel->apellido = $clienteDB["apellido"];
 		$clienteModel->calle = $clienteDB["calle"];
-		$clienteModel->numero = $clienteDB["numero"];
+		$clienteModel->numero_calle = $clienteDB["numero_calle"];
 		$clienteModel->piso = $clienteDB["piso"];
 		$clienteModel->departamento = $clienteDB["departamento"];
 		$clienteModel->codigo_postal = $clienteDB["codigo_postal"];

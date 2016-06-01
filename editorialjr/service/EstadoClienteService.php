@@ -13,12 +13,15 @@ class EstadoClienteService {
 		$this->dataAccess = new DataAccess;
 	}
 	
-	public function getEstadoClienteById($idCliente){
+	/**
+	 * Obtiene un EstadoUsuarioModel por id
+	 * */
+	public function getEstadoClienteById($id){
 		
 		$sql = "SELECT id,
 				    descripcion
 				FROM estado_cliente
-				WHERE id = $idCliente;";
+				WHERE id = $id;";
 		
 		try{
 		
@@ -33,7 +36,7 @@ class EstadoClienteService {
 		return $this->convertEstadoClienteDBToEstadoClienteModel($estadoClienteBD);
 	}
 	
-	/*
+	/**
 	 * Convierte un estado cliente de la base de datos en un objeto EstadoClienteModel y lo devuelve
 	 * */
 	private function convertEstadoClienteDBToEstadoClienteModel($estadoClienteDB){

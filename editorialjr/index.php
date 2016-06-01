@@ -18,12 +18,6 @@ require_once(__DIR__."/common/LoggerHelper.php");
 /* asi se usa el logger de errores (se pone en los catch y se loguea la excepcion) */
 //$logger->error("Error");
 
-
-require_once(__DIR__."/service/ClienteService.php");
-$clienteService = new ClienteService;
-
-var_dump($clienteService->getClienteById(1)->getCiudad()->descripcion);
-
 //require_once(__DIR__."/model/RolModel.php");
 /*
 $rolService = new RolService;

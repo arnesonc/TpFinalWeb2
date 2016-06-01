@@ -6,6 +6,14 @@ class CiudadModel{
 	public $descripcion;
 	
 	private $region;
+	
+	public function getRegion(){
+		
+		if(is_null($this->region)){
+			
+		}
+		
+	}
 }
 
 ?>
