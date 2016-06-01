@@ -1,4 +1,6 @@
 <?php
+require_once(__DIR__."/../config/log4php/src/main/php/Logger.php");
+Logger::configure(dirname(__FILE__).'/../config/log4php.properties');
 require_once(__DIR__."/../common/DataAccess.php");
 require_once(__DIR__."/../model/RolModel.php");
 
@@ -19,8 +21,9 @@ class ImagenService{
 			$imagenDB = $this->dataAccess->getOneResult($sql);
 		
 		}catch(Exception $e){
-				
-			throw new Exception($e);
+			$logger = Logger::getRootLogger();
+			$logger->error($mensaje);
+			return null;
 		
 		}
 		return $this->convertImagenDBToImagenModel($imagenDB);
@@ -47,9 +50,9 @@ class ImagenService{
 			$imagenDBArray = $this->dataAccess->getMultipleResults($sql);
 	
 		}catch(Exception $e){
-				
-			throw new Exception($mensaje);
-	
+			$logger = Logger::getRootLogger();
+			$logger->error($mensaje);
+			return null;	
 		}
 	
 	
