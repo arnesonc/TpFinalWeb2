@@ -11,8 +11,6 @@ require_once(__DIR__."/common/ValidationHelper.php");
 /* Usar siempre solo este require para logger */
 require_once(__DIR__."/common/LoggerHelper.php");
 
-
-
 /* asi se obtiene el logger */
 //$logger = Logger::getRootLogger();
 
@@ -57,6 +55,8 @@ if(1 == 2){
 	}
 	echo "creado: $creado";
 }
+
+var_dump($usuarioService->getUsuarioById(1));
 
 //$val = new ValidationHelper;
 

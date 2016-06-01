@@ -16,6 +16,35 @@ class UsuarioService{
 	}
 	
 	/**
+	 * Obtiene un UsuarioModel por su id
+	 * */
+	public function getUsuarioById($idUsuario){
+		
+		$sql = "SELECT id,
+				    id_estado_usuario,
+				    id_rol,
+				    email,
+				    pass,
+				    nombre,
+				    apellido
+				FROM usuario
+				WHERE id = $idUsuario;";
+		
+		try{
+				
+			$usuarioBD = $this->dataAccess->getOneResult($sql);
+				
+		}catch(Exception $e){
+				
+			$logger = Logger::getRootLogger();
+			$logger->error($e);
+			return null;
+		}
+		
+		return $this->convertUsuarioDBToUsuarioModel($usuarioBD);
+	}
+	
+	/**
 		Obtiene un usuario por email
 		Devuelve el usuario de la BD
 	**/
@@ -42,6 +71,15 @@ class UsuarioService{
 			$logger->error($e);
 			return null;
 		}
+			
+		return $this->convertUsuarioDBToUsuarioModel($usuarioBD);
+	}
+	
+	/**
+	 * Convierte un usuarioDB en UsuarioModel
+	 * */
+	public function convertUsuarioDBToUsuarioModel($usuarioBD){
+		
 		/* Convierto el resultado de la BD a un objeto modelado */
 		$usuarioModel = new UsuarioModel;
 		$usuarioModel->id = $usuarioBD["id"];
