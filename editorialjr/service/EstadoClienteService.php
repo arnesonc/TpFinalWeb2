@@ -47,7 +47,6 @@ class EstadoClienteService {
 	
 		return $estadoClienteModel;
 	}
-	
 }
 
 ?>

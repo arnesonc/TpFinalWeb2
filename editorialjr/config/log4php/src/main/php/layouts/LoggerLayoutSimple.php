@@ -50,7 +50,8 @@ class LoggerLayoutSimple extends LoggerLayout {
 	 */
 	public function format(LoggerLoggingEvent $event) {
 		$level = $event->getLevel();
+		$date = date("Y-m-d H:i:s");
 		$message = $event->getRenderedMessage();
-		return "$level - $message" . PHP_EOL;
+		return "-----------------------------------------------------------------\n$level - $date - $message" . PHP_EOL;
 	}
 }
