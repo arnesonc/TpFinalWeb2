@@ -7,7 +7,6 @@ require_once(__DIR__."/../model/ImagenModel.php");
 class ImagenService{
 	
 	private $dataAccess = null;
-	private $mensaje = "ha ocurrido un error.";
 	
 	public function __construct(){
 		$this->dataAccess = new DataAccess;
@@ -39,10 +38,9 @@ class ImagenService{
 	
 		}catch(Exception $e){
 			$logger = Logger::getRootLogger();
-			$logger->error($mensaje);
+			$logger->error($e);
 			return null;
 		}
-	
 	
 		$arrayImagenModel = array();
 	
@@ -61,7 +59,7 @@ class ImagenService{
 		/* Convierto el resultado de la BD a un objeto modelado */
 		$imagen = new ImagenModel;
 		$imagen->id = $imagenDB["id"];
-		$imagen->idArticulo =$imagenDB["id_articulo"];
+		$imagen->id_articulo =$imagenDB["id_articulo"];
 		$imagen->url = $imagenDB["url"];
 		return $imagen;
 		
