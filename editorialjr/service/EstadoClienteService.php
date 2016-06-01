@@ -10,7 +10,6 @@ Logger::configure(dirname(__FILE__).'/../config/log4php.properties');
 class EstadoClienteService {
 	
 	private $dataAccess = null;
-	private $logger = Logger::getRootLogger();
 	
 	function __construct(){
 		$this->dataAccess = new DataAccess;
@@ -20,13 +19,15 @@ class EstadoClienteService {
 		
 		$sql = "SELECT id,
 				    descripcion
-				FROM estado_cliente;";
+				FROM estado_cliente
+				WHERE id = $idCliente;";
 		
 		try{
 		
 			$estadoClienteBD = $this->dataAccess->getOneResult($sql);
 		
 		}catch(Exception $e){
+			$logger = Logger::getRootLogger();
 			$logger->error($e);
 			
 			return null;
