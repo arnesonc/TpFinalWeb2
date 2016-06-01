@@ -3,9 +3,13 @@
 require_once(__DIR__."/../common/DataAccess.php");
 require_once(__DIR__."/../model/RolModel.php");
 
+require_once(__DIR__."/../config/log4php/src/main/php/Logger.php");
+Logger::configure(dirname(__FILE__).'/../config/log4php.properties');
+
 class RolService{
 	
 	private $dataAccess = null;
+	private $mensaje = "ha ocurrido un error.";
 	
 	public function __construct(){
 		$this->dataAccess = new DataAccess;
@@ -18,8 +22,16 @@ class RolService{
 		
 		$sql = " SELECT id, descripcion FROM rol WHERE id = $idRol;";
 		
-		$rolDB = $this->dataAccess->getOneResult($sql);
+		try{
 		
+			$rolDB = $this->dataAccess->getOneResult($sql);			
+		
+		}catch(Exception $e){
+			$logger = Logger::getRootLogger();
+			$logger->error($e);
+			return null;
+		
+		}
 		return $this->convertRolDBToRolModel($rolDB);
 	}
 	
@@ -29,11 +41,21 @@ class RolService{
 	public function getAllRoles(){
 		$sql = " SELECT id, descripcion FROM rol;";
 		
-		$rolDBArray = $this->dataAccess->getMultipleResults($sql);
+		try{
+			
+			$rolDBArray = $this->dataAccess->getMultipleResults($sql);
+		
+		}catch(Exception $e){
+			$logger = Logger::getRootLogger();
+			$logger->error($e);
+			return null;
+		}
+		
 		
 		$arrayRolModel = array();
 		
 		foreach ($rolDBArray as $rolDB) {
+		
 			$rolModel = $this->convertRolDBToRolModel($rolDB);
 			
 			$arrayRolModel[] = $rolModel;

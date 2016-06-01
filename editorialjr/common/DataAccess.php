@@ -1,5 +1,8 @@
 <?php
 
+require_once(__DIR__."/../config/log4php/src/main/php/Logger.php");
+Logger::configure(dirname(__FILE__).'/../config/log4php.properties');
+
 /**
 	Clase que posee métodos para acceder a la base de datos
 **/
@@ -13,9 +16,13 @@ class DataAccess{
 		$params = parse_ini_file(__DIR__."/../config/db.ini");
 		
 		$mysqli = new mysqli($params["host"], $params["user"], $params["pass"], $params["schema"]);		
-
+		
 		if ($mysqli->connect_errno) {
-			die("Error: Fallo al conectarse a MySQL debido a: \nErrno: " . $mysqli->connect_errno . "\nError: " . $mysqli->connect_error . "\n");
+			
+			$message = "Error: Fallo al conectarse a MySQL debido a: \nErrno: " . $mysqli->connect_errno . "\nError: " . $mysqli->connect_error . "\n";
+			$logger = Logger::getRootLogger();
+			$logger->error($message);
+			throw new Exception($message);
 		}
 		
 		return $mysqli;
@@ -26,12 +33,15 @@ class DataAccess{
 	**/
 	public function getOneResult($sql){
 
-		$connection = self::connect();
-
+		$connection = $this->connect();
+		$logger = Logger::getRootLogger();
+		
 		try{
 			
 			if (!$query = $connection->query($sql)){
-				die("No se pudo consultar. SQL: " . $sql);
+				$mensaje = "No se pudo consultar. SQL: " . $sql;
+				$this->logger->error($mensaje);
+				throw new Exception($mensaje);	
 			}
 
 			if ($query->num_rows === 0) {
@@ -39,15 +49,19 @@ class DataAccess{
 			}
 
  				if ($query->num_rows > 1) {
-			    die("La consulta devolvió mas de un resultado.");
-			}
+ 					$mensaje = "La consulta devolvió mas de un resultado.";
+ 					$logger->error($mensaje);
+ 					throw new Exception($mensaje);
+				}
 
 			$result = $query->fetch_assoc();
 
 			$query->free();
 
 		}catch(Exception $e){
-			die("Ha ocurrido un error: " . $e);
+			$mensaje = "Ha ocurrido un error: " . $e;
+			$logger->error($mensaje);
+			throw new Exception($mensaje);
 			
 		}finally{
 			$connection->close();	
@@ -61,16 +75,21 @@ class DataAccess{
 	**/
 	public function getMultipleResults($sql){
 
-		$connection = self::connect();
+		$connection = $this->connect();
+		$logger = Logger::getRootLogger();
 
 		try{
 
 			if (!$query = $connection->query($sql)){
-				die("No se pudo consultar. SQL: " . $sql);
+				$mensaje = "No se pudo consultar. SQL: " . $sql;
+				$this->logger->error($mensaje);
+				throw new Exception($mensaje);
 			}
 
 			if ($query->num_rows === 0) {
-			    die("La consulta no devolvió resultados.");
+				$mensaje = "La consulta no devolvió resultados.";
+				$this->logger($mensaje);
+				throw new Exception($mensaje);
 			}
 
 			$array = array();
@@ -82,9 +101,13 @@ class DataAccess{
 			$query->free();
 
 		}catch(Exception $e){
-			die("Ha ocurrido un error: " . $e);
+			
+			$mensaje = "Ha ocurrido un error: " . $e; 
+			$this->logger->error($mensaje);
+			throw new Exception($mensaje); 
 
 		}finally{
+			
 			$connection->close();	
 		}
 
@@ -96,7 +119,7 @@ class DataAccess{
 	**/
 	public function execute($sql){
 		
-		$connection = self::connect();
+		$connection = $this->connect();
 
 		try{
 
@@ -105,10 +128,16 @@ class DataAccess{
 			return true;
 
 		}catch(Exception $e){
-			die("Ha ocurrido un error: " . $e);
-
+			
+			$mensaje = "Ha ocurrido un error: " . $e;
+			$logger = Logger::getRootLogger();
+			$logger->error($mensaje);
+			throw new Exception($mensaje);
+				
 		}finally{
+			
 			$connection->close();	
+		
 		}
 	}
 

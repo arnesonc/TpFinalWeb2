@@ -34,8 +34,7 @@ class UsuarioService{
 				FROM usuario
 				WHERE email = '$email' and id_estado_usuario = 1;";
 
-		//$usuarioBD = DataAccess::getOneResult($sql);
-
+		
 		$usuarioBD = $this->dataAccess->getOneResult($sql);
 		
 		/* Convierto el resultado de la BD a un objeto modelado */
@@ -148,7 +147,7 @@ class UsuarioService{
 			$this->dataAccess->execute($sql);
 
 		}catch(Exception $e){
-			
+			$logger = Logger::getRootLogger();
 			$logger->error($e);
 			return false;
 			
