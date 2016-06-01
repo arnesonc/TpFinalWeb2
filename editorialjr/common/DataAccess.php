@@ -30,13 +30,14 @@ class DataAccess{
 	public function getOneResult($sql){
 		
 		$connection = $this->connect();
+		
 		$logger = Logger::getRootLogger();
 		
 		try{
 			
 			if (!$query = $connection->query($sql)){
 				$mensaje = "No se pudo consultar. SQL: " . $sql;
-				$this->logger->error($mensaje);
+				$logger->error($mensaje);
 				throw new Exception($mensaje);	
 			}
 
@@ -44,11 +45,11 @@ class DataAccess{
 			    return null;
 			}
 
- 				if ($query->num_rows > 1) {
- 					$mensaje = "La consulta devolvió mas de un resultado.";
- 					$logger->error($mensaje);
- 					throw new Exception($mensaje);
-				}
+ 			if ($query->num_rows > 1) {
+ 				$mensaje = "La consulta devolvió mas de un resultado.";
+ 				$logger->error($mensaje);
+ 				throw new Exception($mensaje);
+			}
 
 			$result = $query->fetch_assoc();
 

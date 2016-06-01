@@ -17,10 +17,10 @@ class RegionService{
 	 * */
 	public function getRegionById($idRegion){
 		$sql = "SELECT id,
-		id_pais,
-		descripcion
-		FROM region
-		WHERE id = $idRegion;";
+						id_pais,
+						descripcion
+				FROM region
+				WHERE id = $idRegion;";
 	
 		try{
 				
@@ -36,15 +36,15 @@ class RegionService{
 		return $this->convertRegionDBToRegionModel($regionDB);
 	}
 	
-	/*
-	 * Convierte un estado cliente de la base de datos en un objeto EstadoClienteModel y lo devuelve
+	/**
+	 * Convierte una region de la base de datos en un objeto RegionModel y lo devuelve
 	 * */
 	private function convertRegionDBToRegionModel($regionDB){
 	
 		/* Convierto el resultado de la BD a un objeto modelado */
 		$regionModel = new RegionModel;
 		$regionModel->id = $regionDB["id"];
-		$regionModel->id_region = $regionDB["id_pais"];
+		$regionModel->id_pais = $regionDB["id_pais"];
 		$regionModel->descripcion = $regionDB["descripcion"];
 	
 		return $regionModel;

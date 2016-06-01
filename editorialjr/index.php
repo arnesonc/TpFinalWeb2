@@ -3,12 +3,14 @@
 require_once(__DIR__."/service/UsuarioService.php");
 require_once(__DIR__."/service/CiudadService.php");
 require_once(__DIR__."/service/RolService.php");
+require_once(__DIR__."/service/RegionService.php");
 require_once(__DIR__."/service/ImagenService.php");
 require_once(__DIR__."/model/UsuarioModel.php");
 require_once(__DIR__."/common/ValidationHelper.php");
 
 /* Usar siempre solo este require para logger */
 require_once(__DIR__."/common/LoggerHelper.php");
+
 
 
 /* asi se obtiene el logger */
