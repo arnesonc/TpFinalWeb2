@@ -1,7 +1,7 @@
 <?php
 class RegionModel{
 	 public $id;
-	 public $idPais;
+	 public $id_pais;
 	 public $descripcion;
 }
 ?>

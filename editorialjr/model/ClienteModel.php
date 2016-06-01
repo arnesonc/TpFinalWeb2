@@ -2,6 +2,7 @@
 
 require_once(__DIR__."/../service/EstadoClienteService.php");
 require_once(__DIR__."/../service/CiudadService.php");
+require_once(__DIR__."/../common/LoggerHelper.php");
 
 class ClienteModel{
 

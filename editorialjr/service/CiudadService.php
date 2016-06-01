@@ -12,6 +12,9 @@ class CiudadService{
 		$this->dataAccess = new DataAccess;
 	}
 	
+	/**
+	 * Obtiene una CiudadModel por su id
+	 */
 	public function getCiudadById($idCiudad){
 		$sql = "SELECT id,
 				    id_region,
