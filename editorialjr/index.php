@@ -22,7 +22,7 @@ require_once(__DIR__."/common/LoggerHelper.php");
 require_once(__DIR__."/service/ClienteService.php");
 $clienteService = new ClienteService;
 
-var_dump($clienteService->getClienteById(1)->getEstadoCliente()->descripcion);
+var_dump($clienteService->getClienteById(1)->getCiudad()->descripcion);
 
 //require_once(__DIR__."/model/RolModel.php");
 /*

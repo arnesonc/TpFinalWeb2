@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__."/../service/RolService.php");
+require_once(__DIR__."/../common/LoggerHelper.php");
 
 class UsuarioModel{
 	public $id;
@@ -10,9 +11,11 @@ class UsuarioModel{
 	public $apellido;
 	public $id_estado_usuario;
 	public $id_rol;
+	public $estado_usuario;
+	
 	/* esta privado para obligar a usar el objeto $rol del modo $usuario->getRol()->descripcion */
 	private $rol;
-	public $estado_usuario;
+	//private $estado_usuario;
 	
 	/*
 	 * Obtiene el objeto rol relacionado con el usuario, si lo tiene en memoria ya instanciado, 
@@ -28,12 +31,21 @@ class UsuarioModel{
 			try{
 				$this->rol = $rolService->getRolById($this->id_rol);
 			}catch(Exeption $e){
-				throw $e;
+				$logger = Logger::getRootLogger();
+				$logger->error($e);
+				return null;
 			}
 		}
 		
 		return $this->rol;
 	}
+	
+// 	public function getEstadoUsuario(){
+		
+// 		if(is_null($this->estado_usuario)){
+// 			//EstadoUsuarioService
+// 		}
+// 	}
 }
 
 ?>
