@@ -56,7 +56,7 @@ class UsuarioService{
 	 **/
 	public function createUsuario($usuarioModel){
 		
-		$message = $this->validateUsuario($usuarioModel, $message);
+		$message = $this->validateUsuario($usuarioModel);
 		
 		// Si esta vacio, no hay mensaje de error por lo tanto es válido
 		if(empty($message)){
