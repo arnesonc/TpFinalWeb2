@@ -7,18 +7,17 @@ require_once(__DIR__."/../common/LoggerHelper.php");
 class RolService{
 	
 	private $dataAccess = null;
-	private $mensaje = "ha ocurrido un error.";
 	
 	public function __construct(){
 		$this->dataAccess = new DataAccess;
 	}
 	
 	/*
-	 * Obtiene un usuario por su id y devuelve un objeto UsuarioModel
+	 * Obtiene un rol por su id
 	 * */
-	public function getRolById($idRol){
+	public function getRolById($id){
 		
-		$sql = " SELECT id, descripcion FROM rol WHERE id = $idRol;";
+		$sql = " SELECT id, descripcion FROM rol WHERE id = $id;";
 		
 		try{
 		
