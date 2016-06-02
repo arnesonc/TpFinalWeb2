@@ -27,7 +27,8 @@ class ArticuloService{
 			    copete,
 			    url_contenido,
 			    contenido_adicional
-			FROM articulo;";
+			FROM articulo
+			WHERE id = $id;";
 	
 		try{
 				

@@ -47,7 +47,7 @@ class NumeroModel{
 	
 			try {
 	
-				$this->publicacion = $estadoNumeroService->getPublicacionById($this->id_publicacion);
+				$this->publicacion = $publicacionService->getPublicacionById($this->id_publicacion);
 	
 			}catch(Exeption $e){
 				$logger = Logger::getRootLogger();
