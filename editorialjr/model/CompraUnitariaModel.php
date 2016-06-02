@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__."/../service/ClienteService.php");
+require_once(__DIR__."/../service/NumeroService.php");
 require_once(__DIR__."/../common/LoggerHelper.php");
 
  class CompraUnitariaModel{
@@ -9,6 +10,7 @@ require_once(__DIR__."/../common/LoggerHelper.php");
  	public $fecha;
  	
  	private $cliente;
+ 	private $numero;
  	
  	/**
  	 * Obtiene un objeto ClienteModel, si lo tiene en memoria devuelve ese, si no, lo va a buscar a la base de datos
@@ -30,6 +32,28 @@ require_once(__DIR__."/../common/LoggerHelper.php");
  		}
  	
  		return $this->cliente;
+ 	}
+ 	
+ 	/**
+ 	 * Obtiene un objeto NumeroModel, si lo tiene en memoria devuelve ese, si no, lo va a buscar a la base de datos
+ 	 * */
+ 	public function getNumero(){
+ 	
+ 		if(is_null($this->numero)){
+ 			$numeroService = new NumeroService;
+ 				
+ 			try {
+ 	
+ 				$this->numero = $numeroService->getNumeroById($this->id_numero);
+ 	
+ 			}catch(Exeption $e){
+ 				$logger = Logger::getRootLogger();
+ 				$logger->error($e);
+ 				return null;
+ 			}
+ 		}
+ 	
+ 		return $this->numero;
  	}
  }
 ?>

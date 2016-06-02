@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__."/../service/UsuarioService.php");
+require_once(__DIR__."/../service/EstadoArticuloService.php");
 require_once(__DIR__."/../common/LoggerHelper.php");
 
 class ArticuloModel{
@@ -17,10 +18,11 @@ class ArticuloModel{
 	public $contenidoAdicional;
 	
 	private $usuario;
+	private $estado_articulo;
 	
 	//FIXME: Completar cuando exista el service de articulo
 	private $seccion;
-	private $estado_articulo;
+	
 	
 	/**
 	 * Obtiene un objeto PaisModel, si lo tiene en memoria devuelve ese, si no, lo va a buscar a la base de datos
@@ -42,6 +44,28 @@ class ArticuloModel{
 		}
 	
 		return $this->usuario;
+	}
+	
+	/**
+	 * Obtiene un objeto EstadoArticulo, si lo tiene en memoria lo devuelve, si no, lo va a buscar a la base de datos
+	 * */
+	public function getEstadoArticulo(){
+	
+		if(is_null($this->estado_articulo)){
+			$estadoArticuloService = new EstadoArticuloService;
+	
+			try {
+	
+				$this->estado_articulo = $estadoArticuloService->getEstadoArticuloById($this->id_estado_articulo);
+	
+			}catch(Exeption $e){
+				$logger = Logger::getRootLogger();
+				$logger->error($e);
+				return null;
+			}
+		}
+	
+		return $this->estado_articulo;
 	}
 }
 ?>

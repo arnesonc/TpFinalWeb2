@@ -15,12 +15,12 @@ class CiudadService{
 	/**
 	 * Obtiene una CiudadModel por su id
 	 */
-	public function getCiudadById($idCiudad){
+	public function getCiudadById($id){
 		$sql = "SELECT id,
 				    id_region,
 				    descripcion
 				FROM ciudad
-				WHERE id = $idCiudad;";
+				WHERE id = $id;";
 		
 		try{
 			
@@ -36,8 +36,8 @@ class CiudadService{
 		return $this->convertCiudadDBToCiudadModel($ciudadDB);
 	}
 		
-	/*
-	 * Convierte un estado cliente de la base de datos en un objeto EstadoClienteModel y lo devuelve
+	/**
+	 * Convierte una ciudad de la base de datos en un objeto CiudadModel y lo devuelve
 	 * */
 	private function convertCiudadDBToCiudadModel($ciudadDB){
 	
