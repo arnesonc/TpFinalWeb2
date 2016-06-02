@@ -5,39 +5,16 @@ require_once(__DIR__."/service/CiudadService.php");
 require_once(__DIR__."/service/RolService.php");
 require_once(__DIR__."/service/RegionService.php");
 require_once(__DIR__."/service/ImagenService.php");
+require_once(__DIR__."/service/EstadoArticuloService.php");
 require_once(__DIR__."/model/UsuarioModel.php");
 require_once(__DIR__."/common/ValidationHelper.php");
 
 /* Usar siempre solo este require para logger */
 require_once(__DIR__."/common/LoggerHelper.php");
 
-/* asi se obtiene el logger */
-//$logger = Logger::getRootLogger();
+$estadoArticulo = new EstadoArticuloService;
 
-/* asi se usa el logger de debug (solo para debug) */
-//$logger->debug("Hello World!");
-
-/* asi se usa el logger de errores (se pone en los catch y se loguea la excepcion) */
-//$logger->error("Error");
-
-//require_once(__DIR__."/model/RolModel.php");
-/*
-$rolService = new RolService;
-
-$rol = $rolService->getRolById(1);
-
-echo $rol->id."\n".$rol->descripcion."\n";
-
-$array = $rolService->getAllRoles();
-
-var_dump($array);
-
-$usuarioService = new UsuarioService;
-
-*/
-//var_dump($usuario->getRol());
-
-// para probar el create quitar el if o poner 1 == 1
+var_dump($estadoArticulo->getEstadoArticuloById(2));
 
 $usuarioService = new UsuarioService;
 
@@ -56,15 +33,6 @@ if(1 == 2){
 	echo "creado: $creado";
 }
 
-var_dump($usuarioService->getUsuarioById(1));
-
-//$val = new ValidationHelper;
-
-//echo $val->validateText("ger", 1, 10);
-
-//$imagenService = new ImagenService;
-
-//var_dump ($imagenService->getImagenById(4));
 ?>
 
 <!DOCTYPE html>
