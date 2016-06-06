@@ -57,5 +57,10 @@ if(1 == 2){
 			<button id="btnTest">Test Ajax</button>
 			<span id="spnTestAjax"></span>
 		</div>
+		<div>
+			<button id="btnObtenerCiudadesBsAs">Obtener ciudades de Bs As</button>
+			<div id="resultadoCiudades"></div>
+		</div>
+
 	</body>
 </html>
