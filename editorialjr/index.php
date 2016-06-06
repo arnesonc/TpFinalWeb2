@@ -4,17 +4,20 @@ require_once(__DIR__."/service/UsuarioService.php");
 require_once(__DIR__."/service/CiudadService.php");
 require_once(__DIR__."/service/RolService.php");
 require_once(__DIR__."/service/RegionService.php");
+require_once(__DIR__."/service/PublicacionService.php");
+require_once(__DIR__."/service/NumeroService.php");
 require_once(__DIR__."/service/ImagenService.php");
 require_once(__DIR__."/service/EstadoArticuloService.php");
+require_once(__DIR__."/service/EstadoNumeroService.php");
 require_once(__DIR__."/model/UsuarioModel.php");
 require_once(__DIR__."/common/ValidationHelper.php");
 
 /* Usar siempre solo este require para logger */
 require_once(__DIR__."/common/LoggerHelper.php");
 
-$estadoArticulo = new EstadoArticuloService;
+$service = new PublicacionService;
 
-var_dump($estadoArticulo->getEstadoArticuloById(2));
+var_dump($service->getPublicacionById(1));
 
 $usuarioService = new UsuarioService;
 
@@ -57,5 +60,10 @@ if(1 == 2){
 			<button id="btnTest">Test Ajax</button>
 			<span id="spnTestAjax"></span>
 		</div>
+		<div>
+			<button id="btnObtenerCiudadesBsAs">Obtener ciudades de Bs As</button>
+			<div id="resultadoCiudades"></div>
+		</div>
+
 	</body>
 </html>
