@@ -35,6 +35,39 @@ class CiudadService{
 		
 		return $this->convertCiudadDBToCiudadModel($ciudadDB);
 	}
+
+	/**
+	* Obtiene ciudades por idRegion
+	*/
+	public function getCiudadesByIdRegion($idRegion){
+		$sql = "SELECT id,
+				    id_region,
+				    descripcion
+				FROM ciudad
+				WHERE id_region = $idRegion;";
+
+		try{
+			
+			$ciudadDBArray = $this->dataAccess->getMultipleResults($sql);
+			
+		}catch(Exception $e){
+			$logger = Logger::getRootLogger();
+			$logger->error($e);
+			
+			return null;
+		}
+
+		$arrayCiudadModel = array();
+	
+		foreach ($ciudadDBArray as $ciudadDB) {
+	
+			$ciudadModel = $this->convertCiudadDBToCiudadModel($ciudadDB);
+	
+			$arrayCiudadModel[] = $ciudadModel;
+		}
+	
+		return $arrayCiudadModel;
+	}
 		
 	/**
 	 * Convierte una ciudad de la base de datos en un objeto CiudadModel y lo devuelve
