@@ -34,7 +34,9 @@ class PublicacionModel{
 	 
 	 	return $this->usuario;
 	}
-	//obtiene la fecha de su ultimo numero automaticamente
+	
+	
+	//Si la fecha de ultimo numero es null obtiene y retorna la fecha del ultimo numero publicado
 
 	
 	public function getFechaUltimoNumero(){

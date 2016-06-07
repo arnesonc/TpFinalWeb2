@@ -68,19 +68,6 @@ if(false){
 	
 	$numeroService = new NumeroService;
 	$arrayNumeroModel = $numeroService->getAllNumeros(14);
-	/*foreach($arrayNumeroModel as $a){
-	echo "\n";
-	echo $a->id.$a->id_publicacion.$a->id_estado_numero.$a->url_portada;
-	
-	$arrayPublicacionModel = $publicacionService->getAllPublicaciones();
-	foreach($arrayPublicacionModel as $p){
-		echo $p->id_usuario."  ".
-		$p->nombre."  ".
-		$p->destacado."  ".
-		$p->fecha_ultimo_numero."  ".
-		$p->url_ultima_portada;
-	}
-	}*/
 	
 	echo "ultima fecha publicada: ".$publicacionModel->getFechaUltimoNumero();
 }
