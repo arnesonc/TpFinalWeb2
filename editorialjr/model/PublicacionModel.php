@@ -8,7 +8,7 @@ class PublicacionModel{
 	public $id_usuario;
 	public $nombre;
 	public $destacado;
-	public $urlUltimaPortada;
+	public $url_ultima_portada;
 	
 	private $usuario;
 	

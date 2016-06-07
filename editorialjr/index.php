@@ -37,7 +37,28 @@ if(1 == 2){
 }
 
 
+if(true){
+	$publicacionModel = new PublicacionModel;
+	$publicacionModel->id_usuario = 1;
+	$publicacionModel->nombre = "publicacion1";
+	$publicacionModel->destacado = "true";
+	$publicacionModel->url_ultima_portada="asd.com.ar";
+	$numeroModel = new NumeroModel;
+	$numeroModel->id_estado_numero = 1;
+	$numeroModel->url_portada = "dsadsa.com";
+	$numeroModel->fe_erratas = null;
+	$numeroModel->precio = 200;
+	$publicacionService = new PublicacionService;
+	try{
+		$creado = $publicacionService->createPublicacionNumero($publicacionModel,$numeroModel);
+	} catch (Exception $e){
+		echo $e;
+	}
+	echo $creado;
+	
+}
 ?>
+
 
 <!DOCTYPE html>
 <html>

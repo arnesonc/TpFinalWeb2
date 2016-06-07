@@ -136,9 +136,9 @@ class PublicacionService {
 		
 		$idPublicacion = $this->insertPublicacion ( $publicacionModel );
 		$numeroModel->id_publicacion = $idPublicacion;
-		$numeroService->create ( $numeroModel );
+		$numeroService->createNumero( $numeroModel );
 		
-		return $result;
+		//return $result;
 	}
 	
 	// FIXME: se puede agregar crear publicacion por parametros.
@@ -160,7 +160,6 @@ class PublicacionService {
 		(null,
 		$PublicacionModel->id_usuario,
 		$PublicacionModel->nombre,
-		$PublicacionModel->fecha_utlimo_numero,
 		$PublicacionModel->url_ultima_portada,
 		$PublicacionModel->destacado
 		);
