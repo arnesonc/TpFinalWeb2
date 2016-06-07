@@ -1,8 +1,8 @@
 <?php
 
-require_once(__DIR__."/../common/LoggerHelper.php");
+require_once(__DIR__."/../helpers/LoggerHelper.php");
 require_once(__DIR__."/../common/DataAccess.php");
-require_once(__DIR__."/../common/ValidationHelper.php");
+require_once(__DIR__."/../helpers/ValidationHelper.php");
 require_once(__DIR__."/../model/ClienteModel.php");
 
 class ClienteService{

@@ -2,7 +2,7 @@
 
 require_once(__DIR__."/../service/RolService.php");
 require_once(__DIR__."/../service/EstadoUsuarioService.php");
-require_once(__DIR__."/../common/LoggerHelper.php");
+require_once(__DIR__."/../helpers/LoggerHelper.php");
 
 class UsuarioModel{
 	public $id;

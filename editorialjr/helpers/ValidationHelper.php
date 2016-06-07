@@ -50,6 +50,8 @@ class ValidationHelper{
 			return false;
 		}
 	}
+	
+	//TODO: validar fecha
 }
 
 ?>

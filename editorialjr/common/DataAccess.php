@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__."/LoggerHelper.php");
+require_once(__DIR__."/../helpers/LoggerHelper.php");
 
 /**
 	Clase que posee métodos para acceder a la base de datos

@@ -1,7 +1,7 @@
 <?php
 
 require_once(__DIR__."/../service/ArticuloService.php");
-require_once(__DIR__."/../common/LoggerHelper.php");
+require_once(__DIR__."/../helpers/LoggerHelper.php");
 
 class ImagenModel{
 	

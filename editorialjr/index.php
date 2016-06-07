@@ -10,10 +10,10 @@ require_once(__DIR__."/service/ImagenService.php");
 require_once(__DIR__."/service/EstadoArticuloService.php");
 require_once(__DIR__."/service/EstadoNumeroService.php");
 require_once(__DIR__."/model/UsuarioModel.php");
-require_once(__DIR__."/common/ValidationHelper.php");
+require_once(__DIR__."/helpers/ValidationHelper.php");
 
 /* Usar siempre solo este require para logger */
-require_once(__DIR__."/common/LoggerHelper.php");
+require_once(__DIR__."/helpers/LoggerHelper.php");
 
 $service = new PublicacionService;
 
@@ -37,13 +37,6 @@ if(1 == 2){
 }
 
 
-if(1 ==1){
-	$publicacionService = new PublicacionService;
-	$publicacionService->
-	$publicacionService->
-	$publicacionService->
-	$publicacionService->
-}
 ?>
 
 <!DOCTYPE html>
