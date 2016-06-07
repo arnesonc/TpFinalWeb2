@@ -8,8 +8,8 @@ class NumeroModel{
 	public $id;
 	public $id_publicacion;
 	public $id_estado_numero;
-	public $urlPortada;
-	public $feErratas;
+	public $url_portada;
+	public $fe_erratas;
 	public $precio;
 	
 	private $estado_numero;
@@ -58,6 +58,7 @@ class NumeroModel{
 	
 		return $this->publicacion;
 	}
+
 }
 
 ?>

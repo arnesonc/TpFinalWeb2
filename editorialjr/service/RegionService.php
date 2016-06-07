@@ -49,6 +49,40 @@ class RegionService{
 	
 		return $regionModel;
 	}
+/**
+*Obtiene un array de regiones por id de pais.
+*/
+	public function getRegionesByIdPais($idPais){
+		$sql = "SELECT id,
+					id_pais,
+					descripcion
+				FROM region
+				WHERE id_pais = $idPais;";
+
+		try{
+					
+			$regionDBArray = $this->dataAccess->getMultipleResults($sql);
+		
+		}catch(Exception $e){
+				$logger = Logger::getRootLogger();
+				$logger->error($e);
+					
+				return null;
+		}
+
+		$arrayRegionModel = array();
+		
+			foreach ($regionDBArray as $regionDB) {
+		
+				$regionModel = $this->convertRegionDBToRegionModel($regionDB);
+		
+				$arrayRegionModel[] = $regionModel;
+			}
+		
+			return $arrayRegionModel;
+					
+		
+	}
 }
 
 ?>

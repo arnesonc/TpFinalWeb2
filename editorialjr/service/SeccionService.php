@@ -3,6 +3,7 @@
 require_once(__DIR__."/../common/DataAccess.php");
 require_once(__DIR__."/../model/SeccionModel.php");
 require_once(__DIR__."/../common/LoggerHelper.php");
+require_once(__DIR__."/../common/ValidationHelper.php");
 
 class SeccionService{
 	
@@ -48,6 +49,95 @@ class SeccionService{
 		$seccionModel->nombre = $seccionDB["nombre"];
 	
 		return $seccionModel;
+	}
+
+	/**
+	 * Valida un objeto ServiceModel
+	 **/
+	private function validateSeccion($seccionModel){
+	
+		$validationHelper = new ValidationHelper;
+		
+		if($validationHelper->validateNull($serviceModel->id_numero)
+			||$validationHelper->validateIsSet($serviceModel->id_numero)
+			||!$validationHelper->validateNumber($serviceModel->id_numero)
+			){
+			return "Debe seleccionar un número para la sección";
+		}
+		
+		if($validationHelper->validateNull($serviceModel->nombre)
+			||$validationHelper->validateIsSet($serviceModel->nombre)
+			||!$validationHelper->validateText($serviceModel->nombre,5,50)
+			){
+			return "El nombre de la seccion debe tener entre 5 y 50 caracteres.";
+		}
+
+		return "";
+	}
+
+
+	/**
+	 *  Crea un usuario a partir de un objeto UsuarioModel si pasa las validaciones, caso contrario devuelve
+	 *  el mensaje de validacion correspondiente
+	 **/
+	public function createSeccion($seccionModel){
+		
+		$message = $this->validateSeccion($seccionModel);
+		
+		// Si esta vacio, no hay mensaje de error por lo tanto es válido
+		if(empty($message)){
+			
+			$result = $this->insertSeccion($seccionModel);
+		}else{
+			//En caso de ser invalido devuelve un mensaje de validacion
+			$result= $message;
+		}
+
+		return $result;
+	}
+
+	/**
+	* Crea una seccion a partir de los datos parametizados (por separado)
+	**/
+	public function createSeccionParametros($id_numero, $nombre){
+		
+		$seccionModel = new SeccionModel;
+		$seccionModel->id_numero = $id_numero;
+		$seccionModel->nombre = $nombre;
+
+		return $this->createSeccion($seccionModel);
+	}
+
+
+	/**
+	 * Inserta una nueva seccion, si tuvo exito devuelve verdadero
+	 * caso contrario devuelve falso
+	 **/
+	private function insertSeccion($seccionModel){
+		
+		$sql = " INSERT INTO seccion
+				(id,
+				id_numero,
+				nombre)
+				VALUES
+				(null,
+				$seccionModel->id_numero,
+				'$seccionModel->nombre');
+				";
+
+		try{
+			
+			// Ejecuta el insert en la BD
+			$this->dataAccess->execute($sql);
+
+		}catch(Exception $e){
+			$logger = Logger::getRootLogger();
+			$logger->error($e);
+			return false;
+			
+		}
+		
+		return true;
 	}
 }
 
