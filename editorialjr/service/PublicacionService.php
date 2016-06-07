@@ -3,7 +3,7 @@
 require_once(__DIR__."/../common/DataAccess.php");
 require_once(__DIR__."/../model/PublicacionModel.php");
 require_once(__DIR__."/../common/LoggerHelper.php");
-
+require_once (__DIR__ . "/../model/NumeroModel.php");
 class PublicacionService{
 	
 	private $dataAccess = null;
@@ -133,31 +133,26 @@ class PublicacionService{
 	 * Crea una publicacion obligando a crear un numero
 	 * */
 	
-	public function createPublicacionNumero($publicacionModel) {
-		$message = $this->validatePublicacion ( $publicacionModel );
-	
+	public function createPublicacionNumero($publicacionModel,$numeroModel) {
+		$numeroService = new NumeroService;
+		$messagePublicacion = $this->validatePublicacion ( $publicacionModel );
+		$messageNumero = $numeroService->validateNumero($numeroModel);
+		
 		// Si esta vacio, no hay mensaje de error por lo tanto es válido
-		if (empty ( $message )) {
+		if (empty ($messagePublicacion) && empty($messageNumero)) {
 			$idPublicacion = $this->insertPublicacion ( $publicacionModel );
+			$numeroModel->id_publicacion = $idPublicacion;
+			$numeroService->create($numeroModel);
 			
 		} else {
 			// En caso de ser invalido devuelve un mensaje de validacion
-			$result = $message;
+			$result = $messagePublicacion . "\n" . $messageNumero;
 		}
 	
 		return $result;
 	}
 	
-	/**
-	 * Crea una seccion a partir de los datos parametizados (por separado)
-	 */
-	public function createNumeroParametros($id_numero, $nombre) {
-		$seccionModel = new SeccionModel ();
-		$seccionModel->id_numero = $id_numero;
-		$seccionModel->nombre = $nombre;
-	
-		return $this->createSeccion ( $seccionModel );
-	}
+	//FIXME: se puede agregar crear publicacion por parametros.
 	
 	/**
 	 * Inserta una nueva seccion, si tuvo exito devuelve el id de la publicacion

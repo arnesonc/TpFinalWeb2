@@ -56,7 +56,7 @@ class NumeroService {
 	/**
 	 * Valida un objeto NumeroModel
 	 */
-	private function validateNumero($numeroModel) {
+	public function validateNumero($numeroModel) {
 		$validationHelper = new ValidationHelper ();
 		
 		if ($validationHelper->validateNull ( $numeroModel->id_publicacion ) || $validationHelper->validateIsSet ( $numeroModel->id_publicacion ) || ! $validationHelper->validateNumber ( $numeroModel->id_publicacion )) {
