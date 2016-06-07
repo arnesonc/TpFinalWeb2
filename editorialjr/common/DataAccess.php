@@ -113,16 +113,23 @@ class DataAccess{
 
 	/**
 		Ejecuta una sentencia sql. Ej: insert, update
+		en caso de insert la variable $isInsert debe estar en true para devolver el id insertado
+		no olvidar agregar select last_insert_id() en la sentencia de insert
 	**/
-	public function execute($sql){
+	public function execute($sql, $isInsert = false){
 		
 		$connection = $this->connect();
 
 		try{
-
-			$connection->query($sql);
-
-			return true;
+			
+			$id = $connection->query($sql);
+			
+			if($isInsert){
+				return $id;
+			}else{
+			
+				return true;
+			}	
 
 		}catch(Exception $e){
 			
