@@ -134,7 +134,9 @@ class UsuarioService{
 	
 		$validationHelper = new ValidationHelper;
 		
-		if(!$validationHelper->validateText($usuarioModel->email, 1, 50)){
+		if(is_null($usuarioModel->email) 
+				|| !isset($usuarioModel->email) 
+				||!$validationHelper->validateText($usuarioModel->email, 1, 50)){
 			return "El email no es válido. Debe poseer como máximo 50 caracteres.";
 		}
 		
@@ -142,15 +144,21 @@ class UsuarioService{
 			return "El email ingresado no tiene un formato correcto.";
 		}
 		
-		if(!$validationHelper->validateText($usuarioModel->pass, 1, 50)){
+		if(is_null($usuarioModel->pass) 
+				|| !isset($usuarioModel->pass) 
+				||!$validationHelper->validateText($usuarioModel->pass, 1, 50)){
 			return "La contraseña no es válida. Debe poseer como máximo 50 caracteres.";
 		}
 		
-		if(!$validationHelper->validateText($usuarioModel->nombre, 1, 50)){
+		if(is_null($usuarioModel->nombre) 
+				|| !isset($usuarioModel->nombre) 
+				||!$validationHelper->validateText($usuarioModel->nombre, 1, 50)){
 			return "El nombre no es válido. Debe poseer como máximo 50 caracteres.";
 		}
 		
-		if(!$validationHelper->validateText($usuarioModel->apellido, 1, 50)){
+		if(is_null($usuarioModel->apellido) 
+				|| !isset($usuarioModel->apellido) 
+				||!$validationHelper->validateText($usuarioModel->apellido, 1, 50)){
 			return "El apellido no es válido. Debe poseer como máximo 50 caracteres.";
 		}
 		
