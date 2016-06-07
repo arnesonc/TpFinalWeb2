@@ -129,15 +129,17 @@ class PublicacionService{
 	
 		return "";
 	}
+	/*
+	 * Crea una publicacion obligando a crear un numero
+	 * */
 	
-	
-	public function createNumero($numeroModel) {
-		$message = $this->validateNumero ( $numeroModel );
+	public function createPublicacionNumero($publicacionModel) {
+		$message = $this->validatePublicacion ( $publicacionModel );
 	
 		// Si esta vacio, no hay mensaje de error por lo tanto es válido
 		if (empty ( $message )) {
-				
-			$result = $this->insertNumero ( $numeroModel );
+			$idPublicacion = $this->insertPublicacion ( $publicacionModel );
+			
 		} else {
 			// En caso de ser invalido devuelve un mensaje de validacion
 			$result = $message;
@@ -158,52 +160,40 @@ class PublicacionService{
 	}
 	
 	/**
-	 * Inserta una nueva seccion, si tuvo exito devuelve verdadero
+	 * Inserta una nueva seccion, si tuvo exito devuelve el id de la publicacion
 	 * caso contrario devuelve falso
-	 * class NumeroModel{
-	 * public $id;
-	 * public $id_publicacion;
-	 * public $id_estado_numero;
-	 * public $url_portada;
-	 * public $fe_erratas;
-	 * public $precio;
-	 *
-	 * private $estado_numero;
-	 * private $publicacion;
 	 */
-	private function insertNumero($numeroModel) {
+	
+	private function insertPublicacion ($PublicacionModel) {
 		$sql = " INSERT INTO numero
 		(id,
-		id_publicacion,
-		id_estado_numero,
-		url_portada,
-		fe_erratas,
-		precio,
-		fecha_publicado
+    	id_usuario,
+   		nombre,
+    	fecha_utlimo_numero,
+    	url_ultima_portada,
+    	destacado
 		)
 		VALUES
 		(null,
-		$numeroModel->id,
-		$numeroModel->id_publicacion,
-		$numeroModel->id_estado_numero,
-		$numeroModel->url_portada,
-		$numeroModel->fe_erratas,
-		$numeroModel->precio,
-		$numeroModel->fecha_publicado
+		$PublicacionModel->id_usuario,
+		$PublicacionModel->nombre,
+		$PublicacionModel->fecha_utlimo_numero,
+		$PublicacionModel->url_ultima_portada,
+		$PublicacionModel->destacado
 		);
+		select last_insert_id();
 		";
 	
-		try {
-				
+		try {	
 			// Ejecuta el insert en la BD
-			$this->dataAccess->execute ( $sql );
+			$idPublicacion = $this->dataAccess->execute ($sql,true);
 		} catch ( Exception $e ) {
 			$logger = Logger::getRootLogger ();
 			$logger->error ( $e );
 			return false;
 		}
 	
-		return true;
+		return $idPublicacion;
 	}
 }
 

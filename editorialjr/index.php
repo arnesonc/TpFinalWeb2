@@ -36,6 +36,14 @@ if(1 == 2){
 	echo "creado: $creado";
 }
 
+
+if(1 ==1){
+	$publicacionService = new PublicacionService;
+	$publicacionService->
+	$publicacionService->
+	$publicacionService->
+	$publicacionService->
+}
 ?>
 
 <!DOCTYPE html>

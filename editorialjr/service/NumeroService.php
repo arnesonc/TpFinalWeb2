@@ -81,6 +81,9 @@ class NumeroService {
 		
 		return "";
 	}
+	/*
+	 * Crea un nuevo numero
+	 * */
 	public function createNumero($numeroModel) {
 		$message = $this->validateNumero ( $numeroModel );
 		
@@ -97,18 +100,21 @@ class NumeroService {
 	}
 	
 	/**
-	 * Crea una seccion a partir de los datos parametizados (por separado)
+	 * Crea un numero a partir de los datos parametizados (por separado)
 	 */
-	public function createNumeroParametros($id_numero, $nombre) {
-		$seccionModel = new SeccionModel ();
-		$seccionModel->id_numero = $id_numero;
-		$seccionModel->nombre = $nombre;
+	public function createNumeroParametros($id_publicacion,$id_estado_numero,$url_portada,$fe_erratas,$precio) {
+		$numeroModel = new NumeroModel ();
+		$numeroModel->id_publicacion = $id_publicacion;
+		$numeroModel->id_estado_numero =$id_estado_numero;
+		$numeroModel->url_portada = $url_portada;
+		$numeroModel->fe_erratas = $fe_erratas;
+		$numeroModel->precio = $precio;
 		
-		return $this->createSeccion ( $seccionModel );
+		return $this->createNumero ( $numeroModel );
 	}
 	
 	/**
-	 * Inserta una nueva seccion, si tuvo exito devuelve verdadero
+	 * Inserta un numero, si tuvo exito devuelve verdadero
 	 * caso contrario devuelve falso
 	 * class NumeroModel{
 	 * public $id;
