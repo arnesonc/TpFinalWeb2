@@ -11,6 +11,7 @@ require_once(__DIR__."/service/EstadoArticuloService.php");
 require_once(__DIR__."/service/EstadoNumeroService.php");
 require_once(__DIR__."/model/UsuarioModel.php");
 require_once(__DIR__."/helpers/ValidationHelper.php");
+require_once(__DIR__."/common/Dates.php");
 
 /* Usar siempre solo este require para logger */
 require_once(__DIR__."/helpers/LoggerHelper.php");
@@ -66,6 +67,9 @@ if(false){
 	
 	
 }
+//funcion que obtiene la fecha en formato YYYY-MM-DD como en la base de datos.
+$dia = new Dates;
+echo $dia->getDate();
 ?>
 
 
