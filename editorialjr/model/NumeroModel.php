@@ -11,6 +11,7 @@ class NumeroModel{
 	public $url_portada;
 	public $fe_erratas;
 	public $precio;
+	public $fecha_publicado;
 	
 	private $estado_numero;
 	private $publicacion;

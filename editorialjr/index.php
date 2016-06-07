@@ -21,7 +21,7 @@ var_dump($service->getPublicacionById(1));
 
 $usuarioService = new UsuarioService;
 
-if(1 == 2){
+if(false){
 	$usuarioModel = new UsuarioModel;
 	$usuarioModel->email = "redactor@redactor.com";
 	$usuarioModel->pass = "1234";
@@ -36,25 +36,34 @@ if(1 == 2){
 	echo "creado: $creado";
 }
 
+// agrega publicacion y numero.
 
-if(true){
+if(false){
 	$publicacionModel = new PublicacionModel;
 	$publicacionModel->id_usuario = 1;
-	$publicacionModel->nombre = "publicacion1";
-	$publicacionModel->destacado = "true";
-	$publicacionModel->url_ultima_portada="asd.com.ar";
+	$publicacionModel->nombre = "publicacionfalsa";
+	$publicacionModel->destacado = "false";
+	$publicacionModel->fecha_ultimo_numero = "null";
+	$publicacionModel->url_ultima_portada="asd.edu.ar";
+	
 	$numeroModel = new NumeroModel;
+	$numeroModel->id = null;
+	$numeroModel->id_publicacion = "null";
 	$numeroModel->id_estado_numero = 1;
-	$numeroModel->url_portada = "dsadsa.com";
-	$numeroModel->fe_erratas = null;
-	$numeroModel->precio = 200;
+	$numeroModel->url_portada = "unlam.com";
+	$numeroModel->fe_erratas = "null";
+	$numeroModel->precio = 120;
+	$numeroModel->fecha_publicado = "null";
+	
 	$publicacionService = new PublicacionService;
+	//echo "".$publicacionModel->nombre;
 	try{
 		$creado = $publicacionService->createPublicacionNumero($publicacionModel,$numeroModel);
 	} catch (Exception $e){
-		echo $e;
+		echo "error".$e;
 	}
-	echo $creado;
+	echo "creado: $creado";
+	
 	
 }
 ?>

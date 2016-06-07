@@ -59,23 +59,33 @@ class NumeroService {
 	public function validateNumero($numeroModel) {
 		$validationHelper = new ValidationHelper ();
 		
-		if ($validationHelper->validateNull ( $numeroModel->id_publicacion ) || $validationHelper->validateIsSet ( $numeroModel->id_publicacion ) || ! $validationHelper->validateNumber ( $numeroModel->id_publicacion )) {
+		if ($validationHelper->validateNull ( $numeroModel->id_publicacion ) 
+				|| !$validationHelper->validateIsSet ( $numeroModel->id_publicacion ) 
+				|| !$validationHelper->validateNumber ( $numeroModel->id_publicacion )) {
 			return "Debe seleccionar una publicacion para el numero";
 		}
 		
-		if ($validationHelper->validateNull ( $numeroModel->id_estado_numero ) || $validationHelper->validateIsSet ( $numeroModel->id_estado_numero ) || ! $validationHelper->validateNumber ( $numeroModel->id_estado_numero )) {
+		if ($validationHelper->validateNull ( $numeroModel->id_estado_numero ) 
+				|| !$validationHelper->validateIsSet ( $numeroModel->id_estado_numero ) 
+				|| !$validationHelper->validateNumber ( $numeroModel->id_estado_numero )) {
 			return "Debe seleccionar un estado para el numero";
 		}
 		
-		if (! $validationHelper->validateNull ( $numeroModel->url_portada ) && $validationHelper->validateIsSet ( $numeroModel->url_portada ) && ! $validationHelper->validateText ( $numeroModel->url_portada, 1, 100 )) {
+		if (! $validationHelper->validateNull ( $numeroModel->url_portada ) 
+				&& $validationHelper->validateIsSet ( $numeroModel->url_portada ) 
+				&& ! $validationHelper->validateText ( $numeroModel->url_portada, 1, 100 )) {
 			return "La url de la portada debe contener entre 1 y 100 caracteres.";
 		}
 		
-		if (! $validationHelper->validateNull ( $numeroModel->fe_erratas ) && $validationHelper->validateIsSet ( $numeroModel->fe_erratas ) && ! $validationHelper->validateText ( $numeroModel->fe_erratas, 1, 500 )) {
+		if (! $validationHelper->validateNull ( $numeroModel->fe_erratas ) 
+				&& $validationHelper->validateIsSet ( $numeroModel->fe_erratas ) 
+				&& ! $validationHelper->validateText ( $numeroModel->fe_erratas, 1, 500 )) {
 			return "La fe de erratas puede contener como maximo 500 caracteres.";
 		}
 		
-		if ($validationHelper->validateNull ( $numeroModel->precio ) || $validationHelper->validateIsSet ( $numeroModel->precio ) || ! $validationHelper->validateNumber ( $numeroModel->precio )) {
+		if ($validationHelper->validateNull ( $numeroModel->precio ) 
+				|| !$validationHelper->validateIsSet ( $numeroModel->precio ) 
+				|| !$validationHelper->validateNumber ( $numeroModel->precio )) {
 			return "Debe poner un precio numerico";
 		}
 		
@@ -89,7 +99,6 @@ class NumeroService {
 		
 		// Si esta vacio, no hay mensaje de error por lo tanto es válido
 		if (empty ( $message )) {
-			
 			$result = $this->insertNumero ( $numeroModel );
 		} else {
 			// En caso de ser invalido devuelve un mensaje de validacion
@@ -113,20 +122,10 @@ class NumeroService {
 		return $this->createNumero ( $numeroModel );
 	}
 	
-	/**
-	 * Inserta un numero, si tuvo exito devuelve verdadero
-	 * caso contrario devuelve falso
-	 * class NumeroModel{
-	 * public $id;
-	 * public $id_publicacion;
-	 * public $id_estado_numero;
-	 * public $url_portada;
-	 * public $fe_erratas;
-	 * public $precio;
-	 *
-	 * private $estado_numero;
-	 * private $publicacion;
-	 */
+
+	 //Inserta un numero, si tuvo exito devuelve verdadero
+	 //caso contrario devuelve falso
+	
 	private function insertNumero($numeroModel) {
 		$sql = " INSERT INTO numero
 				(id,
@@ -139,16 +138,15 @@ class NumeroService {
 				)
 				VALUES
 				(null,
-				$numeroModel->id,
 				$numeroModel->id_publicacion,
 				$numeroModel->id_estado_numero,
-				$numeroModel->url_portada,
+				'$numeroModel->url_portada',
 				$numeroModel->fe_erratas,
 				$numeroModel->precio,
 				$numeroModel->fecha_publicado
 				);
 				";
-		
+		//FIXME: los campos que admiten nulos deben colocar comillas si no son null.
 		try {
 			
 			// Ejecuta el insert en la BD

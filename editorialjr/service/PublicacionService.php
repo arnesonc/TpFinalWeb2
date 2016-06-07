@@ -87,13 +87,6 @@ class PublicacionService {
 	
 	/**
 	 * Valida un objeto Publicacion Model
-	 * $publicacionModel = new PublicacionModel;
-	 * $publicacionModel->id = $publicacionDB["id"];
-	 * $publicacionModel->id_usuario = $publicacionDB["id_usuario"];
-	 * $publicacionModel->nombre = $publicacionDB["nombre"];
-	 * $publicacionModel->fecha_utlimo_numero = $publicacionDB["fecha_utlimo_numero"];
-	 * $publicacionModel->url_ultima_portada = $publicacionDB["url_ultima_portada"];
-	 * $publicacionModel->destacado = $publicacionDB["destacado"];
 	 */
 	private function validatePublicacion($publicacionModel) {
 		$validationHelper = new ValidationHelper ();
@@ -134,21 +127,28 @@ class PublicacionService {
 			return $messageNumero;
 		}
 		
-		$idPublicacion = $this->insertPublicacion ( $publicacionModel );
-		$numeroModel->id_publicacion = $idPublicacion;
-		$numeroService->createNumero( $numeroModel );
+		try{
+			$idPublicacion = $this->insertPublicacion ( $publicacionModel );
+			$numeroModel->id_publicacion = $idPublicacion;
+			$numeroService->createNumero( $numeroModel );
+			
+		}catch(Exception $e){
+			return $e;
+		}
 		
-		//return $result;
+		return "se creo publicacion y numero";
 	}
 	
-	// FIXME: se puede agregar crear publicacion por parametros.
+	// TODO: se puede agregar crear publicacion por parametros.
 	
 	/**
 	 * Inserta una nueva seccion, si tuvo exito devuelve el id de la publicacion
 	 * caso contrario devuelve falso
 	 */
 	private function insertPublicacion($PublicacionModel) {
-		$sql = " INSERT INTO numero
+		//FIXME: add quotes.
+		
+		$sql = " INSERT INTO publicacion
 		(id,
     	id_usuario,
    		nombre,
@@ -159,13 +159,12 @@ class PublicacionService {
 		VALUES
 		(null,
 		$PublicacionModel->id_usuario,
-		$PublicacionModel->nombre,
-		$PublicacionModel->url_ultima_portada,
-		$PublicacionModel->destacado
+		'$PublicacionModel->nombre',
+		'$PublicacionModel->fecha_ultimo_numero',
+		'$PublicacionModel->url_ultima_portada',
+		'$PublicacionModel->destacado'
 		);
-		select last_insert_id();
 		";
-		
 		try {
 			// Ejecuta el insert en la BD
 			$idPublicacion = $this->dataAccess->execute ( $sql, true );
@@ -174,7 +173,6 @@ class PublicacionService {
 			$logger->error ( $e );
 			return false;
 		}
-		
 		return $idPublicacion;
 	}
 }
