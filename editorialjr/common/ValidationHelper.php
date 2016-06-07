@@ -25,6 +25,23 @@ class ValidationHelper{
 			return false;
 		}
 	}
+
+	public function validateNull($value){
+		if(is_null($value)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	public function validateIsSet($value){
+		if(isset($value)){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
 
 ?>

@@ -48,6 +48,35 @@ class PaisService{
 	
 		return $paisModel;
 	}
+/*Obtiene un array con todos los paises*/
+		public function getAllPais(){
+			$sql = "SELECT id,
+						descripcion
+					FROM pais;";
+
+			try{
+						
+				$paisDBArray = $this->dataAccess->getMultipleResults($sql);
+			
+			}catch(Exception $e){
+					$logger = Logger::getRootLogger();
+					$logger->error($e);
+						
+					return null;
+			}
+
+			$arrayPaisModel = array();
+			
+				foreach ($paisDBArray as $paisDB) {
+			
+					$paisModel = $this->convertRegionDBToRegionModel($regionDB);
+			
+					$arrayPaisModel[] = $paisModel;
+				}
+			
+				return $arrayPaisModel;		
+		}
+
 }
 
 ?>
