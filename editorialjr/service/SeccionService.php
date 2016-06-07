@@ -38,6 +38,39 @@ class SeccionService{
 	}
 	
 	/**
+	 * Obtiene una lista de SeccionModel por id_numero
+	 */
+	public function getAllSeccionesByIdNumeo($idNumero){
+		$sql = "SELECT id,
+				id_numero,
+				nombre
+				FROM seccion
+				WHERE id_numero = $idNumero;";
+	
+		try{
+	
+			$seccionDB = $this->dataAccess->getMultipleResults($sql);
+	
+		}catch(Exception $e){
+			$logger = Logger::getRootLogger();
+			$logger->error($e);
+	
+			return null;
+		}
+	
+		$arraySeccionModel = array ();
+		
+		foreach ($seccionDBArray as $seccionDB) {
+			
+			$seccionModel = $this->convertSeccionDBToSeccionModel($seccionDB);
+			
+			$arraySeccionModel [] = $seccionModel;
+		}
+		
+		return $arraySeccionModel;
+	}
+	
+	/**
 	 * Convierte una seccion de la base de datos en un objeto SeccionModel y lo devuelve
 	 * */
 	private function convertSeccionDBToSeccionModel($seccionDB){
