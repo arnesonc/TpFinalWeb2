@@ -42,6 +42,14 @@ class ValidationHelper{
 			return false;
 		}
 	}
+	
+	public function validateBoolean($value){
+		if($value == true || $value == false){
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 
 ?>

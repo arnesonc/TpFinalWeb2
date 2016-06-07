@@ -157,7 +157,7 @@ class NumeroService {
 	}
 	
 	/*
-	 * Obtiene todos los roles en la base de datos y devuelve una lista de objetos RolModel
+	 * Obtiene todos los numeros relacionados con una publicacion y los aloja en un array.
 	 */
 	public function getAllNumeros($id_publicacion) {
 		
