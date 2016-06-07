@@ -37,14 +37,15 @@ if(false){
 	echo "creado: $creado";
 }
 
-// agrega publicacion y numero.
+// agrega publicacion y numero corrobora los getter.
 
 if(false){
 	$publicacionModel = new PublicacionModel;
 	$publicacionModel->id_usuario = 1;
 	$publicacionModel->nombre = "publicacionfalsa";
 	$publicacionModel->destacado = "false";
-	$publicacionModel->fecha_ultimo_numero = "null";
+	//FIXME: corroborar si se debe invocar al metodo
+	$publicacionModel->getFechaUltimoNumero();
 	$publicacionModel->url_ultima_portada="asd.edu.ar";
 	
 	$numeroModel = new NumeroModel;
@@ -65,11 +66,24 @@ if(false){
 	}
 	echo "creado: $creado";
 	
+	$numeroService = new NumeroService;
+	$arrayNumeroModel = $numeroService->getAllNumeros(14);
+	/*foreach($arrayNumeroModel as $a){
+	echo "\n";
+	echo $a->id.$a->id_publicacion.$a->id_estado_numero.$a->url_portada;
 	
+	$arrayPublicacionModel = $publicacionService->getAllPublicaciones();
+	foreach($arrayPublicacionModel as $p){
+		echo $p->id_usuario."  ".
+		$p->nombre."  ".
+		$p->destacado."  ".
+		$p->fecha_ultimo_numero."  ".
+		$p->url_ultima_portada;
+	}
+	}*/
+	
+	echo "ultima fecha publicada: ".$publicacionModel->getFechaUltimoNumero();
 }
-//funcion que obtiene la fecha en formato YYYY-MM-DD como en la base de datos.
-$dia = new Dates;
-echo $dia->getDate();
 ?>
 
 

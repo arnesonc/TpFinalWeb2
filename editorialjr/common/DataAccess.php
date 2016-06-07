@@ -63,7 +63,6 @@ class DataAccess{
 		}finally{
 			$connection->close();	
 		}
-
 		return $result;
 	}
 

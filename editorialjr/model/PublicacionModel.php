@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__."/../service/UsuarioService.php");
+require_once(__DIR__."/../service/NumeroService.php");
 require_once(__DIR__."/../helpers/LoggerHelper.php");
 
 class PublicacionModel{
@@ -9,7 +10,7 @@ class PublicacionModel{
 	public $nombre;
 	public $destacado;
 	public $url_ultima_portada;
-	
+	public $fecha_ultimo_numero;
 	private $usuario;
 	
 	/**
@@ -32,6 +33,23 @@ class PublicacionModel{
 	 	}
 	 
 	 	return $this->usuario;
-	 }
+	}
+	//obtiene la fecha de su ultimo numero automaticamente
+
+	
+	public function getFechaUltimoNumero(){
+		
+		if(is_null($this->fecha_ultimo_numero)){
+			try {
+			$publicacionService = new PublicacionService();
+			$this->fecha_ultimo_numero = $publicacionService->getLastFecha(53);
+			}catch(Exeption $e){
+				$logger = Logger::getRootLogger();
+				$logger->error($e);
+				return null;
+			}
+		}
+		return $this->fecha_ultimo_numero;
+	}
 }
 ?>

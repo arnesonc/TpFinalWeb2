@@ -175,6 +175,22 @@ class PublicacionService {
 		}
 		return $idPublicacion;
 	}
+	
+	public function getLastFecha($id_publicacion) {
+	
+		$sql = "SELECT
+				MAX(fecha_publicado)
+				FROM numero WHERE id_publicacion = $id_publicacion;";
+		//busca los numeros de una publicacion en la bd
+		try {
+			$ultimaFechaDePublicacionDadaDB = $this->dataAccess->getOneResult( $sql )['MAX(fecha_publicado)'];
+		} catch ( Exception $e ) {
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $e );
+			return null;
+		}
+		return $ultimaFechaDePublicacionDadaDB;
+	}
 }
 
 ?>

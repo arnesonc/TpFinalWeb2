@@ -143,7 +143,7 @@ class NumeroService {
 				'$numeroModel->url_portada',
 				$numeroModel->fe_erratas,
 				$numeroModel->precio,
-				$numeroModel->fecha_publicado
+				now()
 				);
 				";
 		//FIXME: los campos que admiten nulos deben colocar comillas si no son null.
@@ -172,7 +172,7 @@ class NumeroService {
     			fe_erratas,
     			precio,
     			fecha_publicado
-				FROM numero WHERE id = $id_publicacion;";
+				FROM numero WHERE id_publicacion = $id_publicacion;";
 		//busca los numeros de una publicacion en la bd
 		try {
 			$numeroDBArray = $this->dataAccess->getMultipleResults ( $sql );
@@ -193,6 +193,7 @@ class NumeroService {
 		
 		return $arrayNumeroModel;
 	}
+	
 }
 
 ?>
