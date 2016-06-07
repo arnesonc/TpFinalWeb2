@@ -186,6 +186,5 @@ class NumeroService{
 		return true;
 	}
 }
-}
 
 ?>
