@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__."/LoggerHelper.php");
+require_once(__DIR__."/../helpers/LoggerHelper.php");
 
 /**
 	Clase que posee métodos para acceder a la base de datos
@@ -63,7 +63,6 @@ class DataAccess{
 		}finally{
 			$connection->close();	
 		}
-
 		return $result;
 	}
 
@@ -122,10 +121,10 @@ class DataAccess{
 
 		try{
 			
-			$id = $connection->query($sql);
-			
+			$connection->query($sql);
+			//die("utlimoid:".$connection->insert_id);
 			if($isInsert){
-				return $id;
+				return $connection->insert_id;
 			}else{
 			
 				return true;

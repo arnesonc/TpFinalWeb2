@@ -3,7 +3,7 @@
 require_once(__DIR__."/../service/UsuarioService.php");
 require_once(__DIR__."/../service/EstadoArticuloService.php");
 require_once(__DIR__."/../service/SeccionService.php");
-require_once(__DIR__."/../common/LoggerHelper.php");
+require_once(__DIR__."/../helpers/LoggerHelper.php");
 
 class ArticuloModel{
 	public $id;

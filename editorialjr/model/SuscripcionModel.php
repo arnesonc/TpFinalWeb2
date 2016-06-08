@@ -3,7 +3,7 @@
 require_once(__DIR__."/../service/PublicacionService.php");
 require_once(__DIR__."/../service/TipoSuscripcionService.php");
 require_once(__DIR__."/../service/ClienteService.php");
-require_once(__DIR__."/../common/LoggerHelper.php");
+require_once(__DIR__."/../helpers/LoggerHelper.php");
 
 class SuscripcionModel{
 	public $id_cliente;

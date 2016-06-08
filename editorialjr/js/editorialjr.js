@@ -2,7 +2,7 @@ $(document).ready(function (){
 
 	$("#btnTest").click(function(){
 		$.ajax({
-	        url  : 'common/AjaxHelper.php',
+	        url  : 'helpers/AjaxHelper.php',
 	        data : { metodo: "getAlgo", datos: 'La hora es: ' },
 	        type : 'POST' ,
 	        success : function( output ) {
@@ -17,7 +17,7 @@ $(document).ready(function (){
 	
 	$("#btnObtenerUsuarioAdmin").click(function(){
 		$.ajax({
-	        url  : 'common/UsuarioAjaxHelper.php',
+	        url  : 'helpers/UsuarioAjaxHelper.php',
 	        data : { metodo: "getUsuarioByEmail", emailUsuario: 'admin@editorialjr.com' },
 	        type : 'POST',
 	        dataType : "json",
@@ -32,7 +32,7 @@ $(document).ready(function (){
 
 	$("#btnObtenerCiudadesBsAs").click(function(){
 		$.ajax({
-	        url  : 'common/CiudadAjaxHelper.php',
+	        url  : 'helpers/CiudadAjaxHelper.php',
 	        data : { metodo: "getCiudadesByIdRegion", idRegion: 2 },
 	        type : 'POST',
 	        dataType : "json",
@@ -62,7 +62,7 @@ $(document).ready(function (){
 /****************************************************************************/
 	$("#btnTest").click(function(){
 		$.ajax({
-	        url  : 'common/AjaxHelper.php',
+	        url  : 'helpers/AjaxHelper.php',
 	        data : { metodo: "getAlgo", datos: 'La hora es: ' },
 	        type : 'POST' ,
 	        success : function( output ) {

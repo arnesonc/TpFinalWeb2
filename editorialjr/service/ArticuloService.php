@@ -1,8 +1,8 @@
 <?php
 require_once (__DIR__ . "/../common/DataAccess.php");
 require_once (__DIR__ . "/../model/ArticuloModel.php");
-require_once (__DIR__ . "/../common/LoggerHelper.php");
-require_once (__DIR__ . "/../common/ValidationHelper.php");
+require_once (__DIR__ . "/../helpers/LoggerHelper.php");
+require_once (__DIR__ . "/../helpers/ValidationHelper.php");
 class ArticuloService {
 	private $dataAccess = null;
 	private $validationHelper = null;
@@ -165,6 +165,7 @@ class ArticuloService {
 	 * Obtiene una lista de ArticuloModel que esten en borrador
 	 */
 	public function getAllArticulosDraft() {
+		$draft =1;
 		$sql = "SELECT id,
 		id_seccion,
 		id_usuario,
@@ -177,7 +178,7 @@ class ArticuloService {
 		url_contenido,
 		contenido_adicional
 		FROM articulo
-		WHERE id_estado_articulo = 1;";
+		WHERE id_estado_articulo = $draft;";
 		
 		try {
 			

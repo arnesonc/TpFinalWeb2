@@ -2,7 +2,7 @@
 
 require_once(__DIR__."/../service/EstadoNumeroService.php");
 require_once(__DIR__."/../service/PublicacionService.php");
-require_once(__DIR__."/../common/LoggerHelper.php");
+require_once(__DIR__."/../helpers/LoggerHelper.php");
 
 class NumeroModel{
 	public $id;
@@ -11,6 +11,7 @@ class NumeroModel{
 	public $url_portada;
 	public $fe_erratas;
 	public $precio;
+	public $fecha_publicado;
 	
 	private $estado_numero;
 	private $publicacion;
