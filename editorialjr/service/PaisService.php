@@ -46,8 +46,8 @@ class PaisService {
 	/* Obtiene un array con todos los paises */
 	public function getAllPais() {
 		$sql = "SELECT id,
-						descripcion
-					FROM pais;";
+				descripcion
+				FROM pais;";
 		
 		try {
 			
