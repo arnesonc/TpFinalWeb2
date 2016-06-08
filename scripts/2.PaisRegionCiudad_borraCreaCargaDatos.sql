@@ -1,3 +1,11 @@
+/*
+borra las tablas ciudad region pais
+crea las tablas nuevamente
+inserta en la tabla pais: paises iberoamericanos
+inserta en tabla region: al menos una region por pais / para argentina todas las provincias
+inserta en la tabla ciudad: al menos una ciudad por region / para las provincias argentinas, todas las ciudades existentes
+*/
+
 use editorialjr;
 
 DROP TABLE ciudad;
