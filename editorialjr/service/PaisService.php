@@ -63,7 +63,7 @@ class PaisService {
 		
 		foreach ( $paisDBArray as $paisDB ) {
 			
-			$paisModel = $this->convertRegionDBToRegionModel ( $regionDB );
+			$paisModel = $this->convertPaisDBToPaisModel($paisDB);
 			
 			$arrayPaisModel [] = $paisModel;
 		}
