@@ -38,7 +38,7 @@ class PaisService {
 		/* Convierto el resultado de la BD a un objeto modelado */
 		$paisModel = new PaisModel ();
 		$paisModel->id = $paisDB ["id"];
-		$paisModel->descripcion = $paisDB ["descripcion"];
+		$paisModel->descripcion = utf8_encode($paisDB ["descripcion"]);
 		
 		return $paisModel;
 	}
@@ -50,8 +50,8 @@ class PaisService {
 				FROM pais;";
 		
 		try {
+			$paisDBArray = $this->dataAccess->getMultipleResults($sql);
 			
-			$paisDBArray = $this->dataAccess->getMultipleResults ( $sql );
 		} catch ( Exception $e ) {
 			$logger = Logger::getRootLogger ();
 			$logger->error ( $e );

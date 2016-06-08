@@ -80,6 +80,7 @@ if (false) {
 <html>
 <head>
 <title>Tp Final</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
 </head>
 <body>
 	<div>

@@ -52,7 +52,7 @@ $(document).ready(function (){
 					html += "</select>";
 
 					/* Aca se renderiza el resultado obtenido */
-	                $("#resultadoCiudades").append(html);;
+	                $("#resultadoCiudades").append(html);
 	            },
 	        error : function(error) {
 	        	alert("Ups, ocurrio un error! " + error);
@@ -83,8 +83,8 @@ $(document).ready(function (){
 					html += "</select>";
 
 					/* Aca se renderiza el resultado obtenido */
-	                $("#resultadoPaises").append(html);;
-	            },//FIXME: no funciono
+	                $("#resultadoPaises").append(html);
+	            },
 	        error : function(error) {
 	        	alert("Ups, ocurrio un error! " + error);
 	        } 
