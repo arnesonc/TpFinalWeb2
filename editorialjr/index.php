@@ -105,6 +105,10 @@ if (false) {
 		<button id="btnGetAllPais">obtenerTodosLosPaises</button>
 		<div id="resultadoPaises"></div>
 	</div>
+	<div>
+		<button id="btnObtenerRegiones">obtenerRegionesPaisID2</button>
+		<div id="resultadoRegiones"></div>
+	</div>
 	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="js/editorialjr.js"></script>
 </body>
