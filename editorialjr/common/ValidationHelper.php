@@ -44,7 +44,7 @@ class ValidationHelper{
 	}
 	
 	public function validateBoolean($value){
-		if($value == true || $value == false){
+		if($value === true || $value === false){
 			return true;
 		} else {
 			return false;
