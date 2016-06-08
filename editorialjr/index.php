@@ -69,7 +69,10 @@ if (false) {
 	$arrayNumeroModel = $numeroService->getAllNumeros ( 14 );
 	
 	echo "ultima fecha publicada: " . $publicacionModel->getFechaUltimoNumero ();
+	
+
 }
+
 ?>
 
 
@@ -79,8 +82,6 @@ if (false) {
 <title>Tp Final</title>
 </head>
 <body>
-	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
-	<script type="text/javascript" src="js/editorialjr.js"></script>
 	<div>
 		<p>
 				Usuario:
@@ -99,6 +100,11 @@ if (false) {
 		<button id="btnObtenerCiudadesBsAs">Obtener ciudades de Bs As</button>
 		<div id="resultadoCiudades"></div>
 	</div>
-
+	<div>
+		<button id="btnGetAllPais">obtenerTodosLosPaises</button>
+		<div id="resultadoPaises"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="js/editorialjr.js"></script>
 </body>
 </html>

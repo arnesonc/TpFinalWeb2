@@ -10,7 +10,6 @@ $result = null;
 switch($metodo){
 	case "getCiudadesByIdRegion":
 		$idRegion = $_POST["idRegion"];
-
 		$result = $ciudadService->getCiudadesByIdRegion($idRegion);
 		break;
 	default:
