@@ -234,7 +234,7 @@ class ClienteService{
 					$piso,
 					$departamento,
 					$detalle_direccion,
-					$clienteModel->id_estado_cliente);";
+					1);";
 	
 		try{
 	
