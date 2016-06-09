@@ -131,6 +131,10 @@ class ClienteService{
 			return "El email ingresado no tiene un formato correcto.";
 		}
 		
+		if($clienteModel->emailExists($clienteModel->email)){
+			return "El email ingresado ya existe.";
+		}
+		
 		if(is_null($clienteModel->pass) 
 				|| !isset($clienteModel->pass) 
 				||!$validationHelper->validateText($clienteModel->pass, 1, 30)){
@@ -187,7 +191,20 @@ class ClienteService{
 	
 		return "";
 	}
-	
+	private function emailExists($email){
+		$sql = "SELECT email
+		FROM cliente
+		WHERE email = $email;";
+		
+		try{
+			$email = $this->dataAccess->getOneResult($sql);	
+			return !is_null($email);
+		}catch(Exception $e){
+			$logger = Logger::getRootLogger();
+			$logger->error($e);
+			return null;
+		}
+	}
 	/**
 	 * Inserta un nuevo cliente a partir de un objeto ClienteModel, si tuvo exito devuelve verdadero
 	 * caso contrario devuelve falso
