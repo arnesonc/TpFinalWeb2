@@ -57,16 +57,16 @@ class ClienteService{
 		$clienteModel->id = $clienteDB["id"];
 		$clienteModel->id_estado_cliente = $clienteDB["id_estado_cliente"];
 		$clienteModel->id_ciudad = $clienteDB["id_ciudad"];
-		$clienteModel->email = $clienteDB["email"];
-		$clienteModel->pass = $clienteDB["pass"];
-		$clienteModel->nombre = $clienteDB["nombre"];
-		$clienteModel->apellido = $clienteDB["apellido"];
-		$clienteModel->calle = $clienteDB["calle"];
+		$clienteModel->email = utf8_encode($clienteDB["email"]);
+		$clienteModel->pass = utf8_encode($clienteDB["pass"]);
+		$clienteModel->nombre =utf8_encode( $clienteDB["nombre"]);
+		$clienteModel->apellido = utf8_encode($clienteDB["apellido"]);
+		$clienteModel->calle = utf8_encode($clienteDB["calle"]);
 		$clienteModel->numero_calle = $clienteDB["numero_calle"];
 		$clienteModel->piso = $clienteDB["piso"];
-		$clienteModel->departamento = $clienteDB["departamento"];
+		$clienteModel->departamento = utf8_encode($clienteDB["departamento"]);
 		$clienteModel->codigo_postal = $clienteDB["codigo_postal"];
-		$clienteModel->detalle_direccion = $clienteDB["detalle_direccion"];
+		$clienteModel->detalle_direccion = utf8_encode($clienteDB["detalle_direccion"]);
 		
 		return $clienteModel;
 	}

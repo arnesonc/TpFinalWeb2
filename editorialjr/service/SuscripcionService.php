@@ -36,7 +36,7 @@ class SuscripcionService {
 	 * Convierte una suscripcion de la base de datos en un objeto SuscripcionModel y lo devuelve
 	 */
 	private function convertSuscripcionDBToSuscripcionModel($suscripcionDB) {
-		
+
 		/* Convierto el resultado de la BD a un objeto modelado */
 		$suscripcionModel = new SuscripcionModel ();
 		$suscripcionModel->id = $suscripcionDB ["id"];

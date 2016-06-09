@@ -44,7 +44,7 @@ class EstadoUsuarioService {
 		/* Convierto el resultado de la BD a un objeto modelado */
 		$estadoUsuarioModel = new EstadoUsuarioModel;
 		$estadoUsuarioModel->id = $estadoUsuarioBD["id"];
-		$estadoUsuarioModel->descripcion = $estadoUsuarioBD["descripcion"];
+		$estadoUsuarioModel->descripcion = utf8_encode($estadoUsuarioBD["descripcion"]);
 	
 		return $estadoUsuarioModel;
 	}
