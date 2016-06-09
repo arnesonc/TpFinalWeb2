@@ -41,8 +41,8 @@ if (false) {
 
 if (false) {
 	$publicacionModel = new PublicacionModel ();
-	$publicacionModel->id_usuario = _POST["id"];
-	$publicacionModel->nombre = _POST["nombre"] ;
+	//$publicacionModel->id_usuario = _POST["id"];
+	//$publicacionModel->nombre = _POST["nombre"] ;
 	$publicacionModel->destacado = "false";
 	
 	$numeroModel = new NumeroModel ();

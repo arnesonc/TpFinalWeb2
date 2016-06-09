@@ -95,7 +95,7 @@ $(document).ready(function (){
 	$("#btnObtenerRegiones").click(function(){
 		$.ajax({
 	        url  : 'helpers/RegionAjaxHelper.php',
-	        data : { metodo: "getRegionesByIdPais", idPais: 2 },
+	        data : { metodo: "getRegionesByIdPais", idPais: 1 },
 	        type : 'POST',
 	        dataType : "json",
 	        success : function(result) {
