@@ -201,6 +201,11 @@ class ClienteService{
 	private function insertCliente($clienteModel){
 	
 		$pass = md5($clienteModel->pass);
+
+		//si el campo es null el sql lo coloca null, caso contraro inserta el valor con las 'quotes' correspondientes.
+		$piso = is_null($clienteModel->piso) ? null : "'$articuloModel->latitud'";
+		$departamento = is_null($clienteModel->departamento) ? null : "'$clienteModel->departamento'";
+		$detalle_direccion = is_null($clienteModel->detalle_direccion) ? null : "'$clienteModel->detalle_direccion'";
 		
 		$sql = " INSERT INTO cliente
 					(id,
@@ -226,9 +231,9 @@ class ClienteService{
 					'$clienteModel->calle',
 					$clienteModel->numero_calle,
 					'$clienteModel->codigo_postal',
-					'$clienteModel->piso',
-					'$clienteModel->departamento',
-					'$clienteModel->detalle_direccion',
+					$piso,
+					$departamento,
+					$detalle_direccion,
 					$clienteModel->id_estado_cliente);";
 	
 		try{

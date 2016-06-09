@@ -194,8 +194,7 @@ class UsuarioService {
 		
 		// Encripta en md5 la contraseña
 		$pass = md5 ( $usuarioModel->pass );
-		
-		// Por defecto se crea como activo y con rol 2 = redactor
+		// Por defecto se crea como estado 1 = activo y con rol 2 = redactor
 		$sql = " INSERT INTO usuario
 				(id,
 				id_estado_usuario,

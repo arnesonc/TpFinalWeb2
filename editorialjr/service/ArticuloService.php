@@ -310,7 +310,8 @@ class ArticuloService {
 	 * caso contrario devuelve falso
 	 */
 	private function insertArticulo($contenido_adicional) {
-		
+
+		//si el campo es null el sql lo coloca null, caso contraro inserta el valor con las 'quotes' correspondientes.
 		$latitud = is_null($articuloModel->latitud) ? null : "'$articuloModel->latitud'"; 
 		$longitud = is_null($articuloModel->longitud) ? null : "'$articuloModel->longitud'";
 		$copete = is_null($articuloModel->copete) ? null : "'$articuloModel->copete'";
