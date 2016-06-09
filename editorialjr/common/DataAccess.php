@@ -84,7 +84,7 @@ class DataAccess{
 
 			if ($query->num_rows === 0) {
 				$mensaje = "La consulta no devolvió resultados.";
-				$logger($mensaje);
+				$logger->error($mensaje);
 				throw new Exception($mensaje);
 			}
 
