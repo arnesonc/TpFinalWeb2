@@ -73,7 +73,7 @@ class DataAccess{
 
 		$connection = $this->connect();
 		$logger = Logger::getRootLogger();
-
+		
 		try{
 
 			if (!$query = $connection->query($sql)){

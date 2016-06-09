@@ -1,0 +1,48 @@
+* {
+	font-size: 14px;
+	font-family: arial, tahoma, verdana;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table, td, th {
+	border: 1px solid black;
+	padding: 5px;
+}
+
+table thead {
+	background-color: #A9BCF5;
+}
+
+.margin-left-3em {
+	margin-left: 3em;
+}
+
+.contenido {
+	width: 30em;
+	margin: 0 auto;
+}
+
+.fila {
+	margin-bottom: 1em;
+	padding-bottom: 1em;
+	width: 100%;
+	clear: both;
+}
+
+.label {
+	width: 15em;
+	float: left;
+}
+
+.campo{
+	float: left;
+}
+
+.botones{
+	clear: both;
+	padding-top: 1em;
+}
+

@@ -78,7 +78,7 @@ class CiudadService{
 		$ciudadModel = new CiudadModel;
 		$ciudadModel->id = $ciudadDB["id"];
 		$ciudadModel->id_region = $ciudadDB["id_region"];
-		$ciudadModel->descripcion = $ciudadDB["descripcion"];
+		$ciudadModel->descripcion = utf8_encode($ciudadDB["descripcion"]);
 	
 		return $ciudadModel;
 	}

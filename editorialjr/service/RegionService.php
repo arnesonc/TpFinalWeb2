@@ -40,7 +40,7 @@ class RegionService {
 		$regionModel = new RegionModel ();
 		$regionModel->id = $regionDB ["id"];
 		$regionModel->id_pais = $regionDB ["id_pais"];
-		$regionModel->descripcion = $regionDB ["descripcion"];
+		$regionModel->descripcion = utf8_encode($regionDB ["descripcion"]);
 		
 		return $regionModel;
 	}
@@ -49,6 +49,7 @@ class RegionService {
 	 * *Obtiene un array de regiones por id de pais.
 	 */
 	public function getRegionesByIdPais($idPais) {
+		
 		$sql = "SELECT id,
 					id_pais,
 					descripcion
@@ -58,6 +59,7 @@ class RegionService {
 		try {
 			
 			$regionDBArray = $this->dataAccess->getMultipleResults ( $sql );
+			
 		} catch ( Exception $e ) {
 			$logger = Logger::getRootLogger ();
 			$logger->error ( $e );
