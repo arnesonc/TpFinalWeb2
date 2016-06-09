@@ -79,7 +79,7 @@ class SeccionService{
 		$seccionModel = new SeccionModel;
 		$seccionModel->id = $seccionDB["id"];
 		$seccionModel->id_numero = $seccionDB["id_numero"];
-		$seccionModel->nombre = $seccionDB["nombre"];
+		$seccionModel->nombre = utf8_encode($seccionDB["nombre"]);
 	
 		return $seccionModel;
 	}

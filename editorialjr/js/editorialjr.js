@@ -16,6 +16,7 @@ $(document).ready(function (){
 	});
 	
 	$("#btnObtenerUsuarioAdmin").click(function(){
+		
 		$.ajax({
 	        url  : 'helpers/UsuarioAjaxHelper.php',
 	        data : { metodo: "getUsuarioByEmail", emailUsuario: 'admin@editorialjr.com' },

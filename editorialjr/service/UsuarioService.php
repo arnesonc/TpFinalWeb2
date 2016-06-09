@@ -110,15 +110,15 @@ class UsuarioService {
 	/**
 	 * Convierte un usuarioDB en UsuarioModel
 	 */
-	public function convertUsuarioDBToUsuarioModel($usuarioBD) {
-		
+	private function convertUsuarioDBToUsuarioModel($usuarioBD) {
+
 		/* Convierto el resultado de la BD a un objeto modelado */
 		$usuarioModel = new UsuarioModel ();
 		$usuarioModel->id = $usuarioBD ["id"];
-		$usuarioModel->email = $usuarioBD ["email"];
-		$usuarioModel->pass = $usuarioBD ["pass"];
-		$usuarioModel->nombre = $usuarioBD ["nombre"];
-		$usuarioModel->apellido = $usuarioBD ["apellido"];
+		$usuarioModel->email = utf8_encode($usuarioBD ["email"]);
+		$usuarioModel->pass = utf8_encode($usuarioBD ["pass"]);
+		$usuarioModel->nombre = utf8_encode($usuarioBD ["nombre"]);
+		$usuarioModel->apellido = utf8_encode($usuarioBD ["apellido"]);
 		$usuarioModel->id_estado_usuario = $usuarioBD ["id_estado_usuario"];
 		$usuarioModel->id_rol = $usuarioBD ["id_rol"];
 		
@@ -194,8 +194,7 @@ class UsuarioService {
 		
 		// Encripta en md5 la contraseña
 		$pass = md5 ( $usuarioModel->pass );
-		
-		// Por defecto se crea como activo y con rol 2 = redactor
+		// Por defecto se crea como estado 1 = activo y con rol 2 = redactor
 		$sql = " INSERT INTO usuario
 				(id,
 				id_estado_usuario,

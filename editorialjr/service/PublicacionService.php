@@ -44,7 +44,7 @@ class PublicacionService {
 		$publicacionModel = new PublicacionModel ();
 		$publicacionModel->id = $publicacionDB ["id"];
 		$publicacionModel->id_usuario = $publicacionDB ["id_usuario"];
-		$publicacionModel->nombre = $publicacionDB ["nombre"];
+		$publicacionModel->nombre = utf8_encode($publicacionDB ["nombre"]);
 		$publicacionModel->fecha_utlimo_numero = $publicacionDB ["fecha_utlimo_numero"];
 		$publicacionModel->url_ultima_portada = $publicacionDB ["url_ultima_portada"];
 		$publicacionModel->destacado = $publicacionDB ["destacado"];

@@ -12,15 +12,17 @@ class NumeroService {
 	 * Obtiene una NumeroModel por su id
 	 */
 	public function getNumeroById($id) {
-		$sql = "SELECT id,
-				    id_publicacion,
-				    id_estado_numero,
-				    url_portada,
-				    fe_erratas,
-				    precio,
-				    fecha_publicado
-				FROM numero
-				WHERE id = $id;";
+		$sql = "SELECT
+		id,
+		id_publicacion,
+		id_estado_numero,
+		url_portada,
+		fe_erratas,
+		precio,
+		fecha_publicado
+		FROM numero
+		WHERE
+		id = $id;";
 		
 		try {
 			
@@ -46,7 +48,7 @@ class NumeroService {
 		$numeroModel->id_publicacion = $numeroDB ["id_publicacion"];
 		$numeroModel->id_estado_numero = $numeroDB ["id_estado_numero"];
 		$numeroModel->url_portada = $numeroDB ["url_portada"];
-		$numeroModel->fe_erratas = $numeroDB ["fe_erratas"];
+		$numeroModel->fe_erratas = utf8_encode($numeroDB ["fe_erratas"]);
 		$numeroModel->precio = $numeroDB ["precio"];
 		$numeroModel->fecha_publicado = $numeroDB ["fecha_publicado"];
 		
@@ -143,7 +145,7 @@ class NumeroService {
 				$numeroModel->url_portada,
 				$numeroModel->fe_erratas,
 				$numeroModel->precio,
-				now()
+				DATE(NOW())
 				);
 				";
 		//FIXME: los campos que admiten nulos deben colocar comillas si no son null.

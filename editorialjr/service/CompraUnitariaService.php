@@ -49,6 +49,37 @@ class CompraUnitariaService{
 	
 		return $compraUnitariaModel;
 	}
+	
+	public function createCompraUnitaria($compraUnitariaModel){
+		$result = $this->insertCompraUnitaria ( $compraUnitariaModel );
+		return $result;
+	}
+	
+	private function insertCompraUnitaria($compraUnitariaModel){
+		//ver comentarios en articuloService para el mismo tipo de metodo.
+		$sql = " INSERT 
+		INTO compra_uitaria
+		(
+		id_cliente,
+		id_numero,
+		fecha
+		)
+		VALUES
+		($compraUnitariaModel->id_cliente,
+		$compraUnitariaModel->id_numero,
+		DATE(NOW())
+		);";
+		
+		try {	
+			$this->dataAccess->execute ( $sql );
+		} catch ( Exception $e ) {
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $e );	
+			return false;
+		}
+		return true;
+	}
+	
 }
 
 ?>

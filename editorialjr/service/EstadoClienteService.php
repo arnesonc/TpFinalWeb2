@@ -43,7 +43,7 @@ class EstadoClienteService {
 		/* Convierto el resultado de la BD a un objeto modelado */
 		$estadoClienteModel = new EstadoClienteModel;
 		$estadoClienteModel->id = $estadoClienteDB["id"];
-		$estadoClienteModel->descripcion = $estadoClienteDB["descripcion"];
+		$estadoClienteModel->descripcion = utf8_encode($estadoClienteDB["descripcion"]);
 	
 		return $estadoClienteModel;
 	}

@@ -213,13 +213,13 @@ class ArticuloService {
 		$articuloModel->id_seccion = $articuloDB ["id_seccion"];
 		$articuloModel->id_usuario = $articuloDB ["id_usuario"];
 		$articuloModel->id_estado_articulo = $articuloDB ["id_estado_articulo"];
-		$articuloModel->titulo = $articuloDB ["titulo"];
+		$articuloModel->titulo = utf8_encode($articuloDB ["titulo"]);
 		$articuloModel->latitud = $articuloDB ["latitud"];
 		$articuloModel->longitud = $articuloDB ["longitud"];
 		$articuloModel->fecha_cierre = $articuloDB ["fecha_cierre"];
-		$articuloModel->copete = $articuloDB ["copete"];
+		$articuloModel->copete = utf8_encode($articuloDB ["copete"]);
 		$articuloModel->url_contenido = $articuloDB ["url_contenido"];
-		$articuloModel->contenido_adicional = $articuloDB ["contenido_adicional"];
+		$articuloModel->contenido_adicional = utf8_encode($articuloDB ["contenido_adicional"]);
 		
 		return $articuloModel;
 	}
@@ -310,7 +310,8 @@ class ArticuloService {
 	 * caso contrario devuelve falso
 	 */
 	private function insertArticulo($contenido_adicional) {
-		
+
+		//si el campo es null el sql lo coloca null, caso contraro inserta el valor con las 'quotes' correspondientes.
 		$latitud = is_null($articuloModel->latitud) ? null : "'$articuloModel->latitud'"; 
 		$longitud = is_null($articuloModel->longitud) ? null : "'$articuloModel->longitud'";
 		$copete = is_null($articuloModel->copete) ? null : "'$articuloModel->copete'";

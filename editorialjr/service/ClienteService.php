@@ -57,16 +57,16 @@ class ClienteService{
 		$clienteModel->id = $clienteDB["id"];
 		$clienteModel->id_estado_cliente = $clienteDB["id_estado_cliente"];
 		$clienteModel->id_ciudad = $clienteDB["id_ciudad"];
-		$clienteModel->email = $clienteDB["email"];
-		$clienteModel->pass = $clienteDB["pass"];
-		$clienteModel->nombre = $clienteDB["nombre"];
-		$clienteModel->apellido = $clienteDB["apellido"];
-		$clienteModel->calle = $clienteDB["calle"];
+		$clienteModel->email = utf8_encode($clienteDB["email"]);
+		$clienteModel->pass = utf8_encode($clienteDB["pass"]);
+		$clienteModel->nombre =utf8_encode( $clienteDB["nombre"]);
+		$clienteModel->apellido = utf8_encode($clienteDB["apellido"]);
+		$clienteModel->calle = utf8_encode($clienteDB["calle"]);
 		$clienteModel->numero_calle = $clienteDB["numero_calle"];
 		$clienteModel->piso = $clienteDB["piso"];
-		$clienteModel->departamento = $clienteDB["departamento"];
+		$clienteModel->departamento = utf8_encode($clienteDB["departamento"]);
 		$clienteModel->codigo_postal = $clienteDB["codigo_postal"];
-		$clienteModel->detalle_direccion = $clienteDB["detalle_direccion"];
+		$clienteModel->detalle_direccion = utf8_encode($clienteDB["detalle_direccion"]);
 		
 		return $clienteModel;
 	}
@@ -201,6 +201,11 @@ class ClienteService{
 	private function insertCliente($clienteModel){
 	
 		$pass = md5($clienteModel->pass);
+
+		//si el campo es null el sql lo coloca null, caso contraro inserta el valor con las 'quotes' correspondientes.
+		$piso = is_null($clienteModel->piso) ? null : "'$articuloModel->latitud'";
+		$departamento = is_null($clienteModel->departamento) ? null : "'$clienteModel->departamento'";
+		$detalle_direccion = is_null($clienteModel->detalle_direccion) ? null : "'$clienteModel->detalle_direccion'";
 		
 		$sql = " INSERT INTO cliente
 					(id,
@@ -226,9 +231,9 @@ class ClienteService{
 					'$clienteModel->calle',
 					$clienteModel->numero_calle,
 					'$clienteModel->codigo_postal',
-					'$clienteModel->piso',
-					'$clienteModel->departamento',
-					'$clienteModel->detalle_direccion',
+					$piso,
+					$departamento,
+					$detalle_direccion,
 					$clienteModel->id_estado_cliente);";
 	
 		try{
