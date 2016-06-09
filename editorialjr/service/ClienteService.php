@@ -173,21 +173,15 @@ class ClienteService{
 					return "El código postal no es válido. Debe poseer como máximo 11 caracteres.";
 		}
 		
-		if(is_null($clienteModel->id_estado_cliente)
-				|| !isset($clienteModel->id_estado_cliente)
-				|| !$validationHelper->validateNumber($clienteModel->id_estado_cliente)){
-					return "Debe selecionar el estado del cliente.";
-		}
-		
-		if(!is_null($clienteModel->piso) && !validateText($clienteModel->piso, 1, 5)){
+		if(!is_null($clienteModel->piso) && !$validationHelper->validateText($clienteModel->piso, 1, 5)){
 			return "El piso no es válido. Debe poseer como máximo 5 caracteres.";
 		}
 		
-		if(!is_null($clienteModel->departamento) && !validateText($clienteModel->departamento, 1, 5)){
+		if(!is_null($clienteModel->departamento) && !$validationHelper->validateText($clienteModel->departamento, 1, 5)){
 			return "El departamento no es válido. Debe poseer como máximo 5 caracteres.";
 		}
 		
-		if(!is_null($clienteModel->detalle_direccion) && !validateText($clienteModel->detalle_direccion, 1, 150)){
+		if(!is_null($clienteModel->detalle_direccion) && !$validationHelper->validateText($clienteModel->detalle_direccion, 1, 150)){
 			return "El detalle de la dirección no es válido. Debe poseer como máximo 150 caracteres.";
 		}
 	
@@ -203,7 +197,7 @@ class ClienteService{
 		$pass = md5($clienteModel->pass);
 
 		//si el campo es null el sql lo coloca null, caso contraro inserta el valor con las 'quotes' correspondientes.
-		$piso = is_null($clienteModel->piso) ? null : "'$articuloModel->latitud'";
+		$piso = is_null($clienteModel->piso) ? null : "'$clienteModel->piso'";
 		$departamento = is_null($clienteModel->departamento) ? null : "'$clienteModel->departamento'";
 		$detalle_direccion = is_null($clienteModel->detalle_direccion) ? null : "'$clienteModel->detalle_direccion'";
 		

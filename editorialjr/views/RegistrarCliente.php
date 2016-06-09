@@ -25,7 +25,7 @@ $arrayPaises = $paisService->getAllPais();
 					<label for="txtEmail">Email:</label>
 				</div>
 				<div class="campo">
-					<input type="text" name="txtEmail" maxlength="50" />
+					<input id="txtEmail" type="text" name="txtEmail" maxlength="50" />
 				</div>
 			</div>
 			<div class="fila">
@@ -33,7 +33,7 @@ $arrayPaises = $paisService->getAllPais();
 					<label for="txtPass">Contraseña:</label>
 				</div>
 				<div class="campo">
-					<input type="text" name="txtPass" maxlength="30" />
+					<input id="txtPass" type="password" name="txtPass" maxlength="30" />
 				</div>
 			</div>
 			<div class="fila">
@@ -41,7 +41,7 @@ $arrayPaises = $paisService->getAllPais();
 					<label for="txtNombre">Nombre:</label>
 				</div>
 				<div class="campo">
-					<input type="text" name="txtNombre" maxlength="30" />
+					<input id="txtNombre" type="text" name="txtNombre" maxlength="30" />
 				</div>
 			</div>
 			<div class="fila">
@@ -49,7 +49,7 @@ $arrayPaises = $paisService->getAllPais();
 					<label for="txtApellido">Apellido:</label>
 				</div>
 				<div class="campo">
-					<input type="text" name="txtApellido" maxlength="30" />
+					<input id="txtApellido" type="text" name="txtApellido" maxlength="30" />
 				</div>
 			</div>
 			<div class="fila">
@@ -87,7 +87,7 @@ $arrayPaises = $paisService->getAllPais();
 					<label for="txtCalle">Calle:</label>
 				</div>
 				<div class="campo">
-					<input type="text" name="txtCalle" maxlength="30" />
+					<input id="txtCalle" type="text" name="txtCalle" maxlength="30" />
 				</div>
 			</div>
 			<div class="fila">
@@ -95,7 +95,7 @@ $arrayPaises = $paisService->getAllPais();
 					<label for="txtNroCalle">Número de calle:</label>
 				</div>
 				<div class="campo">
-					<input type="text" name="txtNroCalle" maxlength="30" />
+					<input id="txtNroCalle" type="text" name="txtNroCalle" maxlength="30" />
 				</div>
 			</div>
 			<div class="fila">
@@ -103,7 +103,7 @@ $arrayPaises = $paisService->getAllPais();
 					<label for="txtCodigoPostal">Codigo postal:</label>
 				</div>
 				<div class="campo">
-					<input type="text" name="txtCodigoPostal" maxlength="11" />
+					<input id="txtCodigoPostal" type="text" name="txtCodigoPostal" maxlength="11" />
 				</div>
 			</div>
 			<div class="fila">
@@ -111,7 +111,7 @@ $arrayPaises = $paisService->getAllPais();
 					<label for="txtPiso">Piso:</label>
 				</div>
 				<div class="campo">
-					<input type="text" name="txtPiso" maxlength="5" />
+					<input id="txtPiso" type="text" name="txtPiso" maxlength="5" />
 				</div>
 			</div>
 			<div class="fila">
@@ -119,7 +119,7 @@ $arrayPaises = $paisService->getAllPais();
 					<label for="txtDepartamento">Departamento:</label>
 				</div>
 				<div class="campo">
-					<input type="text" name="txtDepartamento" maxlength="5" />
+					<input id="txtDepartamento" type="text" name="txtDepartamento" maxlength="5" />
 				</div>
 			</div>
 			<div class="fila">
@@ -132,7 +132,7 @@ $arrayPaises = $paisService->getAllPais();
 			</div>
 			<div class="fila" align="center">
 				<div class="botones">
-					<input id="btnAceptar" name="aceptar" value="Aceptar" />
+					<input id="btnAceptar" type="button" name="aceptar" value="Aceptar" />
 					<input type="reset" name="cancelar" value="Cancelar" />
 				</div>	
 			</div>

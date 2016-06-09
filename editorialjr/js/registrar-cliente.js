@@ -5,7 +5,10 @@ $(document).ready(function (){
 	//cargarComboCiudades();
 	
 	$("#ddlPaises").change(cargarComboRegiones);
-	$("#btnAceptar").onclick(guardarCliente);
+	$("#btnAceptar").click(function(event){
+	    event.stopPropagation();
+	    guardarCliente();
+	});
 	
 	function cargarComboRegiones(){
 		
@@ -82,27 +85,32 @@ function cargarComboCiudades(){
 		var email = $("#txtEmail").val();
 		var pass = $("#txtPass").val();
 		var nombre = $("#txtNombre").val();
-		var apellido = $("#Apellido").val();
-		var idPais = $("#ddlPaises option:selected").val();
-		var idRegion = $("#ddlRegiones option:selected").val();
-		var idCiudad = $("#ddlCiudades option:selected").val();
+		var apellido = $("#txtApellido").val();
+		var id_ciudad = $("#ddlCiudades option:selected").val();
 		var calle = $("#txtCalle").val();
-		var nroCalle = $("#txtNroCalle").val();
-		var codigoPostal = $("#txtCodigoPostal").val();
+		var numero_calle = $("#txtNroCalle").val();
+		var codigo_postal = $("#txtCodigoPostal").val();
 		var piso = $("#txtPiso").val();
 		var departamento = $("#txtDepartamento").val();
-		var detalle = $("#txtDetalle").val();
+		var detalle_direccion = $("#txtDetalleDireccion").val();
 		
-		if(clienteValido(email, pass, nombre, apellido, calle, nroCalle, codigoPostal)){
+		if(clienteValido(email, pass, nombre, apellido, calle, numero_calle, codigo_postal, piso, departamento, detalle_direccion)){
 			$.ajax({
 		        url  : '/helpers/ClienteAjaxHelper.php',
-		        data : { metodo: "getRegionesByIdPais", idPais: idPais},
+		        data : { metodo: "createCliente", email: email, pass: pass, nombre: nombre, apellido: apellido, 
+		        	id_ciudad: id_ciudad, calle: calle, numero_calle: numero_calle, codigo_postal: codigo_postal,
+		        	piso: piso, departamento: departamento, detalle_direccion: detalle_direccion},
 		        type : 'POST',
 		        dataType : "json",
 		        success : function(result) {
-
+		        	if(result === true){
+		        		//TODO: Limpiar formulario
+		        		alert("Registracion exitosa.");
+		        	}else{
+		        		alert(result);
+		        	}	
 		        	
-		            },
+		        },
 		        error : function(error) {
 		        	alert("Ups, ocurrio un error! " + error);
 		        } 
@@ -110,7 +118,9 @@ function cargarComboCiudades(){
 		}
 	}
 	
-	function clienteValido(email, pass, nombre, apellido, calle, nroCalle, codigoPostal){
+	function clienteValido(email, pass, nombre, apellido, calle, numero_calle, codigo_postal, piso, departamento, detalle_direccion){
+		//TODO: implementar validaciones
+		
 		return true;
 	}
 });
