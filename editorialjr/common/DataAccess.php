@@ -78,13 +78,13 @@ class DataAccess{
 
 			if (!$query = $connection->query($sql)){
 				$mensaje = "No se pudo consultar. SQL: " . $sql;
-				$this->logger->error($mensaje);
+				$logger->error($mensaje);
 				throw new Exception($mensaje);
 			}
 
 			if ($query->num_rows === 0) {
 				$mensaje = "La consulta no devolvió resultados.";
-				$this->logger($mensaje);
+				$logger($mensaje);
 				throw new Exception($mensaje);
 			}
 
@@ -99,7 +99,7 @@ class DataAccess{
 		}catch(Exception $e){
 			
 			$mensaje = "Ha ocurrido un error: " . $e; 
-			$this->logger->error($mensaje);
+			$logger->error($mensaje);
 			throw new Exception($mensaje); 
 
 		}finally{
