@@ -110,7 +110,7 @@ class UsuarioService {
 	/**
 	 * Convierte un usuarioDB en UsuarioModel
 	 */
-	public function convertUsuarioDBToUsuarioModel($usuarioBD) {
+	private function convertUsuarioDBToUsuarioModel($usuarioBD) {
 
 		/* Convierto el resultado de la BD a un objeto modelado */
 		$usuarioModel = new UsuarioModel ();
