@@ -10,6 +10,7 @@ class ClienteModel{
 	public $id_estado_cliente;
 	public $id_ciudad;
 	public $email;
+	public $pass;
 	public $nombre;
 	public $apellido;
 	public $calle;
