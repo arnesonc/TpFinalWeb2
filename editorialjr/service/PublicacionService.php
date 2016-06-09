@@ -102,7 +102,7 @@ class PublicacionService {
 		if (! $validationHelper->validateNull ( $publicacionModel->nombre ) && $validationHelper->validateIsSet ( $publicacionModel->nombre ) && ! $validationHelper->validateText ( $publicacionModel->nombre, 5, 200 )) {
 			return "Se debe especificar la url de la ultima portada";
 		}
-		// FIXME:falta checkdate!
+
 		if ($validationHelper->validateNull ( $publicacionModel->destacado ) || $validationHelper->validateIsSet ( $publicacionModel->destacado ) || ! $validationHelper->validateBoolean ( $publicacionModel->destacado )) {
 			return "No se conoce el estado de Publicacion destacada";
 		}
@@ -146,22 +146,17 @@ class PublicacionService {
 	 * caso contrario devuelve falso
 	 */
 	private function insertPublicacion($PublicacionModel) {
-		//FIXME: add quotes.
 		
 		$sql = " INSERT INTO publicacion
 		(id,
     	id_usuario,
    		nombre,
-    	fecha_utlimo_numero,
-    	url_ultima_portada,
     	destacado
 		)
 		VALUES
 		(null,
 		$PublicacionModel->id_usuario,
 		'$PublicacionModel->nombre',
-		'$PublicacionModel->fecha_ultimo_numero',
-		'$PublicacionModel->url_ultima_portada',
 		'$PublicacionModel->destacado'
 		);
 		";
@@ -179,11 +174,11 @@ class PublicacionService {
 	public function getLastFecha($id_publicacion) {
 	
 		$sql = "SELECT
-				MAX(fecha_publicado)
+				MAX(fecha_publicado) as fecha_publicado
 				FROM numero WHERE id_publicacion = $id_publicacion;";
 		//busca los numeros de una publicacion en la bd
 		try {
-			$ultimaFechaDePublicacionDadaDB = $this->dataAccess->getOneResult( $sql )['MAX(fecha_publicado)'];
+			$ultimaFechaDePublicacionDadaDB = $this->dataAccess->getOneResult( $sql )["fecha_publicado"];
 		} catch ( Exception $e ) {
 			$logger = Logger::getRootLogger ();
 			$logger->error ( $e );

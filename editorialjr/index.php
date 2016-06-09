@@ -43,9 +43,6 @@ if (false) {
 	$publicacionModel->id_usuario = 1;
 	$publicacionModel->nombre = "publicacionfalsa";
 	$publicacionModel->destacado = "false";
-	// FIXME: corroborar si se debe invocar al metodo
-	$publicacionModel->getFechaUltimoNumero ();
-	$publicacionModel->url_ultima_portada = "asd.edu.ar";
 	
 	$numeroModel = new NumeroModel ();
 	$numeroModel->id = null;
@@ -104,6 +101,10 @@ if (false) {
 	<div>
 		<button id="btnGetAllPais">obtenerTodosLosPaises</button>
 		<div id="resultadoPaises"></div>
+	</div>
+	<div>
+		<button id="btnObtenerRegiones">obtenerRegionesPaisID2</button>
+		<div id="resultadoRegiones"></div>
 	</div>
 	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="js/editorialjr.js"></script>

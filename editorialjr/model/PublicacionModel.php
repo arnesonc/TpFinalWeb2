@@ -34,24 +34,5 @@ class PublicacionModel{
 	 
 	 	return $this->usuario;
 	}
-	
-	
-	//Si la fecha de ultimo numero es null obtiene y retorna la fecha del ultimo numero publicado
-
-	
-	public function getFechaUltimoNumero(){
-		
-		if(is_null($this->fecha_ultimo_numero)){
-			try {
-			$publicacionService = new PublicacionService();
-			$this->fecha_ultimo_numero = $publicacionService->getLastFecha(53);
-			}catch(Exeption $e){
-				$logger = Logger::getRootLogger();
-				$logger->error($e);
-				return null;
-			}
-		}
-		return $this->fecha_ultimo_numero;
-	}
 }
 ?>

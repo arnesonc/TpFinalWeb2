@@ -52,7 +52,7 @@ $(document).ready(function (){
 					html += "</select>";
 
 					/* Aca se renderiza el resultado obtenido */
-	                $("#resultadoCiudades").append(html);
+	                $("#resultadoCiudades").html(html);
 	            },
 	        error : function(error) {
 	        	alert("Ups, ocurrio un error! " + error);
@@ -83,7 +83,7 @@ $(document).ready(function (){
 					html += "</select>";
 
 					/* Aca se renderiza el resultado obtenido */
-	                $("#resultadoPaises").append(html);
+	                $("#resultadoPaises").html(html);
 	            },
 	        error : function(error) {
 	        	alert("Ups, ocurrio un error! " + error);
@@ -91,6 +91,35 @@ $(document).ready(function (){
 		});
 	});
 	
+	$("#btnObtenerRegiones").click(function(){
+		$.ajax({
+	        url  : 'helpers/RegionAjaxHelper.php',
+	        data : { metodo: "getRegionesByIdPais", idPais: 2 },
+	        type : 'POST',
+	        dataType : "json",
+	        success : function(result) {
+
+	        		/* Arma el html de resultado iterando en los items */
+	                var html = "<select>";
+
+	        		/* Itera el resultado (igual que en PHP, hay un array que se llama result y una variable para el indice y otra para el valor)
+					*  Para usar un objeto json basta con objeto.atributo. Ej: ciudad.descripcion
+	        		*/
+	        		$.each(result, function(index,region) {        
+					    
+					    html += "<option value='" + region.id + "'>" + region.descripcion + "</option>";
+					});
+
+					html += "</select>";
+
+					/* Aca se renderiza el resultado obtenido */
+	                $("#resultadoRegiones").append(html);
+	            },
+	        error : function(error) {
+	        	alert("Ups, ocurrio un error! " + error);
+	        } 
+		});
+	});
 	
 	
 /****************************************************************************/

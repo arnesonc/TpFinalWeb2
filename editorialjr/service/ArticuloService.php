@@ -278,7 +278,7 @@ class ArticuloService {
 			return "Debe selecionar el estado del artículo.";
 		}
 		
-		if (! $this->validationHelper->validateNull ( $articuloModel->titulo ) && ! validateText ( $articuloModel->titulo, 1, 100 )) {
+		if ($this->validationHelper->validateNull ( $articuloModel->titulo ) && ! validateText ( $articuloModel->titulo, 1, 100 )) {
 			return "El título no es válido. Debe poseer como máximo 100 caracteres.";
 		}
 		
@@ -309,7 +309,14 @@ class ArticuloService {
 	 * Inserta un nuevo articulo a partir de un objeto ArticuloModel, si tuvo exito devuelve verdadero
 	 * caso contrario devuelve falso
 	 */
-	private function insertArticulo($articuloModel) {
+	private function insertArticulo($contenido_adicional) {
+		
+		$latitud = is_null($articuloModel->latitud) ? null : "'$articuloModel->latitud'"; 
+		$longitud = is_null($articuloModel->longitud) ? null : "'$articuloModel->longitud'";
+		$copete = is_null($articuloModel->copete) ? null : "'$articuloModel->copete'";
+		$url_contenido = is_null($articuloModel->url_contenido) ? null : "'$articuloModel->url_contenido'";
+		$contenido_adicional = is_null($articuloModel->contenido_adicional) ? null : "'$articuloModel->contenido_adicional'";
+				
 		$sql = " INSERT INTO articulo
 				(id,
 				id_seccion,
@@ -318,7 +325,6 @@ class ArticuloService {
 				titulo,
 				latitud,
 				longitud,
-				fecha_cierre,
 				copete,
 				url_contenido,
 				contenido_adicional)
@@ -328,12 +334,11 @@ class ArticuloService {
 				$articuloModel->id_usuario,
 				$articuloModel->id_estado_articulo,
 				'$articuloModel->titulo',
-				'$articuloModel->latitud',
-				'$articuloModel->longitud',
-				'$articuloModel->fecha_cierre',
-				'$articuloModel->copete',
-				'$articuloModel->url_contenido',
-				'$articuloModel->contenido_adicional');";
+				$latitud,
+				$longitud,
+				$copete,
+				$url_contenido,
+				$contenido_adicional);";
 		
 		try {
 			
@@ -385,12 +390,15 @@ class ArticuloService {
 	 * caso contrario devuelve falso
 	 */
 	private function updateArticulo($articuloModel) {
+		
+		$titulo = ! $this->validationHelper->validateNull ( $articuloModel->titulo ) ? $articuloModel->titulo : null;
+		
 		$sql = " UPDATE articulo
 					SET
 					id_seccion = $articuloModel->id_seccion,
 					id_usuario = $articuloModel->id_usuario,
 					id_estado_articulo = $articuloModel->id_estado_articulo";
-		
+		//FIXME: add ambiguous null string solution
 		/* para que no viaje basura a la bd pregunto si el campo no esta nulo, entonces lo considero para el update */
 		
 		if (! $this->validationHelper->validateNull ( $articuloModel->titulo )) {

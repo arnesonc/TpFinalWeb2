@@ -140,7 +140,7 @@ class NumeroService {
 				(null,
 				$numeroModel->id_publicacion,
 				$numeroModel->id_estado_numero,
-				'$numeroModel->url_portada',
+				$numeroModel->url_portada,
 				$numeroModel->fe_erratas,
 				$numeroModel->precio,
 				now()

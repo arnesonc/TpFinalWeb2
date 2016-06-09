@@ -5,7 +5,7 @@ class TestAjax{
 	
 	public function metodo($variable){
 
-		return $variable . date("h:i:sa");
+		return $variable . date("Y-m-d h:i:sa");
 	}
 }
 
