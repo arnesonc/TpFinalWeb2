@@ -78,7 +78,7 @@ class SuscripcionService {
 		$suscripcionModel->id_publicacion,
 		$suscripcionModel->id_tipo_suscripcion,
 		$suscripcionModel->precio,
-		NOW()
+		DATE(NOW())
 		);";
 	
 		try{
