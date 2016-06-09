@@ -131,7 +131,7 @@ class ClienteService{
 			return "El email ingresado no tiene un formato correcto.";
 		}
 		
-		if($clienteModel->emailExists($clienteModel->email)){
+		if($this->emailExists($clienteModel->email)){
 			return "El email ingresado ya existe.";
 		}
 		
@@ -194,11 +194,12 @@ class ClienteService{
 	private function emailExists($email){
 		$sql = "SELECT email
 		FROM cliente
-		WHERE email = $email;";
+		WHERE email = '$email';";
 		
 		try{
 			$email = $this->dataAccess->getOneResult($sql);	
-			return !is_null($email);
+			
+			return !is_null($email["email"]);
 		}catch(Exception $e){
 			$logger = Logger::getRootLogger();
 			$logger->error($e);

@@ -82,17 +82,17 @@ function cargarComboCiudades(){
 
 	function guardarCliente(){
 		
-		var email = $("#txtEmail").val();
-		var pass = $("#txtPass").val();
-		var nombre = $("#txtNombre").val();
-		var apellido = $("#txtApellido").val();
+		var email = $("#txtEmail").val().trim();
+		var pass = $("#txtPass").val().trim();
+		var nombre = $("#txtNombre").val().trim();
+		var apellido = $("#txtApellido").val().trim();
 		var id_ciudad = $("#ddlCiudades option:selected").val();
-		var calle = $("#txtCalle").val();
-		var numero_calle = $("#txtNroCalle").val();
-		var codigo_postal = $("#txtCodigoPostal").val();
-		var piso = $("#txtPiso").val();
-		var departamento = $("#txtDepartamento").val();
-		var detalle_direccion = $("#txtDetalleDireccion").val();
+		var calle = $("#txtCalle").val().trim();
+		var numero_calle = $("#txtNroCalle").val().trim();
+		var codigo_postal = $("#txtCodigoPostal").val().trim();
+		var piso = $("#txtPiso").val().trim();
+		var departamento = $("#txtDepartamento").val().trim();
+		var detalle_direccion = $("#txtDetalleDireccion").val().trim();
 		
 		if(clienteValido(email, pass, nombre, apellido, calle, numero_calle, codigo_postal, piso, departamento, detalle_direccion)){
 			$.ajax({
@@ -104,7 +104,7 @@ function cargarComboCiudades(){
 		        dataType : "json",
 		        success : function(result) {
 		        	if(result === true){
-		        		//TODO: Limpiar formulario
+		        		limpiarFormulario();
 		        		alert("Registracion exitosa.");
 		        	}else{
 		        		alert(result);
@@ -116,6 +116,10 @@ function cargarComboCiudades(){
 		        } 
 			});
 		}
+	}
+	
+	function limpiarFormulario(){
+		//TODO: implementar
 	}
 	
 	function clienteValido(email, pass, nombre, apellido, calle, numero_calle, codigo_postal, piso, departamento, detalle_direccion){
