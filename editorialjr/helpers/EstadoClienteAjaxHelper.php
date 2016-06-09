@@ -13,7 +13,7 @@ switch($metodo){
 		$result = $estadoClienteService->getEstadoClienteById($id_cliente);
 		break;
 	default:
-		echo "Método inexistente en el switch de UsuarioAjaxHelper.php";
+		echo "Método inexistente en el switch de EstadoClienteAjaxHelper.php";
 }
 
 echo json_encode($result);
