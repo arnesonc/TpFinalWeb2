@@ -1,107 +1,28 @@
 $(document).ready(function (){  
-
-	$("#btnTest").click(function(){
-		$.ajax({
-	        url  : 'helpers/AjaxHelper.php',
-	        data : { metodo: "getAlgo", datos: 'La hora es: ' },
-	        type : 'POST' ,
-	        success : function( output ) {
-	        	
-	                    $("#spnTestAjax").html(output);
-	                  },
-	        error : function(error) {
-	        	alert(error);
-	        } 
-		});
+	$("#divRegion").hide();
+	$("#divCiudad").hide();
+	cargarComboRegiones();
+	//cargarComboCiudades();
+	
+	$("#ddlPaises").change(cargarComboRegiones);
+	$("#btnAceptar").click(function(event){
+	    event.stopPropagation();
+	    guardarCliente();
 	});
 	
-	$("#btnObtenerUsuarioAdmin").click(function(){
+	function cargarComboRegiones(){
 		
+		var idPais = $("#ddlPaises option:selected").val();
+		//FIXME: las rutas no funcionan correctamente, diferencias entre la computadora de ger y la de lucas.
 		$.ajax({
-	        url  : 'helpers/UsuarioAjaxHelper.php',
-	        data : { metodo: "getUsuarioByEmail", emailUsuario: 'admin@editorialjr.com' },
-	        type : 'POST',
-	        dataType : "json",
-	        success : function(result) {
-	                    $("#spnUsuarioAdmin").html(result.nombre);
-	                  },
-	        error : function(error) {
-	        	alert("Ups, ocurrio un error! " + error);
-	        } 
-		});
-	});
-
-	$("#btnObtenerCiudadesBsAs").click(function(){
-		$.ajax({
-	        url  : 'helpers/CiudadAjaxHelper.php',
-	        data : { metodo: "getCiudadesByIdRegion", idRegion: 2 },
+	        url  : '/TpFinalWeb2/editorialjr/helpers/RegionAjaxHelper.php',
+	        data : { metodo: "getRegionesByIdPais", idPais: idPais},
 	        type : 'POST',
 	        dataType : "json",
 	        success : function(result) {
 
 	        		/* Arma el html de resultado iterando en los items */
-	                var html = "<select>";
-
-	        		/* Itera el resultado (igual que en PHP, hay un array que se llama result y una variable para el indice y otra para el valor)
-					*  Para usar un objeto json basta con objeto.atributo. Ej: ciudad.descripcion
-	        		*/
-	        		$.each(result, function(index,ciudad) {        
-					    
-					    html += "<option value='" + ciudad.id + "'>" + ciudad.descripcion + "</option>";
-					});
-
-					html += "</select>";
-
-					/* Aca se renderiza el resultado obtenido */
-	                $("#resultadoCiudades").html(html);
-	            },
-	        error : function(error) {
-	        	alert("Ups, ocurrio un error! " + error);
-	        } 
-		});
-	});
-	
-	
-	$("#btnGetAllPais").click(function(){
-		$.ajax({
-	        url  : 'helpers/PaisAjaxHelper.php',
-	        data : { metodo: "getAllPais"},
-	        type : 'POST',
-	        dataType : "json",
-	        success : function(result) {
-
-	        		/* Arma el html de resultado iterando en los items */
-	                var html = "<select>";
-
-	        		/* Itera el resultado (igual que en PHP, hay un array que se llama result y una variable para el indice y otra para el valor)
-					*  Para usar un objeto json basta con objeto.atributo. Ej: ciudad.descripcion
-	        		*/
-	        		$.each(result, function(index,pais) {        
-					    
-					    html += "<option value='" + pais.id + "'>" + pais.descripcion + "</option>";
-					});
-
-					html += "</select>";
-
-					/* Aca se renderiza el resultado obtenido */
-	                $("#resultadoPaises").html(html);
-	            },
-	        error : function(error) {
-	        	alert("Ups, ocurrio un error! " + error);
-	        } 
-		});
-	});
-	
-	$("#btnObtenerRegiones").click(function(){
-		$.ajax({
-	        url  : 'helpers/RegionAjaxHelper.php',
-	        data : { metodo: "getRegionesByIdPais", idPais: 1 },
-	        type : 'POST',
-	        dataType : "json",
-	        success : function(result) {
-
-	        		/* Arma el html de resultado iterando en los items */
-	                var html = "<select>";
+	                var html = "<select id='ddlRegiones'>";
 
 	        		/* Itera el resultado (igual que en PHP, hay un array que se llama result y una variable para el indice y otra para el valor)
 					*  Para usar un objeto json basta con objeto.atributo. Ej: ciudad.descripcion
@@ -114,29 +35,96 @@ $(document).ready(function (){
 					html += "</select>";
 
 					/* Aca se renderiza el resultado obtenido */
-	                $("#resultadoRegiones").append(html);
+	                $("#divContenidoRegiones").html(html);
+	                $("#divRegion").show();
+	                $("#ddlRegiones").change(cargarComboCiudades);
+	                cargarComboCiudades();
 	            },
 	        error : function(error) {
 	        	alert("Ups, ocurrio un error! " + error);
 	        } 
 		});
-	});
+		
+	}	
 	
-	
-/****************************************************************************/
-	$("#btnTest").click(function(){
+function cargarComboCiudades(){
+		
+		var idRegion = $("#ddlRegiones option:selected").val();
+		
 		$.ajax({
-	        url  : 'helpers/AjaxHelper.php',
-	        data : { metodo: "getAlgo", datos: 'La hora es: ' },
-	        type : 'POST' ,
-	        success : function( output ) {
-	        	
-	                    $("#spnTestAjax").html(output);
-	                  },
+	        url  : '/TpFinalWeb2/editorialjr/helpers/CiudadAjaxHelper.php',
+	        data : { metodo: "getCiudadesByIdRegion", idRegion: idRegion},
+	        type : 'POST',
+	        dataType : "json",
+	        success : function(result) {
+	        		
+	        		/* Arma el html de resultado iterando en los items */
+	                var html = "<select id='ddlCiudades'>";
+
+	        		/* Itera el resultado (igual que en PHP, hay un array que se llama result y una variable para el indice y otra para el valor)
+					*  Para usar un objeto json basta con objeto.atributo. Ej: ciudad.descripcion
+	        		*/
+	        		$.each(result, function(index,ciudad) {        
+					    html += "<option value='" + ciudad.id + "'>" + ciudad.descripcion + "</option>";
+					});
+
+					html += "</select>";
+
+					/* Aca se renderiza el resultado obtenido */
+	                $("#divContenidoCiudades").html(html);
+	                $("#divCiudad").show();
+	            },
 	        error : function(error) {
-	        	alert(error);
+	        	alert("Ups, ocurrio un error! " + error);
 	        } 
 		});
-	});
+	}	
+
+	function guardarCliente(){
+		
+		var email = $("#txtEmail").val().trim();
+		var pass = $("#txtPass").val().trim();
+		var nombre = $("#txtNombre").val().trim();
+		var apellido = $("#txtApellido").val().trim();
+		var id_ciudad = $("#ddlCiudades option:selected").val();
+		var calle = $("#txtCalle").val().trim();
+		var numero_calle = $("#txtNroCalle").val().trim();
+		var codigo_postal = $("#txtCodigoPostal").val().trim();
+		var piso = $("#txtPiso").val().trim();
+		var departamento = $("#txtDepartamento").val().trim();
+		var detalle_direccion = $("#txtDetalleDireccion").val().trim();
+		
+		if(clienteValido(email, pass, nombre, apellido, calle, numero_calle, codigo_postal, piso, departamento, detalle_direccion)){
+			$.ajax({
+		        url  : '/helpers/ClienteAjaxHelper.php',
+		        data : { metodo: "createCliente", email: email, pass: pass, nombre: nombre, apellido: apellido, 
+		        	id_ciudad: id_ciudad, calle: calle, numero_calle: numero_calle, codigo_postal: codigo_postal,
+		        	piso: piso, departamento: departamento, detalle_direccion: detalle_direccion},
+		        type : 'POST',
+		        dataType : "json",
+		        success : function(result) {
+		        	if(result === true){
+		        		limpiarFormulario();
+		        		alert("Registracion exitosa.");
+		        	}else{
+		        		alert(result);
+		        	}	
+		        	
+		        },
+		        error : function(error) {
+		        	alert("Ups, ocurrio un error! " + error);
+		        } 
+			});
+		}
+	}
 	
+	function limpiarFormulario(){
+		//TODO: implementar
+	}
+	
+	function clienteValido(email, pass, nombre, apellido, calle, numero_calle, codigo_postal, piso, departamento, detalle_direccion){
+		//TODO: implementar validaciones
+		
+		return true;
+	}
 });
