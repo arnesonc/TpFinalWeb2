@@ -13,7 +13,7 @@ $(document).ready(function (){
 	function cargarComboRegiones(){
 		
 		var idPais = $("#ddlPaises option:selected").val();
-		//FIXME: las rutas no funcionan correctamente, diferencias entre la computadora de ger y la de lucas.
+		//IMPORTANTE: SE DEBEN COLOCAR LAS RUTAS ABSOLUTAS.
 		$.ajax({
 	        url  : '/TpFinalWeb2/editorialjr/helpers/RegionAjaxHelper.php',
 	        data : { metodo: "getRegionesByIdPais", idPais: idPais},
