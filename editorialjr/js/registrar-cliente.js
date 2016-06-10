@@ -96,7 +96,7 @@ function cargarComboCiudades(){
 		
 		if(clienteValido(email, pass, nombre, apellido, calle, numero_calle, codigo_postal, piso, departamento, detalle_direccion)){
 			$.ajax({
-		        url  : '/helpers/ClienteAjaxHelper.php',
+		        url  : '/TpFinalWeb2/editorialjr/helpers/ClienteAjaxHelper.php',
 		        data : { metodo: "createCliente", email: email, pass: pass, nombre: nombre, apellido: apellido, 
 		        	id_ciudad: id_ciudad, calle: calle, numero_calle: numero_calle, codigo_postal: codigo_postal,
 		        	piso: piso, departamento: departamento, detalle_direccion: detalle_direccion},
