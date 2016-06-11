@@ -1,12 +1,15 @@
 <?php
 require_once (__DIR__ . "/../common/DataAccess.php");
+require_once (__DIR__ . "/../common/AppConfig.php");
 require_once (__DIR__ . "/../model/PublicacionModel.php");
 require_once (__DIR__ . "/../helpers/LoggerHelper.php");
 require_once (__DIR__ . "/../model/NumeroModel.php");
+
 class PublicacionService {
 	private $dataAccess = null;
 	public function __construct() {
 		$this->dataAccess = new DataAccess ();
+		$this->appConfig = new AppConfig();
 	}
 	
 	/**
@@ -113,9 +116,11 @@ class PublicacionService {
 	 * Crea una publicacion obligando a crear un numero
 	 */
 	public function createPublicacionNumero($publicacionModel, $numeroModel) {
-		
 		$messagePublicacion = $this->validatePublicacion ( $publicacionModel );
-		
+		$pathname = "'".$appConfig->app_config.$publicacionModel->id."_".$publicacionModel->nombre."'";
+		die($pathname);
+		$mode = 0777;
+		mkdir ( $pathname , $mode);
 		if (empty ( $messagePublicacion )) {
 			return $messagePublicacion;
 		}
