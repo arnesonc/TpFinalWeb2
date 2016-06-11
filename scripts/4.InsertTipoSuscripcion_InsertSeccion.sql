@@ -10,7 +10,9 @@ VALUES
 (null,'12');
 
 /* borro y vuelvo a crear la tabla seccion / completo secciones base */
+SET foreign_key_checks = 0;
 DROP TABLE seccion;
+SET foreign_key_checks = 1;
 
 create table seccion(
 id int primary key auto_increment not null,
