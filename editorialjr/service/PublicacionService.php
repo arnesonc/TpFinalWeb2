@@ -9,7 +9,6 @@ class PublicacionService {
 	private $dataAccess = null;
 	public function __construct() {
 		$this->dataAccess = new DataAccess ();
-		$this->appConfig = new AppConfig();
 	}
 	
 	/**
@@ -117,10 +116,10 @@ class PublicacionService {
 	 */
 	public function createPublicacionNumero($publicacionModel, $numeroModel) {
 		$messagePublicacion = $this->validatePublicacion ( $publicacionModel );
-		$pathname = "'".$appConfig->app_config.$publicacionModel->id."_".$publicacionModel->nombre."'";
-		die($pathname);
+		$pathname = $GLOBALS['app_config']["ruta_publicaciones"] . $publicacionModel->id . "_" . $publicacionModel->nombre;
 		$mode = 0777;
 		mkdir ( $pathname , $mode);
+		
 		if (empty ( $messagePublicacion )) {
 			return $messagePublicacion;
 		}
