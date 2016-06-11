@@ -15,7 +15,7 @@ $(document).ready(function (){
 		var idPais = $("#ddlPaises option:selected").val();
 		//IMPORTANTE: SE DEBEN COLOCAR LAS RUTAS ABSOLUTAS.
 		$.ajax({
-	        url  : '/TpFinalWeb2/editorialjr/helpers/RegionAjaxHelper.php',
+	        url  : '/helpers/RegionAjaxHelper.php',
 	        data : { metodo: "getRegionesByIdPais", idPais: idPais},
 	        type : 'POST',
 	        dataType : "json",
@@ -52,7 +52,7 @@ function cargarComboCiudades(){
 		var idRegion = $("#ddlRegiones option:selected").val();
 		
 		$.ajax({
-	        url  : '/TpFinalWeb2/editorialjr/helpers/CiudadAjaxHelper.php',
+	        url  : '/helpers/CiudadAjaxHelper.php',
 	        data : { metodo: "getCiudadesByIdRegion", idRegion: idRegion},
 	        type : 'POST',
 	        dataType : "json",
@@ -96,7 +96,7 @@ function cargarComboCiudades(){
 		
 		if(clienteValido(email, pass, nombre, apellido, calle, numero_calle, codigo_postal, piso, departamento, detalle_direccion)){
 			$.ajax({
-		        url  : '/TpFinalWeb2/editorialjr/helpers/ClienteAjaxHelper.php',
+		        url  : '/helpers/ClienteAjaxHelper.php',
 		        data : { metodo: "createCliente", email: email, pass: pass, nombre: nombre, apellido: apellido, 
 		        	id_ciudad: id_ciudad, calle: calle, numero_calle: numero_calle, codigo_postal: codigo_postal,
 		        	piso: piso, departamento: departamento, detalle_direccion: detalle_direccion},
