@@ -103,28 +103,19 @@ class NumeroService {
 		// Si esta vacio, no hay mensaje de error por lo tanto es válido
 		if (empty ( $message )) {
 			
-			echo "entra a insertar";
-			
 			//creamos el numero que nos devuelve su id.
 			$idNumero = $this->insertNumero ( $numeroModel );
 			
-			echo "inserto y el id numero es: " . $idNumero;
-			
 			$publicacion = $numeroModel->getPublicacion();
 			$pathname = $GLOBALS['app_config']["ruta_publicaciones"] . $numeroModel->id_publicacion. "_" . $publicacion->nombre."/". $idNumero;
-			
-			//FIXME: quitar die;
-			die($pathname);
-			if(!file_exists($pathname)){
-				mkdir ( $pathname , 0777);
-			}
+			echo( "direccion : ".$pathname);
 			
 		} else {
 			// En caso de ser invalido devuelve un mensaje de validacion
 			$result = $message;
 		}
 		
-		return $result;
+		return true;
 	}
 	
 	/**
@@ -142,12 +133,17 @@ class NumeroService {
 	}
 	
 
-	 //Inserta un numero, si tuvo exito devuelve verdadero
+	 //Inserta un numero, si tuvo exito devuelve su id
 	 //caso contrario devuelve falso
 	
 	private function insertNumero($numeroModel) {
+		
+		$url_portada = is_null($numeroModel->url_portada) ? 'null' : "'$numeroModel->url_portada'";
+		$fe_erratas = is_null($numeroModel->fe_erratas) ? 'null' : "'$numeroModel->fe_erratas'";
+		
 		$sql = " INSERT INTO numero
-				(id,
+				(
+				id,
 				id_publicacion,
 				id_estado_numero,
 				url_portada,
@@ -156,21 +152,20 @@ class NumeroService {
 				fecha_publicado
 				)
 				VALUES
-				(null,
+				(
+				null,
 				$numeroModel->id_publicacion,
 				$numeroModel->id_estado_numero,
-				$numeroModel->url_portada,
-				$numeroModel->fe_erratas,
+				$url_portada,
+				$fe_erratas,
 				$numeroModel->precio,
 				DATE(NOW())
 				);
 				";
-		//FIXME: los campos que admiten nulos deben colocar comillas si no son null.
+		echo $sql;
 		try {
-			
 			// Ejecuta el insert en la BD
 			$idNumero = $this->dataAccess->execute ( $sql , true );
-			echo "Id numero: " . $idNumero;
 		} catch ( Exception $e ) {
 			$logger = Logger::getRootLogger ();
 			$logger->error ( $e );

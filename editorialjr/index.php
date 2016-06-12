@@ -39,14 +39,13 @@ if (false) {
 
 // agrega publicacion y numero corrobora los getter.
 
-if (true) {
+if (false) {
 	$publicacionModel = new PublicacionModel ();
-	//$publicacionModel->id_usuario = _POST["id"];
-	$publicacionModel->nombre = "coco" ;
+	$publicacionModel->id_usuario = 1;
+	$publicacionModel->nombre = "caca" ;
 	$publicacionModel->destacado = "false";
 	
 	$numeroModel = new NumeroModel ();
-	$numeroModel->id = null;
 	$numeroModel->id_estado_numero = 1;
 	$numeroModel->url_portada = "unlam.com";
 	$numeroModel->fe_erratas = "null";
@@ -62,11 +61,16 @@ if (true) {
 	}
 	echo "creado: $creado";
 	
-	$numeroService = new NumeroService ();
+
 	$arrayNumeroModel = $numeroService->getAllNumeros ( 14 );
 	
 	
 
+}
+
+if(true){
+	$numeroService = new NumeroService ();
+	$numeroService->createNumeroParametros(87,1,null,null,11); echo "ok";
 }
 
 ?>

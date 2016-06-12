@@ -122,12 +122,12 @@ class DataAccess{
 		try{
 			
 			$connection->query($sql);
-			//die("utlimoid:".$connection->insert_id);
+
 			if($isInsert){
 				
 				$id = $connection->insert_id;
 				
-				echo "entra en isInsert: " . $id;
+				echo "entra en isInsert: " . $id."<p>\n</p>";
 				
 				return $id;
 			}else{
