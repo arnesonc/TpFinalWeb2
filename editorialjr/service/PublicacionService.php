@@ -3,6 +3,7 @@ require_once (__DIR__ . "/../common/DataAccess.php");
 require_once (__DIR__ . "/../common/AppConfig.php");
 require_once (__DIR__ . "/../model/PublicacionModel.php");
 require_once (__DIR__ . "/../helpers/LoggerHelper.php");
+require_once (__DIR__ . "/../helpers/ValidationHelper.php");
 require_once (__DIR__ . "/../model/NumeroModel.php");
 
 class PublicacionService {
@@ -36,6 +37,7 @@ class PublicacionService {
 		
 		return $this->convertPublicacionDBToPublicacionModel ( $publicacionDB );
 	}
+	
 	
 	/**
 	 * Convierte un publicacion de la base de datos en un objeto PublicacionModel y lo devuelve
@@ -116,9 +118,6 @@ class PublicacionService {
 	 */
 	public function createPublicacionNumero($publicacionModel, $numeroModel) {
 		$messagePublicacion = $this->validatePublicacion ( $publicacionModel );
-		$pathname = $GLOBALS['app_config']["ruta_publicaciones"] . $publicacionModel->id . "_" . $publicacionModel->nombre;
-		$mode = 0777;
-		mkdir ( $pathname , $mode);
 		
 		if (empty ( $messagePublicacion )) {
 			return $messagePublicacion;

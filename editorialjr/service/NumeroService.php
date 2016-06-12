@@ -1,5 +1,6 @@
 <?php
 require_once (__DIR__ . "/../common/DataAccess.php");
+require_once (__DIR__ . "/../common/AppConfig.php");
 require_once (__DIR__ . "/../model/NumeroModel.php");
 require_once (__DIR__ . "/../helpers/LoggerHelper.php");
 class NumeroService {
@@ -101,7 +102,23 @@ class NumeroService {
 		
 		// Si esta vacio, no hay mensaje de error por lo tanto es válido
 		if (empty ( $message )) {
-			$result = $this->insertNumero ( $numeroModel );
+			
+			echo "entra a insertar";
+			
+			//creamos el numero que nos devuelve su id.
+			$idNumero = $this->insertNumero ( $numeroModel );
+			
+			echo "inserto y el id numero es: " . $idNumero;
+			
+			$publicacion = $numeroModel->getPublicacion();
+			$pathname = $GLOBALS['app_config']["ruta_publicaciones"] . $numeroModel->id_publicacion. "_" . $publicacion->nombre."/". $idNumero;
+			
+			//FIXME: quitar die;
+			die($pathname);
+			if(!file_exists($pathname)){
+				mkdir ( $pathname , 0777);
+			}
+			
 		} else {
 			// En caso de ser invalido devuelve un mensaje de validacion
 			$result = $message;
@@ -152,14 +169,15 @@ class NumeroService {
 		try {
 			
 			// Ejecuta el insert en la BD
-			$this->dataAccess->execute ( $sql );
+			$idNumero = $this->dataAccess->execute ( $sql , true );
+			echo "Id numero: " . $idNumero;
 		} catch ( Exception $e ) {
 			$logger = Logger::getRootLogger ();
 			$logger->error ( $e );
 			return false;
 		}
 		
-		return true;
+		return $idNumero;
 	}
 	
 	/*

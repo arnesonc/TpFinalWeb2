@@ -50,6 +50,7 @@ class ValidationHelper{
 			return false;
 		}
 	}
+	
 }
 
 ?>

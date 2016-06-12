@@ -39,15 +39,14 @@ if (false) {
 
 // agrega publicacion y numero corrobora los getter.
 
-if (false) {
+if (true) {
 	$publicacionModel = new PublicacionModel ();
 	//$publicacionModel->id_usuario = _POST["id"];
-	//$publicacionModel->nombre = _POST["nombre"] ;
+	$publicacionModel->nombre = "coco" ;
 	$publicacionModel->destacado = "false";
 	
 	$numeroModel = new NumeroModel ();
 	$numeroModel->id = null;
-	$numeroModel->id_publicacion = "null";
 	$numeroModel->id_estado_numero = 1;
 	$numeroModel->url_portada = "unlam.com";
 	$numeroModel->fe_erratas = "null";
@@ -66,7 +65,6 @@ if (false) {
 	$numeroService = new NumeroService ();
 	$arrayNumeroModel = $numeroService->getAllNumeros ( 14 );
 	
-	echo "ultima fecha publicada: " . $publicacionModel->getFechaUltimoNumero ();
 	
 
 }
