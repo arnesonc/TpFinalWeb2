@@ -127,8 +127,6 @@ class DataAccess{
 				
 				$id = $connection->insert_id;
 				
-				echo "entra en isInsert: " . $id."<p>\n</p>";
-				
 				return $id;
 			}else{
 			

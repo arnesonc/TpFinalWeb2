@@ -105,14 +105,16 @@ class NumeroService {
 			
 			//creamos el numero que nos devuelve su id.
 			$idNumero = $this->insertNumero ( $numeroModel );
-			
 			$publicacion = $numeroModel->getPublicacion();
-			$pathname = $GLOBALS['app_config']["ruta_publicaciones"] . $numeroModel->id_publicacion. "_" . $publicacion->nombre."/". $idNumero;
-			echo( "direccion : ".$pathname);
+			$pathname = $GLOBALS['app_config']["ruta_publicaciones"] . $numeroModel->id_publicacion. "_" . $publicacion->nombre."/numero". $idNumero;
+			// crea el directorio donde se alojaran los archivos del numero.
+			$creo = mkdir ( $pathname , 0777 , true);
 			
+			echo "<p>\n</p>".$pathname." mkdir: ";
+			var_dump($creo);
 		} else {
 			// En caso de ser invalido devuelve un mensaje de validacion
-			$result = $message;
+			return $message;
 		}
 		
 		return true;
@@ -162,7 +164,6 @@ class NumeroService {
 				DATE(NOW())
 				);
 				";
-		echo $sql;
 		try {
 			// Ejecuta el insert en la BD
 			$idNumero = $this->dataAccess->execute ( $sql , true );
