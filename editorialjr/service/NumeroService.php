@@ -20,7 +20,8 @@ class NumeroService {
 		url_portada,
 		fe_erratas,
 		precio,
-		fecha_publicado
+		fecha_publicado,
+		numero_revista
 		FROM numero
 		WHERE
 		id = $id;";
@@ -52,6 +53,7 @@ class NumeroService {
 		$numeroModel->fe_erratas = utf8_encode($numeroDB ["fe_erratas"]);
 		$numeroModel->precio = $numeroDB ["precio"];
 		$numeroModel->fecha_publicado = $numeroDB ["fecha_publicado"];
+		$numeroModel->numero_revista = $numeroDB["numero_revista"];
 		
 		return $numeroModel;
 	}
@@ -140,6 +142,18 @@ class NumeroService {
 	
 	private function insertNumero($numeroModel) {
 		
+		$sqlNumeroRevista = "SELECT 
+						    count(*) + 1 numero_revista
+						FROM
+						    numero
+						WHERE
+						    id_publicacion = $numeroModel->id_publicacion
+						GROUP BY id_publicacion;";
+		
+		$result = $this->dataAccess->getOneResult($sqlNumeroRevista);
+		
+		$numeroRevista = is_null($result) ? 1 : $result["numero_revista"];
+			
 		$url_portada = is_null($numeroModel->url_portada) ? 'null' : "'$numeroModel->url_portada'";
 		$fe_erratas = is_null($numeroModel->fe_erratas) ? 'null' : "'$numeroModel->fe_erratas'";
 		
@@ -151,7 +165,8 @@ class NumeroService {
 				url_portada,
 				fe_erratas,
 				precio,
-				fecha_publicado
+				fecha_publicado,
+				numero_revista
 				)
 				VALUES
 				(
@@ -161,7 +176,8 @@ class NumeroService {
 				$url_portada,
 				$fe_erratas,
 				$numeroModel->precio,
-				DATE(NOW())
+				DATE(NOW()),
+				$numeroRevista
 				);
 				";
 		try {

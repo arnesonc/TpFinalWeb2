@@ -12,6 +12,7 @@ class NumeroModel{
 	public $fe_erratas;
 	public $precio;
 	public $fecha_publicado;
+	public $numero_revista;
 	
 	private $estado_numero;
 	private $publicacion;
