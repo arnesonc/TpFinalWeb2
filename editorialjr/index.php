@@ -39,36 +39,28 @@ if (false) {
 
 // agrega publicacion y numero corrobora los getter.
 
-if (false) {
+if (true) {
 	$publicacionModel = new PublicacionModel ();
-	//$publicacionModel->id_usuario = _POST["id"];
-	//$publicacionModel->nombre = _POST["nombre"] ;
+	$publicacionModel->id_usuario = 1;
+	$publicacionModel->nombre = "caca" ;
 	$publicacionModel->destacado = "false";
 	
 	$numeroModel = new NumeroModel ();
-	$numeroModel->id = null;
-	$numeroModel->id_publicacion = "null";
 	$numeroModel->id_estado_numero = 1;
-	$numeroModel->url_portada = "unlam.com";
-	$numeroModel->fe_erratas = "null";
 	$numeroModel->precio = 120;
-	$numeroModel->fecha_publicado = "null";
 	
 	$publicacionService = new PublicacionService ();
 	// echo "".$publicacionModel->nombre;
 	try {
-		$creado = $publicacionService->createPublicacionNumero ( $publicacionModel, $numeroModel );
+		$publicacionService->createPublicacionNumero ( $publicacionModel, $numeroModel );
 	} catch ( Exception $e ) {
 		echo "error" . $e;
 	}
-	echo "creado: $creado";
-	
-	$numeroService = new NumeroService ();
-	$arrayNumeroModel = $numeroService->getAllNumeros ( 14 );
-	
-	echo "ultima fecha publicada: " . $publicacionModel->getFechaUltimoNumero ();
-	
+}
 
+if(false){
+	$numeroService = new NumeroService ();
+	$numeroService->createNumeroParametros(87,1,null,null,11); echo "ok";
 }
 
 ?>

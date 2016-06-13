@@ -33,7 +33,7 @@ $(document).ready(function (){
 
 	$("#btnObtenerCiudadesBsAs").click(function(){
 		$.ajax({
-	        url  : '/TpFinalWeb2/editorialjr/helpers/CiudadAjaxHelper.php',
+	        url  : 'helpers/CiudadAjaxHelper.php',
 	        data : { metodo: "getCiudadesByIdRegion", idRegion: 2 },
 	        type : 'POST',
 	        dataType : "json",
@@ -64,7 +64,7 @@ $(document).ready(function (){
 	
 	$("#btnGetAllPais").click(function(){
 		$.ajax({
-	        url  : '/TpFinalWeb2/editorialjr/helpers/PaisAjaxHelper.php',
+	        url  : 'helpers/PaisAjaxHelper.php',
 	        data : { metodo: "getAllPais"},
 	        type : 'POST',
 	        dataType : "json",
@@ -94,7 +94,7 @@ $(document).ready(function (){
 	
 	$("#btnObtenerRegiones").click(function(){
 		$.ajax({
-	        url  : '/TpFinalWeb2/editorialjr/helpers/RegionAjaxHelper.php',
+	        url  : 'helpers/RegionAjaxHelper.php',
 	        data : { metodo: "getRegionesByIdPais", idPais: 1 },
 	        type : 'POST',
 	        dataType : "json",
@@ -126,7 +126,7 @@ $(document).ready(function (){
 /****************************************************************************/
 	$("#btnTest").click(function(){
 		$.ajax({
-	        url  : '/TpFinalWeb2/editorialjr/helpers/AjaxHelper.php',
+	        url  : 'helpers/AjaxHelper.php',
 	        data : { metodo: "getAlgo", datos: 'La hora es: ' },
 	        type : 'POST' ,
 	        success : function( output ) {

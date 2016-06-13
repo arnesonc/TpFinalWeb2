@@ -1,5 +1,6 @@
 <?php
 require_once (__DIR__ . "/../common/DataAccess.php");
+require_once (__DIR__ . "/../common/AppConfig.php");
 require_once (__DIR__ . "/../model/NumeroModel.php");
 require_once (__DIR__ . "/../helpers/LoggerHelper.php");
 class NumeroService {
@@ -101,13 +102,22 @@ class NumeroService {
 		
 		// Si esta vacio, no hay mensaje de error por lo tanto es válido
 		if (empty ( $message )) {
-			$result = $this->insertNumero ( $numeroModel );
+			
+			//creamos el numero que nos devuelve su id.
+			$idNumero = $this->insertNumero ( $numeroModel );
+			$publicacion = $numeroModel->getPublicacion();
+			$pathname = $GLOBALS['app_config']["ruta_publicaciones"] . $numeroModel->id_publicacion. "_" . $publicacion->nombre."/numero". $idNumero;
+			// crea el directorio donde se alojaran los archivos del numero.
+			$creo = mkdir ( $pathname , 0777 , true);
+			
+			echo "<p>\n</p>".$pathname." mkdir: ";
+			var_dump($creo);
 		} else {
 			// En caso de ser invalido devuelve un mensaje de validacion
-			$result = $message;
+			return $message;
 		}
 		
-		return $result;
+		return true;
 	}
 	
 	/**
@@ -125,12 +135,17 @@ class NumeroService {
 	}
 	
 
-	 //Inserta un numero, si tuvo exito devuelve verdadero
+	 //Inserta un numero, si tuvo exito devuelve su id
 	 //caso contrario devuelve falso
 	
 	private function insertNumero($numeroModel) {
+		
+		$url_portada = is_null($numeroModel->url_portada) ? 'null' : "'$numeroModel->url_portada'";
+		$fe_erratas = is_null($numeroModel->fe_erratas) ? 'null' : "'$numeroModel->fe_erratas'";
+		
 		$sql = " INSERT INTO numero
-				(id,
+				(
+				id,
 				id_publicacion,
 				id_estado_numero,
 				url_portada,
@@ -139,27 +154,26 @@ class NumeroService {
 				fecha_publicado
 				)
 				VALUES
-				(null,
+				(
+				null,
 				$numeroModel->id_publicacion,
 				$numeroModel->id_estado_numero,
-				$numeroModel->url_portada,
-				$numeroModel->fe_erratas,
+				$url_portada,
+				$fe_erratas,
 				$numeroModel->precio,
 				DATE(NOW())
 				);
 				";
-		//FIXME: los campos que admiten nulos deben colocar comillas si no son null.
 		try {
-			
 			// Ejecuta el insert en la BD
-			$this->dataAccess->execute ( $sql );
+			$idNumero = $this->dataAccess->execute ( $sql , true );
 		} catch ( Exception $e ) {
 			$logger = Logger::getRootLogger ();
 			$logger->error ( $e );
 			return false;
 		}
 		
-		return true;
+		return $idNumero;
 	}
 	
 	/*
