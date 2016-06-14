@@ -21,6 +21,7 @@ var_dump ( $service->getPublicacionById ( 1 ) );
 
 $usuarioService = new UsuarioService ();
 
+echo "ger";
 
 if (false) {
 	$usuarioModel = new UsuarioModel ();
@@ -28,7 +29,7 @@ if (false) {
 	$usuarioModel->pass = "1234";
 	$usuarioModel->nombre = "redactor";
 	$usuarioModel->apellido = "jr";
-	
+
 	try {
 		$creado = $usuarioService->createUsuario ( $usuarioModel );
 	} catch ( Exception $e ) {
@@ -44,11 +45,11 @@ if (true) {
 	$publicacionModel->id_usuario = 1;
 	$publicacionModel->nombre = "caca" ;
 	$publicacionModel->destacado = "false";
-	
+
 	$numeroModel = new NumeroModel ();
 	$numeroModel->id_estado_numero = 1;
 	$numeroModel->precio = 120;
-	
+
 	$publicacionService = new PublicacionService ();
 	// echo "".$publicacionModel->nombre;
 	try {
@@ -70,7 +71,7 @@ if(false){
 <html>
 <head>
 <title>Tp Final</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
 	<div>
