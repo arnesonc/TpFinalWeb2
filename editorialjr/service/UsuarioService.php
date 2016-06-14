@@ -299,6 +299,35 @@ class UsuarioService {
 		
 		return true;
 	}
+	
+	public function checkUserAndPass($email,$pass) {
+		$validationHelper = new ValidationHelper();
+	
+		if (is_null ( $email ) || ! isset ( $email ) || ! $validationHelper->validateText ( $email, 1, 50 )) {
+			return "El email no es válido. Debe poseer como máximo 50 caracteres.";
+		}
+	
+		if (! filter_var ( $email, FILTER_VALIDATE_EMAIL )) {
+			return "El email ingresado no tiene un formato correcto.";
+		}
+	
+		if (is_null ( $pass ) || ! isset ( $pass ) || ! $validationHelper->validateText ( $pass, 1, 50 )) {
+			return "La contraseña no es válida. Debe poseer como máximo 50 caracteres.";
+		}
+		$myUser = $this->getUsuarioByEmail($email);
+	
+		if (is_null($myUser) || $myUser->pass != md5($pass)) {
+			return "Usuario y/o contraseña inválida.";
+		}
+	
+		session_start();
+		$_SESSION['session'] = array(
+				"login" => "ok",
+				"id" => $myUser->id,
+				"nombre" => $myUser->nombre,
+				"id_estado_usuario" => $myUser->id_estado_usuario);
+		return true;
+	}
 }
 
 ?>
