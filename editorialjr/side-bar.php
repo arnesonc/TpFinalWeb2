@@ -13,17 +13,17 @@
                                 </li>
                                 <li>
                                     <h4>Publicaciones</h4>
-                                    <a href="#">Creear <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                    <a href="#">Crear <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                                     <a href="#">Listar <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
                                 </li>
                                 <li>
                                     <h4>Usuarios</h4>
-                                    <a href="#">Creear <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                    <a href="/admin-crear-usuario.php">Crear <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                                     <a href="#">Listar <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
                                 </li>
                                 <li>
                                     <h4>Reportes</h4>
-                                    <a href="#">Creear <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                    <a href="#">Crear <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                                     <a href="#">Listar <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
                                 </li>
                             </ul>

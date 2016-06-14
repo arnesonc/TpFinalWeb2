@@ -62,7 +62,7 @@ if($_SESSION['session']['login'] != "ok"){
                             <a href="#">Services</a>
                         </li>
                         <li>
-                            <a href="#">Contact</a>
+                            <a href="/logout.php">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -70,4 +70,3 @@ if($_SESSION['session']['login'] != "ok"){
             </div>
             <!-- /.container -->
         </nav>
-        
