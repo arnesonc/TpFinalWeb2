@@ -11,7 +11,6 @@ $(document).ready(function() {
 		var id_usuario = 1;// $("#user").val().trim();
 		var nombre = $("#nombre").val().trim();
 		var destacado = $("#destacado").val().trim();
-		var url_portada = $("#url_portada").val().trim();
 		var precio = $("#precio").val().trim();
 		
 		if (publicacionValida(id_usuario, nombre, destacado, precio)) {
@@ -47,7 +46,7 @@ $(document).ready(function() {
 		// TODO: implementar
 	}
 
-	function publicacionValida(id_usuario, nombre, destacado, url_portada, precio) {
+	function publicacionValida(id_usuario, nombre, destacado, precio) {
 		// TODO: implementar validaciones
 
 		return true;

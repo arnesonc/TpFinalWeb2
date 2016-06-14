@@ -87,27 +87,47 @@ class NumeroService {
 		return "";
 	}
 	
+	
+	public function obtainNumeroRevista($numeroModel){
+		
+		$sqlNumeroRevista = "SELECT
+		count(*) + 1 numero_revista
+		FROM
+		numero
+		WHERE
+		id_publicacion = $numeroModel->id_publicacion
+		GROUP BY id_publicacion;";
+		
+		$result = $this->dataAccess->getOneResult($sqlNumeroRevista);
+		
+		$numeroRevista = is_null($result) ? 1 : $result["numero_revista"];
+		
+		return $numeroRevista;
+	}
+	
+	//Crea un directorio donde se alojaran los archivos. retorna el path del directorio creado.
 	public function createPath($numeroModel){
+		
 		$publicacion = $numeroModel->getPublicacion ();
-		$pathname = $GLOBALS ['app_config'] ["ruta_publicaciones"] . $numeroModel->id_publicacion . "_" . $publicacion->nombre . "/numero" . $idNumero;
-		$creacionExitosa = mkdir ( $pathname, 0777, true );
+		$pathname = $GLOBALS ['app_config'] ["ruta_publicaciones"] . $numeroModel->id_publicacion . "_" . $publicacion->nombre . "/numero" . $numeroRevista;
+		mkdir ( $pathname, 0777, true );
 		
 		return $pathname;
 	}
 	
 	// Crea un nuevo numero, si hay error, retorna un mensaje, sino devuelve true o false, dependiendo de si pudo crear el directorio.
 	public function createNumero($numeroModel) {
+		$numeroModel->url_portada = $this->createPath($numeroModel);
+		$numeroModel->numero_revista = $this->obtainNumeroRevista($numeroModel);
+		echo "numero revista: ".$numeroModel->numero_revista;
 		$message = $this->validateNumero ( $numeroModel );
 		// Si esta vacio, no hay mensaje de error por lo tanto es válido
 		if (empty ( $message )) {
-			$pathname = $this->createPath($numeroModel);
 			$idNumero = $this->insertNumero ( $numeroModel );
-			echo "<p>\n</p>" . $pathname . " mkdir: ";
-			var_dump ( $creacionExitosa );
 		} else {
 			return $message;
 		}
-		return $creacionExitosa;
+		return true;
 	}
 	
 	/**
@@ -120,7 +140,6 @@ class NumeroService {
 		$numeroModel->id_estado_numero = $id_estado_numero;
 		$numeroModel->fe_erratas = $fe_erratas;
 		$numeroModel->precio = $precio;
-		
 		return $this->createNumero ( $numeroModel );
 	}
 	
@@ -129,39 +148,6 @@ class NumeroService {
 	private function insertNumero($numeroModel) {
 		$url_portada = is_null ( $numeroModel->url_portada ) ? 'null' : "'$numeroModel->url_portada'";
 		$fe_erratas = is_null ( $numeroModel->fe_erratas ) ? 'null' : "'$numeroModel->fe_erratas'";
-		
-		$sqlNumeroRevista = "SELECT 
-						    count(*) + 1 numero_revista
-						FROM
-						    numero
-						WHERE
-						    id_publicacion = $numeroModel->id_publicacion
-						GROUP BY id_publicacion;";
-
-		
-		$result = $this->dataAccess->getOneResult($sqlNumeroRevista);
-		
-		$numeroRevista = is_null($result) ? 1 : $result["numero_revista"];
-			
-		$sqlNumeroRevista = "SELECT 
-						    count(*) + 1 numero_revista
-						FROM
-						    numero
-						WHERE
-						    id_publicacion = $numeroModel->id_publicacion
-						GROUP BY id_publicacion;";
-		
-		$result = $this->dataAccess->getOneResult($sqlNumeroRevista);
-		
-		$numeroRevista = is_null($result) ? 1 : $result["numero_revista"];
-			
-		$url_portada = is_null($numeroModel->url_portada) ? 'null' : "'$numeroModel->url_portada'";
-		$fe_erratas = is_null($numeroModel->fe_erratas) ? 'null' : "'$numeroModel->fe_erratas'";
-
-		
-		$result = $this->dataAccess->getOneResult($sqlNumeroRevista);
-		
-		$numeroRevista = is_null($result) ? 1 : $result["numero_revista"];
 			
 		$sql = " INSERT INTO numero
 				(
@@ -183,9 +169,10 @@ class NumeroService {
 				$fe_erratas,
 				$numeroModel->precio,
 				DATE(NOW()),
-				$numeroRevista
+				$numeroModel->numero_revista
 				);
 				";
+		echo $sql;
 		try {
 			// Ejecuta el insert en la BD
 			$idNumero = $this->dataAccess->execute ( $sql, true );
