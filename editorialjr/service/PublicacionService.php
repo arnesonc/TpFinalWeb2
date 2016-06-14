@@ -114,7 +114,7 @@ class PublicacionService {
 		return "";
 	}
 	
-	public function createPublicacionNumeroParametros($id_usuario, $nombre, $destacado, $precio, $url_portada) {
+	public function createPublicacionNumeroParametros($id_usuario, $nombre, $destacado, $precio) {
 		
 		$publicacionModel = new PublicacionModel ();
 		$publicacionModel->id_usuario = $id_usuario;
@@ -124,7 +124,6 @@ class PublicacionService {
 		$numeroModel = new NumeroModel ();
 		$numeroModel->id_estado_numero = 1;
 		$numeroModel->precio = $precio;
-		$numeroModel->url_portada = $url_portada;
 		
 		try {
 			$this->createPublicacionNumero ( $publicacionModel, $numeroModel );
@@ -152,6 +151,8 @@ class PublicacionService {
 		}
 		
 		try{
+			
+			$publicacionModel->url_ultima_portada = $numeroModel->url_portada;
 			$idPublicacion = $this->insertPublicacion ( $publicacionModel );
 			$numeroModel->id_publicacion = $idPublicacion;
 			$numeroService->createNumero( $numeroModel );

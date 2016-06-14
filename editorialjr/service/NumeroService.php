@@ -118,7 +118,8 @@ class NumeroService {
 	// Crea un nuevo numero, si hay error, retorna un mensaje, sino devuelve true o false, dependiendo de si pudo crear el directorio.
 	public function createNumero($numeroModel) {
 		// añade el path de la portada en su creacion.
-		$numeroModel->url_portada = $this->createPath($numeroModel);
+		$numeroModel->url_portada = "url_generica.img";
+		$this->createPath($numeroModel);
 		//añade el numero de revista en su creacion.
 		$numeroModel->numero_revista = $this->obtainNumeroRevista($numeroModel);
 		$message = $this->validateNumero ( $numeroModel );
