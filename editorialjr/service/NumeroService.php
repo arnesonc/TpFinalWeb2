@@ -106,20 +106,20 @@ class NumeroService {
 	}
 	
 	//Crea un directorio donde se alojaran los archivos. retorna el path del directorio creado.
-	public function createPath($numeroModel){
+	public function obtainPath($numeroModel){
 		
 		$publicacion = $numeroModel->getPublicacion ();
 		$pathname = $GLOBALS ['app_config'] ["ruta_publicaciones"] . $numeroModel->id_publicacion . "_" . $publicacion->nombre . "/numero" . $numeroRevista;
-		mkdir ( $pathname, 0777, true );
 		
 		return $pathname;
 	}
 	
 	// Crea un nuevo numero, si hay error, retorna un mensaje, sino devuelve true o false, dependiendo de si pudo crear el directorio.
 	public function createNumero($numeroModel) {
-		// añade el path de la portada en su creacion.
+		// añade el path de la portada en su creacion sera generica.
 		$numeroModel->url_portada = "url_generica.img";
-		$this->createPath($numeroModel);
+		$pathname = $this->createPath($numeroModel);
+		mkdir ( $pathname, 0777, true );
 		//añade el numero de revista en su creacion.
 		$numeroModel->numero_revista = $this->obtainNumeroRevista($numeroModel);
 		$message = $this->validateNumero ( $numeroModel );
