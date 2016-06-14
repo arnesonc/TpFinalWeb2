@@ -51,16 +51,10 @@
                                 <input id="destacado" name="destacado" placeholder="" class="form-control input-md" type="checkbox">
                             </div>
                         </div>
-						<p>SE CREARA A SU VEZ UNA PUBLICACION EN DRAFT</p>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="url_portada">Url Portada</label>  
-                            <div class="col-md-5">
-                                <input id="url_portada" name="url_portada" placeholder="url_portada" class="form-control input-md" type="text">
-                            </div>
-                        </div>
+						<p>SE CREARA A SU VEZ UN NUMERO EN DRAFT</p>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="precio">Precio</label>  
+                            <label class="col-md-4 control-label" for="precio">Precio de numero</label>  
                             <div class="col-md-5">
                                 <input id="precio" name="precio" placeholder="Precio" class="form-control input-md" type="text">
                             </div>
