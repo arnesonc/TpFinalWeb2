@@ -13,7 +13,7 @@
     
     <!-- registrar usuario ajax -->
     <script src="../js/jquery-1.12.4.min.js" type="text/javascript"></script>
-	<script src="/../js/registrarUsuario.js" type="text/javascript"></script>
+	<script src="/../js/RegistrarUsuario.js" type="text/javascript"></script>
 
     </head>
 

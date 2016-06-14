@@ -86,18 +86,22 @@ class NumeroService {
 		
 		return "";
 	}
+	
+	public function createPath($numeroModel){
+		$publicacion = $numeroModel->getPublicacion ();
+		$pathname = $GLOBALS ['app_config'] ["ruta_publicaciones"] . $numeroModel->id_publicacion . "_" . $publicacion->nombre . "/numero" . $idNumero;
+		$creacionExitosa = mkdir ( $pathname, 0777, true );
+		
+		return $pathname;
+	}
+	
 	// Crea un nuevo numero, si hay error, retorna un mensaje, sino devuelve true o false, dependiendo de si pudo crear el directorio.
 	public function createNumero($numeroModel) {
 		$message = $this->validateNumero ( $numeroModel );
 		// Si esta vacio, no hay mensaje de error por lo tanto es válido
 		if (empty ( $message )) {
-			// creamos el numero que nos devuelve su id.
-			// mkdir crea el directorio donde se alojaran los archivos del numero.
+			$pathname = $this->createPath($numeroModel);
 			$idNumero = $this->insertNumero ( $numeroModel );
-			$publicacion = $numeroModel->getPublicacion ();
-			$pathname = $GLOBALS ['app_config'] ["ruta_publicaciones"] . $numeroModel->id_publicacion . "_" . $publicacion->nombre . "/numero" . $idNumero;
-			$creacionExitosa = mkdir ( $pathname, 0777, true );
-			
 			echo "<p>\n</p>" . $pathname . " mkdir: ";
 			var_dump ( $creacionExitosa );
 		} else {
@@ -109,11 +113,11 @@ class NumeroService {
 	/**
 	 * Crea un numero a partir de los datos parametizados (por separado)
 	 */
-	public function createNumeroParametros($id_publicacion, $id_estado_numero, $url_portada, $fe_erratas, $precio) {
+	
+	public function createNumeroParametros($id_publicacion, $id_estado_numero, $fe_erratas, $precio) {
 		$numeroModel = new NumeroModel ();
 		$numeroModel->id_publicacion = $id_publicacion;
 		$numeroModel->id_estado_numero = $id_estado_numero;
-		$numeroModel->url_portada = $url_portada;
 		$numeroModel->fe_erratas = $fe_erratas;
 		$numeroModel->precio = $precio;
 		

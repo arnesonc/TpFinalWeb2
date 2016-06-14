@@ -113,6 +113,27 @@ class PublicacionService {
 		
 		return "";
 	}
+	
+	public function createPublicacionNumeroParametros($id_usuario, $nombre, $destacado, $precio, $url_portada) {
+		
+		$publicacionModel = new PublicacionModel ();
+		$publicacionModel->id_usuario = $id_usuario;
+		$publicacionModel->nombre = $nombre ;
+		$publicacionModel->destacado = $destacado;
+		
+		$numeroModel = new NumeroModel ();
+		$numeroModel->id_estado_numero = 1;
+		$numeroModel->precio = $precio;
+		$numeroModel->url_portada = $url_portada;
+		
+		try {
+			$this->createPublicacionNumero ( $publicacionModel, $numeroModel );
+		} catch ( Exception $e ) {
+			return $e;
+		}
+		return true;
+	}
+	
 	/*
 	 * Crea una publicacion obligando a crear un numero
 	 */
@@ -139,7 +160,7 @@ class PublicacionService {
 			return $e;
 		}
 		
-		return "se creo publicacion y numero";
+		return true;
 	}
 	
 	// TODO: se puede agregar crear publicacion por parametros.

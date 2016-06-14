@@ -39,7 +39,7 @@ if (false) {
 
 // agrega publicacion y numero corrobora los getter.
 
-if (true) {
+if (false) {
 	$publicacionModel = new PublicacionModel ();
 	$publicacionModel->id_usuario = 1;
 	$publicacionModel->nombre = "caca" ;

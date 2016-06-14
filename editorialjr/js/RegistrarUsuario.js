@@ -24,7 +24,7 @@ $(document).ready(function() {
 				type : 'POST',
 				dataType : "json",
 				success : function(result) {
-					if ($.isNumeric( result ) ) {
+					if (result) {
 						limpiarFormulario();
 						alert("Registracion exitosa.");
 					} else {

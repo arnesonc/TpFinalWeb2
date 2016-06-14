@@ -14,7 +14,7 @@ $arrayPaises = $paisService->getAllPais();
 <title>Registrar cliente</title>
 	<link rel="stylesheet" type="text/css" href="../css/editorialjr.css" />
 	<script src="../js/jquery-1.12.4.min.js" type="text/javascript"></script>
-	<script src="../js/registrarCliente.js" type="text/javascript"></script>
+	<script src="../js/RegistrarCliente.js" type="text/javascript"></script>
 </head>
 <body>
 	<br>
