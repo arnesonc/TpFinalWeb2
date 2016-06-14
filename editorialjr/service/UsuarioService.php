@@ -135,7 +135,7 @@ class UsuarioService {
 		// Si esta vacio, no hay mensaje de error por lo tanto es válido
 		if (empty ( $message )) {
 			
-			$result = $this->insertUsuario ( $usuarioModel );
+			$result = $this->insertUsuario ($usuarioModel);
 		} else {
 			// En caso de ser invalido devuelve un mensaje de validacion
 			$result = $message;
@@ -215,14 +215,14 @@ class UsuarioService {
 		try {
 			
 			// Ejecuta el insert en la BD
-			$this->dataAccess->execute ( $sql );
+			$id = $this->dataAccess->execute ($sql, true);
 		} catch ( Exception $e ) {
 			$logger = Logger::getRootLogger ();
 			$logger->error ( $e );
 			return false;
 		}
 		
-		return true;
+		return $id;
 	}
 	
 	/**

@@ -133,6 +133,28 @@ class NumeroService {
 						WHERE
 						    id_publicacion = $numeroModel->id_publicacion
 						GROUP BY id_publicacion;";
+<<<<<<< HEAD
+=======
+		
+		$result = $this->dataAccess->getOneResult($sqlNumeroRevista);
+		
+		$numeroRevista = is_null($result) ? 1 : $result["numero_revista"];
+			
+		$sqlNumeroRevista = "SELECT 
+						    count(*) + 1 numero_revista
+						FROM
+						    numero
+						WHERE
+						    id_publicacion = $numeroModel->id_publicacion
+						GROUP BY id_publicacion;";
+		
+		$result = $this->dataAccess->getOneResult($sqlNumeroRevista);
+		
+		$numeroRevista = is_null($result) ? 1 : $result["numero_revista"];
+			
+		$url_portada = is_null($numeroModel->url_portada) ? 'null' : "'$numeroModel->url_portada'";
+		$fe_erratas = is_null($numeroModel->fe_erratas) ? 'null' : "'$numeroModel->fe_erratas'";
+>>>>>>> branch 'master' of https://github.com/germg/TpFinalWeb2
 		
 		$result = $this->dataAccess->getOneResult($sqlNumeroRevista);
 		

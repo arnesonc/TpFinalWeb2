@@ -124,7 +124,7 @@ class DataAccess{
 			$connection->query($sql);
 
 			if($isInsert){
-				
+
 				$id = $connection->insert_id;
 				
 				return $id;
