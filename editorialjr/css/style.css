@@ -1,0 +1,9 @@
+#section_footer {
+	background-color: #222;
+	padding-top: 20px;
+}
+
+/*overide bootsrap*/
+/*.navbar {
+    margin-bottom: 0px !important;
+}*/
