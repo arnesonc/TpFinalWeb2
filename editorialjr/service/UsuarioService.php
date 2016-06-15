@@ -171,6 +171,10 @@ class UsuarioService {
 			return "El email ingresado no tiene un formato correcto.";
 		}
 		
+		if(emailExists($usuarioModel->email)){
+			return "El email ingresado ya existe.";
+		}
+		
 		if ($validatePass && is_null ( $usuarioModel->pass ) || ! isset ( $usuarioModel->pass ) || ! $validationHelper->validateText ( $usuarioModel->pass, 1, 50 )) {
 			return "La contraseña no es válida. Debe poseer como máximo 50 caracteres.";
 		}
@@ -184,6 +188,20 @@ class UsuarioService {
 		}
 		
 		return "";
+	}
+	
+	private function emailExists($email){
+		$sql = "SELECT email
+		FROM usuario
+		WHERE email = '$email';";
+		try{
+			$email = $this->dataAccess->getOneResult($sql);
+			return !is_null($email["email"]);
+		}catch(Exception $e){
+			$logger = Logger::getRootLogger();
+			$logger->error($e);
+			return null;
+		}
 	}
 	
 	/**
