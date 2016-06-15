@@ -88,17 +88,17 @@ class NumeroService {
 	}
 	
 	
-	public function obtainNumeroRevista($numeroModel){
+	public function generateNumeroRevista($numeroModel){
 		
-		$sqlNumeroRevista = "SELECT
+		$sql = "SELECT
 		count(*) + 1 numero_revista
 		FROM
 		numero
 		WHERE
 		id_publicacion = $numeroModel->id_publicacion
 		GROUP BY id_publicacion;";
-		
-		$result = $this->dataAccess->getOneResult($sqlNumeroRevista);
+		echo $sql;
+		$result = $this->dataAccess->getOneResult($sql);
 		
 		$numeroRevista = is_null($result) ? 1 : $result["numero_revista"];
 		
@@ -106,9 +106,10 @@ class NumeroService {
 	}
 	
 	//Crea un directorio donde se alojaran los archivos. retorna el path del directorio creado.
-	private function getPath($numeroModel){
+	private function createPath($numeroModel){
 		
 		$publicacion = $numeroModel->getPublicacion ();
+		$numeroRevista = $this->generateNumeroRevista($numeroModel);
 		$pathname = $GLOBALS ['app_config'] ["ruta_publicaciones"] . $numeroModel->id_publicacion . "_" . $publicacion->nombre . "/numero" . $numeroRevista;
 		
 		return $pathname;
@@ -118,10 +119,10 @@ class NumeroService {
 	public function createNumero($numeroModel) {
 		// añade el path de la portada en su creacion sera generica.
 		$numeroModel->url_portada = "url_generica.img";
-		$pathname = $this->getPath($numeroModel);
+		$pathname = $this->createPath($numeroModel);
 		mkdir ( $pathname, 0777, true );
 		//añade el numero de revista en su creacion.
-		$numeroModel->numero_revista = $this->obtainNumeroRevista($numeroModel);
+		$numeroModel->numero_revista = $this->generateNumeroRevista($numeroModel);
 		$message = $this->validateNumero ( $numeroModel );
 		
 		if (empty ( $message )) {
@@ -220,23 +221,6 @@ class NumeroService {
 		return $arrayNumeroModel;
 	}
 	
-	public function uploadPortada($fichero){
-		$sql = "consulta para cambiar url portada";
-		try {
-			$numeroDBArray = $this->dataAccess->getMultipleResults ( $sql );
-		} catch ( Exception $e ) {
-			$logger = Logger::getRootLogger ();
-			$logger->error ( $e );
-			return null;
-		}
-		
-		if (move_uploaded_file($fichero, $fichero_subido)) {
-			echo "El fichero es válido y se subió con éxito.\n";
-			return "fichero subido con exito";
-		} else {
-			echo "¡Posible ataque de subida de ficheros!\n";
-		}
-	}
 }
 
 ?>
