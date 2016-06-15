@@ -40,7 +40,7 @@ if (false) {
 
 // agrega publicacion y numero corrobora los getter.
 
-if (true) {
+if (false) {
 	$publicacionModel = new PublicacionModel ();
 	$publicacionModel->id_usuario = 1;
 	$publicacionModel->nombre = "caca" ;
@@ -59,9 +59,9 @@ if (true) {
 	}
 }
 
-if(false){
+if(true){
 	$numeroService = new NumeroService ();
-	$numeroService->createNumeroParametros(87,1,null,null,11); echo "ok";
+	$numeroService->createNumeroParametros(8, 1, null, 12) ; echo "ok";
 }
 
 ?>
