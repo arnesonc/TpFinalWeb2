@@ -2,6 +2,7 @@
 
 require_once(__DIR__."/../service/EstadoNumeroService.php");
 require_once(__DIR__."/../service/PublicacionService.php");
+require_once(__DIR__."/../service/NumeroService.php");
 require_once(__DIR__."/../helpers/LoggerHelper.php");
 
 class NumeroModel{
@@ -60,7 +61,16 @@ class NumeroModel{
 	
 		return $this->publicacion;
 	}
-
+	
+	//FUNCION QUE OBTIENE EL PATH DE ARCHIVOS DE UN NUMERO.
+	
+	public function getPath(){
+		$numeroService = new NumeroService;
+		$this->getPublicacion();
+		$pathname = $GLOBALS ['app_config'] ["ruta_publicaciones"] . $this->publicacion->id . "_" . $this->publicacion->nombre . "/numero" . $this->numero_revista."/";
+	
+		return $pathname;
+	}
 }
 
 ?>

@@ -97,7 +97,7 @@ class NumeroService {
 		WHERE
 		id_publicacion = $numeroModel->id_publicacion
 		GROUP BY id_publicacion;";
-		echo $sql;
+
 		$result = $this->dataAccess->getOneResult($sql);
 		
 		$numeroRevista = is_null($result) ? 1 : $result["numero_revista"];
@@ -221,6 +221,21 @@ class NumeroService {
 		return $arrayNumeroModel;
 	}
 	
+	public function updateNumero($numeroModel){
+		
+		$sql = "UPDATE numero
+		SET url_portada= '$numeroModel->url_portada'
+		WHERE id= $numeroModel->id;";
+		try {
+			$this->dataAccess->execute ( $sql );
+			return true;
+		} catch ( Exception $e ) {
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $e );
+			return null;
+		}
+		
+	}
 }
 
 ?>
