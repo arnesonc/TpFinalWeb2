@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once(__DIR__."/../service/PaisService.php");
 
@@ -12,7 +12,7 @@ $arrayPaises = $paisService->getAllPais();
 <html>
 <head>
 <title>Registrar cliente</title>
-	<link rel="stylesheet" type="text/css" href="../css/editorialjr.css" />
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
 	<script src="../js/jquery-1.12.4.min.js" type="text/javascript"></script>
 	<script src="../js/RegistrarCliente.js" type="text/javascript"></script>
 </head>
@@ -58,14 +58,14 @@ $arrayPaises = $paisService->getAllPais();
 				</div>
 				<div id="divContenidoPaises" class="campo">
 					<select id="ddlPaises">
-					<?php 
+					<?php
 						foreach ($arrayPaises as $key=>$pais) {
 					?>
 						<option  value="<?php echo $pais->id;  ?>"><?php echo $pais->descripcion; ?></option>
-					<?php	
+					<?php
 						}
 					?>
-					</select>	
+					</select>
 				</div>
 			</div>
 			<div id="divRegion" class="fila">
@@ -134,7 +134,7 @@ $arrayPaises = $paisService->getAllPais();
 				<div class="botones">
 					<input id="btnAceptar" type="button" name="aceptar" value="Aceptar" />
 					<input type="reset" name="cancelar" value="Cancelar" />
-				</div>	
+				</div>
 			</div>
 		</form>
 	</div>
