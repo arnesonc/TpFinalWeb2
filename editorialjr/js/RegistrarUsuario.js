@@ -49,74 +49,75 @@ $(document).ready(function() {
 
 
 			// validar email
-			if ( (isset(email)) && email != NULL ){
+			if ( (isset(email)) && (email != NULL) ){
 				var sintaxis='#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
 				if(preg_match(sintaxis,email)){
-					//error "El email es válido";
+					// msj "El email es válido";
 					return true;					
 					} else {
-					//error "El email no es válido";
+					// msj "El email no es válido";
 					return false;					
 					}
 				} else {
-				//error "No completo su email";
+				// msj "No completo su email";
 				return false;
 				}
 
 
 			// validar nombre
-			if ( isset nombre && nombre != NULL ){
+			if ( (isset(nombre)) && (nombre != NULL) ){
 				if (strlen(nombre)>50) {
-					//error "El nombre tiene mas de 50 caracteres";
+					// msj "El nombre tiene mas de 50 caracteres";
 					return false;
 					} else {
-					//error "El nombre tiene maximo de 50 caracteres";
+					// msj "El nombre tiene maximo de 50 caracteres";
 
 					if (ctype_alpha(nombre)) {
-			       		//error "El nombre contiene solo letras.";
+			       		// msj "El nombre contiene solo letras.";
 			       		return true;
 			   		} else {
-						//error "El nombre debe contener solo letras";
+						// msj "El nombre debe contener solo letras";
 						return false;
 			   			}
 					}
 				} else {
-				//error "No completo su nombre";
+				// msj "No completo su nombre";
 				return false;
 				}
 
 
 			// validar apellido
-			if ( isset apellido && apellido != NULL ){
+			if ( (isset(apellido)) && (apellido != NULL) ){
 				if (strlen(apellido)>50) {
-					//error "El apellido tiene mas de 50 caracteres";
+					// msj "El apellido tiene mas de 50 caracteres";
 					return false;
 					} else {
-					//error "El apellido tiene maximo de 50 caracteres";
+					// msj "El apellido tiene maximo de 50 caracteres";
 					if (ctype_alpha(apellido)) {
-			       		//error "El apellido contiene solo letras.";
+			       		// msj "El apellido contiene solo letras.";
 			       		return true;
 			   		} else {
-						//error "El apellido debe contener solo letras";
+						// msj "El apellido debe contener solo letras";
 						return false;
 			   			}
 					}
 				} else {
-				//error "No completo su apellido";
+				// msj "No completo su apellido";
 				return false;
 				}
 
 
 			// validar pass
-			if ( isset pass && pass != NULL ){
+			if ( (isset(pass)) && (pass != NULL) ){
 				if (strlen(pass)>50) {
-					//error "El pass tiene mas de 50 caracteres";
+					// msj "El pass tiene mas de 50 caracteres";
 					return false;
 					} else {
-					//error "El pass tiene maximo de 50 caracteres";
+					// msj "El pass tiene maximo de 50 caracteres";
 					return true;
+					}
 				} else {
-				//error "No completo su apellido";
+				// msj "No completo su apellido";
 				return false;
 				}
 

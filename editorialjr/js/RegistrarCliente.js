@@ -1,117 +1,117 @@
 $(document).ready(
-	function() {
-		$("#divRegion").hide();
-		$("#divCiudad").hide();
-		cargarComboRegiones();
-		// cargarComboCiudades();
+		function() {
+			$("#divRegion").hide();
+			$("#divCiudad").hide();
+			cargarComboRegiones();
+			// cargarComboCiudades();
 
-		$("#ddlPaises").change(cargarComboRegiones);
-		$("#btnAceptar").click(function(event) {
-			event.stopPropagation();
-			guardarCliente();
-		});
-
-		function cargarComboRegiones() {
-
-			var idPais = $("#ddlPaises option:selected").val();
-
-			$.ajax({
-				url : '/helpers/RegionAjaxHelper.php',
-				data : {
-					metodo : "getRegionesByIdPais",
-					idPais : idPais
-				},
-				type : 'POST',
-				dataType : "json",
-				success : function(result) {
-
-					/* Arma el html de resultado iterando en los items */
-					var html = "<select id='ddlRegiones'>";
-
-					/*
-					* Itera el resultado (igual que en PHP, hay un array
-					* que se llama result y una variable para el indice y
-					* otra para el valor) Para usar un objeto json basta
-					* con objeto.atributo. Ej: ciudad.descripcion
-					*/
-					$.each(result, function(index, region) {
-
-						html += "<option value='" + region.id + "'>"
-						+ region.descripcion + "</option>";
-					});
-
-					html += "</select>";
-
-					/* Aca se renderiza el resultado obtenido */
-					$("#divContenidoRegiones").html(html);
-					$("#divRegion").show();
-					$("#ddlRegiones").change(cargarComboCiudades);
-					cargarComboCiudades();
-				},
-				error : function(error) {
-					alert("Ups, ocurrio un error! " + error);
-				}
+			$("#ddlPaises").change(cargarComboRegiones);
+			$("#btnAceptar").click(function(event) {
+				event.stopPropagation();
+				guardarCliente();
 			});
 
-		}
+			function cargarComboRegiones() {
 
-		function cargarComboCiudades() {
+				var idPais = $("#ddlPaises option:selected").val();
+				// IMPORTANTE: SE DEBEN COLOCAR LAS RUTAS ABSOLUTAS.
+				$.ajax({
+					url : '/helpers/RegionAjaxHelper.php',
+					data : {
+						metodo : "getRegionesByIdPais",
+						idPais : idPais
+					},
+					type : 'POST',
+					dataType : "json",
+					success : function(result) {
 
-			var idRegion = $("#ddlRegiones option:selected").val();
+						/* Arma el html de resultado iterando en los items */
+						var html = "<select id='ddlRegiones'>";
 
-			$.ajax({
-				url : '/helpers/CiudadAjaxHelper.php',
-				data : {
-					metodo : "getCiudadesByIdRegion",
-					idRegion : idRegion
-				},
-				type : 'POST',
-				dataType : "json",
-				success : function(result) {
+						/*
+						 * Itera el resultado (igual que en PHP, hay un array
+						 * que se llama result y una variable para el indice y
+						 * otra para el valor) Para usar un objeto json basta
+						 * con objeto.atributo. Ej: ciudad.descripcion
+						 */
+						$.each(result, function(index, region) {
 
-					/* Arma el html de resultado iterando en los items */
-					var html = "<select id='ddlCiudades'>";
+							html += "<option value='" + region.id + "'>"
+									+ region.descripcion + "</option>";
+						});
 
-					/*
-					* Itera el resultado (igual que en PHP, hay un array
-					* que se llama result y una variable para el indice y
-					* otra para el valor) Para usar un objeto json basta
-					* con objeto.atributo. Ej: ciudad.descripcion
-					*/
-					$.each(result, function(index, ciudad) {
-						html += "<option value='" + ciudad.id + "'>"
-						+ ciudad.descripcion + "</option>";
-					});
+						html += "</select>";
 
-					html += "</select>";
+						/* Aca se renderiza el resultado obtenido */
+						$("#divContenidoRegiones").html(html);
+						$("#divRegion").show();
+						$("#ddlRegiones").change(cargarComboCiudades);
+						cargarComboCiudades();
+					},
+					error : function(error) {
+						alert("Ups, ocurrio un error! " + error);
+					}
+				});
 
-					/* Aca se renderiza el resultado obtenido */
-					$("#divContenidoCiudades").html(html);
-					$("#divCiudad").show();
-				},
-				error : function(error) {
-					alert("Ups, ocurrio un error! " + error);
-				}
-			});
-		}
+			}
 
-		function guardarCliente() {
+			function cargarComboCiudades() {
 
-			var email = $("#txtEmail").val().trim();
-			var pass = $("#txtPass").val().trim();
-			var nombre = $("#txtNombre").val().trim();
-			var apellido = $("#txtApellido").val().trim();
-			var id_ciudad = $("#ddlCiudades option:selected").val();
-			var calle = $("#txtCalle").val().trim();
-			var numero_calle = $("#txtNroCalle").val().trim();
-			var codigo_postal = $("#txtCodigoPostal").val().trim();
-			var piso = $("#txtPiso").val().trim();
-			var departamento = $("#txtDepartamento").val().trim();
-			var detalle_direccion = $("#txtDetalleDireccion").val().trim();
+				var idRegion = $("#ddlRegiones option:selected").val();
 
-			if (clienteValido(email, pass, nombre, apellido, calle,
-				numero_calle, codigo_postal, piso, departamento,
-				detalle_direccion)) {
+				$.ajax({
+					url : '/helpers/CiudadAjaxHelper.php',
+					data : {
+						metodo : "getCiudadesByIdRegion",
+						idRegion : idRegion
+					},
+					type : 'POST',
+					dataType : "json",
+					success : function(result) {
+
+						/* Arma el html de resultado iterando en los items */
+						var html = "<select id='ddlCiudades'>";
+
+						/*
+						 * Itera el resultado (igual que en PHP, hay un array
+						 * que se llama result y una variable para el indice y
+						 * otra para el valor) Para usar un objeto json basta
+						 * con objeto.atributo. Ej: ciudad.descripcion
+						 */
+						$.each(result, function(index, ciudad) {
+							html += "<option value='" + ciudad.id + "'>"
+									+ ciudad.descripcion + "</option>";
+						});
+
+						html += "</select>";
+
+						/* Aca se renderiza el resultado obtenido */
+						$("#divContenidoCiudades").html(html);
+						$("#divCiudad").show();
+					},
+					error : function(error) {
+						alert("Ups, ocurrio un error! " + error);
+					}
+				});
+			}
+
+			function guardarCliente() {
+
+				var email = $("#txtEmail").val().trim();
+				var pass = $("#txtPass").val().trim();
+				var nombre = $("#txtNombre").val().trim();
+				var apellido = $("#txtApellido").val().trim();
+				var id_ciudad = $("#ddlCiudades option:selected").val();
+				var calle = $("#txtCalle").val().trim();
+				var numero_calle = $("#txtNroCalle").val().trim();
+				var codigo_postal = $("#txtCodigoPostal").val().trim();
+				var piso = $("#txtPiso").val().trim();
+				var departamento = $("#txtDepartamento").val().trim();
+				var detalle_direccion = $("#txtDetalleDireccion").val().trim();
+
+				if (clienteValido(email, pass, nombre, apellido, calle,
+						numero_calle, codigo_postal, piso, departamento,
+						detalle_direccion)) {
 					$.ajax({
 						url : '/helpers/ClienteAjaxHelper.php',
 						data : {
@@ -137,93 +137,191 @@ $(document).ready(
 							} else {
 								alert(result);
 							}
+
 						},
 						error : function(error) {
-							alert("Ups, ocurrio un error! ");
+							alert("Ups, ocurrio un error! " + error);
 						}
 					});
 				}
 			}
 
 			function limpiarFormulario() {
-				$("#txtEmail").val("");
-				$("#txtPass").val("");
-				$("#txtNombre").val("");
-				$("#txtApellido").val("");
-				$("#ddlPaises").val(1);
-				$("#ddlPaises").change();
-				$("#txtCalle").val("");
-				$("#txtNroCalle").val("");
-				$("#txtCodigoPostal").val("");
-				$("#txtPiso").val("");
-				$("#txtDepartamento").val("");
-				$("#txtDetalleDireccion").val("");
+				// TODO: implementar
 			}
 
 			function clienteValido(email, pass, nombre, apellido, calle,
-				numero_calle, codigo_postal, piso, departamento,
-				detalle_direccion) {
+					numero_calle, codigo_postal, piso, departamento,
+					detalle_direccion) {
+				// TODO: implementar validaciones
 
-					if($.trim(email) == "" || $.trim(email).length < 1 || $.trim(email).length > 50){
-						alert("El email no es válido. Debe poseer como máximo 50 caracteres.");
+
+				// validar email
+				if ( (isset(email)) && (email != NULL) ){
+					var sintaxis='#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
+					if(preg_match(sintaxis,email)){
+						// msj "El email es válido";
+						return true;					
+						} 
+						else {
+						// msj "El email no es válido";
+						return false;					
+						}
+					} 
+				else {
+					// msj "No completo su email";
+					return false;
+				}
+
+
+				// validar pass
+				if ( (isset(pass)) && (pass != NULL) ){
+					if (strlen(pass)>30) {
+						// msj "El pass tiene mas de 30 caracteres";
 						return false;
+						}
+						else {
+						// msj "El pass tiene menos de 30 caracteres";
+						return true;
+						}
+					} 
+					else {
+					// msj "No completo su apellido";
+					return false;
 					}
 
-					if(!isEmail(email)){
-						alert("El email ingresado no tiene un formato correcto.");
+
+				// validar nombre
+				if ( (isset(nombre)) && (nombre != NULL) ){
+					if (strlen(nombre)>30) {
+						// msj "El nombre tiene mas de 30 caracteres";
 						return false;
+						}
+						else {
+						// msj "El nombre tiene menos de 30 caracteres";
+
+						if (ctype_alpha(nombre)) {
+				       		// msj "El nombre contiene solo letras.";
+				       		return true;
+				   		}
+				   		else {
+							// msj "El nombre debe contener solo letras";
+							return false;
+				   			}
+						}
+					} 
+					else {
+					// msj "No completo su nombre";
+					return false;
 					}
 
-					if($.trim(pass) == "" || $.trim(pass).length < 1 || $.trim(pass).length > 30){
-						alert("La contraseña no es válida. Debe poseer como máximo 30 caracteres.");
+
+				// validar apellido
+				if ( (isset(apellido)) && (apellido != NULL) ){
+					if (strlen(apellido)>30) {
+						// msj "El apellido tiene mas de 30 caracteres";
 						return false;
+						} else {
+						// msj "El apellido tiene menos de 30 caracteres";
+						if (ctype_alpha(apellido)) {
+				       		// msj "El apellido contiene solo letras.";
+				       		return true;
+				   		} else {
+							// msj "El apellido debe contener solo letras";
+							return false;
+				   			}
+						}
+					} else {
+					// msj "No completo su apellido";
+					return false;
 					}
 
-					if($.trim(nombre) == "" || $.trim(nombre).length < 1 || $.trim(nombre).length > 30){
-						alert("El nombre no es válido. Debe poseer como máximo 30 caracteres.");
+
+				// validar calle
+				if ( (isset(calle)) && (calle != NULL) ){
+					if (strlen(calle)>30) {
+						// msj "El calle tiene mas de 30 caracteres";
 						return false;
+						} else {
+						// msj "El calle tiene menos de 30 caracteres";
+						return true;
+						}
+					} else {
+					// msj "No completo su calle";
+					return false;
 					}
 
-					if($.trim(apellido) == "" || $.trim(apellido).length < 1 || $.trim(apellido).length > 30){
-						alert("El apellido no es válido. Debe poseer como máximo 30 caracteres.");
+
+				// validar numero_calle
+				if ( (isset(numero_calle)) && (numero_calle != NULL) ){
+					if (strlen(numero_calle)>30) {
+						// msj "El numero_calle tiene mas de 30 caracteres";
 						return false;
+						} else {
+						// sj "El numero_calle tiene menos de 30 caracteres";
+						return true;
+						}
+					} else {
+					// msj "No completo su numero_calle";
+					return false;
 					}
 
-					if($.trim(calle) == "" || $.trim(calle).length < 1 || $.trim(calle).length > 30){
-						alert("La calle no es válida. Debe poseer como máximo 30 caracteres.");
-						return false;
-					}
 
-					if($.trim(numero_calle) == "" || $.trim(numero_calle).length < 1 || $.trim(numero_calle).length > 30){
-						alert("El número de la calle no es válido. Debe poseer como máximo 30 caracteres.");
-						return false;
-					}
-
-					if($.trim(codigo_postal) == "" || $.trim(codigo_postal).length < 1 || $.trim(codigo_postal).length > 11){
-						alert("El código postal no es válido. Debe poseer como máximo 11 caracteres.");
-						return false;
-					}
-
-					if($.trim(piso) != "" && ($.trim(piso).length < 1 || $.trim(piso).length > 5)){
-						alert("1El piso no es válido. Debe poseer como máximo 5 caracteres.");
-						return false;
-					}
-
-					if($.trim(departamento) != "" && ($.trim(departamento).length < 1 || $.trim(departamento).length > 5)){
-						alert("El departamento no es válido. Debe poseer como máximo 5 caracteres.");
-						return false;
-					}
-
-					if($.trim(detalle_direccion) != "" && ($.trim(detalle_direccion).length < 1 || $.trim(detalle_direccion).length > 5)){
-						alert("El detalle de la dirección no es válido. Debe poseer como máximo 150 caracteres.");
-						return false;
-					}
-
+				// validar codigo_postal
+				if( isNaN(codigo_postal) ){
+					// msj "solo numeros";
+					return false;
+				}
+				if( !codigo_postal ){
+					// msj "requerido";
+					return false;
+				}
+				if( !isNaN(codigo_postal) ){
+					// msj "ok";
 					return true;
 				}
 
-				function isEmail(email) {
-					var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-					return regex.test(email);
+
+				/*
+				DUDA: 
+				como hacemos para el caso de que no sen obligatorios?
+				los siguientes 3 campos no lo son
+				*/
+				
+				/*
+				if (strlen(piso)>5) {
+					var msj = "El piso diferente de 30 caracteres";
+					return false;
+					} else {
+					var msj = "El piso tiene 30 caracteres";
+					return true;
 				}
-			});
+				*/
+
+
+				/*
+				if (strlen(departamento)>5) {
+					var msj = "El departamento tiene mas de 5 caracteres";
+					return false;
+					} else {
+					var msj = "El departamento tiene menos de 5 caracteres";
+					return true;
+				}
+				*/
+
+
+				/*
+				if (strlen(detalle_direccion)>150) {
+					var msj = "El detalle_direccion tiene mas de 150 caracteres";
+					return false;
+					} else {
+					var msj = "El detalle_direccion tiene menos de 150 caracteres";
+					return true;
+				}
+				*/	
+
+
+
+				return true;
+			}
+		});
