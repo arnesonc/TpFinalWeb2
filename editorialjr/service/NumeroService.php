@@ -106,7 +106,7 @@ class NumeroService {
 	}
 	
 	//Crea un directorio donde se alojaran los archivos. retorna el path del directorio creado.
-	public function obtainPath($numeroModel){
+	private function getPath($numeroModel){
 		
 		$publicacion = $numeroModel->getPublicacion ();
 		$pathname = $GLOBALS ['app_config'] ["ruta_publicaciones"] . $numeroModel->id_publicacion . "_" . $publicacion->nombre . "/numero" . $numeroRevista;
@@ -118,7 +118,7 @@ class NumeroService {
 	public function createNumero($numeroModel) {
 		// añade el path de la portada en su creacion sera generica.
 		$numeroModel->url_portada = "url_generica.img";
-		$pathname = $this->createPath($numeroModel);
+		$pathname = $this->getPath($numeroModel);
 		mkdir ( $pathname, 0777, true );
 		//añade el numero de revista en su creacion.
 		$numeroModel->numero_revista = $this->obtainNumeroRevista($numeroModel);
@@ -218,6 +218,24 @@ class NumeroService {
 		}
 		
 		return $arrayNumeroModel;
+	}
+	
+	public function uploadPortada($fichero){
+		$sql = "consulta para cambiar url portada";
+		try {
+			$numeroDBArray = $this->dataAccess->getMultipleResults ( $sql );
+		} catch ( Exception $e ) {
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $e );
+			return null;
+		}
+		
+		if (move_uploaded_file($fichero, $fichero_subido)) {
+			echo "El fichero es válido y se subió con éxito.\n";
+			return "fichero subido con exito";
+		} else {
+			echo "¡Posible ataque de subida de ficheros!\n";
+		}
 	}
 }
 
