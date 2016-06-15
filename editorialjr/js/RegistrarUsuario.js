@@ -41,89 +41,60 @@ $(document).ready(function() {
 	}
 
 	function limpiarFormulario() {
-		// TODO: implementar
-	}
-
-	function usuarioValido(email, pass, nombre, apellido) {
-		// TODO: implementar validaciones
-
-
-			// validar email
-			if ( (isset(email)) && (email != NULL) ){
-				var sintaxis='#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
-				if(preg_match(sintaxis,email)){
-					// msj "El email es válido";
-					return true;					
-					} else {
-					// msj "El email no es válido";
-					return false;					
-					}
-				} else {
-				// msj "No completo su email";
-				return false;
-				}
-
-
-			// validar nombre
-			if ( (isset(nombre)) && (nombre != NULL) ){
-				if (strlen(nombre)>50) {
-					// msj "El nombre tiene mas de 50 caracteres";
-					return false;
-					} else {
-					// msj "El nombre tiene maximo de 50 caracteres";
-
-					if (ctype_alpha(nombre)) {
-			       		// msj "El nombre contiene solo letras.";
-			       		return true;
-			   		} else {
-						// msj "El nombre debe contener solo letras";
-						return false;
-			   			}
-					}
-				} else {
-				// msj "No completo su nombre";
-				return false;
-				}
-
-
-			// validar apellido
-			if ( (isset(apellido)) && (apellido != NULL) ){
-				if (strlen(apellido)>50) {
-					// msj "El apellido tiene mas de 50 caracteres";
-					return false;
-					} else {
-					// msj "El apellido tiene maximo de 50 caracteres";
-					if (ctype_alpha(apellido)) {
-			       		// msj "El apellido contiene solo letras.";
-			       		return true;
-			   		} else {
-						// msj "El apellido debe contener solo letras";
-						return false;
-			   			}
-					}
-				} else {
-				// msj "No completo su apellido";
-				return false;
-				}
-
-
-			// validar pass
-			if ( (isset(pass)) && (pass != NULL) ){
-				if (strlen(pass)>50) {
-					// msj "El pass tiene mas de 50 caracteres";
-					return false;
-					} else {
-					// msj "El pass tiene maximo de 50 caracteres";
-					return true;
-					}
-				} else {
-				// msj "No completo su apellido";
-				return false;
-				}
-
-
-
-		return true;
-	}
+ -				$("#email").val("");
+ 				$("#pass").val("");
+ 				$("#nombre").val("");
+ 				$("#apellido").val("");
+ -			}
+ -
+ -			function usuarioValido(email, pass, nombre, apellido) {
+ -
+ -					if($.trim(email) == "" || $.trim(email).length < 1 || $.trim(email).length > 50){
+ -						alert("El email no es válido. Debe poseer como máximo 50 caracteres.");
+ -						return false;
+ -					}
+ -
+ -					if(!isEmail(email)){
+ -						alert("El email ingresado no tiene un formato correcto.");
+ -						return false;
+ -					}
+ -
+ -					if($.trim(pass) == "" || $.trim(pass).length < 1 || $.trim(pass).length > 30){
+ -						alert("La contraseña no es válida. Debe poseer como máximo 30 caracteres.");
+ -						return false;
+ -					}
+ -
+ -					if($.trim(nombre) == "" || $.trim(nombre).length < 1 || $.trim(nombre).length > 30){
+ -						alert("El nombre no es válido. Debe poseer como máximo 30 caracteres.");
+ -						return false;
+ -					}
+ -
+ -					if($.trim(apellido) == "" || $.trim(apellido).length < 1 || $.trim(apellido).length > 30){
+ -						alert("El apellido no es válido. Debe poseer como máximo 30 caracteres.");
+ -						return false;
+ -					}
+ -
+ -					if($.trim(calle) == "" || $.trim(calle).length < 1 || $.trim(calle).length > 30){
+ -						alert("La calle no es válida. Debe poseer como máximo 30 caracteres.");
+ -						return false;
+ -					}
+ -
+ -					if($.trim(numero_calle) == "" || $.trim(numero_calle).length < 1 || $.trim(numero_calle).length > 30){
+ -						alert("El número de la calle no es válido. Debe poseer como máximo 30 caracteres.");
+ -						return false;
+ -					}
+ -
+ -					if($.trim(codigo_postal) == "" || $.trim(codigo_postal).length < 1 || $.trim(codigo_postal).length > 11){
+ -						alert("El código postal no es válido. Debe poseer como máximo 11 caracteres.");
+ -						return false;
+ -					}
+ -
+ -					return true;
+ -				}
+ -
+ -				function isEmail(email) {
+ -					var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+ -					return regex.test(email);
+ -				}
 
 });
