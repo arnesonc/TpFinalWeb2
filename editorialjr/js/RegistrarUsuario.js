@@ -45,84 +45,37 @@ $(document).ready(function() {
 	}
 
 	function usuarioValido(email, pass, nombre, apellido) {
-		// TODO: implementar validaciones
 
-
-			// validar email
-			if ( (isset(email)) && email != NULL ){
-				var sintaxis='#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
-				if(preg_match(sintaxis,email)){
-					//error "El email es válido";
-					return true;					
-					} else {
-					//error "El email no es válido";
-					return false;					
-					}
-				} else {
-				//error "No completo su email";
+			if($.trim(email) == "" || $.trim(email).length < 1 || $.trim(email).length > 50){
+				alert("El email no es válido. Debe poseer como máximo 50 caracteres.");
 				return false;
-				}
+			}
 
-
-			// validar nombre
-			if ( isset nombre && nombre != NULL ){
-				if (strlen(nombre)>50) {
-					//error "El nombre tiene mas de 50 caracteres";
-					return false;
-					} else {
-					//error "El nombre tiene maximo de 50 caracteres";
-
-					if (ctype_alpha(nombre)) {
-			       		//error "El nombre contiene solo letras.";
-			       		return true;
-			   		} else {
-						//error "El nombre debe contener solo letras";
-						return false;
-			   			}
-					}
-				} else {
-				//error "No completo su nombre";
+			if(!isEmail(email)){
+				alert("El email ingresado no tiene un formato correcto.");
 				return false;
-				}
+			}
 
-
-			// validar apellido
-			if ( isset apellido && apellido != NULL ){
-				if (strlen(apellido)>50) {
-					//error "El apellido tiene mas de 50 caracteres";
-					return false;
-					} else {
-					//error "El apellido tiene maximo de 50 caracteres";
-					if (ctype_alpha(apellido)) {
-			       		//error "El apellido contiene solo letras.";
-			       		return true;
-			   		} else {
-						//error "El apellido debe contener solo letras";
-						return false;
-			   			}
-					}
-				} else {
-				//error "No completo su apellido";
+			if($.trim(pass) == "" || $.trim(pass).length < 1 || $.trim(pass).length > 30){
+				alert("La contraseña no es válida. Debe poseer como máximo 30 caracteres.");
 				return false;
-				}
+			}
 
-
-			// validar pass
-			if ( isset pass && pass != NULL ){
-				if (strlen(pass)>50) {
-					//error "El pass tiene mas de 50 caracteres";
-					return false;
-					} else {
-					//error "El pass tiene maximo de 50 caracteres";
-					return true;
-				} else {
-				//error "No completo su apellido";
+			if($.trim(nombre) == "" || $.trim(nombre).length < 1 || $.trim(nombre).length > 30){
+				alert("El nombre no es válido. Debe poseer como máximo 30 caracteres.");
 				return false;
-				}
+			}
 
+			if($.trim(apellido) == "" || $.trim(apellido).length < 1 || $.trim(apellido).length > 30){
+				alert("El apellido no es válido. Debe poseer como máximo 30 caracteres.");
+				return false;
+			}	
+			return true;
+		}
 
-
-		return true;
+		function isEmail(email) {
+			var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			return regex.test(email);
+		}
 	}
-
-});
+);
