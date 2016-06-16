@@ -76,14 +76,18 @@ class UsuarioService {
 	 */
 	public function getAllUsuarios() {
 		$sql = " SELECT
-				id,
-				id_estado_usuario,
-				id_rol,
-				email,
-				pass,
-				nombre,
-				apellido
-				FROM usuario;";
+				u.id,
+				u.id_estado_usuario,
+				u.id_rol,
+				u.email,
+				u.pass,
+				u.nombre,
+				u.apellido,
+				r.descripcion descripcion_rol,
+				eu.descripcion descripcion_estado_usuario
+				FROM usuario u
+				inner join rol r on u.id_rol = r.id
+				inner join estado_usuario eu on u.id_estado_usuario = eu.id;";
 
 		try {
 
@@ -100,6 +104,8 @@ class UsuarioService {
 		foreach ( $usuarioBDArray as $usuarioDB ) {
 
 			$usuarioModel = $this->convertUsuarioDBToUsuarioModel ( $usuarioDB );
+			$usuarioModel->descripcion_rol = $usuarioDB["descripcion_rol"];
+			$usuarioModel->descripcion_estado_usuario = $usuarioDB["descripcion_estado_usuario"];
 
 			$arrayUsuarioModel [] = $usuarioModel;
 		}
@@ -250,6 +256,28 @@ class UsuarioService {
 		$sql = "UPDATE usuario
 				SET
 				id_estado_usuario = 2
+				WHERE id = $idUsuario;";
+
+		try {
+
+			// Ejecuta el update en la BD
+			$this->dataAccess->execute ( $sql );
+		} catch ( Exception $e ) {
+
+			$logger->error ( $e );
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Activa un usuario por su id
+	 */
+	public function enableUsuario($idUsuario) {
+		$sql = "UPDATE usuario
+				SET
+				id_estado_usuario = 1
 				WHERE id = $idUsuario;";
 
 		try {
