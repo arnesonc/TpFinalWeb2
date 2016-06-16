@@ -15,7 +15,8 @@ switch($metodo){
 		$result = $publicacionService->getPublicacionById($idPublicacion);
 		break;
 	case "getAllPublicaciones":
-			break;
+		$result = $publicacionService->getAllPublicaciones(); // retorna un array de PublicacionModel.
+		break;
 	case "createPublicacionNumero":
 		$id_usuario = $_POST["id_usuario"];
 		$nombre = $_POST["nombre"];

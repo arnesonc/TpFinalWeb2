@@ -198,7 +198,8 @@ class NumeroService {
    				url_portada,
     			fe_erratas,
     			precio,
-    			fecha_publicado
+    			fecha_publicado,
+    			numero_revista
 				FROM numero WHERE id_publicacion = $id_publicacion;";
 		// busca los numeros de una publicacion en la bd
 		try {

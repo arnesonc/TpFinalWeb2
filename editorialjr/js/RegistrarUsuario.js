@@ -74,21 +74,6 @@ $(document).ready(function() {
  						return false;
  					}
 
- 					if($.trim(calle) == "" || $.trim(calle).length < 1 || $.trim(calle).length > 30){
- 						alert("La calle no es válida. Debe poseer como máximo 30 caracteres.");
- 						return false;
- 					}
-
- 					if($.trim(numero_calle) == "" || $.trim(numero_calle).length < 1 || $.trim(numero_calle).length > 30){
- 						alert("El número de la calle no es válido. Debe poseer como máximo 30 caracteres.");
- 						return false;
- 					}
-
- 					if($.trim(codigo_postal) == "" || $.trim(codigo_postal).length < 1 || $.trim(codigo_postal).length > 11){
- 						alert("El código postal no es válido. Debe poseer como máximo 11 caracteres.");
- 						return false;
- 					}
-
  					return true;
  				}
 
