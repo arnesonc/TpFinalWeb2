@@ -29,6 +29,9 @@ if($_SESSION['session']['login'] != "ok"){
     <!-- Side Bar CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
 
+    <!-- CSS de las Datatables-->
+    <link rel="stylesheet" type="text/css" href="css/datatables.min.css" />
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

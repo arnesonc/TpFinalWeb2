@@ -53,7 +53,6 @@
 								                          <label class="col-md-4 control-label" for="send"></label>
 								                          <div class="col-md-4">
 								                            <button type="submit" id="btnAceptar" name="send" class="btn btn-primary btn-lg">Crear</button>
-								                            <a href="#" class="btn btn-default btn-lg active" role="button">Cancelar</a>
 								                          </div>
 								                        </div>
                       								</fieldset>

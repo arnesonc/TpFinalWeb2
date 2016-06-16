@@ -19,7 +19,7 @@
                                 <li>
                                     <h4>Usuarios</h4>
                                     <a href="/admin-crear-usuario.php">Crear <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-                                    <a href="/views/ListarUsuarios.php">Listar <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
+                                    <a href="/admin-listar-Usuarios.php">Listar <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
                                 </li>
                                 <li>
                                     <h4>Reportes</h4>
