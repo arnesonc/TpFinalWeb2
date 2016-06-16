@@ -4,8 +4,9 @@ require_once (__DIR__ . "/../service/NumeroService.php");
 require_once (__DIR__ . "/../model/NumeroModel.php");
 
 	$numeroService = new NumeroService;
-	$numeroModel = $numeroService->getNumeroById(2); //hardcodeado.
-	
+		$idNumero = $_POST["idNumero"];
+		$numeroModel = $numeroService->getNumeroById($idNumero);
+		
 	/*
 	//El nombre original del fichero en la máquina del cliente.
 	$_FILES['fichero_usuario']['name'];

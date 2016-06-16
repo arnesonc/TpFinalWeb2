@@ -23,7 +23,7 @@ function getAllNumeros(id_publicacion) {
 					$.each(result, function(index, numero) {
 
 						html += "<a value='" + numero.numero_revista + "'>"+"numero: "+numero.numero_revista + "  precio: "+ numero.precio + "</a>"
-						+"<button type ="+'button'+" onclick='getAllNumeros("+ publicacion.id +")'>editar numero</button>"
+						+"<button type ="+'button'+" onclick='editarNumeroFormulario("+ numero.id +")'>editar numero</button>"
 						+"<br>";
 						
 					});
@@ -37,5 +37,15 @@ function getAllNumeros(id_publicacion) {
 					alert("Ups, ocurrio un error! " + error);
 				}
 		});	
+}
+
+//escondemos el formulario que solo se activara cuando hagamos click en editar.
+$("#formularioDeEdicion").hide();
+//Cuando queremos editar un numero, el formulario debe conocer el id del numero contra el cual hacer los cambios
+//Pasaremos el id en el mismo formulario, tomandolo desde el parametro de la funcion.
+function editarNumeroFormulario(id_numero){
+	var id = id_numero;
+	$("#formularioDeEdicion").show();
+	$("#idNumero").val(id_numero);
 }
 
