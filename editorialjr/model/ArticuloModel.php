@@ -17,7 +17,7 @@ class ArticuloModel{
 	public $copete;
 	public $urlContenido;
 	public $contenidoAdicional;
-	
+	public $id_numero;
 	private $usuario;
 	private $estado_articulo;
 	private $seccion;

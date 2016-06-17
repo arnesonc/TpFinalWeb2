@@ -1,8 +1,9 @@
-function getAllPublicaciones() {
+function getAllArticulos(id_numero) {
 		$.ajax({
-				url : '/helpers/PublicacionAjaxHelper.php',
+				url : '/helpers/ArticuloAjaxHelper.php',
 				data : {
-					metodo : "getAllPublicaciones",
+					metodo : "getAllArticulos",
+					id_numero = id_numero,
 				},
 				type : 'POST',
 				dataType : "json",

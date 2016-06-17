@@ -25,7 +25,8 @@ class ArticuloService {
 			    fecha_cierre,
 			    copete,
 			    url_contenido,
-			    contenido_adicional
+			    contenido_adicional,
+				id_numero
 			FROM articulo
 			WHERE id = $id;";
 
@@ -56,7 +57,8 @@ class ArticuloService {
 		fecha_cierre,
 		copete,
 		url_contenido,
-		contenido_adicional
+		contenido_adicional,
+		id_numero
 		FROM articulo
 		WHERE id_seccion = $idSeccion;";
 
@@ -81,7 +83,46 @@ class ArticuloService {
 
 		return $arrayArticuloModel;
 	}
+//TODO: Obtiene una lista de articulos por id numero
 
+	public function getAllArticulosByIdNumero($id_numero) {
+		$sql = "SELECT id,
+		id_seccion,
+		id_usuario,
+		id_estado_articulo,
+		titulo,
+		latitud,
+		longitud,
+		fecha_cierre,
+		copete,
+		url_contenido,
+		contenido_adicional,
+		id_numero
+		FROM articulo
+		WHERE id_numero = $id_numero;";
+	
+		try {
+	
+			$articuloDBArray = $this->dataAccess->getMultipleResults ( $sql );
+		} catch ( Exception $e ) {
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $e );
+	
+			return null;
+		}
+	
+		$arrayArticuloModel = array ();
+	
+		foreach ( $articuloDBArray as $articuloDB ) {
+	
+			$articuloModel = $this->convertArticuloDBToArticuloModel ( $articuloDB );
+	
+			$arrayArticuloModel [] = $articuloModel;
+		}
+	
+		return $arrayArticuloModel;
+	}
+	
 	/**
 	 * Obtiene una lista de ArticuloModel por su id_usuario
 	 */
@@ -96,7 +137,8 @@ class ArticuloService {
 		fecha_cierre,
 		copete,
 		url_contenido,
-		contenido_adicional
+		contenido_adicional,
+		id_numero
 		FROM articulo
 		WHERE id_usuario = $idUsuario;";
 
@@ -136,7 +178,8 @@ class ArticuloService {
 		fecha_cierre,
 		copete,
 		url_contenido,
-		contenido_adicional
+		contenido_adicional,
+		id_numero
 		FROM articulo;";
 
 		try {
@@ -176,7 +219,8 @@ class ArticuloService {
 		fecha_cierre,
 		copete,
 		url_contenido,
-		contenido_adicional
+		contenido_adicional,
+		id_numero
 		FROM articulo
 		WHERE id_estado_articulo = $draft;";
 
@@ -220,7 +264,7 @@ class ArticuloService {
 		$articuloModel->copete = utf8_encode($articuloDB ["copete"]);
 		$articuloModel->url_contenido = $articuloDB ["url_contenido"];
 		$articuloModel->contenido_adicional = utf8_encode($articuloDB ["contenido_adicional"]);
-
+		$articuloModel->id_numero = $articuloDB ["id_numero"];
 		return $articuloModel;
 	}
 
@@ -246,7 +290,7 @@ class ArticuloService {
 	/**
 	 * Crea un articulo a partir de los datos parametizados (por separado)
 	 */
-	public function createArticuloParametros($id_seccion, $id_usuario, $id_estado_articulo, $titulo, $latitud, $longitud, $fecha_cierre, $copete, $url_contenido, $contenido_adicional) {
+	public function createArticuloParametros($id_seccion, $id_usuario, $id_estado_articulo, $titulo, $latitud, $longitud, $fecha_cierre, $copete, $url_contenido, $contenido_adicional, $id_numero) {
 		$articuloModel = new ArticuloModel ();
 		$articuloModel->id_seccion = $id_seccion;
 		$articuloModel->id_usuario = $id_usuario;
@@ -258,7 +302,7 @@ class ArticuloService {
 		$articuloModel->copete = $copete;
 		$articuloModel->url_contenido = $url_contenido;
 		$articuloModel->contenido_adicional = $contenido_adicional;
-
+		$articuloModel->id_numero = $id_numero;
 		return $this->createArticulo ( $articuloModel );
 	}
 
@@ -358,7 +402,7 @@ class ArticuloService {
 	/**
 	 * Actualiza un cliente a partir de los datos parametizados (por separado)
 	 */
-	public function updateArticuloParametros($id, $id_seccion, $id_usuario, $id_estado_articulo, $titulo, $latitud, $longitud, $fecha_cierre, $copete, $url_contenido, $contenido_adicional) {
+	public function updateArticuloParametros($id, $id_seccion, $id_usuario, $id_estado_articulo, $titulo, $latitud, $longitud, $fecha_cierre, $copete, $url_contenido, $contenido_adicional, $id_numero) {
 		$articuloModel = new ArticuloModel ();
 		$articuloModel->id = $id;
 		$articuloModel->id_seccion = $id_seccion;
@@ -371,7 +415,7 @@ class ArticuloService {
 		$articuloModel->copete = $copete;
 		$articuloModel->url_contenido = $url_contenido;
 		$articuloModel->contenido_adicional = $contenido_adicional;
-
+		$articuloModel->id_numero = $id_numero;
 		$message = $this->validateArticulo ( $articuloModel );
 
 		// Si esta vacio, no hay mensaje de error por lo tanto es válido

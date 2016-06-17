@@ -23,7 +23,8 @@ function getAllNumeros(id_publicacion) {
 					$.each(result, function(index, numero) {
 
 						html += "<a value='" + numero.numero_revista + "'>"+"numero: "+numero.numero_revista + "  precio: "+ numero.precio + "</a>"
-						+"<button type ="+'button'+" onclick='editarNumeroFormulario("+ numero.id +")'>editar numero</button>"
+						+"<button type ="+'button'+" onclick='editarNumeroFormulario("+ numero.id +")'>editar numero</button>" //boton que muestra el formulario (el formulario no usa ajax)
+						+"<button type ="+'button'+" onclick='getAllArticulos("+ numero.id +")'>Listar Articulos</button>"
 						+"<br>";
 						
 					});

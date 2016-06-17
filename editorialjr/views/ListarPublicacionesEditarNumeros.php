@@ -4,10 +4,11 @@
 <title>Title of the document</title>
 </head>
 <body>
+
 <button type="button" onclick="getAllPublicaciones()">Ver todas Las Publicaciones</button>
 <div id="divListaPublicaciones"></div>
 <div id="divListaNumeros"></div>
-
+<div id="divListaArticulos"></div>
 
 <div id="formularioDeEdicion">
 	<form enctype="multipart/form-data" action="/helpers/NumeroFileHelper.php" method="POST">
@@ -23,6 +24,7 @@
 
 </body>
 	<script src="../js/jquery-1.12.4.min.js" type="text/javascript"></script>
+		<script src="../js/ListarArticulos.js" type="text/javascript"></script>
 	<script src="../js/ListarNumeros.js" type="text/javascript"></script>
 	<script src="../js/ListarPublicaciones.js" type="text/javascript"></script>
 </html>
