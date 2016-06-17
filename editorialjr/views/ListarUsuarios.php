@@ -42,25 +42,8 @@ require_once(__DIR__."/../service/UsuarioService.php");
                     <h3>Usuarios</h3>
                 </div>
             </div>
-
             <div class="row">
-                <div class="col-lg-12">
-
-                <table id="tblUsuarios" class="table table-striped table-bordered" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Email</th>
-                      <th>Nombre</th>
-                      <th>Apellido</th>
-                      <th>Rol</th>
-                      <th>Estado</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody id="bodyUsuarios">
-                    
-                  </tbody>
-                </table>
+                <div id="divTablaUsuarios" class="col-lg-12">
                 </div>
         		</div>
 

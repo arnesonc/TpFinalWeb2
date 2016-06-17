@@ -6,7 +6,7 @@
                         <div id="page-content-wrapper">
                             <div class="container-fluid">
                                 <div class="row">
-                                    
+
                                     <div class="col-lg-12">
             							<!-- title -->
             							<div class="row">
@@ -14,29 +14,13 @@
 							                    <h3>Usuarios</h3>
 							                </div>
 							            </div>
-										
+
                                         <!-- TABLA-->
                                         <div class="row">
-                                            <div class="col-lg-12">
-
-                                                <table id="tblUsuarios" class="table table-striped table-bordered" cellspacing="0">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Email</th>
-                                                            <th>Nombre</th>
-                                                            <th>Apellido</th>
-                                                            <th>Rol</th>
-                                                            <th>Estado</th>
-                                                            <th>Acciones</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="bodyUsuarios">
-                    
-                                                    </tbody>
-                                                </table>
+                                            <div id="divTablaUsuarios" class="col-lg-12">
                                             </div>
                                         </div>
-										
+
                                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                                     </div>
                                 </div>
