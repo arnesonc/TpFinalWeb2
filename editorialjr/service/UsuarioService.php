@@ -19,6 +19,7 @@ class UsuarioService {
 	 * Obtiene un UsuarioModel por su id
 	 */
 	public function getUsuarioById($idUsuario) {
+		
 		$sql = "SELECT id,
 				    id_estado_usuario,
 				    id_rol,

@@ -40,13 +40,6 @@ $(document).ready(function() {
 		}
 	}
 
-	function limpiarFormulario() {
- 				$("#email").val("");
- 				$("#pass").val("");
- 				$("#nombre").val("");
- 				$("#apellido").val("");
- 	}
-
  			function usuarioValido(email, pass, nombre, apellido) {
 
  					if($.trim(email) == "" || $.trim(email).length < 1 || $.trim(email).length > 50){
@@ -82,3 +75,10 @@ $(document).ready(function() {
  					return regex.test(email);
  				}
 });
+
+function limpiarFormulario() {
+			$("#email").val("");
+			$("#pass").val("");
+			$("#nombre").val("");
+			$("#apellido").val("");
+}

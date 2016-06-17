@@ -2,7 +2,16 @@ $(document).ready(function(){
 
   obtenerUsuarios();
 
+  $("#btnNuevoUsuario").click(function(){
+    nuevoUsuario();
+  });
 });
+
+function nuevoUsuario(){
+  // Esta en RegistrarUsuario.js
+  limpiarFormulario();
+  $("#modalUsuario").modal('show');
+}
 
 function armarTablaUsuarios(listaUsuarios){
 
@@ -32,8 +41,6 @@ function armarTablaUsuarios(listaUsuarios){
 
   var tblUsuarios = $("#tblUsuarios");
 
-  console.log(tblUsuarios);
-
   if(tblUsuarios){
     tblUsuarios.dataTable().fnDestroy();
   }
@@ -44,6 +51,31 @@ function armarTablaUsuarios(listaUsuarios){
       "language": {
           "url": "../js/datatables.spanish.lang"
       }
+  });
+}
+
+function editarUsuario(botonEditar){
+
+  var idUsuario = botonEditar.name;
+  $("#tituloModalUsuario").html("Editar usuario");;
+
+  $.ajax({
+    url : '/helpers/UsuarioAjaxHelper.php',
+    data : {
+      metodo : 'getUsuarioById',
+      idUsuario : idUsuario
+    },
+    type : 'POST',
+    dataType : "json",
+    success : function(usuario) {
+        $("#email").val(usuario.email);
+        $("#nombre").val(usuario.nombre);
+        $("#apellido").val(usuario.apellido);
+        $("#modalUsuario").modal('show');
+    },
+    error : function(error) {
+      alert("Ups, ocurrio un error! ");
+    }
   });
 }
 

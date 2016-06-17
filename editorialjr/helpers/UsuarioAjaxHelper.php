@@ -31,6 +31,10 @@ switch($metodo){
 	case "getAllUsuarios":
 		$result = $usuarioService->getAllUsuarios();
 	break;
+	case "getUsuarioById":
+		$idUsuario = $_POST["idUsuario"];
+		$result = $usuarioService->getUsuarioById($idUsuario);
+	break;
 	default:
 	echo "Método inexistente en el switch de UsuarioAjaxHelper.php";
 }
