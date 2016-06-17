@@ -3,14 +3,14 @@ function getAllArticulos(id_numero) {
 				url : '/helpers/ArticuloAjaxHelper.php',
 				data : {
 					metodo : "getAllArticulos",
-					id_numero = id_numero,
+					id_numero : id_numero,
 				},
 				type : 'POST',
 				dataType : "json",
 				success : function(result) {
 					
 					/* Arma el html de resultado iterando en los items */
-					var html = "<div class='publicacion'>";
+					var html = "<div class='articulos'>";
 
 					/*
 					 * Itera el resultado (igual que en PHP, hay un array
@@ -18,18 +18,17 @@ function getAllArticulos(id_numero) {
 					 * otra para el valor) Para usar un objeto json basta
 					 * con objeto.atributo. Ej: ciudad.descripcion
 					 */
-					$.each(result, function(index, publicacion) {
+					$.each(result, function(index, articulo) {
 						//cada link dispara a la funcion que obtiene todos los numeros para dicha publicacion.
-						html += "<a id= '"+ publicacion.id +"'value='" + publicacion.nombre + "'>"+"publicacion: "+ publicacion.nombre + "</a>"+
-						"<button type ="+'button'+" onclick='getAllNumeros("+ publicacion.id +")'>obtener numeros</button>" + 
-						"<br>";						
+						html += "<a id= '"+ articulo.id +"'value='" + articulo.titulo + "'>"+"articulo: "+ articulo.titulo
+						+"<br>";						
 					
 					});
 
 					html += "</div>";
 					
 					/* Aca se renderiza el resultado obtenido */
-					$("#divListaPublicaciones").html(html);
+					$("#divListaArticulos").html(html);
 				},
 				error : function(error) {
 					alert("Ups, ocurrio un error! " + error);

@@ -22,7 +22,6 @@ class ArticuloModel{
 	private $estado_articulo;
 	private $seccion;
 	
-	
 	/**
 	 * Obtiene un objeto PaisModel, si lo tiene en memoria devuelve ese, si no, lo va a buscar a la base de datos
 	 * */

@@ -85,7 +85,7 @@ class ArticuloService {
 	}
 //TODO: Obtiene una lista de articulos por id numero
 
-	public function getAllArticulosByIdNumero($id_numero) {
+	public function getAllArticulosByIdNumero($idNumero) {
 		$sql = "SELECT id,
 		id_seccion,
 		id_usuario,
@@ -99,7 +99,7 @@ class ArticuloService {
 		contenido_adicional,
 		id_numero
 		FROM articulo
-		WHERE id_numero = $id_numero;";
+		WHERE id_numero = $idNumero;";
 	
 		try {
 	

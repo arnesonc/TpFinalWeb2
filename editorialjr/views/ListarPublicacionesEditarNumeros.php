@@ -24,7 +24,7 @@
 
 </body>
 	<script src="../js/jquery-1.12.4.min.js" type="text/javascript"></script>
-		<script src="../js/ListarArticulos.js" type="text/javascript"></script>
+	<script src="../js/ListarArticulos.js" type="text/javascript"></script>
 	<script src="../js/ListarNumeros.js" type="text/javascript"></script>
 	<script src="../js/ListarPublicaciones.js" type="text/javascript"></script>
 </html>
