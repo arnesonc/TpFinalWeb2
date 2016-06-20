@@ -15,17 +15,14 @@ include 'side-bar.php';
 					</div>
 				</div>
 				<div class="row botonNuevo">
-					<div class="col-lg-2">
+					<div class="col-lg-12">
 						<button id='btnNuevoUsuario' class='btn btn-primary'><span class='glyphicon glyphicon-plus'></span> Nuevo usuario</button>
 					</div>
-				</div>
-				<!-- TABLA-->
+				</div>		
 				<div class="row">
 					<div id="divTablaUsuarios" class="col-lg-12">
 					</div>
 				</div>
-
-				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
 			</div>
 		</div>
 	</div>
