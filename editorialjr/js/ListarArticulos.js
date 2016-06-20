@@ -1,4 +1,4 @@
-function getAllArticulos(id_numero) {
+function listarArticulos(id_numero) {
 		$.ajax({
 				url : '/helpers/ArticuloAjaxHelper.php',
 				data : {

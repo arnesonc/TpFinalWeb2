@@ -1,4 +1,4 @@
-function getAllNumeros(id_publicacion) {
+function listarNumeros(id_publicacion) {
 			var idPublicacion = id_publicacion;
 
 			$.ajax({
@@ -10,29 +10,7 @@ function getAllNumeros(id_publicacion) {
 				type : 'POST',
 				dataType : "json",
 				success : function(result) {
-					
-					/* Arma el html de resultado iterando en los items */
-					var html = "<div class='numeros'>";
-
-					/*
-					 * Itera el resultado (igual que en PHP, hay un array
-					 * que se llama result y una variable para el indice y
-					 * otra para el valor) Para usar un objeto json basta
-					 * con objeto.atributo. Ej: ciudad.descripcion
-					 */
-					$.each(result, function(index, numero) {
-
-						html += "<a value='" + numero.numero_revista + "'>"+"numero: "+numero.numero_revista + "  precio: "+ numero.precio + "</a>"
-						+"<button type ="+'button'+" onclick='editarNumeroFormulario("+ numero.id +")'>editar numero</button>" //boton que muestra el formulario (el formulario no usa ajax)
-						+"<button type ="+'button'+" onclick='getAllArticulos("+ numero.id +")'>Listar Articulos</button>"
-						+"<br>";
-						
-					});
-
-					html += "</div>";
-					
-					/* Aca se renderiza el resultado obtenido */
-					$("#divListaNumeros").html(html);
+					armarTablaNumeros(result);
 				},
 				error : function(error) {
 					alert("Ups, ocurrio un error! " + error);
@@ -40,6 +18,41 @@ function getAllNumeros(id_publicacion) {
 		});	
 }
 
+function armarTablaNumeros(listaNumeros){
+
+	  var tabla = "";
+	  $("#bodyNumeros").html("");
+	  
+	  tabla = "<table id='tblUsuarios' class='table table-striped table-bordered table-responsive' cellspacing='0'>";
+	  tabla +="<thead><tr><th>Numero</th><th>Precio</th><th>fecha publicado</th>";
+	  tabla +="<th>Acciones</th></tr></thead><tbody>";
+
+	  $.each(listaNumeros, function(index, numero) {
+	    tabla += "<tr><td>" + numero.numero_revista + "</td>";
+	    tabla += "<td>" + numero.precio + "</td>";
+	    tabla += "<td>" + numero.fecha_publicado + "</td>";
+	    tabla += "<td><button id='btnEditarNumero' name='' class='btn btn-primary' onclick='editarNumero(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
+	    tabla += "<a href='/views/ListarArticulos.php?id="+numero.id + "'id='btnListarArticulos' name='" + numero.id +"' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Articulos</a> </td></tr> ";
+		});
+	  
+
+	  tabla += "</td></tr></tbody></table>";
+
+	  var tblNumeros = $("#tblNumeros");
+
+	  if(tblNumeros){
+		  tblNumeros.dataTable().fnDestroy();
+	  }
+
+	  $("#divTablaNumeros").html(tabla);
+
+	  $("#tblNumeros").dataTable({
+	      "language": {
+	          "url": "../js/datatables.spanish.lang"
+	      }
+	  });
+	}
+/*
 //escondemos el formulario que solo se activara cuando hagamos click en editar.
 $("#formularioDeEdicion").hide();
 //Cuando queremos editar un numero, el formulario debe conocer el id del numero contra el cual hacer los cambios
@@ -49,4 +62,4 @@ function editarNumeroFormulario(id_numero){
 	$("#formularioDeEdicion").show();
 	$("#idNumero").val(id_numero);
 }
-
+*/

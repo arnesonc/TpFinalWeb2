@@ -1,3 +1,10 @@
+
+$(document).ready(function(){
+
+	getAllPublicaciones();
+
+});
+
 function getAllPublicaciones() {
 		$.ajax({
 				url : '/helpers/PublicacionAjaxHelper.php',
@@ -7,31 +14,43 @@ function getAllPublicaciones() {
 				type : 'POST',
 				dataType : "json",
 				success : function(result) {
-					
-					/* Arma el html de resultado iterando en los items */
-					var html = "<div class='publicacion'>";
-
-					/*
-					 * Itera el resultado (igual que en PHP, hay un array
-					 * que se llama result y una variable para el indice y
-					 * otra para el valor) Para usar un objeto json basta
-					 * con objeto.atributo. Ej: ciudad.descripcion
-					 */
-					$.each(result, function(index, publicacion) {
-						//cada link dispara a la funcion que obtiene todos los numeros para dicha publicacion.
-						html += "<a id= '"+ publicacion.id +"'value='" + publicacion.nombre + "'>"+"publicacion: "+ publicacion.nombre + "</a>"+
-						"<button type ="+'button'+" onclick='getAllNumeros("+ publicacion.id +")'>obtener numeros</button>" + 
-						"<br>";						
-					
-					});
-
-					html += "</div>";
-					
-					/* Aca se renderiza el resultado obtenido */
-					$("#divListaPublicaciones").html(html);
+					armarTablaPublicaciones(result);
 				},
 				error : function(error) {
 					alert("Ups, ocurrio un error! " + error);
 				}
 		});	
+		
+		function armarTablaPublicaciones(listaPublicaciones){
+
+			  var tabla = "";
+			  $("#bodyPublicaciones").html("");
+
+			  tabla = "<table id='tblPublicaciones' class='table table-striped table-bordered table-responsive' cellspacing='0'>";
+			  tabla +="<thead><tr><th>Publicacion</th>";
+			  tabla +="<th>Acciones</th></tr></thead><tbody>";
+
+			  $.each(listaPublicaciones, function(index, publicacion) {
+			    tabla += "<tr><td>" + publicacion.nombre + "</td>";
+			    tabla += "<td><button id='btnEditarPublicacion' name='editarPublicacion' class='btn btn-primary' onclick='editarPublicacion(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
+			    tabla += "<a href='/views/ListarNumeros.php?id="+publicacion.id + "'id='btnListarNumeros' name='" + publicacion.id +"' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Numeros</a> </td></tr> ";
+			   
+			  });
+
+			  tabla += "</td></tr></tbody></table>";
+
+			  var tblPublicaciones = $("#tblPublicaciones");
+
+			  if(tblPublicaciones){
+				  tblPublicaciones.dataTable().fnDestroy();
+			  }
+
+			  $("#divTablaPublicaciones").html(tabla);
+
+			  $("#tblPublicaciones").dataTable({
+			      "language": {
+			          "url": "../js/datatables.spanish.lang"
+			      }
+			  });
+			}    
 }
