@@ -26,8 +26,8 @@ require_once(__DIR__."/../service/UsuarioService.php");
 
     <!-- registrar usuario ajax -->
     <script src="../js/jquery-1.12.4.min.js" type="text/javascript"></script>
-	   <script src="../js/ListarUsuarios.js" type="text/javascript"></script>
-     <script src="../js/datatables.min.js" type="text/javascript"></script>
+	<script src="../js/ListarUsuarios.js" type="text/javascript"></script>
+    <script src="../js/datatables.min.js" type="text/javascript"></script>
 
     </head>
 

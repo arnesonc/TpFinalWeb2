@@ -11,7 +11,6 @@
                                         echo "<h1>Bienvenido ".$_SESSION['session']['nombre']."</h1>";
                                         ?>
                                         <p>En este sitio usted podra administrar el contenido de Editorial Jr.</p>
-                                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                                     </div>
                                 </div>
                             </div>

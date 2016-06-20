@@ -68,6 +68,11 @@ if($_SESSION['session']['login'] != "ok"){
                             <a href="/logout.php">Logout</a>
                         </li>
                     </ul>
+                    <ul class="nav navbar-nav  navbar-right">
+                        <li>
+                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                        </li>
+                    </ul>
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
