@@ -23,7 +23,7 @@ function armarTablaNumeros(listaNumeros){
 	  var tabla = "";
 	  $("#bodyNumeros").html("");
 	  
-	  tabla = "<table id='tblUsuarios' class='table table-striped table-bordered table-responsive' cellspacing='0'>";
+	  tabla = "<table id='tblNumeros' class='table table-striped table-bordered table-responsive' cellspacing='0'>";
 	  tabla +="<thead><tr><th>Numero</th><th>Precio</th><th>fecha publicado</th>";
 	  tabla +="<th>Acciones</th></tr></thead><tbody>";
 
