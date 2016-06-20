@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 if($_SESSION['session']['login'] != "ok"){
@@ -31,7 +31,7 @@ if($_SESSION['session']['login'] != "ok"){
 
     <!-- CSS de las Datatables-->
     <link rel="stylesheet" type="text/css" href="css/datatables.min.css" />
-    
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -70,7 +70,7 @@ if($_SESSION['session']['login'] != "ok"){
                     </ul>
                     <ul class="nav navbar-nav  navbar-right">
                         <li>
-                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                            <a href="#menu-toggle" class="glyphicon glyphicon-menu-hamburger 2x" id="menu-toggle"></a>
                         </li>
                     </ul>
                 </div>
