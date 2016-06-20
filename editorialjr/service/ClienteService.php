@@ -49,6 +49,53 @@ class ClienteService{
 	}
 
 	/**
+	 * Obtiene una lista de clientes (incluye inactivos)
+	 */
+	public function getAllClientes() {
+		$sql = " SELECT
+						c.id,
+				    c.email,
+				    c.pass,
+				    c.nombre,
+				    c.apellido,
+				    c.id_ciudad,
+				    c.calle,
+				    c.numero_calle,
+				    c.codigo_postal,
+				    c.piso,
+				    c.departamento,
+				    c.detalle_direccion,
+				    c.id_estado_cliente,
+						ec.descripcion descripcion_estado_cliente,
+						ci.descripcion descripcion_ciudad
+				FROM cliente c
+				INNER JOIN estado_cliente ec on c.id_estado_cliente = ec.id
+				INNER JOIN ciudad ci on c.id_ciudad = ci.id;";
+
+		try {
+
+			$clientesBDArray = $this->dataAccess->getMultipleResults($sql);
+		} catch ( Exception $e ) {
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $e );
+			return null;
+		}
+
+		$arrayClientesModel = array ();
+
+		foreach ( $clientesBDArray as $clienteDB ) {
+
+			$clienteModel = $this->convertClienteDBToClienteModel($clienteDB);
+			$clienteModel->descripcion_estado_cliente = $clienteDB["descripcion_estado_cliente"];
+			$clienteModel->descripcion_ciudad = $clienteDB["descripcion_ciudad"];
+
+			$arrayClientesModel [] = $clienteModel;
+		}
+
+		return $arrayClientesModel;
+	}
+
+	/**
 	 * Convierte un clienteDB en un ClienteModel
 	 * */
 	private function convertClienteDBToClienteModel($clienteDB){

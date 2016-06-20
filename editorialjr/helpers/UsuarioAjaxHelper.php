@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__."/../service/UsuarioService.php");
+require_once(__DIR__."/../model/UsuarioModel.php");
 
 $metodo = $_POST["metodo"];
 
@@ -34,6 +35,13 @@ switch($metodo){
 	case "getUsuarioById":
 		$idUsuario = $_POST["idUsuario"];
 		$result = $usuarioService->getUsuarioById($idUsuario);
+	break;
+	case "updateUsuarioParameters":
+		$idUsuario = $_POST["idUsuario"];
+		$nombre = $_POST["nombre"];
+		$apellido = $_POST["apellido"];
+
+		$result = $usuarioService->updateUsuarioParameters($idUsuario, $nombre, $apellido);
 	break;
 	default:
 	echo "Método inexistente en el switch de UsuarioAjaxHelper.php";

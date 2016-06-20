@@ -11,17 +11,17 @@ include 'side-bar.php';
 				<!-- title -->
 				<div class="row">
 					<div class="col-lg-12">
-						<h3>Usuarios</h3>
+						<h3>Clientes</h3>
 					</div>
 				</div>
 				<div class="row botonNuevo">
 					<div class="col-lg-2">
-						<button id='btnNuevoUsuario' class='btn btn-primary'><span class='glyphicon glyphicon-plus'></span> Nuevo usuario</button>
+						<button id='btnNuevoCliente' class='btn btn-primary'><span class='glyphicon glyphicon-plus'></span> Nuevo cliente</button>
 					</div>
 				</div>
 				<!-- TABLA-->
 				<div class="row">
-					<div id="divTablaUsuarios" class="col-lg-12">
+					<div id="divTablaClientes" class="col-lg-12">
 					</div>
 				</div>
 
@@ -34,46 +34,46 @@ include 'side-bar.php';
 </div><!-- /col -->
 </div><!-- /row -->
 </div>
-<div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="modalCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="tituloModalUsuario">Modal title</h4>
+				<h4 class="modal-title" id="tituloModalCliente">Modal title</h4>
 			</div>
 			<div class="modal-body">
 				<form id="signupForm" method="post" class="form-horizontal" action="">
 					<fieldset>
-						<div id="divEmailUsuario" class="form-group">
+						<div id="divEmailCliente" class="form-group">
 							<label class="col-md-4 control-label" for="email">Email</label>
 							<div class="col-md-5">
 								<input id="email" name="email" placeholder="Email" class="form-control input-md" type="text" maxlength="50">
 							</div>
 						</div>
 
-						<div id="divPassUsuario" class="form-group">
+						<div id="divPassCliente" class="form-group">
 							<label class="col-md-4 control-label" for="pass">Clave</label>
 							<div class="col-md-5">
-								<input id="pass" name="pass" placeholder="Clave" class="form-control input-md" type="password" maxlength="50">
+								<input id="pass" name="pass" placeholder="Clave" class="form-control input-md" type="password" maxlength="30">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="nombre">Nombre</label>
 							<div class="col-md-5">
-								<input id="nombre" name="nombre" placeholder="Nombre" class="form-control input-md" type="text" maxlength="50">
+								<input id="nombre" name="nombre" placeholder="Nombre" class="form-control input-md" type="text" maxlength="30">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="apellido">Apellido</label>
 							<div class="col-md-5">
-								<input id="apellido" name="apellido" placeholder="Apellido" class="form-control input-md" type="text" maxlength="50">
+								<input id="apellido" name="apellido" placeholder="Apellido" class="form-control input-md" type="text" maxlength="30">
 							</div>
 						</div>
 
 						<!-- Se usa para saber si es edicion o alta -->
-						<input id="hdnIdUsuario" type="hidden" />
+						<input id="hdnIdCliente" type="hidden" />
 			</fieldset>
 		</form>
 		<!-- /form -->
@@ -100,8 +100,9 @@ $("#menu-toggle").click(function(e) {
 });
 </script>
 
-<!-- Js listar usuario-->
-<script src="js/ListarUsuarios.js" type="text/javascript"></script>
+<!-- Js listar Cliente-->
+<script src="js/ListarClientes.js" type="text/javascript"></script>
+
 
 <!-- js datatables-->
 <script src="js/datatables.min.js" type="text/javascript"></script>

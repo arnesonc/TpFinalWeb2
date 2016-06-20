@@ -3,6 +3,11 @@
 	padding-top: 20px;
 }
 
+.botonNuevo{
+	margin-top: 1em;
+	margin-bottom: 1.5em;
+}
+
 /*overide bootsrap*/
 /*.navbar {
     margin-bottom: 0px !important;

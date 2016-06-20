@@ -19,7 +19,7 @@ class UsuarioService {
 	 * Obtiene un UsuarioModel por su id
 	 */
 	public function getUsuarioById($idUsuario) {
-		
+
 		$sql = "SELECT id,
 				    id_estado_usuario,
 				    id_rol,
@@ -94,7 +94,6 @@ class UsuarioService {
 
 			$usuarioBDArray = $this->dataAccess->getMultipleResults ( $sql );
 		} catch ( Exception $e ) {
-
 			$logger = Logger::getRootLogger ();
 			$logger->error ( $e );
 			return null;
@@ -167,22 +166,22 @@ class UsuarioService {
 	/**
 	 * Valida un objeto UsuarioModel
 	 */
-	private function validateUsuario($usuarioModel, $validatePass) {
+	private function validateUsuario($usuarioModel, $isInsert) {
 		$validationHelper = new ValidationHelper ();
 
-		if (is_null ( $usuarioModel->email ) || ! isset ( $usuarioModel->email ) || ! $validationHelper->validateText ( $usuarioModel->email, 1, 50 )) {
+		if ($isInsert && (is_null ( $usuarioModel->email ) || ! isset ( $usuarioModel->email ) || ! $validationHelper->validateText ( $usuarioModel->email, 1, 50 ))) {
 			return "El email no es válido. Debe poseer como máximo 50 caracteres.";
 		}
 
-		if (! filter_var ( $usuarioModel->email, FILTER_VALIDATE_EMAIL )) {
+		if ($isInsert && (!filter_var ( $usuarioModel->email, FILTER_VALIDATE_EMAIL ))) {
 			return "El email ingresado no tiene un formato correcto.";
 		}
 
-		if($this->emailExists($usuarioModel->email)){
+		if($isInsert && ($this->emailExists($usuarioModel->email))){
 			return "El email ingresado ya existe.";
 		}
 
-		if ($validatePass && is_null ( $usuarioModel->pass ) || ! isset ( $usuarioModel->pass ) || ! $validationHelper->validateText ( $usuarioModel->pass, 1, 50 )) {
+		if ($isInsert && (is_null ( $usuarioModel->pass ) || ! isset ( $usuarioModel->pass ) || ! $validationHelper->validateText ( $usuarioModel->pass, 1, 50 ))) {
 			return "La contraseña no es válida. Debe poseer como máximo 50 caracteres.";
 		}
 
@@ -297,12 +296,9 @@ class UsuarioService {
 	/**
 	 * Actualiza un usuario a partir de los datos parametizados (por separado)
 	 */
-	public function updateUsuarioParameters($id, $id_estado_usuario, $email, $pass, $nombre, $apellido) {
+	public function updateUsuarioParameters($id, $nombre, $apellido) {
 		$usuarioModel = new UsuarioModel ();
 		$usuarioModel->id = $id;
-		$usuarioModel->id_estado_usuario = $id_estado_usuario;
-		$usuarioModel->id_rol = $id_rol;
-		$usuarioModel->email = $email;
 		$usuarioModel->nombre = $nombre;
 		$usuarioModel->apellido = $apellido;
 
@@ -310,7 +306,6 @@ class UsuarioService {
 
 		// Si esta vacio, no hay mensaje de error por lo tanto es válido
 		if (empty ( $message )) {
-
 			$result = $this->updateUsuario ( $usuarioModel );
 		} else {
 			// En caso de ser invalido devuelve un mensaje de validacion
@@ -325,17 +320,14 @@ class UsuarioService {
 	 * caso contrario devuelve falso
 	 */
 	private function updateUsuario($usuarioModel) {
+
 		$sql = " UPDATE usuario
 				SET
-				id_estado_usuario = $usuarioModel->id_estado_usuario,
-				id_rol = $usuarioModel->id_rol,
-				email = '$usuarioModel->email',
 				nombre = '$usuarioModel->nombre',
 				apellido = '$usuarioModel->apellido'
 				WHERE id = $usuarioModel->id;";
 
 		try {
-
 			// Ejecuta el insert en la BD
 			$this->dataAccess->execute ( $sql );
 		} catch ( Exception $e ) {

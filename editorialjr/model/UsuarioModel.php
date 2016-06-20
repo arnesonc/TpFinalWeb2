@@ -14,6 +14,7 @@ class UsuarioModel{
 	public $id_rol;
 	public $descripcion_rol;
 	public $descripcion_estado_usuario;
+	public $descripcion_ciudad;
 
 	/* esta privado para obligar a usar el objeto $rol del modo $usuario->getRol()->descripcion */
 	private $rol;
