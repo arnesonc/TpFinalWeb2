@@ -53,7 +53,7 @@ include 'side-bar.php';
 						</div>
 
 						<div id="divPassUsuario" class="form-group">
-							<label class="col-md-4 control-label" for="pass">Clave</label>
+							<label class="col-md-4 control-label" for="pass">Contraseña</label>
 							<div class="col-md-5">
 								<input id="pass" name="pass" placeholder="Clave" class="form-control input-md" type="password" maxlength="50">
 							</div>

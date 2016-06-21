@@ -20,6 +20,7 @@ $(document).ready(function(){
 });
 
 function nuevoUsuario(){
+  $("#divMensajeError").hide();
   $("#divPassUsuario").show();
   $("#divEmailUsuario").show();
   $("#tituloModalUsuario").html("Nuevo usuario");
@@ -72,6 +73,7 @@ function armarTablaUsuarios(listaUsuarios){
 
 function editarUsuario(botonEditar){
 
+  $("#divMensajeError").hide();
   $("#divPassUsuario").hide();
   $("#divEmailUsuario").hide();
 
@@ -94,7 +96,7 @@ function editarUsuario(botonEditar){
       $("#modalUsuario").modal('show');
     },
     error : function(error) {
-      alert("Ups, ocurrio un error! ");
+      mostrarMensaje("divError", "Ups, ocurrio un error!", true);
     }
   });
 }
@@ -113,11 +115,11 @@ function ejecutarCambioEstado(idUsuario, accion){
 
         obtenerUsuarios();
       } else {
-        alert(result);
+        mostrarMensaje("divError", result, true);
       }
     },
     error : function(error) {
-      alert("Ups, ocurrio un error! ");
+      mostrarMensaje("divError", "Ups, ocurrio un error!", true);
     }
   });
 }
@@ -134,11 +136,11 @@ function obtenerUsuarios(){
       if (result != null) {
         armarTablaUsuarios(result);
       } else {
-        alert(result);
+        mostrarMensaje("divError", result, true);
       }
     },
     error : function(error) {
-      alert("Ups, ocurrio un error!");
+      mostrarMensaje("divError", "Ups, ocurrio un error!", true);
     }
   });
 }
@@ -168,13 +170,13 @@ function usuarioValido(email, pass, nombre, apellido, isInsert) {
 		return false;
 	}
 
-	if($.trim(nombre) == "" || $.trim(nombre).length < 1 || $.trim(nombre).length > 30){
-		mostrarMensaje("divMensajeError", "El nombre no es válido. Debe poseer como máximo 30 caracteres.");
+	if($.trim(nombre) == "" || $.trim(nombre).length < 1 || $.trim(nombre).length > 50){
+		mostrarMensaje("divMensajeError", "El nombre no es válido. Debe poseer como máximo 50 caracteres.");
 		return false;
 	}
 
-	if($.trim(apellido) == "" || $.trim(apellido).length < 1 || $.trim(apellido).length > 30){
-		mostrarMensaje("divMensajeError", "El apellido no es válido. Debe poseer como máximo 30 caracteres.");
+	if($.trim(apellido) == "" || $.trim(apellido).length < 1 || $.trim(apellido).length > 50){
+		mostrarMensaje("divMensajeError", "El apellido no es válido. Debe poseer como máximo 50 caracteres.");
 		return false;
 	}
 

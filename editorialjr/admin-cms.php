@@ -48,6 +48,8 @@
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
+
+				$("#menu-toggle").click();
         </script>
 
     </body>

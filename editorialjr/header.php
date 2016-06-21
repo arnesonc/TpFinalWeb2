@@ -48,7 +48,7 @@ require_once(__DIR__."/common/sesionValida.php");
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Editorial Jr</a>
+                    <a class="navbar-brand" href="/admin-cms.php">Editorial Jr</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -65,7 +65,7 @@ require_once(__DIR__."/common/sesionValida.php");
                     </ul>
                     <ul class="nav navbar-nav  navbar-right">
                         <li>
-                            <a href="#menu-toggle" class="glyphicon glyphicon-menu-hamburger" id="menu-toggle"></a>
+                            <a href="#menu-toggle" class="glyphicon glyphicon-menu-hamburger" title="Menú" id="menu-toggle"></a>
                         </li>
                     </ul>
                 </div>
