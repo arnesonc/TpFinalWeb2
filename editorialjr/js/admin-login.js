@@ -26,11 +26,11 @@ function iniciarSesion(){
         if(result === true){
           window.location.href = "../admin-cms.php";
         }else{
-          mostrarMensajeError("divMensajeError", result);
+          mostrarMensaje("divMensajeError", result, true);
         }
 			},
 			error : function(error) {
-				alert("Ups, ocurrio un error! ");
+				mostrarMensaje("divMensajeError", "Ups, ocurrio un error! ", true);
 			}
 		});
   }

@@ -26,7 +26,7 @@ $(document).ready(
 					success : function(result) {
 
 						/* Arma el html de resultado iterando en los items */
-						var html = "<select id='ddlRegiones'>";
+						var html = "<select id='ddlRegiones' class='form-control'>";
 
 						/*
 						 * Itera el resultado (igual que en PHP, hay un array
@@ -49,7 +49,7 @@ $(document).ready(
 						cargarComboCiudades();
 					},
 					error : function(error) {
-						alert("Ups, ocurrio un error! " + error);
+						mostrarMensaje("divMensajeError", "Ups, ocurrio un error! ", true);
 					}
 				});
 
@@ -70,7 +70,7 @@ $(document).ready(
 					success : function(result) {
 
 						/* Arma el html de resultado iterando en los items */
-						var html = "<select id='ddlCiudades'>";
+						var html = "<select id='ddlCiudades' class='form-control'>";
 
 						/*
 						 * Itera el resultado (igual que en PHP, hay un array
@@ -90,7 +90,7 @@ $(document).ready(
 						$("#divCiudad").show();
 					},
 					error : function(error) {
-						alert("Ups, ocurrio un error! " + error);
+						mostrarMensaje("divMensajeError", "Ups, ocurrio un error! ", true);
 					}
 				});
 			}
@@ -133,14 +133,15 @@ $(document).ready(
 						success : function(result) {
 							if (result === true) {
 								limpiarFormulario();
-								alert("Registracion exitosa.");
+								ocultarMensaje("divMensajeError");
+								alert("Registracion exitosa. Redirigir a la pantalla principal.");
 							} else {
-								alert(result);
+								mostrarMensaje("divMensajeError", result, true);
 							}
 
 						},
 						error : function(error) {
-							alert("Ups, ocurrio un error! " + error);
+							mostrarMensaje("Ups, ocurrio un error! ", true);
 						}
 					});
 				}
@@ -166,65 +167,60 @@ $(document).ready(
  				detalle_direccion) {
 
  					if($.trim(email) == "" || $.trim(email).length < 1 || $.trim(email).length > 50){
- 						alert("El email no es válido. Debe poseer como máximo 50 caracteres.");
+ 						mostrarMensaje("divMensajeError", "El email no es válido. Debe poseer como máximo 50 caracteres.");
  						return false;
  					}
 
  					if(!isEmail(email)){
- 						alert("El email ingresado no tiene un formato correcto.");
+ 						mostrarMensaje("divMensajeError", "El email ingresado no tiene un formato correcto.");
  						return false;
  					}
 
  					if($.trim(pass) == "" || $.trim(pass).length < 1 || $.trim(pass).length > 30){
- 						alert("La contraseña no es válida. Debe poseer como máximo 30 caracteres.");
+ 						mostrarMensaje("divMensajeError", "La contraseña no es válida. Debe poseer como máximo 30 caracteres.");
  						return false;
  					}
 
  					if($.trim(nombre) == "" || $.trim(nombre).length < 1 || $.trim(nombre).length > 30){
- 						alert("El nombre no es válido. Debe poseer como máximo 30 caracteres.");
+ 						mostrarMensaje("divMensajeError", "El nombre no es válido. Debe poseer como máximo 30 caracteres.");
  						return false;
  					}
 
  					if($.trim(apellido) == "" || $.trim(apellido).length < 1 || $.trim(apellido).length > 30){
- 						alert("El apellido no es válido. Debe poseer como máximo 30 caracteres.");
+ 						mostrarMensaje("divMensajeError", "El apellido no es válido. Debe poseer como máximo 30 caracteres.");
  						return false;
  					}
 
  					if($.trim(calle) == "" || $.trim(calle).length < 1 || $.trim(calle).length > 30){
- 						alert("La calle no es válida. Debe poseer como máximo 30 caracteres.");
+ 						mostrarMensaje("divMensajeError", "La calle no es válida. Debe poseer como máximo 30 caracteres.");
  						return false;
  					}
 
  					if($.trim(numero_calle) == "" || $.trim(numero_calle).length < 1 || $.trim(numero_calle).length > 30){
- 						alert("El número de la calle no es válido. Debe poseer como máximo 30 caracteres.");
+ 						mostrarMensaje("divMensajeError", "El número de la calle no es válido. Debe poseer como máximo 30 caracteres.");
  						return false;
  					}
 
  					if($.trim(codigo_postal) == "" || $.trim(codigo_postal).length < 1 || $.trim(codigo_postal).length > 11){
- 						alert("El código postal no es válido. Debe poseer como máximo 11 caracteres.");
+ 						mostrarMensaje("divMensajeError", "El código postal no es válido. Debe poseer como máximo 11 caracteres.");
  						return false;
  					}
 
  					if($.trim(piso) != "" && ($.trim(piso).length < 1 || $.trim(piso).length > 5)){
- 						alert("1El piso no es válido. Debe poseer como máximo 5 caracteres.");
+ 						mostrarMensaje("divMensajeError", "1El piso no es válido. Debe poseer como máximo 5 caracteres.");
  						return false;
  					}
 
  					if($.trim(departamento) != "" && ($.trim(departamento).length < 1 || $.trim(departamento).length > 5)){
- 						alert("El departamento no es válido. Debe poseer como máximo 5 caracteres.");
+ 						mostrarMensaje("divMensajeError", "El departamento no es válido. Debe poseer como máximo 5 caracteres.");
  						return false;
  					}
 
  					if($.trim(detalle_direccion) != "" && ($.trim(detalle_direccion).length < 1 || $.trim(detalle_direccion).length > 5)){
- 						alert("El detalle de la dirección no es válido. Debe poseer como máximo 150 caracteres.");
+ 						mostrarMensaje("divMensajeError", "El detalle de la dirección no es válido. Debe poseer como máximo 150 caracteres.");
  						return false;
  					}
 
  					return true;
- 				}
-
- 				function isEmail(email) {
- 					var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
- 					return regex.test(email);
  				}
 		});
