@@ -14,11 +14,15 @@ include 'side-bar.php';
 						<h3>Usuarios</h3>
 					</div>
 				</div>
+				<div id="divExito" class="alert alert-success oculto">
+			  </div>
+				<div id="divError" class="alert alert-danger oculto">
+			  </div>
 				<div class="row botonNuevo">
 					<div class="col-lg-12">
 						<button id='btnNuevoUsuario' class='btn btn-primary'><span class='glyphicon glyphicon-plus'></span> Nuevo usuario</button>
 					</div>
-				</div>		
+				</div>
 				<div class="row">
 					<div id="divTablaUsuarios" class="col-lg-12">
 					</div>
@@ -69,6 +73,14 @@ include 'side-bar.php';
 							</div>
 						</div>
 
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="send"></label>
+							<div class="col-md-5">
+								<div id="divMensajeError" class="col-md-12 alert alert-danger fade in oculto">
+								</div>
+							</div>
+						</div>
+
 						<!-- Se usa para saber si es edicion o alta -->
 						<input id="hdnIdUsuario" type="hidden" />
 			</fieldset>
@@ -96,6 +108,9 @@ $("#menu-toggle").click(function(e) {
 	$("#wrapper").toggleClass("toggled");
 });
 </script>
+
+<!-- Js Funciones comunes a los demas js-->
+<script src="js/common.js" type="text/javascript"></script>
 
 <!-- Js listar usuario-->
 <script src="js/ListarUsuarios.js" type="text/javascript"></script>

@@ -6,7 +6,7 @@
                         <div id="page-content-wrapper">
                             <div class="container-fluid">
                                 <div class="row">
-                                    
+
                                     <div class="col-lg-12">
             							<!-- title -->
             							<div class="row">
@@ -14,7 +14,7 @@
 							                    <h3>Usuarios</h3>
 							                </div>
 							            </div>
-										
+
 										<div class="row">
                 							<div class="col-lg-12">
                             					<!-- form -->
@@ -22,7 +22,7 @@
                     								<fieldset>
                     									<legend>Nuevo usuario</legend>
                     									<div class="form-group">
-								                            <label class="col-md-4 control-label" for="email">Email</label>  
+								                            <label class="col-md-4 control-label" for="email">Email</label>
 								                            <div class="col-md-5">
 								                                <input id="email" name="email" placeholder="Email" class="form-control input-md" type="text">
 								                            </div>
@@ -36,14 +36,14 @@
 								                        </div>
 
 								                        <div class="form-group">
-								                            <label class="col-md-4 control-label" for="nombre">Nombre</label>  
+								                            <label class="col-md-4 control-label" for="nombre">Nombre</label>
 								                            <div class="col-md-5">
 								                                <input id="nombre" name="nombre" placeholder="Nombre" class="form-control input-md" type="text">
 								                            </div>
 								                        </div>
 
 								                        <div class="form-group">
-								                            <label class="col-md-4 control-label" for="apellido">Apellido</label>  
+								                            <label class="col-md-4 control-label" for="apellido">Apellido</label>
 								                            <div class="col-md-5">
 								                                <input id="apellido" name="apellido" placeholder="Apellido" class="form-control input-md" type="text">
 								                            </div>

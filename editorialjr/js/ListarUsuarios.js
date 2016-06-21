@@ -154,27 +154,27 @@ function habilitarUsuario(button){
 function usuarioValido(email, pass, nombre, apellido, isInsert) {
 
 	if(isInsert && ($.trim(email) == "" || $.trim(email).length < 1 || $.trim(email).length > 50)){
-		alert("El email no es válido. Debe poseer como máximo 50 caracteres.");
+    mostrarMensaje("divMensajeError", "El email no es válido. Debe poseer como máximo 50 caracteres.");
 		return false;
 	}
 
 	if(isInsert && (!isEmail(email))){
-		alert("El email ingresado no tiene un formato correcto.");
+		mostrarMensaje("divMensajeError", "El email ingresado no tiene un formato correcto.");
 		return false;
 	}
 
 	if(isInsert && ($.trim(pass) == "" || $.trim(pass).length < 1 || $.trim(pass).length > 50)){
-		alert("La contraseña no es válida. Debe poseer como máximo 50 caracteres.");
+		mostrarMensaje("divMensajeError", "La contraseña no es válida. Debe poseer como máximo 50 caracteres.");
 		return false;
 	}
 
 	if($.trim(nombre) == "" || $.trim(nombre).length < 1 || $.trim(nombre).length > 30){
-		alert("El nombre no es válido. Debe poseer como máximo 30 caracteres.");
+		mostrarMensaje("divMensajeError", "El nombre no es válido. Debe poseer como máximo 30 caracteres.");
 		return false;
 	}
 
 	if($.trim(apellido) == "" || $.trim(apellido).length < 1 || $.trim(apellido).length > 30){
-		alert("El apellido no es válido. Debe poseer como máximo 30 caracteres.");
+		mostrarMensaje("divMensajeError", "El apellido no es válido. Debe poseer como máximo 30 caracteres.");
 		return false;
 	}
 
@@ -205,14 +205,13 @@ function insertarUsuario() {
 					limpiarFormulario();
           $("#modalUsuario").modal('hide');
           obtenerUsuarios();
-          alert("Registracion exitosa.");
+          mostrarMensaje("divExito", "Registración exitosa.", true);
 				} else {
-					alert("Error en registracion.");
-					alert(result);
+					mostrarMensaje("divError", "Error en registracion.", true);
 				}
 			},
 			error : function(error) {
-				alert("Ups, ocurrio un error! ");
+        mostrarMensaje("divError", "Ups, ocurrio un error!", true);
 			}
 		});
 	}
@@ -238,13 +237,13 @@ function actualizarUsuario(idUsuario) {
 				if (result) {
           $("#modalUsuario").modal('hide');
           obtenerUsuarios();
-          alert("Actualización exitosa.");
+          mostrarMensaje("divExito", "Actualización exitosa.", true);
 				} else {
-					alert(result);
+          mostrarMensaje("divError", "No se pudo actualizar el usuario.", true);
 				}
 			},
 			error : function(error) {
-				alert("Ups, ocurrio un error! ");
+				mostrarMensaje("divError", "Ups, ocurrio un error!", true);
 			}
 		});
 	}

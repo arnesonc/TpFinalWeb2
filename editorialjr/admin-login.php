@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +21,7 @@
 
   <form id="signupForm" class="form-horizontal">
     <fieldset>
-      <legend>Inicio de sesión</legend>
+      <legend> Editorial Jr - Inicio de sesión</legend>
       <div class="form-group">
         <label class="col-md-4 control-label" for="email">Email</label>
         <div class="col-md-3">
@@ -45,7 +42,7 @@
           <div id="divMensajeError" class="col-md-9 alert alert-danger fade in oculto">
           </div>
         </div>
-      </div
+      </div>
 
       <div class="form-group">
         <label class="col-md-4 control-label" for="send"></label>
