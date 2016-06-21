@@ -10,38 +10,43 @@ $result = null;
 
 switch($metodo){
 	case "getUsuarioByEmail":
-		$emailUsuario = $_POST["emailUsuario"];
-		$result = $usuarioService->getUsuarioByEmail($emailUsuario);
+	$emailUsuario = $_POST["emailUsuario"];
+	$result = $usuarioService->getUsuarioByEmail($emailUsuario);
 	break;
 	case "createUsuarioParametros":
-		/* Los campos deben venir validados desde js y se vuelven a validar en usuario service */
-		$email = $_POST["email"];
-		$pass = $_POST["pass"];
-		$nombre = $_POST["nombre"];
-		$apellido = $_POST["apellido"];
-		$result = $usuarioService->createUsuarioParametros($email, $pass, $nombre, $apellido);
+	/* Los campos deben venir validados desde js y se vuelven a validar en usuario service */
+	$email = $_POST["email"];
+	$pass = $_POST["pass"];
+	$nombre = $_POST["nombre"];
+	$apellido = $_POST["apellido"];
+	$result = $usuarioService->createUsuarioParametros($email, $pass, $nombre, $apellido);
 	break;
 	case "disableUsuario":
-		$idUsuario = $_POST["idUsuario"];
-		$result = $usuarioService->disableUsuario($idUsuario);
+	$idUsuario = $_POST["idUsuario"];
+	$result = $usuarioService->disableUsuario($idUsuario);
 	break;
 	case "enableUsuario":
-		$idUsuario = $_POST["idUsuario"];
-		$result = $usuarioService->enableUsuario($idUsuario);
+	$idUsuario = $_POST["idUsuario"];
+	$result = $usuarioService->enableUsuario($idUsuario);
 	break;
 	case "getAllUsuarios":
-		$result = $usuarioService->getAllUsuarios();
+	$result = $usuarioService->getAllUsuarios();
 	break;
 	case "getUsuarioById":
-		$idUsuario = $_POST["idUsuario"];
-		$result = $usuarioService->getUsuarioById($idUsuario);
+	$idUsuario = $_POST["idUsuario"];
+	$result = $usuarioService->getUsuarioById($idUsuario);
 	break;
 	case "updateUsuarioParameters":
-		$idUsuario = $_POST["idUsuario"];
-		$nombre = $_POST["nombre"];
-		$apellido = $_POST["apellido"];
+	$idUsuario = $_POST["idUsuario"];
+	$nombre = $_POST["nombre"];
+	$apellido = $_POST["apellido"];
 
-		$result = $usuarioService->updateUsuarioParameters($idUsuario, $nombre, $apellido);
+	$result = $usuarioService->updateUsuarioParameters($idUsuario, $nombre, $apellido);
+	break;
+	case "checkUserAndPass":
+	$email = $email = $_POST["email"];
+	$pass = $_POST["pass"];
+	$result = $usuarioService->checkUserAndPass($email, $pass);
 	break;
 	default:
 	echo "Método inexistente en el switch de UsuarioAjaxHelper.php";

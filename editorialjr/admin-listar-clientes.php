@@ -14,11 +14,11 @@ include 'side-bar.php';
 						<h3>Clientes</h3>
 					</div>
 				</div>
-				<div class="row botonNuevo">
+				<!-- <div class="row botonNuevo">
 					<div class="col-lg-2">
 						<button id='btnNuevoCliente' class='btn btn-primary'><span class='glyphicon glyphicon-plus'></span> Nuevo cliente</button>
 					</div>
-				</div>
+				</div> -->
 				<!-- TABLA-->
 				<div class="row">
 					<div id="divTablaClientes" class="col-lg-12">
@@ -99,6 +99,9 @@ $("#menu-toggle").click(function(e) {
 	$("#wrapper").toggleClass("toggled");
 });
 </script>
+
+<!-- Js Funciones comunes a los demas js-->
+<script src="js/common.js" type="text/javascript"></script>
 
 <!-- Js listar Cliente-->
 <script src="js/ListarClientes.js" type="text/javascript"></script>

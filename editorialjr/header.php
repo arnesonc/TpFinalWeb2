@@ -1,10 +1,5 @@
 <?php
-
-session_start();
-if($_SESSION['session']['login'] != "ok"){
-    header('Location: ./admin-login.php');
-}
-
+require_once(__DIR__."/common/sesionValida.php");
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +13,7 @@ if($_SESSION['session']['login'] != "ok"){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modelo Vista Admin</title>
+    <title>Administración Editorial Jr</title>
 
     <!-- Nuestro CSS -->
     <link href="css/style.css" rel="stylesheet">
@@ -65,12 +60,12 @@ if($_SESSION['session']['login'] != "ok"){
                             <a href="#">Services</a>
                         </li>
                         <li>
-                            <a href="/logout.php">Logout</a>
+                            <a href="/logout.php">Salir</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav  navbar-right">
                         <li>
-                            <a href="#menu-toggle" class="glyphicon glyphicon-menu-hamburger 2x" id="menu-toggle"></a>
+                            <a href="#menu-toggle" class="glyphicon glyphicon-menu-hamburger" id="menu-toggle"></a>
                         </li>
                     </ul>
                 </div>

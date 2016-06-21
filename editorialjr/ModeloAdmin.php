@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 if($_SESSION['session']['login'] != "ok"){
@@ -18,7 +18,7 @@ if($_SESSION['session']['login'] != "ok"){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modelo Vista Admin</title>
+    <title>Administración Editorial Jr</title>
 
     <!-- Nuestro CSS -->
     <link href="css/style.css" rel="stylesheet">

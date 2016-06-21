@@ -8,6 +8,10 @@
 	margin-bottom: 1.5em;
 }
 
+.oculto{
+	display: none;
+}
+
 /*overide bootsrap*/
 /*.navbar {
     margin-bottom: 0px !important;

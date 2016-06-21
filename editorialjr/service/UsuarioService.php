@@ -69,7 +69,11 @@ class UsuarioService {
 			return null;
 		}
 
-		return $this->convertUsuarioDBToUsuarioModel ( $usuarioBD );
+		if(is_null($usuarioBD)){
+			return null;
+		}else{
+			return $this->convertUsuarioDBToUsuarioModel ( $usuarioBD );
+		}
 	}
 
 	/**
@@ -353,10 +357,19 @@ class UsuarioService {
 		if (is_null ( $pass ) || ! isset ( $pass ) || ! $validationHelper->validateText ( $pass, 1, 50 )) {
 			return "La contraseña no es válida. Debe poseer como máximo 50 caracteres.";
 		}
+
 		$myUser = $this->getUsuarioByEmail($email);
 
-		if (is_null($myUser) || $myUser->pass != md5($pass)) {
+		if(!isset($myUser)){
+			return "Usuario no registrado en el sistema.";
+		}
+
+		if ($myUser->pass != md5($pass)) {
 			return "Usuario y/o contraseña inválida.";
+		}
+
+		if($myUser->getRol()->descripcion != "administrador"){
+			return "No posee permisos para iniciar sesión.";
 		}
 
 		session_start();
@@ -365,6 +378,7 @@ class UsuarioService {
 				"id" => $myUser->id,
 				"nombre" => $myUser->nombre,
 				"id_estado_usuario" => $myUser->id_estado_usuario);
+
 		return true;
 	}
 }

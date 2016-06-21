@@ -8,7 +8,7 @@
                             <ul class="sidebar-nav">
                                 <li class="sidebar-brand">
                                     <a href="#">
-                                        <?php echo $_SESSION['session']['nombre']?>
+                                        <?php echo $_SESSION['session']["nombre"] ?>
                                     </a>
                                 </li>
                                 <li>
@@ -21,10 +21,10 @@
                                     <!-- <a href="/admin-crear-usuario.php">Crear <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a> -->
                                     <a href="/admin-listar-usuarios.php">Listar <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <h4>Clientes</h4>
                                     <a href="/admin-listar-clientes.php">Listar <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <h4>Reportes</h4>
                                     <a href="#">Crear <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>

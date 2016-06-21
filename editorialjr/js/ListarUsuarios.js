@@ -163,8 +163,8 @@ function usuarioValido(email, pass, nombre, apellido, isInsert) {
 		return false;
 	}
 
-	if(isInsert && ($.trim(pass) == "" || $.trim(pass).length < 1 || $.trim(pass).length > 30)){
-		alert("La contraseña no es válida. Debe poseer como máximo 30 caracteres.");
+	if(isInsert && ($.trim(pass) == "" || $.trim(pass).length < 1 || $.trim(pass).length > 50)){
+		alert("La contraseña no es válida. Debe poseer como máximo 50 caracteres.");
 		return false;
 	}
 
@@ -179,11 +179,6 @@ function usuarioValido(email, pass, nombre, apellido, isInsert) {
 	}
 
 	return true;
-}
-
-function isEmail(email) {
-	var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-	return regex.test(email);
 }
 
 function insertarUsuario() {
