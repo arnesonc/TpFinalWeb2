@@ -50,7 +50,7 @@ function iniciarSesion(){
 function validateEmailPass(email, pass){
 
   if($.trim(email) == "" || $.trim(email).length < 1 || $.trim(email).length > 50){
-		mostrarMensajeError("El email no es válido. Debe poseer como máximo 50 caracteres.");
+		mostrarMensajeError("Debe ingresar un email.");
 		return false;
 	}
 
@@ -60,7 +60,7 @@ function validateEmailPass(email, pass){
 	}
 
 	if($.trim(pass) == "" || $.trim(pass).length < 1 || $.trim(pass).length > 50){
-		mostrarMensajeError("La contraseña no es válida. Debe poseer como máximo 50 caracteres.");
+		mostrarMensajeError("Debe ingresa una contraseña.");
 		return false;
 	}
 
