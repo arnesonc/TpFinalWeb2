@@ -246,8 +246,49 @@ class ArticuloService {
 		return $arrayArticuloModel;
 	}
 
-	/**
-	 * Convierte un articulo de la base de datos en un objeto ArticuloModel y lo devuelve
+	/*-----------------------------------------------------------------------------------------------------------------*/
+	public function getAllArticulosFromNumByUser($idUsuario,$idNumero) {
+		$sql = "SELECT id,
+		id_seccion,
+		id_usuario,
+		id_estado_articulo,
+		titulo,
+		latitud,
+		longitud,
+		fecha_cierre,
+		copete,
+		url_contenido,
+		contenido_adicional,
+		id_numero
+		FROM articulo
+		WHERE id_usuario = $idUsuario AND id_numero = $idNumero;";
+
+		try {
+
+			$articuloDBArray = $this->dataAccess->getMultipleResults ( $sql );
+		} catch ( Exception $e ) {
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $e );
+
+			return null;
+		}
+
+		$arrayArticuloModel = array ();
+
+		foreach ( $articuloDBArray as $articuloDB ) {
+
+			$articuloModel = $this->convertArticuloDBToArticuloModel ( $articuloDB );
+
+			$arrayArticuloModel [] = $articuloModel;
+		}
+
+		return $arrayArticuloModel;
+	}
+
+	/*-----------------------------------------------------------------------------------------------------------------*/
+
+	/*
+	  Convierte un articulo de la base de datos en un objeto ArticuloModel y lo devuelve
 	 */
 	private function convertArticuloDBToArticuloModel($articuloDB) {
 
