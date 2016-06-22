@@ -15,7 +15,7 @@
                                     <h4>Publicaciones</h4>
                                     <?php
                                         if($_SESSION['session']['id'] == '1'){
-                                            echo "<a href='#'>Crear <span class='glyphicon glyphicon-plus' aria-hidden='true'></span></a>";
+                                            echo "<a href='/admin-crear-publicacion.php'>Crear <span class='glyphicon glyphicon-plus' aria-hidden='true'></span></a>";
                                         }
                                     ?>
                                     <a href="/admin-listar-publicaciones.php">Listar <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>

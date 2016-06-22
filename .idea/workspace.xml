@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbcc63d4-59c7-4ab8-b294-1a9766f757f2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/TogetherRobots.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editorialjr/admin-listar-publicaciones.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editorialjr/admin-listar-clientes.php" afterPath="$PROJECT_DIR$/editorialjr/admin-listar-clientes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editorialjr/css/simple-sidebar.css" afterPath="$PROJECT_DIR$/editorialjr/css/simple-sidebar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editorialjr/js/ListarUsuarios.js" afterPath="$PROJECT_DIR$/editorialjr/js/ListarUsuarios.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editorialjr/admin-crear-publicacion.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editorialjr/admin-listar-publicaciones.php" afterPath="$PROJECT_DIR$/editorialjr/admin-listar-publicaciones.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editorialjr/js/CrearPublicacion.js" afterPath="$PROJECT_DIR$/editorialjr/js/CrearPublicacion.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editorialjr/js/ListarPublicaciones.js" afterPath="$PROJECT_DIR$/editorialjr/js/ListarPublicaciones.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editorialjr/side-bar.php" afterPath="$PROJECT_DIR$/editorialjr/side-bar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/SQL_de_un_solo_archivo(test)/DDL.sql" afterPath="$PROJECT_DIR$/scripts/SQL_de_un_solo_archivo(test)/DDL.sql" />
     </list>
     <ignored path="TpFinalWeb2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,66 +30,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ListarPublicaciones.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/editorialjr/views/ListarPublicaciones.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="42" column="36" selection-start-line="42" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="side-bar.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/editorialjr/side-bar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="49" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
+            <state relative-caret-position="285">
+              <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
               <folding>
-                <marker date="1466554887000" expanded="true" signature="1250:1651" ph="..." />
-                <marker date="1466554887000" expanded="true" signature="1974:2223" ph="..." />
-                <marker date="1466554887000" expanded="true" signature="2263:2607" ph="..." />
+                <marker date="1466556852000" expanded="true" signature="1277:1678" ph="..." />
+                <marker date="1466556852000" expanded="true" signature="2001:2250" ph="..." />
+                <marker date="1466556852000" expanded="true" signature="2290:2634" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin-listar-usuarios.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/editorialjr/admin-listar-usuarios.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ListarUsuarios.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/editorialjr/js/ListarUsuarios.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="37" column="64" selection-start-line="37" selection-start-column="64" selection-end-line="37" selection-end-column="64" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="simple-sidebar.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/editorialjr/css/simple-sidebar.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="82" column="42" selection-start-line="82" selection-start-column="42" selection-end-line="82" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin-listar-publicaciones.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/editorialjr/admin-listar-publicaciones.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -98,7 +48,72 @@
         <entry file="file://$PROJECT_DIR$/editorialjr/admin-listar-clientes.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
-              <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+              <caret line="26" column="12" selection-start-line="0" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CrearPublicacion.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/editorialjr/js/CrearPublicacion.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PublicacionAjaxHelper.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/editorialjr/helpers/PublicacionAjaxHelper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PublicacionService.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/editorialjr/service/PublicacionService.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="182" column="20" selection-start-line="182" selection-start-column="9" selection-end-line="182" selection-end-column="20" />
+              <folding>
+                <marker date="1466105382000" expanded="true" signature="586:744" ph="SELECT id, i... publicacion" />
+                <marker date="1466105382000" expanded="true" signature="1884:2021" ph="SELECT id, i... publicacion" />
+                <marker date="1466105382000" expanded="true" signature="5442:5640" ph="INSERT INTO publicacion... " />
+                <marker date="1466105382000" expanded="true" signature="5957:6047" ph="SELECT MAX(f... numero" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DDL.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scripts/SQL_de_un_solo_archivo(test)/DDL.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="218" column="9" selection-start-line="218" selection-start-column="9" selection-end-line="218" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin-crear-publicacion.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/editorialjr/admin-crear-publicacion.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin-listar-publicaciones.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/editorialjr/admin-listar-publicaciones.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -113,10 +128,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/editorialjr/admin-listar-clientes.php" />
-        <option value="$PROJECT_DIR$/editorialjr/admin-listar-publicaciones.php" />
-        <option value="$PROJECT_DIR$/editorialjr/side-bar.php" />
         <option value="$PROJECT_DIR$/editorialjr/js/ListarUsuarios.js" />
         <option value="$PROJECT_DIR$/editorialjr/css/simple-sidebar.css" />
+        <option value="$PROJECT_DIR$/editorialjr/side-bar.php" />
+        <option value="$PROJECT_DIR$/editorialjr/admin-listar-publicaciones.php" />
+        <option value="$PROJECT_DIR$/editorialjr/js/ListarPublicaciones.js" />
+        <option value="$PROJECT_DIR$/editorialjr/admin-crear-publicacion.php" />
+        <option value="$PROJECT_DIR$/editorialjr/js/CrearPublicacion.js" />
+        <option value="$PROJECT_DIR$/scripts/SQL_de_un_solo_archivo(test)/DDL.sql" />
       </list>
     </option>
   </component>
@@ -203,7 +222,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="editorialjr" />
+              <option name="myItemId" value="scripts" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -217,11 +236,11 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="editorialjr" />
+              <option name="myItemId" value="scripts" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="SQL_de_un_solo_archivo(test)" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -272,12 +291,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1466553898937</updated>
-      <workItem from="1466553900111" duration="1109000" />
+      <workItem from="1466553900111" duration="5039000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1109000" />
+    <option name="totallyTimeSpent" value="5039000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -310,22 +329,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/editorialjr/admin-listar-clientes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/editorialjr/admin-listar-publicaciones.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/editorialjr/service/UsuarioService.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="463">
@@ -359,6 +362,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/editorialjr/views/ListarPublicaciones.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="36" selection-start-line="42" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/editorialjr/admin-listar-usuarios.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -369,20 +380,89 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/editorialjr/side-bar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="49" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
+        <state relative-caret-position="285">
+          <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
           <folding>
-            <marker date="1466554887000" expanded="true" signature="1250:1651" ph="..." />
-            <marker date="1466554887000" expanded="true" signature="1974:2223" ph="..." />
-            <marker date="1466554887000" expanded="true" signature="2263:2607" ph="..." />
+            <marker date="1466556852000" expanded="true" signature="1277:1678" ph="..." />
+            <marker date="1466556852000" expanded="true" signature="2001:2250" ph="..." />
+            <marker date="1466556852000" expanded="true" signature="2290:2634" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/editorialjr/views/ListarPublicaciones.php">
+    <entry file="file://$PROJECT_DIR$/editorialjr/views/CrearPublicacion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="36" selection-start-line="42" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="1080">
+          <caret line="72" column="32" selection-start-line="34" selection-start-column="18" selection-end-line="72" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/editorialjr/js/ListarPublicaciones.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="33" column="94" selection-start-line="33" selection-start-column="94" selection-end-line="33" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/editorialjr/admin-listar-clientes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="12" selection-start-line="0" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/editorialjr/admin-listar-publicaciones.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/editorialjr/admin-crear-publicacion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/editorialjr/js/CrearPublicacion.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/editorialjr/helpers/PublicacionAjaxHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/editorialjr/service/PublicacionService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="182" column="20" selection-start-line="182" selection-start-column="9" selection-end-line="182" selection-end-column="20" />
+          <folding>
+            <marker date="1466105382000" expanded="true" signature="586:744" ph="SELECT id, i... publicacion" />
+            <marker date="1466105382000" expanded="true" signature="1884:2021" ph="SELECT id, i... publicacion" />
+            <marker date="1466105382000" expanded="true" signature="5442:5640" ph="INSERT INTO publicacion... " />
+            <marker date="1466105382000" expanded="true" signature="5957:6047" ph="SELECT MAX(f... numero" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/SQL_de_un_solo_archivo(test)/DDL.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="218" column="9" selection-start-line="218" selection-start-column="9" selection-end-line="218" selection-end-column="9" />
           <folding />
         </state>
       </provider>

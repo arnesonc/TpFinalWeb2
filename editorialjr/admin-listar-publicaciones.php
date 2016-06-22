@@ -46,7 +46,7 @@ include 'side-bar.php';
 <script src="js/common.js" type="text/javascript"></script>
 
 <!-- Js listar Publicaciones-->
-<script src="../js/ListarPublicaciones.js" type="text/javascript"></script>
+<script src="js/ListarPublicaciones.js" type="text/javascript"></script>
 
 
 

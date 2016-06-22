@@ -27,13 +27,13 @@ function getAllPublicaciones() {
 			  $("#bodyPublicaciones").html("");
 
 			  tabla = "<table id='tblPublicaciones' class='table table-striped table-bordered table-responsive' cellspacing='0'>";
-			  tabla +="<thead><tr><th>Publicacion</th>";
+			  tabla +="<thead><tr><th>Publicacion</th><th>Destacada</th>";
 			  tabla +="<th>Acciones</th></tr></thead><tbody>";
 
 			  $.each(listaPublicaciones, function(index, publicacion) {
-			    tabla += "<tr><td>" + publicacion.nombre + "</td>";
+			    tabla += "<tr><td>" + publicacion.nombre + "</td><td>" + publicacion.destacado + "</td>";
 			    tabla += "<td><button id='btnEditarPublicacion' name='editarPublicacion' class='btn btn-primary' onclick='editarPublicacion(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
-			    tabla += "<a href='/views/ListarNumeros.php?id="+publicacion.id + "'id='btnListarNumeros' name='" + publicacion.id +"' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Numeros</a> </td></tr> ";
+			    tabla += "<a href='/ListarNumeros.php?id="+publicacion.id + "'id='btnListarNumeros' name='" + publicacion.id +"' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Números</a> </td></tr> ";
 			   
 			  });
 
