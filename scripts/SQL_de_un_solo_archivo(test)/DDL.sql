@@ -216,11 +216,12 @@ CREATE TABLE IF NOT EXISTS `pais` (
 CREATE TABLE IF NOT EXISTS `publicacion` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_usuario` int(11) NOT NULL,
-  UNIQUE KEY `nombre` varchar(50) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
   `fecha_utlimo_numero` date DEFAULT NULL,
   `url_ultima_portada` varchar(200) DEFAULT NULL,
   `destacado` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY (`nombre`),
   KEY `fk_publicacion_usuario` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

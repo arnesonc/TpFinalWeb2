@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbcc63d4-59c7-4ab8-b294-1a9766f757f2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editorialjr/admin-crear-publicacion.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editorialjr/admin-listar-publicaciones.php" afterPath="$PROJECT_DIR$/editorialjr/admin-listar-publicaciones.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editorialjr/js/CrearPublicacion.js" afterPath="$PROJECT_DIR$/editorialjr/js/CrearPublicacion.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editorialjr/js/ListarPublicaciones.js" afterPath="$PROJECT_DIR$/editorialjr/js/ListarPublicaciones.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editorialjr/side-bar.php" afterPath="$PROJECT_DIR$/editorialjr/side-bar.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/SQL_de_un_solo_archivo(test)/DDL.sql" afterPath="$PROJECT_DIR$/scripts/SQL_de_un_solo_archivo(test)/DDL.sql" />
     </list>
     <ignored path="TpFinalWeb2.iws" />
@@ -92,8 +86,8 @@
       <file leaf-file-name="DDL.sql" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/SQL_de_un_solo_archivo(test)/DDL.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="218" column="9" selection-start-line="218" selection-start-column="9" selection-end-line="218" selection-end-column="9" />
+            <state relative-caret-position="232">
+              <caret line="223" column="24" selection-start-line="223" selection-start-column="24" selection-end-line="223" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -291,12 +285,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1466553898937</updated>
-      <workItem from="1466553900111" duration="5039000" />
+      <workItem from="1466553900111" duration="5262000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5039000" />
+    <option name="totallyTimeSpent" value="5262000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -461,8 +455,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/SQL_de_un_solo_archivo(test)/DDL.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="218" column="9" selection-start-line="218" selection-start-column="9" selection-end-line="218" selection-end-column="9" />
+        <state relative-caret-position="232">
+          <caret line="223" column="24" selection-start-line="223" selection-start-column="24" selection-end-line="223" selection-end-column="24" />
           <folding />
         </state>
       </provider>
