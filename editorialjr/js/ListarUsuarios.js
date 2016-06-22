@@ -35,7 +35,7 @@ function armarTablaUsuarios(listaUsuarios){
   var tabla = "";
   $("#bodyUsuarios").html("");
 
-  tabla = "<table id='tblUsuarios' class='table table-striped table-bordered' cellspacing='0'>";
+  tabla = "<table id='tblUsuarios' class='table table-responsive table-bordered' cellspacing='0'>";
   tabla +="<thead><tr><th>Email</th><th>Nombre</th><th>Apellido</th><th>Rol</th><th>Estado</th>";
   tabla +="<th>Acciones</th></tr></thead><tbody>";
 

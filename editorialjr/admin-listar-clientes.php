@@ -24,8 +24,6 @@ include 'side-bar.php';
 					<div id="divTablaClientes" class="col-lg-12">
 					</div>
 				</div>
-
-				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
 			</div>
 		</div>
 	</div>
