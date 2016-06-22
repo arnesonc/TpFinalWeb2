@@ -368,10 +368,6 @@ class UsuarioService {
 			return "Usuario y/o contraseña inválida.";
 		}
 
-		if($myUser->getRol()->descripcion != "administrador"){
-			return "No posee permisos para iniciar sesión.";
-		}
-
 		session_start();
 		$_SESSION['session'] = array(
 				"login" => "ok",
