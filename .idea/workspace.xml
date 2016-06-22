@@ -2,22 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbcc63d4-59c7-4ab8-b294-1a9766f757f2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editorialjr/admin-listar-numeros.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editorialjr/helpers/SessionAjaxHelper.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editorialjr/js/CrearPublicacion.js" afterPath="$PROJECT_DIR$/editorialjr/js/CrearPublicacion.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editorialjr/js/ListarNumeros.js" afterPath="$PROJECT_DIR$/editorialjr/js/ListarNumeros.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editorialjr/js/ListarPublicaciones.js" afterPath="$PROJECT_DIR$/editorialjr/js/ListarPublicaciones.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editorialjr/js/common.js" afterPath="$PROJECT_DIR$/editorialjr/js/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editorialjr/service/NumeroService.php" afterPath="$PROJECT_DIR$/editorialjr/service/NumeroService.php" />
     </list>
     <ignored path="TpFinalWeb2.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
+    <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
-    <option name="SHOW_DIALOG" value="false" />
+    <option name="SHOW_DIALOG" value="true" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
@@ -32,20 +25,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NumeroService.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/editorialjr/service/NumeroService.php">
+      <file leaf-file-name="common.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/editorialjr/js/common.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="613">
-              <caret line="243" column="40" selection-start-line="243" selection-start-column="40" selection-end-line="243" selection-end-column="40" />
-              <folding>
-                <marker date="1466575711000" expanded="true" signature="450:605" ph="SELECT id, i... numero" />
-                <marker date="1466575711000" expanded="true" signature="3251:3385" ph="SELECT count... numero" />
-                <marker date="1466575711000" expanded="true" signature="5457:5785" ph="INSERT INTO numero... " />
-                <marker date="1466575711000" expanded="true" signature="5457:5886" ph="INSERT INTO numero... " />
-                <marker date="1466575711000" expanded="true" signature="5785:5837" ph="/*DATE(NOW()... " />
-                <marker date="1466575711000" expanded="true" signature="6308:6506" ph="SELECT id, i... numero" />
-                <marker date="1466575711000" expanded="true" signature="7063:7166" ph="UPDATE numer... " />
-              </folding>
+            <state relative-caret-position="285">
+              <caret line="19" column="29" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -178,7 +163,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -190,8 +175,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -229,12 +215,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1466553898937</updated>
-      <workItem from="1466553900111" duration="14605000" />
+      <workItem from="1466553900111" duration="14951000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14605000" />
+    <option name="totallyTimeSpent" value="14951000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -463,14 +449,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/editorialjr/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/editorialjr/views/ListarUsuarios.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="536">
@@ -516,6 +494,14 @@
             <marker date="1466575711000" expanded="true" signature="6308:6506" ph="SELECT id, i... numero" />
             <marker date="1466575711000" expanded="true" signature="7063:7166" ph="UPDATE numer... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/editorialjr/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="29" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
