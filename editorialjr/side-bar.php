@@ -14,29 +14,32 @@
                                 <li>
                                     <h4>Publicaciones</h4>
                                     <?php
-                                        if($_SESSION['session']['id'] == '1'){
-                                            echo "<a href='/admin-crear-publicacion.php'>Crear <span class='glyphicon glyphicon-plus' aria-hidden='true'></span></a>";
+                                        if($_SESSION['session']['rol'] == '1'){
+                                            echo "<a href='/admin-crear-publicacion.php'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> Crear</a>";
                                         }
                                     ?>
-                                    <a href="/admin-listar-publicaciones.php">Listar <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
+                                    <a href="/admin-listar-publicaciones.php"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Listar</a>
                                 </li>
                                 <li>
                                     <h4>Usuarios</h4>
-                                    <!-- <a href="/admin-crear-usuario.php">Crear <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a> -->
-                                    <a href="/admin-listar-usuarios.php">Listar <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
+                                    <a href="/admin-listar-usuarios.php"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Listar</a>
                                 </li>
-                                <li>
-                                    <h4>Secciones</h4>
-                                    <a href="/admin-listar-secciones.php">Listar <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
-                                </li>
+                                <?php
+                                    if($_SESSION['session']['rol'] == '1'){
+                                        echo "<li>";
+                                        echo "<h4>Secciones</h4>";
+                                        echo "<a href='/admin-listar-secciones.php'><span class='glyphicon glyphicon-th-list' aria-hidden='true'></span> Listar</a>";
+                                        echo "</li>";
+                                    }
+                                ?>
                                 <!-- <li>
                                     <h4>Clientes</h4>
                                     <a href="/admin-listar-clientes.php">Listar <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
                                 </li> -->
                                 <li>
                                     <h4>Reportes</h4>
-                                    <a href="#">Crear <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-                                    <a href="#">Listar <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
+                                    <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear</a>
+                                    <a href="#"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Listar</a>
                                 </li>
                             </ul>
                         </div>

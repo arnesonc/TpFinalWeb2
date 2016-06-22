@@ -377,7 +377,7 @@ class UsuarioService {
 				"login" => "ok",
 				"id" => $myUser->id,
 				"nombre" => $myUser->nombre,
-				"id_estado_usuario" => $myUser->id_estado_usuario);
+				"rol" => $myUser->id_rol);
 
 		return true;
 	}
