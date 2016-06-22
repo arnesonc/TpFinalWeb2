@@ -19,8 +19,6 @@ $(document).ready(function() {
 
 		var precio = $("#precio").val().trim();
 
-		alert("el valor de destacado es" + destacado);
-
 		if (publicacionValida(id_usuario, nombre, destacado, precio)) {
 			$.ajax({
 				url : '/helpers/PublicacionAjaxHelper.php',

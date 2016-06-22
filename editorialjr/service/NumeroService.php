@@ -171,7 +171,8 @@ class NumeroService {
 				$url_portada,
 				$fe_erratas,
 				$numeroModel->precio,
-				DATE(NOW()),
+				/*DATE(NOW()) no va, eso va al momento de publicar*/
+				null,
 				$numeroModel->numero_revista
 				);
 				";
@@ -236,6 +237,11 @@ class NumeroService {
 			return null;
 		}
 		
+	}
+
+
+	public function publicarNumero($id_numero){
+		/*obtiene el modelo y lo updatea*/
 	}
 }
 

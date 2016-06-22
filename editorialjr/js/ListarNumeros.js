@@ -28,9 +28,10 @@ function armarTablaNumeros(listaNumeros){
 	  tabla +="<th>Acciones</th></tr></thead><tbody>";
 
 	  $.each(listaNumeros, function(index, numero) {
-	    tabla += "<tr><td>" + numero.numero_revista + "</td>";
+		fecha=(numero.fecha_publicado == null)?'<strong>DRAFT</strong>':numero.fecha_publicado;
+		tabla += "<tr><td>" + numero.numero_revista + "</td>";
 	    tabla += "<td>" + numero.precio + "</td>";
-	    tabla += "<td>" + numero.fecha_publicado + "</td>";
+	    tabla += "<td>" + fecha + "</td>";
 	    tabla += "<td><button id='btnEditarNumero' name='"+ numero.id +"' class='btn btn-primary' onclick='editarNumero(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
 	    tabla += "<a href='/views/ListarArticulos.php?id="+numero.id + "'id='btnListarArticulos' name='" + numero.id +"' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Articulos</a> </td></tr> ";
 		});

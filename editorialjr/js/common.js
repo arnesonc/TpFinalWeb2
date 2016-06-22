@@ -16,3 +16,20 @@ function mostrarMensaje(nombreDiv, mensaje, autoHide){
 function ocultarMensaje(nombreDiv){
   $("#" + nombreDiv).hide('fast');
 }
+
+function obtenerSessionID() {
+
+	$.ajax({
+		url : '/helpers/SessionAjaxHelper.php',
+		data : {
+		},
+		type : 'POST',
+		dataType : "json",
+		success : function(result) {
+			alert(result);
+		},
+		error : function(error) {
+			alert("Ups, no anda sessionID! " + error);
+		}
+	});
+}
