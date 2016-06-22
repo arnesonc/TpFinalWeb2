@@ -17,6 +17,37 @@ function ocultarMensaje(nombreDiv){
   $("#" + nombreDiv).hide('fast');
 }
 
+function obtenerSessionID(){
+	// global param
+	var selector = !0;
+	// get return ajax object
+	var ajaxObj = ajaxSessionID(selector);
+	// store ajax response in var
+	var ajaxResponse = ajaxObj.responseText;
+	// check ajax response
+	console.log(ajaxResponse);
+	// your ajax callback function for success
+	ajaxObj.success(function(response) {
+		id_user = response;
+	});
+	return id_user;
+}
+
+function ajaxSessionID(selector) {
+	return $.ajax({
+		type: "POST",
+		url: '/helpers/SessionAjaxHelper.php',
+		data: {
+		},
+		dataType: "html",
+		async: !1,
+		error: function() {
+			alert("No pudo obtener el USER_ID de Session")
+		}
+	});
+}
+
+/*
 function obtenerSessionID() {
 
 	$.ajax({
@@ -26,10 +57,11 @@ function obtenerSessionID() {
 		type : 'POST',
 		dataType : "json",
 		success : function(result) {
-			alert(result);
+			alert("el resultado de obtenerSessionID es "+ result);
+			return result;
 		},
 		error : function(error) {
 			alert("Ups, no anda sessionID! " + error);
 		}
 	});
-}
+}*/

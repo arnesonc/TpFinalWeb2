@@ -13,6 +13,11 @@ switch($metodo){
 		$id_numero = $_POST["id_numero"];
 		$result = $articuloService->getAllArticulosByIdNumero($id_numero);
 		break;
+	case "getAllArticulosFromNumByUser":
+		$id_numero = $_POST["id_numero"];
+		$id_user = $_POST["id_user"];
+		$result = $articuloService->getAllArticulosFromNumByUser($id_user, $id_numero);
+		break;
 	default:
 		echo "Método inexistente en el switch de ArticuloAjaxHelper.php";
 }

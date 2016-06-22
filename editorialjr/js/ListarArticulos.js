@@ -1,9 +1,12 @@
 function listarArticulos(id_numero) {
-		$.ajax({
+	var id_user = obtenerSessionID();
+
+	$.ajax({
 				url : '/helpers/ArticuloAjaxHelper.php',
 				data : {
-					metodo : "getAllArticulos",
+					metodo : "getAllArticulosFromNumByUser",
 					id_numero : id_numero,
+					id_user : id_user
 				},
 				type : 'POST',
 				dataType : "json",
