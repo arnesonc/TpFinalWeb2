@@ -3,6 +3,8 @@ require_once (__DIR__ . "/../common/DataAccess.php");
 require_once (__DIR__ . "/../model/ArticuloModel.php");
 require_once (__DIR__ . "/../helpers/LoggerHelper.php");
 require_once (__DIR__ . "/../helpers/ValidationHelper.php");
+session_start(); //para todos los metodos que usen variables de session
+
 class ArticuloService {
 	private $dataAccess = null;
 	private $validationHelper = null;
@@ -248,21 +250,41 @@ class ArticuloService {
 
 	/*-----------------------------------------------------------------------------------------------------------------*/
 	public function getAllArticulosFromNumByUser($idUsuario,$idNumero) {
-		$sql = "SELECT id,
-		id_seccion,
-		id_usuario,
-		id_estado_articulo,
-		titulo,
-		latitud,
-		longitud,
-		fecha_cierre,
-		copete,
-		url_contenido,
-		contenido_adicional,
-		id_numero
-		FROM articulo
-		WHERE id_usuario = $idUsuario AND id_numero = $idNumero;";
-
+		
+		
+		if($_SESSION['session']['rol'] == 1){
+			$sql = "SELECT id,
+			id_seccion,
+			id_usuario,
+			id_estado_articulo,
+			titulo,
+			latitud,
+			longitud,
+			fecha_cierre,
+			copete,
+			url_contenido,
+			contenido_adicional,
+			id_numero
+			FROM articulo
+			WHERE id_numero = $idNumero;";
+		}
+		else {
+			$sql = "SELECT id,
+			id_seccion,
+			id_usuario,
+			id_estado_articulo,
+			titulo,
+			latitud,
+			longitud,
+			fecha_cierre,
+			copete,
+			url_contenido,
+			contenido_adicional,
+			id_numero
+			FROM articulo
+			WHERE id_usuario = $idUsuario AND id_numero = $idNumero;";
+		}
+		
 		try {
 
 			$articuloDBArray = $this->dataAccess->getMultipleResults ( $sql );

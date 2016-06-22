@@ -6,7 +6,7 @@ function listarArticulos(id_numero) {
 				data : {
 					metodo : "getAllArticulosFromNumByUser",
 					id_numero : id_numero,
-					id_user : id_user
+					id_user : id_user,
 				},
 				type : 'POST',
 				dataType : "json",
@@ -14,9 +14,9 @@ function listarArticulos(id_numero) {
 					armarTablaArticulos(result);
 				},
 				error : function(error) {
-					alert("Ups, ocurrio un error! " + error);
+					alert("Upa, ocurrio un error! " + error);
 				}
-		});	
+		});
 }
 
 function armarTablaArticulos(listaArticulos){
@@ -32,7 +32,7 @@ function armarTablaArticulos(listaArticulos){
 	    tabla += "<tr><td>" + articulo.titulo + "</td>";
 	    tabla += "<td>" + articulo.fecha_cierre + "</td>";
 	    tabla += "<td><button id='btnEditarArticulo' name='' class='btn btn-primary' onclick='editarArticulo(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
-	    tabla += "<a href='/views/ListarArticulos.php?id="+articulo.id + "'id='btnListarArticulos' name='" + articulo.id +"' class='btn btn-info'><span class='glyphicon glyphicon-list'></span>Ver este articulo</a></td></tr> ";
+	    tabla += "<a href='/admin-listar-articulos.php?id="+articulo.id + "'id='btnListarArticulos' name='" + articulo.id +"' class='btn btn-info'><span class='glyphicon glyphicon-list'></span>Ver este articulo</a></td></tr> ";
 		});
 	  
 
