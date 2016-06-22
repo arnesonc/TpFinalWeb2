@@ -10,7 +10,13 @@ $(document).ready(function() {
 		// Toma los valores de la vista para enviarlos por ajax a su helper.
 		var id_usuario = 1;// $("#user").val().trim();
 		var nombre = $("#nombre").val().trim();
-		var destacado = $("#destacado").val().trim();
+		if($('#destacado').is(':checked')){
+			var destacado = 1;
+		}
+		else {
+			var destacado = 0;
+		}
+
 		var precio = $("#precio").val().trim();
 
 		alert("el valor de destacado es" + destacado);
@@ -38,7 +44,7 @@ $(document).ready(function() {
 
 				},
 				error : function(error) {
-					alert("Ups, ocurrio un error! " + error);
+					alert("Upa, ocurrio un error! " + error);
 				}
 			});
 		}
