@@ -225,7 +225,7 @@ class NumeroService {
 	public function updateNumero($numeroModel){
 		
 		$sql = "UPDATE numero
-		SET url_portada= '$numeroModel->url_portada'
+		SET url_portada= '$numeroModel->url_portada',precio = $numeroModel->precio
 		WHERE id= $numeroModel->id;";
 		try {
 			$this->dataAccess->execute ( $sql );

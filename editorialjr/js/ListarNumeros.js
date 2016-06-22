@@ -31,7 +31,7 @@ function armarTablaNumeros(listaNumeros){
 	    tabla += "<tr><td>" + numero.numero_revista + "</td>";
 	    tabla += "<td>" + numero.precio + "</td>";
 	    tabla += "<td>" + numero.fecha_publicado + "</td>";
-	    tabla += "<td><button id='btnEditarNumero' name='' class='btn btn-primary' onclick='editarNumero(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
+	    tabla += "<td><button id='btnEditarNumero' name='"+ numero.id +"' class='btn btn-primary' onclick='editarNumero(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
 	    tabla += "<a href='/views/ListarArticulos.php?id="+numero.id + "'id='btnListarArticulos' name='" + numero.id +"' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Articulos</a> </td></tr> ";
 		});
 	  
@@ -63,3 +63,8 @@ function editarNumeroFormulario(id_numero){
 	$("#idNumero").val(id_numero);
 }
 */
+function editarNumero(button){
+	$("#idNumero").val(button.name);
+	$("#divMensajeError").hide();  
+	$("#modalNumero").modal('show');
+}

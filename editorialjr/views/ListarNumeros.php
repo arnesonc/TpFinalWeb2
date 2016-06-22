@@ -15,17 +15,6 @@
 </head>
 <body>
 
-	<div id="formularioDeEdicion">
-		<form enctype="multipart/form-data"
-			action="/helpers/NumeroFileHelper.php" method="POST">
-			<!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-			<input type="hidden" name="MAX_FILE_SIZE" value="30000" /> <input
-				type="text" id="idNumero" name="idNumero" value="" />
-			<!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-			Enviar este fichero: <input name="fichero_usuario" type="file" /> <input
-				type="submit" value="Enviar fichero" />
-		</form>
-	</div>
 	<!-- seccion formulario -->
 	<section id="formulario">
 		<div class="container">
@@ -47,13 +36,85 @@
 	</div>
 
 
+
+
+	<div class="modal fade" id="modalNumero" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="tituloModalUsuario">Editar Numero</h4>
+				</div>
+				<div class="modal-body">
+					<form id="updateForm" enctype="multipart/form-data"
+						action="/helpers/NumeroFileHelper.php" method="POST"
+						class="form-horizontal">
+						<fieldset>
+						
+						
+							<div id="divPrecioNumero" class="form-group">
+								<label class="col-md-4 control-label" for="precio">Precio</label>
+								<div class="col-md-5">
+									<input id="precio" name="precio" placeholder="Precio"
+										class="form-control input-md" type="text" maxlength="10">
+								</div>
+							</div>
+
+
+<!-- FORMULARIO DE CARGA DE ARCHIVO -->
+							<div id="formularioDeEdicion">
+								<!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
+								<input type="hidden" name="MAX_FILE_SIZE" value="30000" /> <input
+									type="hidden" id="idNumero" name="idNumero" /><!-- HARDCODEADO -->
+								<!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
+								Seleccionar Imagen: <input name="fichero_usuario" type="file" />
+							</div>
+<!-- FORMULARIO DE CARGA DE ARCHIVO -->
+
+
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="send"></label>
+								<div class="col-md-5">
+									<div id="divMensajeError"
+										class="col-md-12 alert alert-danger fade in oculto"></div>
+								</div>
+							</div>
+
+							<!-- Se usa para saber si es edicion o alta -->
+							<input id="hdnIdUsuario" type="hidden" />
+						</fieldset>
+						<div class="modal-footer">
+							<button id="btnAceptar" type="submit" class="btn btn-primary">Guardar</button>
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Cancelar</button>
+						</div>
+					</form>
+					<!-- /form -->
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
 </body>
 
+
+<!-- Js Funciones comunes a los demas js-->
+<script src="../js/common.js" type="text/javascript"></script>
 
 <script src="../js/jquery-1.12.4.min.js" type="text/javascript"></script>
 <script src="../js/datatables.min.js" type="text/javascript"></script>
 <script src="../js/ListarArticulos.js" type="text/javascript"></script>
 <script src="../js/ListarNumeros.js" type="text/javascript"></script>
 <script src="../js/ListarPublicaciones.js" type="text/javascript"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.js"></script>
+
 <script>listarNumeros(<?php echo $_GET["id"]; ?>)</script>
 </html>
