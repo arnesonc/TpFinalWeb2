@@ -29,8 +29,9 @@ function armarTablaArticulos(listaArticulos){
 	  tabla +="<th>Acciones</th></tr></thead><tbody>";
 
 	  $.each(listaArticulos, function(index, articulo) {
-	    tabla += "<tr><td>" + articulo.titulo + "</td>";
-	    tabla += "<td>" + articulo.fecha_cierre + "</td>";
+		fecha=(articulo.fecha_publicado == null)?'<strong>DRAFT</strong>':articulo.fecha_publicado;
+		tabla += "<tr><td>" + articulo.titulo + "</td>";
+	    tabla += "<td>" + fecha + "</td>";
 	    tabla += "<td><button id='btnEditarArticulo' name='' class='btn btn-primary' onclick='editarArticulo(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
 	    tabla += "<a href='/admin-listar-articulos.php?id="+articulo.id + "'id='btnListarArticulos' name='" + articulo.id +"' class='btn btn-info'><span class='glyphicon glyphicon-list'></span>Ver este articulo</a></td></tr> ";
 		});
