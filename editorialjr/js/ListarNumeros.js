@@ -32,8 +32,14 @@ function armarTablaNumeros(listaNumeros){
 		tabla += "<tr><td>" + numero.numero_revista + "</td>";
 	    tabla += "<td>" + numero.precio + "</td>";
 	    tabla += "<td>" + fecha + "</td>";
-	    tabla += "<td><button id='btnEditarNumero' name='"+ numero.id +"' class='btn btn-primary' onclick='editarNumero(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
-		tabla += "<button onclick='aArticulos("+ numero.id +","+ numero.id_estado_numero +");' id='btnListarArticulos' name='" + numero.id + "' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Articulos</button> </td></tr> ";
+		tabla += "<td><button onclick='aArticulos("+ numero.id +","+ numero.id_estado_numero +");' id='btnListarArticulos' name='" + numero.id + "' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Articulos</button>  ";
+		//Si esta en draft, coloca publicar u editar, sino coloca fe de erratas.
+			if(numero.fecha_publicado == null){
+				tabla += "<button id='btnEditarNumero' name='"+ numero.id +"' class='btn btn-primary' onclick='editarNumero(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
+				tabla += "<button onclick='publicar("+ numero.id +","+ numero.id_estado_numero +");' id='btnPublicar' name='" + numero.id + "' class='btn btn-success'><span class='glyphicon glyphicon-share'></span> Publicar</button> </td></tr> ";
+			} else {
+				tabla += "<button onclick='addFeErratas("+ numero.id +","+ numero.id_estado_numero +");' id='btnFeErratas' name='" + numero.id + "' class='btn btn-warning'><span class='glyphicon glyphicon-edit'></span> Nueva Fe De Erratas</button> </td></tr> ";	
+			}
 		});
 	  
 
