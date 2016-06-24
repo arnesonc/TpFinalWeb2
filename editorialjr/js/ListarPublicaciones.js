@@ -34,7 +34,7 @@ function getAllPublicaciones() {
 				  destacado=(publicacion.destacado == 1)?'si':'no';
 				  tabla += "<tr><td>" + publicacion.nombre + "</td><td>" + destacado + "</td>";
 				  tabla += "<td><button id='btnEditarPublicacion' name='editarPublicacion' class='btn btn-primary' onclick='editarPublicacion(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
-				  tabla += "<a href='/admin-listar-numeros.php?id="+publicacion.id + "'id='btnListarNumeros' name='" + publicacion.id +"' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Números</a> </td></tr> ";
+				  tabla += "<button onclick='aNumeros("+ publicacion.id +");' id='btnListarNumeros' name='" + publicacion.id + "' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Números</button> </td></tr> ";
 			   
 			  });
 
@@ -54,4 +54,8 @@ function getAllPublicaciones() {
 			      }
 			  });
 			}    
+}
+
+function aNumeros(idPublicacion){
+	$.redirect('admin-listar-numeros.php', {'idPublicacion': idPublicacion});
 }

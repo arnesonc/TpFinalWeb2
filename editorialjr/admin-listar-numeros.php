@@ -109,8 +109,11 @@ include 'side-bar.php';
 <script src="js/datatables.min.js" type="text/javascript"></script>
 
 <!-- Negrada -->
-<script>listarNumeros(<?php echo $_GET["id"]; ?>)</script>
-<!-- Negrada II-->
+<script>listarNumeros(<?php echo $_POST['idPublicacion'] ?>)</script>
+
+<!-- jquery redirect-->
+<script src="js/jquery.redirect.js" type="text/javascript"></script>
+
 </body>
 
 </html>

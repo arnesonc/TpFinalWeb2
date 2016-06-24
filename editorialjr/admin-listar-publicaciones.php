@@ -48,7 +48,8 @@ include 'side-bar.php';
 <!-- Js listar Publicaciones-->
 <script src="js/ListarPublicaciones.js" type="text/javascript"></script>
 
-
+<!-- jquery redirect-->
+<script src="js/jquery.redirect.js" type="text/javascript"></script>
 
 <!-- js datatables-->
 <script src="js/datatables.min.js" type="text/javascript"></script>
