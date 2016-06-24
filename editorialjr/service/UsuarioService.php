@@ -143,15 +143,15 @@ class UsuarioService {
 		$message = $this->validateUsuario ( $usuarioModel, true );
 
 		// Si esta vacio, no hay mensaje de error por lo tanto es válido
-		if (empty ( $message )) {
+		if (empty($message)) {
 
-			$result = $this->insertUsuario ($usuarioModel);
+			$this->insertUsuario ($usuarioModel);
 		} else {
 			// En caso de ser invalido devuelve un mensaje de validacion
-			$result = $message;
+			return $message;
 		}
 
-		return $result;
+		return true;
 	}
 
 	/**
@@ -204,8 +204,10 @@ class UsuarioService {
 		$sql = "SELECT email
 		FROM usuario
 		WHERE email = '$email';";
+
 		try{
 			$email = $this->dataAccess->getOneResult($sql);
+
 			return !is_null($email["email"]);
 		}catch(Exception $e){
 			$logger = Logger::getRootLogger();

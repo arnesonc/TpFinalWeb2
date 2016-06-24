@@ -203,13 +203,14 @@ function insertarUsuario() {
 			type : 'POST',
 			dataType : "json",
 			success : function(result) {
-				if (result) {
+				if (result === true) {
+          console.log(result);
 					limpiarFormulario();
           $("#modalUsuario").modal('hide');
           obtenerUsuarios();
           mostrarMensaje("divExito", "Registración exitosa.", true);
 				} else {
-					mostrarMensaje("divError", "Error en registracion.", true);
+					mostrarMensaje("divMensajeError", result);
 				}
 			},
 			error : function(error) {

@@ -14,11 +14,6 @@ include 'side-bar.php';
                         <h3>Publicaciones</h3>
                     </div>
                 </div>
-                <!-- <div class="row botonNuevo">
-                    <div class="col-lg-2">
-                        <button id='btnNuevoCliente' class='btn btn-primary'><span class='glyphicon glyphicon-plus'></span> Nuevo cliente</button>
-                    </div>
-                </div> -->
                 <!-- TABLA-->
                 <div class="row">
                     <div class="col-lg-12">
@@ -38,7 +33,7 @@ include 'side-bar.php';
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="destacado">¿es una publicacion destacada?</label>
                                     <div class="col-md-4">
-                                        <input id="destacado" name="destacado" placeholder="" class="form-control input-md" type="checkbox" value="1">
+                                        <input id="destacado" name="destacado" placeholder="" type="checkbox" value="1">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -49,7 +44,7 @@ include 'side-bar.php';
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="precio">Precio de numero</label>
                                     <div class="col-md-4">
-                                        <input id="precio" name="precio" placeholder="Precio" class="form-control input-md" type="text">
+                                        <input id="precio" name="precio" placeholder="Precio" class="form-control" type="number" min="0" max="9999">
                                     </div>
                                 </div>
 

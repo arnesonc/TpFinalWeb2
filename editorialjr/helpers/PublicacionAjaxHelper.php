@@ -23,7 +23,7 @@ switch($metodo){
 		$destacado = $_POST["destacado"];
 		$precio = $_POST["precio"];
 		$result = $publicacionService->createPublicacionNumeroParametros($id_usuario, $nombre, $destacado, $precio);
-		
+		break;
 	default:
 		echo "Método inexistente en el switch de PublicacionAjaxHelper.php";
 }

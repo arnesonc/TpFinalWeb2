@@ -6,7 +6,7 @@ $(document).ready(function() {
 	});
 
 	function crearPublicacion() {
-		
+
 		// Toma los valores de la vista para enviarlos por ajax a su helper.
 		var id_usuario = 1;// $("#user").val().trim();
 		var nombre = $("#nombre").val().trim();
@@ -32,17 +32,19 @@ $(document).ready(function() {
 				type : 'POST',
 				dataType : "json",
 				success : function(result) {
-					if ($.isNumeric( result ) ) {
+					if (result) {
+						console.log("success");
 						limpiarFormulario();
 						alert("Creacion exitosa.");
 					} else {
+						console.log("else success");
 						alert("error en creacion de publicacion.");
 						alert(result);
 					}
-
 				},
 				error : function(error) {
-					alert("Upa, ocurrio un error! " + error);
+					console.log("error");
+					alert("Upa, ocurrio un error! ");
 				}
 			});
 		}

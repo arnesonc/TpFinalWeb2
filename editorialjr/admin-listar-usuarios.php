@@ -24,7 +24,8 @@ include 'side-bar.php';
 					</div>
 				</div>
 				<div class="row">
-					<div id="divTablaUsuarios" class="col-lg-12">
+					<div class="col-lg-12">
+						<div id="divTablaUsuarios"></div>
 					</div>
 				</div>
 			</div>

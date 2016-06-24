@@ -11,7 +11,7 @@ class PublicacionService {
 	public function __construct() {
 		$this->dataAccess = new DataAccess ();
 	}
-	
+
 	/**
 	 * Obtiene una PublicacionModel por su id
 	 */
@@ -24,26 +24,26 @@ class PublicacionService {
 				    destacado
 				FROM publicacion
 				WHERE id = $id;";
-		
+
 		try {
-			
+
 			$publicacionDB = $this->dataAccess->getOneResult ( $sql );
 		} catch ( Exception $e ) {
 			$logger = Logger::getRootLogger ();
 			$logger->error ( $e );
-			
+
 			return null;
 		}
-		
+
 		return $this->convertPublicacionDBToPublicacionModel ( $publicacionDB );
 	}
-	
-	
+
+
 	/**
 	 * Convierte un publicacion de la base de datos en un objeto PublicacionModel y lo devuelve
 	 */
 	private function convertPublicacionDBToPublicacionModel($publicacionDB) {
-		
+
 		/* Convierto el resultado de la BD a un objeto modelado */
 		$publicacionModel = new PublicacionModel ();
 		$publicacionModel->id = $publicacionDB ["id"];
@@ -52,10 +52,10 @@ class PublicacionService {
 		$publicacionModel->fecha_utlimo_numero = $publicacionDB ["fecha_utlimo_numero"];
 		$publicacionModel->url_ultima_portada = $publicacionDB ["url_ultima_portada"];
 		$publicacionModel->destacado = $publicacionDB ["destacado"];
-		
+
 		return $publicacionModel;
 	}
-	
+
 	/*
 	 * Obtiene todas las publicaciones de la base de datos
 	 */
@@ -68,7 +68,7 @@ class PublicacionService {
     			destacado
 				FROM publicacion;
 				";
-		
+
 		try {
 			$publicacionDBArray = $this->dataAccess->getMultipleResults ( $sql );
 		} catch ( Exception $e ) {
@@ -76,33 +76,33 @@ class PublicacionService {
 			$logger->error ( $e );
 			return null;
 		}
-		
+
 		$arrayPublicacionModel = array ();
-		
+
 		foreach ( $publicacionDBArray as $publicacionDB ) {
-			
+
 			$publicacionModel = $this->convertPublicacionDBToPublicacionModel ( $publicacionDB );
-			
+
 			$arrayPublicacionModel [] = $publicacionModel;
 		}
-		
+
 		return $arrayPublicacionModel;
 	}
-	
+
 	/**
 	 * Valida un objeto Publicacion Model
 	 */
 	private function validatePublicacion($publicacionModel) {
 		$validationHelper = new ValidationHelper ();
-		
+
 		if ($validationHelper->validateNull ( $publicacionModel->id_usuario ) || $validationHelper->validateIsSet ( $publicacionModel->id_usuario ) || ! $validationHelper->validateNumber ( $publicacionModel->id_usuario )) {
 			return "Debe seleccionar un editor para la publicacion";
 		}
-		
+
 		if ($validationHelper->validateNull ( $publicacionModel->nombre ) || ! $validationHelper->validateIsSet ( $publicacionModel->nombre ) || ! $validationHelper->validateText ( $publicacionModel->nombre, 5, 50 )) {
 			return "El nombre de la publicacion es obligatorio y debe contener entre 5 y 50 caracteres.";
 		}
-		
+
 		if (! $validationHelper->validateNull ( $publicacionModel->nombre ) && $validationHelper->validateIsSet ( $publicacionModel->nombre ) && ! $validationHelper->validateText ( $publicacionModel->nombre, 5, 200 )) {
 			return "Se debe especificar la url de la ultima portada";
 		}
@@ -110,68 +110,75 @@ class PublicacionService {
 		if ($validationHelper->validateNull ( $publicacionModel->destacado ) || $validationHelper->validateIsSet ( $publicacionModel->destacado ) || ! $validationHelper->validateBoolean ( $publicacionModel->destacado )) {
 			return "No se conoce el estado de Publicacion destacada";
 		}
-		
+
 		return "";
 	}
-	
+
 	public function createPublicacionNumeroParametros($id_usuario, $nombre, $destacado, $precio) {
-		
+
 		$publicacionModel = new PublicacionModel ();
 		$publicacionModel->id_usuario = $id_usuario;
 		$publicacionModel->nombre = $nombre ;
 		$publicacionModel->destacado = $destacado;
-		
+
 		$numeroModel = new NumeroModel ();
 		$numeroModel->id_estado_numero = 1;
 		$numeroModel->precio = $precio;
-		
+
 		try {
 			$this->createPublicacionNumero ( $publicacionModel, $numeroModel );
+
 		} catch ( Exception $e ) {
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $e );
+
 			return $e;
 		}
+
 		return true;
 	}
-	
+
 	/*
 	 * Crea una publicacion obligando a crear un numero
 	 */
 	public function createPublicacionNumero($publicacionModel, $numeroModel) {
 		$messagePublicacion = $this->validatePublicacion ( $publicacionModel );
-		
-		if (empty ( $messagePublicacion )) {
+
+		if (!empty ( $messagePublicacion )) {
 			return $messagePublicacion;
 		}
-		
+
 		$numeroService = new NumeroService ();
 		$messageNumero = $numeroService->validateNumero ( $numeroModel );
-		
-		if (empty ( $messageNumero )) {
+
+		if (!empty ( $messageNumero )) {
 			return $messageNumero;
 		}
-		
+
 		try{
-			
+
 			$publicacionModel->url_ultima_portada = $numeroModel->url_portada;
 			$idPublicacion = $this->insertPublicacion ( $publicacionModel );
 			$numeroModel->id_publicacion = $idPublicacion;
 			$numeroService->createNumero( $numeroModel );
-			
+
 		}catch(Exception $e){
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $e );
 			return $e;
 		}
-		
+
 		return true;
 	}
-	
+
 	// TODO: se puede agregar crear publicacion por parametros.
-	
+
 	/**
 	 * Inserta una nueva seccion, si tuvo exito devuelve el id de la publicacion
 	 * caso contrario devuelve falso
 	 */
 	private function insertPublicacion($PublicacionModel) {
-		
+
 		$sql = " INSERT INTO publicacion
 		(id,
     	id_usuario,
@@ -195,9 +202,9 @@ class PublicacionService {
 		}
 		return $idPublicacion;
 	}
-	
+
 	public function getLastFecha($id_publicacion) {
-	
+
 		$sql = "SELECT
 				MAX(fecha_publicado) as fecha_publicado
 				FROM numero WHERE id_publicacion = $id_publicacion;";
