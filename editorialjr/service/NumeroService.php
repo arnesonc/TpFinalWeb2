@@ -235,18 +235,27 @@ class NumeroService {
 	}
 
 	public function editarFeErratas($idNumero,$feErratas){
-		$sql = "UPDATE numero
-				SET fe_erratas= '$feErratas'
-				WHERE id= $idNumero;";
 		
-		try {
-			$this->dataAccess->execute ( $sql );
-			return true;
-		} catch ( Exception $e ) {
-			$logger = Logger::getRootLogger ();
-			$logger->error ( $e );
-			return null;
+		$numeroModel = getNumeroById($idNumero);
+		$estadoPublicado = 2;
+		if($numeroModel->id_estado_numero == $estadoPublicado){
+			$sql = "UPDATE numero
+			SET fe_erratas= '$feErratas'
+			WHERE id= $idNumero;";
+			
+			try {
+				$this->dataAccess->execute ( $sql );
+				return true;
+			} catch ( Exception $e ) {
+				$logger = Logger::getRootLogger ();
+				$logger->error ( $e );
+				return null;
+			}	
+		} else {
+			return("No se puede editar una FeErratas si el numero no fue publicado.
+					No te quieras salir con la tuya rompiendo mi frontEnd.");
 		}
+		
 	}
 
 	public function publicarNumero($id_numero){
