@@ -369,6 +369,9 @@ class UsuarioService {
 		if ($myUser->pass != md5($pass)) {
 			return "Usuario y/o contraseña inválida.";
 		}
+		 if ($myUser->descripcion_estado_usuario == "inactivo"){
+			 return "El usuario se encuentra desactivado.";
+		 }
 
 		session_start();
 		$_SESSION['session'] = array(

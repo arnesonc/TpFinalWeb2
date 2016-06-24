@@ -46,12 +46,21 @@ function armarTablaUsuarios(listaUsuarios){
     tabla += "<td>" + usuario.descripcion_rol + "</td>";
     tabla += "<td>" + usuario.descripcion_estado_usuario + "</td>";
     tabla += "<td><button id='btnEditarUsuario' name='" + usuario.id +"' class='btn btn-primary' onclick='editarUsuario(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
-
-    if(usuario.id_estado_usuario == 1){
-      tabla += "<button id='btnDesactivarUsuario' name='"+ usuario.id + "' class='btn btn-warning' onclick='deshabilitarUsuario(this);'><span class='glyphicon glyphicon-remove'></span> Desactivar</button>";
-    }else{
-      tabla += "<button id='btnDesactivarUsuario' name='"+ usuario.id + "' class='btn btn-success' onclick='habilitarUsuario(this);'><span class='glyphicon glyphicon-ok'></span> Activar</button>";
+    if(usuario.id == 1){
+        if(usuario.id_estado_usuario == 1){
+            tabla += "<button id='btnDesactivarUsuario' name='"+ usuario.id + "' class='btn btn-warning' disabled='disabled' ><span class='glyphicon glyphicon-remove'></span> Desactivar</button>";
+        }else{
+            tabla += "<button id='btnDesactivarUsuario' name='"+ usuario.id + "' class='btn btn-success' disabled='disabled' ><span class='glyphicon glyphicon-ok'></span> Activar</button>";
+        }
     }
+    else {
+        if(usuario.id_estado_usuario == 1){
+            tabla += "<button id='btnDesactivarUsuario' name='"+ usuario.id + "' class='btn btn-warning' onclick='deshabilitarUsuario(this);'><span class='glyphicon glyphicon-remove'></span> Desactivar</button>";
+        }else{
+            tabla += "<button id='btnDesactivarUsuario' name='"+ usuario.id + "' class='btn btn-success' onclick='habilitarUsuario(this);'><span class='glyphicon glyphicon-ok'></span> Activar</button>";
+        }
+    }
+
   });
 
   tabla += "</td></tr></tbody></table>";
