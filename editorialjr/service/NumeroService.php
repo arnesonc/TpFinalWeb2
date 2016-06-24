@@ -50,7 +50,7 @@ class NumeroService {
 		$numeroModel->id_publicacion = $numeroDB ["id_publicacion"];
 		$numeroModel->id_estado_numero = $numeroDB ["id_estado_numero"];
 		$numeroModel->url_portada = $numeroDB ["url_portada"];
-		$numeroModel->fe_erratas = utf8_encode ($numeroDB ["fe_erratas"]);
+		(is_null($numeroDB ["fe_erratas"])) ? $numeroModel->fe_erratas = null : $numeroModel->fe_erratas = utf8_encode ($numeroDB ["fe_erratas"]);
 		$numeroModel->precio = $numeroDB ["precio"];
 		$numeroModel->fecha_publicado = $numeroDB ["fecha_publicado"];
 		$numeroModel->numero_revista = $numeroDB["numero_revista"];

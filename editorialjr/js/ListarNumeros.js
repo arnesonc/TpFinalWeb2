@@ -28,17 +28,21 @@ function armarTablaNumeros(listaNumeros){
 	  tabla +="<th>Acciones</th></tr></thead><tbody>";
 
 	  $.each(listaNumeros, function(index, numero) {
-		fecha=(numero.fecha_publicado == null)?'<strong>DRAFT</strong>':numero.fecha_publicado;
+		fecha=(numero.fecha_publicado == null) ? '<strong>DRAFT</strong>' : numero.fecha_publicado;
 		tabla += "<tr><td>" + numero.numero_revista + "</td>";
-	    tabla += "<td>" + numero.precio + "</td>";
+	    tabla += "<td>AR$ " + numero.precio + "</td>";
 	    tabla += "<td>" + fecha + "</td>";
-		tabla += "<td><button onclick='aArticulos("+ numero.id +","+ numero.id_estado_numero +");' id='btnListarArticulos' name='" + numero.id + "' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Articulos</button>  ";
+		tabla += "<td><button onclick='RedirectArticulos("+ numero.id +","+ numero.id_estado_numero +");' id='btnListarArticulos' name='" + numero.id + "' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Articulos</button>  ";
 		//Si esta en draft, coloca publicar u editar, sino coloca fe de erratas.
 			if(numero.fecha_publicado == null){
 				tabla += "<button id='btnEditarNumero' name='"+ numero.id +"' class='btn btn-primary' onclick='editarNumero(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
 				tabla += "<button onclick='publicar("+ numero.id +","+ numero.id_estado_numero +");' id='btnPublicar' name='" + numero.id + "' class='btn btn-success'><span class='glyphicon glyphicon-share'></span> Publicar</button> </td></tr> ";
 			} else {
-				tabla += "<button onclick='addFeErratas("+ numero.id +","+ numero.id_estado_numero +");' id='btnFeErratas' name='" + numero.id + "' class='btn btn-warning'><span class='glyphicon glyphicon-edit'></span> Nueva Fe De Erratas</button> </td></tr> ";	
+				if(numero.fe_erratas == null){ 
+					tabla += "<button onclick='addFeErratas("+ numero.id +","+ numero.id_estado_numero +");' id='btnFeErratas' name='" + numero.id + "' class='btn btn-warning'><span class='glyphicon glyphicon-edit'></span> Nueva Fe De Erratas</button> </td></tr> ";		
+				} else {
+					tabla += "</td></tr>";
+				}
 			}
 		});
 	  
@@ -76,7 +80,7 @@ function editarNumero(button){
 	$("#modalNumero").modal('show');
 }
 
-function aArticulos(idNumero,estadoNumero){
+function RedirectArticulos(idNumero,estadoNumero){
 
 	$.redirect('admin-listar-articulos.php', {'idNumero': idNumero, 'estadoNumero': estadoNumero});
 }
