@@ -33,7 +33,7 @@ function armarTablaNumeros(listaNumeros){
 	    tabla += "<td>" + numero.precio + "</td>";
 	    tabla += "<td>" + fecha + "</td>";
 	    tabla += "<td><button id='btnEditarNumero' name='"+ numero.id +"' class='btn btn-primary' onclick='editarNumero(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
-		tabla += "<button onclick='aArticulos("+ numero.id +");' id='btnListarArticulos' name='" + numero.id + "' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Articulos</button> </td></tr> ";
+		tabla += "<button onclick='aArticulos("+ numero.id +","+ numero.id_estado_numero +");' id='btnListarArticulos' name='" + numero.id + "' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Articulos</button> </td></tr> ";
 		});
 	  
 
@@ -70,6 +70,7 @@ function editarNumero(button){
 	$("#modalNumero").modal('show');
 }
 
-function aArticulos(idNumero){
-	$.redirect('admin-listar-articulos.php', {'idNumero': idNumero});
+function aArticulos(idNumero,estadoNumero){
+
+	$.redirect('admin-listar-articulos.php', {'idNumero': idNumero, 'estadoNumero': estadoNumero});
 }

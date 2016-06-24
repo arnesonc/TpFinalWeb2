@@ -32,8 +32,15 @@ function armarTablaArticulos(listaArticulos){
 		fecha=(articulo.fecha_publicado == null)?'<strong>DRAFT</strong>':articulo.fecha_publicado;
 		tabla += "<tr><td>" + articulo.titulo + "</td>";
 	    tabla += "<td>" + fecha + "</td>";
-	    tabla += "<td><button id='btnEditarArticulo' name='' class='btn btn-primary' onclick='editarArticulo(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
-	    tabla += "<a href='/admin-listar-articulos.php?id="+articulo.id + "'id='btnListarArticulos' name='" + articulo.id +"' class='btn btn-info'><span class='glyphicon glyphicon-list'></span>Ver este articulo</a></td></tr> ";
+
+		//aca hay q hacer un if y preguntar si el articulo esta publicado, de estarlo se muestra el boton leer, si no el boton editar.
+		if(articulo.id_estado_articulo != 6) {
+			tabla += "<td><button onclick='aEditarArticulo("+ articulo.id +");' id='btnEditarArticulo' name='" + articulo.id + "' class='btn btn-primary'><span class='glyphicon glyphicon-edit'></span> Editar</button></td></tr>";
+		}
+		else {
+			tabla += "<td><button onclick='aLeerArticulo("+ articulo.id +");' id='btnLeerArticulo' name='" + articulo.id + "' class='btn btn-info'><span class='glyphicon glyphicon-eye-open'></span> Leer Articulo</button> </td></tr> ";
+		}
+
 		});
 	  
 
@@ -53,3 +60,11 @@ function armarTablaArticulos(listaArticulos){
 	      }
 	  });
 	}
+
+function aLeerArticulo(idArticulo){
+	$.redirect('admin-leer-articulos.php', {'idNumero': idArticulo});
+}
+
+function aEditarArticulo(idArticulo){
+	$.redirect('admin-editar-articulos.php', {'idArticulo': idArticulo});
+}
