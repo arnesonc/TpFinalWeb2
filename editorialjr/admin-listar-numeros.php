@@ -110,7 +110,6 @@ include 'side-bar.php';
 
 <!-- Negrada -->
 <script>listarNumeros(<?php echo $_POST['idPublicacion'] ?>)</script>
-
 <!-- jquery redirect-->
 <script src="js/jquery.redirect.js" type="text/javascript"></script>
 

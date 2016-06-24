@@ -234,6 +234,20 @@ class NumeroService {
 		
 	}
 
+	public function editarFeErratas($idNumero,$feErratas){
+		$sql = "UPDATE numero
+				SET fe_erratas= '$feErratas'
+				WHERE id= $idNumero;";
+		
+		try {
+			$this->dataAccess->execute ( $sql );
+			return true;
+		} catch ( Exception $e ) {
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $e );
+			return null;
+		}
+	}
 
 	public function publicarNumero($id_numero){
 		/*obtiene el modelo y lo updatea*/

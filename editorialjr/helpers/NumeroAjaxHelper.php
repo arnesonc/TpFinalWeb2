@@ -13,6 +13,11 @@ switch($metodo){
 		$idPublicacion = $_POST["idPublicacion"];
 		$result = $numeroService->getAllNumeros($idPublicacion);
 		break;
+	case "editarFeErratas":
+		$idNumero = $_POST["idNumero"];
+		$feErratas = $_POST["feErratas"];
+		$result = $numeroService->editarFeErratas($idNumero,$feErratas);
+		break;
 	default:
 		echo "Método inexistente en el switch de NumeroAjaxHelper.php";
 }

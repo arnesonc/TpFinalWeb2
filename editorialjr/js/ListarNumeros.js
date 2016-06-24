@@ -39,9 +39,9 @@ function armarTablaNumeros(listaNumeros){
 				tabla += "<button onclick='publicar("+ numero.id +","+ numero.id_estado_numero +");' id='btnPublicar' name='" + numero.id + "' class='btn btn-success'><span class='glyphicon glyphicon-share'></span> Publicar</button> </td></tr> ";
 			} else {
 				if(numero.fe_erratas == null){ 
-					tabla += "<button onclick='addFeErratas("+ numero.id +","+ numero.id_estado_numero +");' id='btnFeErratas' name='" + numero.id + "' class='btn btn-warning'><span class='glyphicon glyphicon-edit'></span> Nueva Fe De Erratas</button> </td></tr> ";		
+					tabla += "<button onclick='editarFeErratas(this,"+numero.id_publicacion+");' id='btnFeErratas' name='" + numero.id + "' class='btn btn-warning'><span class='glyphicon glyphicon-edit'></span> Nueva Fe de Erratas</button> </td></tr> ";		
 				} else {
-					tabla += "</td></tr>";
+					tabla += "<button onclick='editarFeErratas(this,"+numero.id_publicacion+");' id='btnFeErratas' name='" + numero.id + "' class='btn btn-danger'><span class='glyphicon glyphicon-edit'></span> Cambiar Fe de Erratas</button> </td></tr> ";
 				}
 			}
 		});
@@ -80,7 +80,12 @@ function editarNumero(button){
 	$("#modalNumero").modal('show');
 }
 
-function RedirectArticulos(idNumero,estadoNumero){
+function editarFeErratas(button,idPublicacion){
+	var idNumero = button.name;
+	//Se coloca el id de publicacion para que tras la edicion de la FeErratas haga un redirect.
+	$.redirect('admin-fe-erratas.php', {'idNumero': idNumero, 'idPublicacion': idPublicacion});
+}
 
+function RedirectArticulos(idNumero,estadoNumero){
 	$.redirect('admin-listar-articulos.php', {'idNumero': idNumero, 'estadoNumero': estadoNumero});
 }
