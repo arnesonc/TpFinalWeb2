@@ -58,22 +58,33 @@
 						
 							<div id="divPrecioNumero" class="form-group">
 								<label class="col-md-4 control-label" for="precio">Precio</label>
-								<div class="col-md-5">
+								<div class="col-md-7">
 									<input id="precio" name="precio" placeholder="Precio"
 										class="form-control input-md" type="text" maxlength="10">
 								</div>
 							</div>
-
-
-<!-- FORMULARIO DE CARGA DE ARCHIVO -->
-							<div id="formularioDeEdicion">
+							<!-- FORMULARIO DE CARGA DE ARCHIVO -->
+							<div id="formularioDeEdicion" class="form-group">
+								<label class="col-md-4 control-label">Seleccionar Imagen:</label>
+								<div class="col-md-7">
+									<!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
+									<input name="fichero_usuario" type="file"/>
+								</div>
 								<!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-								<input type="hidden" name="MAX_FILE_SIZE" value="30000" /> <input
-									type="hidden" id="idNumero" name="idNumero" /><!-- HARDCODEADO -->
-								<!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-								Seleccionar Imagen: <input name="fichero_usuario" type="file" />
+								<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+								<input type="hidden" id="idNumero" name="idNumero" />
 							</div>
-<!-- FORMULARIO DE CARGA DE ARCHIVO -->
+							<!-- FORMULARIO DE CARGA DE ARCHIVO -->
+
+
+<!-- 							<div id="formularioDeEdicion"> -->
+								<!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
+<!-- 								<input type="hidden" name="MAX_FILE_SIZE" value="30000" /> <input -->
+<!-- 									type="hidden" id="idNumero" name="idNumero" /> -->
+								<!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
+<!-- 								Seleccionar Imagen: <input name="fichero_usuario" type="file" class="form-control"/> -->
+<!-- 							</div> -->
+
 
 
 							<div class="form-group">

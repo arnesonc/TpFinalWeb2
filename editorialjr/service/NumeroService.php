@@ -64,10 +64,6 @@ class NumeroService {
 	public function validateNumero($numeroModel) {
 		$validationHelper = new ValidationHelper ();
 		
-		if ($validationHelper->validateNull ( $numeroModel->id_publicacion ) || ! $validationHelper->validateIsSet ( $numeroModel->id_publicacion ) || ! $validationHelper->validateNumber ( $numeroModel->id_publicacion )) {
-			return "Debe seleccionar una publicacion para el numero";
-		}
-		
 		if ($validationHelper->validateNull ( $numeroModel->id_estado_numero ) || ! $validationHelper->validateIsSet ( $numeroModel->id_estado_numero ) || ! $validationHelper->validateNumber ( $numeroModel->id_estado_numero )) {
 			return "Debe seleccionar un estado para el numero";
 		}
@@ -176,7 +172,6 @@ class NumeroService {
 				$numeroModel->numero_revista
 				);
 				";
-		echo $sql;
 		try {
 			// Ejecuta el insert en la BD
 			$idNumero = $this->dataAccess->execute ( $sql, true );

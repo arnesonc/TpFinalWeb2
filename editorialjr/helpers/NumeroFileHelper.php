@@ -30,6 +30,7 @@ require_once (__DIR__ . "/../model/NumeroModel.php");
 		$path = 'location:/../views/ListarNumeros.php?id='.$id_publicacion;//FIXME: HAY QUE CAMBIARLO CUANDO SE SAQUE DE LA CARPETA VIEWS
 		header($path); 
 	} else {
+	//TODO: validar subida de campos vacios
 		echo "¡Posible ataque de subida de ficheros!\n";
 	}
 	

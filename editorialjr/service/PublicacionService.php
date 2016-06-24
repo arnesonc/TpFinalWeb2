@@ -95,19 +95,21 @@ class PublicacionService {
 	private function validatePublicacion($publicacionModel) {
 		$validationHelper = new ValidationHelper ();
 
+		/*
 		if ($validationHelper->validateNull ( $publicacionModel->id_usuario ) || $validationHelper->validateIsSet ( $publicacionModel->id_usuario ) || ! $validationHelper->validateNumber ( $publicacionModel->id_usuario )) {
 			return "Debe seleccionar un editor para la publicacion";
 		}
-
-		if ($validationHelper->validateNull ( $publicacionModel->nombre ) || ! $validationHelper->validateIsSet ( $publicacionModel->nombre ) || ! $validationHelper->validateText ( $publicacionModel->nombre, 5, 50 )) {
-			return "El nombre de la publicacion es obligatorio y debe contener entre 5 y 50 caracteres.";
+		*/ //TODO: validar que el id_usuario sea correcto, el id usuario puede ser null.
+		
+		if ($validationHelper->validateNull ( $publicacionModel->nombre ) || ! $validationHelper->validateIsSet ( $publicacionModel->nombre ) || ! $validationHelper->validateText ( $publicacionModel->nombre, 1, 50 )) {
+			return "El nombre de la publicacion es obligatorio y debe contener entre 1 y 50 caracteres.";
 		}
 
-		if (! $validationHelper->validateNull ( $publicacionModel->nombre ) && $validationHelper->validateIsSet ( $publicacionModel->nombre ) && ! $validationHelper->validateText ( $publicacionModel->nombre, 5, 200 )) {
+		if ( $validationHelper->validateNull ( $publicacionModel->nombre ) && $validationHelper->validateIsSet ( $publicacionModel->nombre ) && ! $validationHelper->validateText ( $publicacionModel->nombre, 5, 200 )) {
 			return "Se debe especificar la url de la ultima portada";
 		}
 
-		if ($validationHelper->validateNull ( $publicacionModel->destacado ) || $validationHelper->validateIsSet ( $publicacionModel->destacado ) || ! $validationHelper->validateBoolean ( $publicacionModel->destacado )) {
+		if (! isset ( $publicacionModel->destacado ) || ! $validationHelper->validateBoolean ( $publicacionModel->destacado )) {
 			return "No se conoce el estado de Publicacion destacada";
 		}
 
@@ -126,16 +128,14 @@ class PublicacionService {
 		$numeroModel->precio = $precio;
 
 		try {
-			$this->createPublicacionNumero ( $publicacionModel, $numeroModel );
+			$succes = $this->createPublicacionNumero ( $publicacionModel, $numeroModel );
 
 		} catch ( Exception $e ) {
 			$logger = Logger::getRootLogger ();
 			$logger->error ( $e );
-
 			return $e;
 		}
-
-		return true;
+		return $succes;
 	}
 
 	/*
@@ -145,6 +145,8 @@ class PublicacionService {
 		$messagePublicacion = $this->validatePublicacion ( $publicacionModel );
 
 		if (!empty ( $messagePublicacion )) {
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $messagePublicacion );
 			return $messagePublicacion;
 		}
 
@@ -152,6 +154,8 @@ class PublicacionService {
 		$messageNumero = $numeroService->validateNumero ( $numeroModel );
 
 		if (!empty ( $messageNumero )) {
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $messageNumero );
 			return $messageNumero;
 		}
 
@@ -161,13 +165,11 @@ class PublicacionService {
 			$idPublicacion = $this->insertPublicacion ( $publicacionModel );
 			$numeroModel->id_publicacion = $idPublicacion;
 			$numeroService->createNumero( $numeroModel );
-
 		}catch(Exception $e){
 			$logger = Logger::getRootLogger ();
 			$logger->error ( $e );
 			return $e;
 		}
-
 		return true;
 	}
 

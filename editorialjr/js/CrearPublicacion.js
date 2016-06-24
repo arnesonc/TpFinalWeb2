@@ -32,8 +32,7 @@ $(document).ready(function() {
 				type : 'POST',
 				dataType : "json",
 				success : function(result) {
-					if (result) {
-						console.log("success");
+					if (result == 1) {
 						limpiarFormulario();
 						alert("Creacion exitosa.");
 					} else {
@@ -43,7 +42,7 @@ $(document).ready(function() {
 					}
 				},
 				error : function(error) {
-					console.log("error");
+					console.log("error"+error);
 					alert("Upa, ocurrio un error! ");
 				}
 			});

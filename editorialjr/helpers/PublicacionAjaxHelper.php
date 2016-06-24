@@ -11,7 +11,6 @@ $result = null;
 switch($metodo){
 	case "getPublicacionById":
 		$idPublicacion = $_POST["id"];
-
 		$result = $publicacionService->getPublicacionById($idPublicacion);
 		break;
 	case "getAllPublicaciones":
@@ -26,6 +25,7 @@ switch($metodo){
 		break;
 	default:
 		echo "Método inexistente en el switch de PublicacionAjaxHelper.php";
+		break;
 }
 
 echo json_encode($result);
