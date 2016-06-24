@@ -23,6 +23,12 @@ switch($metodo){
 		$precio = $_POST["precio"];
 		$result = $publicacionService->createPublicacionNumeroParametros($id_usuario, $nombre, $destacado, $precio);
 		break;
+	case "updatePublicacionParameters":
+		$nombre = $_POST["nombre"];
+		$destacado = $_POST["destacado"];
+		$id = $_POST["idPublicacion"];
+		$result = $publicacionService->updatePublicacionParameters ($id, $nombre, $destacado);
+		break;
 	default:
 		echo "Método inexistente en el switch de PublicacionAjaxHelper.php";
 		break;

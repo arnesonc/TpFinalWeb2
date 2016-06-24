@@ -28,6 +28,55 @@ include 'side-bar.php';
 </div><!-- /row -->
 </div>
 
+
+<div class="modal fade" id="modalPublicacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="tituloModalPublicacion">Editar Publicacion</h4>
+			</div>
+			<div class="modal-body">
+				<form id="signupForm" method="post" class="form-horizontal" action="">
+					<fieldset>
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="nombre">Nombre</label>
+							<div class="col-md-5">
+								<input id="nombre" name="nombre" placeholder="Nombre" class="form-control input-md" type="text" maxlength="50">
+							</div>
+						</div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="destacado">¿es una publicacion destacada?</label>
+                                    <div class="col-md-4">
+                                        <input id="destacado" name="destacado" placeholder="" type="checkbox" value="1">
+                                    </div>
+                                </div>
+                                
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="send"></label>
+							<div class="col-md-5">
+								<div id="divMensajeError" class="col-md-12 alert alert-danger fade in oculto">
+								</div>
+							</div>
+						</div>
+
+						<!-- Se usa para saber si es edicion o alta -->
+						<input id="hdnIdPublicacion" type="hidden" />
+			</fieldset>
+		</form>
+		<!-- /form -->
+	</div>
+	<div class="modal-footer">
+		<button id="btnAceptar" type="button" class="btn btn-primary">Guardar</button>
+		<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	</div>
+</div>
+</div>
+</div>
+
+
+
+
 <!-- Jquery-->
 <script src="js/jquery-1.12.4.min.js" type="text/javascript"></script>
 

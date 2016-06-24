@@ -220,6 +220,48 @@ class PublicacionService {
 		}
 		return $ultimaFechaDePublicacionDadaDB;
 	}
+
+	public function updatePublicacionParameters ($id, $nombre, $destacado){
+		$publicacionModel = new PublicacionModel ();
+		$publicacionModel->id = $id;
+		$publicacionModel->nombre = $nombre;
+		$publicacionModel->destacado = $destacado;
+		
+		$message = $this->validatePublicacion ( $publicacionModel, false );
+		
+		// Si esta vacio, no hay mensaje de error por lo tanto es válido
+		if (empty ( $message )) {
+			$result = $this->updatePublicacion ( $publicacionModel );
+		} else {
+			// En caso de ser invalido devuelve un mensaje de validacion
+			$result = $message;
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $message );
+		}
+		
+		return $result;
+	}
+	
+	private function updatePublicacion ( $publicacionModel ) {
+	
+		$sql = " UPDATE publicacion
+		SET
+		nombre = '$publicacionModel->nombre',
+		destacado = '$publicacionModel->destacado'
+		WHERE id = $publicacionModel->id;";
+	
+		try {
+			// Ejecuta el insert en la BD
+			$this->dataAccess->execute ( $sql );
+		} catch ( Exception $e ) {
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $e );
+			return false;
+		}
+	
+		return true;
+	}
 }
+
 
 ?>
