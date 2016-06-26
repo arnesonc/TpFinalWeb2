@@ -118,6 +118,50 @@ class UsuarioService {
 	}
 
 	/**
+	 * Obtiene una lista de usuarios redactores (incluye inactivos)
+	 * Se usa para el reporte del administrador
+	 */
+	public function getAllUsuariosRedactores() {
+		$sql = " SELECT
+				u.id,
+				u.id_estado_usuario,
+				u.id_rol,
+				u.email,
+				u.pass,
+				u.nombre,
+				u.apellido,
+				r.descripcion descripcion_rol,
+				eu.descripcion descripcion_estado_usuario
+				FROM usuario u
+				inner join rol r on u.id_rol = r.id
+				inner join estado_usuario eu on u.id_estado_usuario = eu.id
+				where
+		    id_rol = 2;";
+
+		try {
+
+			$usuarioBDArray = $this->dataAccess->getMultipleResults ( $sql );
+		} catch ( Exception $e ) {
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $e );
+			return null;
+		}
+
+		$arrayUsuarioModel = array ();
+
+		foreach ( $usuarioBDArray as $usuarioDB ) {
+
+			$usuarioModel = $this->convertUsuarioDBToUsuarioModel ( $usuarioDB );
+			$usuarioModel->descripcion_rol = $usuarioDB["descripcion_rol"];
+			$usuarioModel->descripcion_estado_usuario = $usuarioDB["descripcion_estado_usuario"];
+
+			$arrayUsuarioModel [] = $usuarioModel;
+		}
+
+		return $arrayUsuarioModel;
+	}
+
+	/**
 	 * Convierte un usuarioDB en UsuarioModel
 	 */
 	private function convertUsuarioDBToUsuarioModel($usuarioBD) {

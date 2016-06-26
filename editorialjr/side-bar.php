@@ -38,8 +38,7 @@
                                 </li> -->
                                 <li>
                                     <h4>Reportes</h4>
-                                    <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear</a>
-                                    <a href="#"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Listar</a>
+                                    <a href="admin-generar-reporte.php"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Generar reporte</a>
                                 </li>
                             </ul>
                         </div>
