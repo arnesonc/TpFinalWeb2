@@ -46,22 +46,3 @@ function ajaxSessionID(selector) {
 		}
 	});
 }
-
-/*
-function obtenerSessionID() {
-
-	$.ajax({
-		url : '/helpers/SessionAjaxHelper.php',
-		data : {
-		},
-		type : 'POST',
-		dataType : "json",
-		success : function(result) {
-			alert("el resultado de obtenerSessionID es "+ result);
-			return result;
-		},
-		error : function(error) {
-			alert("Ups, no anda sessionID! " + error);
-		}
-	});
-}*/
