@@ -12,6 +12,10 @@
 	display: none;
 }
 
+#map {
+	height:400px;
+}
+
 /*overide bootsrap*/
 /*.navbar {
     margin-bottom: 0px !important;

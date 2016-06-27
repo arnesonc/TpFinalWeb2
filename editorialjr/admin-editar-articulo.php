@@ -47,7 +47,7 @@ $arraySeccion = $seccionService->getAllSecciones();
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="cuerpo">cuerpo</label>
                                     <div class="col-md-9">
-                                        <div id="summernote">cuerpo del articulo.</div>
+                                        <div id="summernote"></div>
                                     </div>
                                 </div>
 
@@ -75,6 +75,15 @@ $arraySeccion = $seccionService->getAllSecciones();
                                         </select>
                                     </div>
                                 </div>
+
+                                <!-- Map -->
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="map">lugar</label>
+                                    <div class="col-md-9">
+                                        <div id="map"></div>
+                                    </div>
+                                </div>
+
                                 <!-- Button -->
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="btnGuardar"></label>
@@ -129,10 +138,27 @@ $arraySeccion = $seccionService->getAllSecciones();
 <script>
     $(document).ready(function() {
     $('#summernote').summernote({
+        placeholder: 'cuerpo del articulo...',
         height: 300,
         lang: 'es-ES' // default: 'en-US'
     });
     });
+</script>
+
+<!-- inicializacion google maps-->
+<script type="text/javascript">
+
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 8
+        });
+    }
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8qdt_ZyQL7Ea1dirrshhtQycf1UYGAQQ&callback=initMap">
 </script>
 
 </body>
