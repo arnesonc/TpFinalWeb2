@@ -71,11 +71,11 @@ function aEditarArticulo(idArticulo){
 }
 
 $("#btnNuevoArticulo").click(function(){
-	var idUser = obtenerSessionID;
-	nuevoArticulo(window.idNumero,null,idUser);
+	var idUser = obtenerSessionID();
+	alert("el usuario es "+ idUser);
+
+	nuevoArticulo(window.idNumero,'false',idUser);
 });
-
-
 
 function nuevoArticulo(id_numero,id_articulo,id_user){
 	$.redirect('admin-editar-articulo.php', {'idNumero': id_numero, 'idArticulo': id_articulo, 'idUser': id_user});

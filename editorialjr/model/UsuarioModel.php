@@ -18,7 +18,7 @@ class UsuarioModel{
 
 	/* esta privado para obligar a usar el objeto $rol del modo $usuario->getRol()->descripcion */
 	private $rol;
-	public $estado_usuario;
+	private $estado_usuario;
 
 	/**
 	 * Obtiene el objeto rol relacionado con el usuario, si lo tiene en memoria ya instanciado,

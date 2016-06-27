@@ -21,7 +21,7 @@ function obtenerSessionID(){
 	// global param
 	var selector = !0;
 	// get return ajax object
-	var ajaxObj = ajaxSessionID(selector);
+	var ajaxObj = ajaxSessionID();
 	// store ajax response in var
 	var ajaxResponse = ajaxObj.responseText;
 	// check ajax response
@@ -33,7 +33,7 @@ function obtenerSessionID(){
 	return id_user;
 }
 
-function ajaxSessionID(selector) {
+function ajaxSessionID() {
 	return $.ajax({
 		type: "POST",
 		url: '/helpers/SessionAjaxHelper.php',

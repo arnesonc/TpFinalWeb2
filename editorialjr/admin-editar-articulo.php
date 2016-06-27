@@ -134,15 +134,20 @@ $arraySeccion = $seccionService->getAllSecciones();
 <!-- include summernote-ar-AR -->
 <script src="lang/summernote-es-ES.js"></script>
 
-<!-- inicializacion summernote-->
+<!-- inicializacion summerNote -->
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
     $('#summernote').summernote({
         placeholder: 'cuerpo del articulo...',
         height: 300,
         lang: 'es-ES' // default: 'en-US'
     });
-    });
+});
+</script>
+
+<!-- obtener variables post-->
+<script>
+    editarArticulo(<?php echo $_POST['idNumero'].','.$_POST['idArticulo'].','.$_POST['idUser']?>);
 </script>
 
 <!-- inicializacion google maps-->
