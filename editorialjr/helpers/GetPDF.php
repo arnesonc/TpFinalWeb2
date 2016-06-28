@@ -12,13 +12,13 @@ $dompdf = new Dompdf;
 $dompdf->loadHtml($contentPDF);
 
 // (Optional) Setup the paper size and orientation
-$dompdf->setPaper('A4');
+$dompdf->setPaper('A4', 'landscape');
 $dompdf->set_option('isHtml5ParserEnabled', true);
 
 // Render the HTML as PDF
 $dompdf->render();
 
 // Output the generated PDF to Browser
-$dompdf->stream($namePDF);
+$dompdf->stream('editorial-jr-reporte-' . $namePDF);
 
 ?>

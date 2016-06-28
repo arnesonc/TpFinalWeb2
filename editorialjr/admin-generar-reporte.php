@@ -14,15 +14,32 @@ include 'side-bar.php';
 						<h3>Generar reporte</h3>
 					</div>
 				</div>
-				<div class="row botonNuevo">
-					<div class="col-lg-12">
-						Generar reporte de contenidistas <button id='btnReporteContenidistas' class='btn btn-primary'><span class='glyphicon glyphicon-download-alt'></span></button>
-					</div>
-				</div>
-				<div class="row">
-					<div id="divTablaSecciones" class="col-lg-12">
-					</div>
-				</div>
+        <div id="divError" class="alert alert-danger oculto">
+			  </div>
+        <div class="row">
+          <div class="col-lg-9">
+            Contenidistas
+          </div>
+          <div class="col-lg-3">
+            <button id='btnReporteContenidistas' class='btn btn-primary' title="Generar reporte de contenidistas"><span class='glyphicon glyphicon-download-alt'></span></button>
+          </div>
+        </div>
+        <div class="row marginTopBottom">
+          <div class="col-lg-9">
+            Clientes y productos adquiridos
+          </div>
+          <div class="col-lg-3">
+            <button id='btnReporteClientes' class='btn btn-primary' title="Generar reporte de clientes y productos adquiridos"><span class='glyphicon glyphicon-download-alt'></span></button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-9">
+            Productos
+          </div>
+          <div class="col-lg-3">
+            <button id='btnReporteProductos' class='btn btn-primary' title="Generar reporte de productos"><span class='glyphicon glyphicon-download-alt'></span></button>
+          </div>
+        </div>
 			</div>
 		</div>
 	</div>
@@ -37,7 +54,7 @@ include 'side-bar.php';
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.js"></script>
-
+|
 <!-- Menu Toggle Script -->
 <script>
 $("#menu-toggle").click(function(e) {

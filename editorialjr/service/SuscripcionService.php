@@ -7,22 +7,30 @@ class SuscripcionService {
 	public function __construct() {
 		$this->dataAccess = new DataAccess ();
 	}
-	
+
 	/*
-	 * Obtiene una suscripcion por su id
-	 */
+	* Obtiene una suscripcion por su id
+	*/
 	public function getSuscripcionById($id) {
-		$sql = " SELECT id,
-				    id_cliente,
-				    id_publicacion,
-				    id_tipo_suscripcion,
-				    precio,
-				    fecha
-				FROM suscripcion
-				WHERE id = $id;";
-		
+		$sql = " SELECT
+		s.id,
+		s.id_cliente,
+		s.id_publicacion,
+		s.id_tipo_suscripcion,
+		s.precio,
+		s.fecha,
+		p.nombre nombrePublicacion,
+		ts.cantidad_meses
+		FROM
+		suscripcion s
+		inner join
+		publicacion p ON s.id_publicacion = p.id
+		inner join
+		tipo_suscripcion ts ON s.id_tipo_suscripcion = ts.id
+		WHERE s.id = $id;";
+
 		try {
-			
+
 			$suscripcionDB = $this->dataAccess->getOneResult ( $sql );
 		} catch ( Exception $e ) {
 			$logger = Logger::getRootLogger ();
@@ -31,10 +39,46 @@ class SuscripcionService {
 		}
 		return $this->convertSuscripcionDBToSuscripcionModel ( $suscripcionDB );
 	}
-	
+
+	public function getSuscripcionesByIdCliente($idCliente){
+		$sql = " SELECT
+		s.id,
+		s.id_cliente,
+		s.id_publicacion,
+		s.id_tipo_suscripcion,
+		s.precio,
+		s.fecha,
+		p.nombre nombrePublicacion,
+		ts.cantidad_meses
+		FROM
+		suscripcion s
+		inner join
+		publicacion p ON s.id_publicacion = p.id
+		inner join
+		tipo_suscripcion ts ON s.id_tipo_suscripcion = ts.id
+		WHERE s.id_cliente = $idCliente;";
+
+		try {
+
+			$suscripcionDBArray = $this->dataAccess->getMultipleResults($sql);
+		} catch ( Exception $e ) {
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $e );
+			return null;
+		}
+
+		$arraySuscripcionesModel = array ();
+
+		foreach ( $suscripcionDBArray as $suscripcionDB ) {
+			$arraySuscripcionesModel [] = $this->convertSuscripcionDBToSuscripcionModel($suscripcionDB);;
+		}
+
+		return $arraySuscripcionesModel;
+	}
+
 	/*
-	 * Convierte una suscripcion de la base de datos en un objeto SuscripcionModel y lo devuelve
-	 */
+	* Convierte una suscripcion de la base de datos en un objeto SuscripcionModel y lo devuelve
+	*/
 	private function convertSuscripcionDBToSuscripcionModel($suscripcionDB) {
 
 		/* Convierto el resultado de la BD a un objeto modelado */
@@ -45,42 +89,44 @@ class SuscripcionService {
 		$suscripcionModel->id_tipo_suscripcion = $suscripcionDB ["id_tipo_suscripcion"];
 		$suscripcionModel->precio = $suscripcionDB ["precio"];
 		$suscripcionModel->fecha = $suscripcionDB ["fecha"];
-		
+		$suscripcionModel->nombrePublicacion = $suscripcionDB ["nombrePublicacion"];
+		$suscripcionModel->cantidad_meses = $suscripcionDB ["cantidad_meses"];
+
 		return $suscripcionModel;
 	}
-	
+
 	// ver comentarios en Cliente service (mismo metodo).
 	public function createSuscripcion($suscripcionModel) {
 		$result = $this->insertSuscripcion ( $suscripcionModel );
 		return $result;
 	}
-	
+
 	private function insertSuscripcion($suscripcionModel){
-	
+
 		$piso = is_null($clienteModel->piso) ? null : "'$articuloModel->latitud'";
 		$departamento = is_null($clienteModel->departamento) ? null : "'$clienteModel->departamento'";
 		$detalle_direccion = is_null($clienteModel->detalle_direccion) ? null : "'$clienteModel->detalle_direccion'";
-	
-		$sql = " INSERT 
+
+		$sql = " INSERT
 		INTO suscripcion
 		(
-		id,
-		id_cliente,
-		id_publicacion,
-		id_tipo_suscripcion,
-		precio,
-		fecha
+			id,
+			id_cliente,
+			id_publicacion,
+			id_tipo_suscripcion,
+			precio,
+			fecha
 		)
 		VALUES
 		(
-		null,
-		$suscripcionModel->id_cliente,
-		$suscripcionModel->id_publicacion,
-		$suscripcionModel->id_tipo_suscripcion,
-		$suscripcionModel->precio,
-		DATE(NOW())
+			null,
+			$suscripcionModel->id_cliente,
+			$suscripcionModel->id_publicacion,
+			$suscripcionModel->id_tipo_suscripcion,
+			$suscripcionModel->precio,
+			DATE(NOW())
 		);";
-	
+
 		try{
 			$this->dataAccess->execute($sql);
 		}catch(Exception $e){
@@ -89,8 +135,8 @@ class SuscripcionService {
 			return false;
 		}
 		return true;
-		
+
 	}
-	
+
 }
 ?>

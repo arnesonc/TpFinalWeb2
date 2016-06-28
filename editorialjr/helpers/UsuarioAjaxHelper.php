@@ -48,7 +48,8 @@ switch($metodo){
 	$pass = $_POST["pass"];
 	$result = $usuarioService->checkUserAndPass($email, $pass);
 	break;
-	case:
+	case "getAllUsuariosRedactores":
+	$result = $usuarioService->getAllUsuariosRedactores();
 	break;
 	default:
 	echo "Método inexistente en el switch de UsuarioAjaxHelper.php";

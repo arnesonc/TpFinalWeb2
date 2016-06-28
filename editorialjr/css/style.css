@@ -12,6 +12,11 @@
 	display: none;
 }
 
+.marginTopBottom{
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
 /*overide bootsrap*/
 /*.navbar {
     margin-bottom: 0px !important;
