@@ -1,5 +1,6 @@
 function listarArticulos(id_numero) {
 	var id_user = obtenerSessionID();
+	window.idNumero = id_numero;
 
 	$.ajax({
 				url : '/helpers/ArticuloAjaxHelper.php',
@@ -67,4 +68,15 @@ function aLeerArticulo(idArticulo){
 
 function aEditarArticulo(idArticulo){
 	$.redirect('admin-editar-articulos.php', {'idArticulo': idArticulo});
+}
+
+$("#btnNuevoArticulo").click(function(){
+	var idUser = obtenerSessionID();
+	alert("el usuario es "+ idUser);
+
+	nuevoArticulo(window.idNumero,'false',idUser);
+});
+
+function nuevoArticulo(id_numero,id_articulo,id_user){
+	$.redirect('admin-editar-articulo.php', {'idNumero': id_numero, 'idArticulo': id_articulo, 'idUser': id_user});
 }

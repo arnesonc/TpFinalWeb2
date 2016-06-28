@@ -12,9 +12,14 @@
 	display: none;
 }
 
+
 .marginTopBottom{
 	margin-top: 1em;
 	margin-bottom: 1em;
+}
+
+#map {
+	height:400px;
 }
 
 /*overide bootsrap*/

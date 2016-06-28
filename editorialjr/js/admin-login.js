@@ -22,7 +22,6 @@ function iniciarSesion(){
 			type : 'POST',
 			dataType : "json",
 			success : function(result) {
-
         if(result === true){
           window.location.href = "../admin-cms.php";
         }else{
@@ -30,7 +29,7 @@ function iniciarSesion(){
         }
 			},
 			error : function(error) {
-				mostrarMensaje("divMensajeError", "Ups, ocurrio un error! ", true);
+				mostrarMensaje("divMensajeError", "Ups, ocurrio un error al loguear! ", true);
 			}
 		});
   }
