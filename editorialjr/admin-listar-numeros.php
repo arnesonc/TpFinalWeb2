@@ -14,9 +14,15 @@ include 'side-bar.php';
                         <h3>Numeros</h3>
                     </div>
                 </div>
+                <div class="row botonNuevo">
+					<div class="col-lg-12">
+						<button id='btnNuevoNumero' onclick="nuevoNumero()" class='btn btn-primary'><span class='glyphicon glyphicon-plus'></span> Nuevo numero</button>
+					</div>
+				</div>
                 <div class="row">
                     <div id="divTablaNumeros" class="col-lg-12"></div>
                 </div>
+
                 <div class="modal fade" id="modalNumero" tabindex="-1" role="dialog"
                      aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
@@ -30,7 +36,7 @@ include 'side-bar.php';
                             </div>
                             <div class="modal-body">
                                 <form id="updateForm" enctype="multipart/form-data"
-                                      action="/helpers/NumeroFileHelper.php" method="POST"
+                                      action="./helpers/NumeroFileHelper.php" method="POST"
                                       class="form-horizontal">
                                     <fieldset>
 
@@ -48,7 +54,7 @@ include 'side-bar.php';
                                         <div id="formularioDeEdicion">
                                             <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
                                             <input type="hidden" name="MAX_FILE_SIZE" value="30000000" /> <input
-                                                type="hidden" id="idNumero" name="idNumero" /><!-- HARDCODEADO -->
+                                                type="hidden" id="idNumero" name="idNumero" />
                                             <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
                                             Seleccionar Imagen: <input name="fichero_usuario" type="file" />
                                         </div>
@@ -109,7 +115,14 @@ include 'side-bar.php';
 <script src="js/datatables.min.js" type="text/javascript"></script>
 
 <!-- Negrada -->
-<script>listarNumeros(<?php echo $_POST['idPublicacion'] ?>)</script>
+<script>listarNumeros(
+<?php if (isset($_GET["idpub"])) {
+		echo $_GET["idpub"];
+	}else{
+		echo $_POST['idPublicacion'];
+	}
+?>
+)</script>
 <!-- jquery redirect-->
 <script src="js/jquery.redirect.js" type="text/javascript"></script>
 

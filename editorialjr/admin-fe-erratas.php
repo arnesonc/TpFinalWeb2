@@ -28,8 +28,7 @@ include 'side-bar.php';
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="nombre">Texto</label>
 									<div class="col-md-4">
-										<input id="texto" name="texto" class="form-control input-md"
-											type="textbox">
+										<textarea id="texto" name="texto" cols="20" rows="5" class="form-control input-md"></textarea>
 									</div>
 								</div>
 								
@@ -38,8 +37,8 @@ include 'side-bar.php';
 									<label class="col-md-4 control-label" for="send"></label>
 									<div class="col-md-4">
 										<button type="button" id="btnEnviar" name="send"
-											class="btn btn-primary btn-lg">Enviar</button>
-										<a href="#" class="btn btn-default btn-lg active"
+											class="btn btn-primary btn-md">Enviar</button>
+										<a href="#" class="btn btn-default btn-md active"
 											role="button">Cancelar</a>
 									</div>
 								</div>

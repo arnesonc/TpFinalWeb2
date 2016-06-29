@@ -108,7 +108,6 @@ function publicar(id_numero){
 	});	
 }
 
-
 function RedirectArticulos(idNumero,estadoNumero){
 	$.redirect('admin-listar-articulos.php', {'idNumero': idNumero, 'estadoNumero': estadoNumero});
 }
