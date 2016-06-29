@@ -61,8 +61,8 @@ function armarHTMLReporteContenidistas(listaUsuariosRedactores) {
     html += "<meta http-equiv='X-UA-Compatible' content='IE=edge'>";
     html += "<meta name='viewport' content='width=device-width, initial-scale=1'>";
     html += "<meta name='description' content=''>";
-    html += "<meta name='author' content=''><link href='../css/bootstrap.css' rel='stylesheet'></head><body><div class='container'><h3>Editorial Jr - Reporte: Información de contenidistas</h3><table class='table table-responsive table-bordered'>";
-    html += "<thead><tr><th>Email</th><th>Nombre</th><th>Apellido</th><th>Estado</th>";
+    html += "<meta name='author' content=''><link href='../css/bootstrap.css' rel='stylesheet'></head><body><div class='container'><h3>Editorial Jr - Reporte: Información de contenidistas</h3><table class='table table-striped    table-bordered'>";
+    html += "<thead><tr style='background-color: #F3F781;'><th>Email</th><th>Nombre</th><th>Apellido</th><th>Estado</th>";
     html += "</tr></thead><tbody>";
 
     $.each(listaUsuariosRedactores, function(index, usuario) {

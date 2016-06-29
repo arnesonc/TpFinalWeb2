@@ -18,7 +18,7 @@ class ReporteService {
             <h3>Editorial Jr - Reporte: Clientes y productos adquiridos</h3>
             <table class='table table-striped table-bordered'>
               <thead>
-                <tr>
+                <tr style='background-color: #F3F781;'>
                   <th>Email</th>
                   <th>Nombre</th>
                   <th>Apellido</th>
@@ -39,7 +39,7 @@ class ReporteService {
 
     foreach ($listaClientes as $cliente) {
       // Primer fila
-      $html .= "<tr style='background-color: #F3F781;'>
+      $html .= "<tr style='background-color: #F2F5A9;'>
                   <td>$cliente->email</td>
                   <td>$cliente->nombre</td>
                   <td>$cliente->apellido</td>
@@ -60,7 +60,7 @@ class ReporteService {
                         <strong>Publicaciones del cliente: $cliente->email</strong>
                         <table class='table table-striped table-bordered'>
                           <thead>
-                            <tr>
+                            <tr style='background-color: #F5F6CE;'>
                               <th>Publicación</td>
                               <th>Precio</td>
                               <th>Fecha</td>
@@ -79,7 +79,7 @@ class ReporteService {
         }
       }else{
         $html .= "<tr>
-                    <td colspan='8'>El cliente no posee suscripciones.</td>
+                    <td colspan='8'><strong>El cliente no posee suscripciones.</strong></td>
                   </tr>";
       }
 
@@ -95,7 +95,7 @@ class ReporteService {
                         <strong>Compras unitarias del cliente: $cliente->email</strong>
                         <table class='table table-striped table-bordered'>
                           <thead>
-                            <tr>
+                            <tr style='background-color: #F5F6CE;'>
                               <th>Publicación</td>
                               <th>Precio</td>
                               <th>Fecha</td>
@@ -114,7 +114,7 @@ class ReporteService {
         }
       }else{
         $html .= "<tr>
-                    <td colspan='8'>El cliente no posee compras unitarias.</td>
+                    <td colspan='8'><strong>El cliente no posee compras unitarias.</strong></td>
                   </tr>";
       }
 
