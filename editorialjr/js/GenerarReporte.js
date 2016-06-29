@@ -68,12 +68,10 @@ function armarHTMLReporteClientes(listaClientes){
 
     // Son de asignacion dado que el html se completa dentro de las funciones
     html = armarHTMLSuscripcionesCliente(html, cliente);
-    //html = armarHTMLComprasUnitariasCliente(html, cliente);
+    html = armarHTMLComprasUnitariasCliente(html, cliente);
   });
 
   html += "</tbody></table></div></body></html>";
-
-  console.log(html);
 
   $.redirect('/helpers/GetPDF.php', {'contentPDF': html, 'namePDF': 'clientes-y-productos'});
 }
@@ -91,7 +89,7 @@ function armarHTMLSuscripcionesCliente(html, cliente){
       success : function(listaSuscripciones) {
         if(listaSuscripciones != null){
           $.each(listaSuscripciones, function(index, suscripcion) {
-            html += "<tr><td colspan='8'><strong>Suscripciones del cliente " + cliente.email + "<strong><table class='table table-striped table-bordered'><thead><tr><th>Publicación</th><th>Cantidad de meses</th><th>Precio</th><th>Fecha</th></tr></thead><tbody>";
+            html += "<tr><td colspan='8'><strong>Compras del cliente " + cliente.email + "<strong><table class='table table-striped table-bordered'><thead><tr><th>Publicación</th><th>Cantidad de meses</th><th>Precio</th><th>Fecha</th></tr></thead><tbody>";
             html += "<tr><td>" + suscripcion.nombrePublicacion + "</td><td>" + suscripcion.cantidad_meses + "</td><td>" + suscripcion.fecha + "</td><td>" + suscripcion.precio + "</td></tr>";
           });
         }else{
@@ -118,14 +116,15 @@ function armarHTMLComprasUnitariasCliente(html, cliente){
       type : 'POST',
       dataType : "json",
       async: false,
-      success : function(listaSuscripciones) {
-        if(listaSuscripciones != null){
-          $.each(listaSuscripciones, function(index, suscripcion) {
-            html += "<tr><td colspan='8'><strong>Suscripciones del cliente " + cliente.email + "<strong><table class='table table-striped table-bordered'><thead><tr><th>Publicación</th><th>Cantidad de meses</th><th>Precio</th><th>Fecha</th></tr></thead><tbody>";
-            html += "<tr><td>" + suscripcion.nombrePublicacion + "</td><td>" + suscripcion.cantidad_meses + "</td><td>" + suscripcion.fecha + "</td><td>" + suscripcion.precio + "</td></tr>";
+      success : function(listaComprasUnitarias) {
+        if(listaComprasUnitarias != null){
+          console.log(listaComprasUnitarias);
+          $.each(listaComprasUnitarias, function(index, compraUnitaria) {
+            html += "<tr><td colspan='8'><strong>Suscripciones del cliente " + cliente.email + "<strong><table class='table table-striped table-bordered'><thead><tr><th>Número</th><th>Fecha</th><th>Nombre de la publicación</th></tr></thead><tbody>";
+            html += "<tr><td>" + compraUnitaria.id_numero + "</td><td>" + compraUnitaria.fecha + "</td><td>" + compraUnitaria.nombrePublicacion + "</td></tr>";
           });
         }else{
-          html += "<tr><td colspan='8'>El cliente no posee suscripciones.</td></tr>";
+          html += "<tr><td colspan='8'>El cliente no posee compras.</td></tr>";
         }
 
         html += "</tbody></table></td></tr>";

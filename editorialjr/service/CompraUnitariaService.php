@@ -16,10 +16,10 @@ class CompraUnitariaService{
 	 * Obtiene un CompraUnitariaModel por su id
 	 */
 	public function getCompraUnitariaByIdCliente($idCliente){
-		$sql = "SELECT id_cliente,
-				    id_numero,
-				    fecha
-				FROM compra_unitaria
+		$sql = "SELECT id_cliente, id_numero, fecha, p.nombre nombrePublicacion
+				from compra_unitaria cu
+				left join numero n on cu.id_numero = n.id
+				left join publicacion p on n.id_publicacion = p.id
 				WHERE id_cliente = $idCliente;";
 
 		try{
@@ -36,7 +36,9 @@ class CompraUnitariaService{
 		$arrayComprasUnitariasModel = array ();
 
 		foreach ( $comprasUnitariasDBArray as $compraUnitariaDB ) {
-			$arrayComprasUnitariasModel [] = $this->convertCompraUnitariaDBToCompraUnitariaModel($compraUnitariaDB);
+			$compraUnitariaModel = $this->convertCompraUnitariaDBToCompraUnitariaModel($compraUnitariaDB);
+			$compraUnitariaModel->nombrePublicacion = $compraUnitariaDB["nombrePublicacion"];
+			$arrayComprasUnitariasModel [] = $compraUnitariaModel;
 		}
 
 		return $arrayComprasUnitariasModel;

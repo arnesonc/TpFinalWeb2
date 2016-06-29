@@ -415,7 +415,7 @@ class UsuarioService {
 		}
 		$myUser->getEstadoUsuario();
 
-		if ($myUser->estado_usuario->descripcion == "inactivo"){
+		if ($myUser->getEstadoUsuario()->descripcion == "inactivo"){
 			 return "El usuario se encuentra desactivado.";
 		}
 
