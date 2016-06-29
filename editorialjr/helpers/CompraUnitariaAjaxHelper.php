@@ -9,9 +9,9 @@ $compraUnitariaService = new CompraUnitariaService;
 $result = null;
 
 switch($metodo){
-	case "getCompraUnitariaByIdCliente":
+	case "getComprasUnitariasByIdCliente":
 	$idCliente = $_POST["idCliente"];
-	$result = $compraUnitariaService->getCompraUnitariaByIdCliente($idCliente);
+	$result = $compraUnitariaService->getComprasUnitariasByIdCliente($idCliente);
 	break;
 	default:
 	echo "Método inexistente en el switch de CompraUnitariaAjaxHelper.php";

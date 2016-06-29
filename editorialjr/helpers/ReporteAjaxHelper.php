@@ -8,8 +8,8 @@ $reporteService = new ReporteService;
 $result = null;
 
 switch($metodo){
-	case "generarReporteContenidistas":
-	$result = $reporteService->generarReporteContenidistas();
+	case "generarReporteClientes":
+	$result = $reporteService->generarReporteClientes();
 	break;
 	default:
 	echo "Método inexistente en el switch de ReporteAjaxHelper.php";

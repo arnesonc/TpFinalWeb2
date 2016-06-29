@@ -15,7 +15,7 @@ class CompraUnitariaService{
 	/**
 	 * Obtiene un CompraUnitariaModel por su id
 	 */
-	public function getCompraUnitariaByIdCliente($idCliente){
+	public function getComprasUnitariasByIdCliente($idCliente){
 		$sql = "SELECT id_cliente, id_numero, fecha, p.nombre nombrePublicacion
 				from compra_unitaria cu
 				left join numero n on cu.id_numero = n.id
