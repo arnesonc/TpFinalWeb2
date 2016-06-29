@@ -34,9 +34,9 @@ function armarTablaNumeros(listaNumeros){
 	    tabla += "<td>" + fecha + "</td>";
 		tabla += "<td><button onclick='RedirectArticulos("+ numero.id +","+ numero.id_estado_numero +");' id='btnListarArticulos' name='" + numero.id + "' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Articulos</button>  ";
 		//Si esta en draft, coloca publicar u editar, sino coloca fe de erratas.
-			if(numero.fecha_publicado == null){
+			if(numero.id_estado_numero == 1){
 				tabla += "<button id='btnEditarNumero' name='"+ numero.id +"' class='btn btn-primary' onclick='editarNumero(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
-				tabla += "<button onclick='publicar("+ numero.id +","+ numero.id_estado_numero +");' id='btnPublicar' name='" + numero.id + "' class='btn btn-success'><span class='glyphicon glyphicon-share'></span> Publicar</button> </td></tr> ";
+				tabla += "<button onclick='publicar("+ numero.id +");' id='btnPublicar' name='" + numero.id + "' class='btn btn-success'><span class='glyphicon glyphicon-share'></span> Publicar</button> </td></tr> ";
 			} else {
 				if(numero.fe_erratas == null){ 
 					tabla += "<button onclick='editarFeErratas(this,"+numero.id_publicacion+");' id='btnFeErratas' name='" + numero.id + "' class='btn btn-warning'><span class='glyphicon glyphicon-edit'></span> Nueva Fe de Erratas</button> </td></tr> ";		
@@ -84,6 +84,28 @@ function editarFeErratas(button,idPublicacion){
 	var idNumero = button.name;
 	//Se coloca el id de publicacion para que tras la edicion de la FeErratas haga un redirect.
 	$.redirect('admin-fe-erratas.php', {'idNumero': idNumero, 'idPublicacion': idPublicacion});
+}
+
+function publicar(id_numero){
+	var idNumero = id_numero;
+
+		$.ajax({
+			url : '/helpers/NumeroAjaxHelper.php',
+			data : {
+				metodo : "cambiarEstadoAPublicado",
+				idNumero : idNumero
+			},
+			type : 'POST',
+			dataType : "json",
+			success : function(result) {
+				alert("Se ha publicado el numero. "+result);
+				location.reload();
+				//TODO: se puede hacer un reload solo de listar numeros, trayendo en el result el id de la publicacion.
+			},
+			error : function(error) {
+				alert("Ups, ocurrio un error! " + error);
+			}
+	});	
 }
 
 function RedirectArticulos(idNumero,estadoNumero){

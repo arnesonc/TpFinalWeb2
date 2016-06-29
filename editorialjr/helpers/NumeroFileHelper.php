@@ -6,9 +6,8 @@ require_once (__DIR__ . "/../model/NumeroModel.php");
 	$numeroService = new NumeroService;
 		$idNumero = $_POST["idNumero"];
 		$precio = $_POST["precio"];
-		//echo($idNumero.$precio);
-		$numeroModel = $numeroService->getNumeroById($idNumero);
-		
+
+		$numeroModel = $numeroService->getNumeroById($idNumero);	
 	/*
 	//El nombre original del fichero en la máquina del cliente.
 	$_FILES['fichero_usuario']['name'];
@@ -27,8 +26,8 @@ require_once (__DIR__ . "/../model/NumeroModel.php");
 	
 	if (move_uploaded_file($_FILES['fichero_usuario']['tmp_name'], $fichero_subido)) {
 		$id_publicacion = $numeroModel->id_publicacion;
-		$path = 'location:/../views/ListarNumeros.php?id='.$id_publicacion;//FIXME: HAY QUE CAMBIARLO CUANDO SE SAQUE DE LA CARPETA VIEWS
-		header($path); 
+		$path = 'location:/../admin-listar-numeros.php?idpub='.$id_publicacion;
+		header($path);
 	} else {
 	//TODO: validar subida de campos vacios
 		echo "¡Posible ataque de subida de ficheros!\n";

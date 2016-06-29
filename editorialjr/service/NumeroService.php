@@ -167,7 +167,6 @@ class NumeroService {
 				$url_portada,
 				$fe_erratas,
 				$numeroModel->precio,
-				/*DATE(NOW()) no va, eso va al momento de publicar*/
 				null,
 				$numeroModel->numero_revista
 				);
@@ -236,7 +235,7 @@ class NumeroService {
 
 	public function editarFeErratas($idNumero,$feErratas){
 		
-		$numeroModel = getNumeroById($idNumero);
+		$numeroModel = $this->getNumeroById($idNumero);
 		$estadoPublicado = 2;
 		if($numeroModel->id_estado_numero == $estadoPublicado){
 			$sql = "UPDATE numero
@@ -252,14 +251,35 @@ class NumeroService {
 				return null;
 			}	
 		} else {
-			return("No se puede editar una FeErratas si el numero no fue publicado.
-					No te quieras salir con la tuya rompiendo mi frontEnd.");
+			return("No se puede editar una FeErratas si el numero no fue publicado.");
 		}
 		
 	}
 
-	public function publicarNumero($id_numero){
-		/*obtiene el modelo y lo updatea*/
+	public function cambiarEstadoAPublicado($idNumero){
+		
+		$numeroModel = $this->getNumeroById($idNumero);
+		$estadoNoPublicado = 1;
+		
+		if($numeroModel->id_estado_numero == $estadoNoPublicado){
+			
+			$sql = "UPDATE numero
+					SET id_estado_numero= 2,
+					fecha_publicado = DATE(NOW())
+					WHERE id= $idNumero;";
+			try {
+				$this->dataAccess->execute ( $sql );
+				return "exito!";
+			} catch ( Exception $e ) {
+				$logger = Logger::getRootLogger ();
+				$logger->error ( $e );
+				return null;
+			}
+			
+		} else {
+			return("No se puede publicar un numero que ya fue publicado! doh.");
+		}
+		
 	}
 }
 
