@@ -47,7 +47,7 @@ include 'side-bar.php';
                                         <!-- FORMULARIO DE CARGA DE ARCHIVO -->
                                         <div id="formularioDeEdicion">
                                             <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                                            <input type="hidden" name="MAX_FILE_SIZE" value="30000" /> <input
+                                            <input type="hidden" name="MAX_FILE_SIZE" value="30000000" /> <input
                                                 type="hidden" id="idNumero" name="idNumero" /><!-- HARDCODEADO -->
                                             <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
                                             Seleccionar Imagen: <input name="fichero_usuario" type="file" />
