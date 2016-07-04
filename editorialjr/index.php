@@ -79,60 +79,6 @@
     			  </div>
 
             <div id="content" class="row text-center">
-              <!-- Primera fila -->
-              <!-- <div class="row text-center">
-
-                  <div class="col-md-3 col-sm-6 hero-feature">
-                      <div class="thumbnail">
-                          <a href="url-del-numero.html">
-                              <img src="img/portada.png" alt="">
-                          </a>
-                          <div class="caption">
-                              <h3>Feature Label</h3>
-                              <p>
-                                  <a href="url-del-numero.html" class="btn btn-primary">Leer</a>
-                                  <a href="#" class="btn btn-default">Download</a>
-                              </p>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-3 col-sm-6 hero-feature">
-                      <div class="thumbnail">
-                          <img src="img/portada.png" alt="">
-                          <div class="caption">
-                              <h3>Playboy</h3>
-                              <p>
-                                  <a href="#" class="btn btn-primary">Comprar</a> <a href="#" class="btn btn-default">Suscribirse</a>
-                              </p>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-3 col-sm-6 hero-feature">
-                      <div class="thumbnail">
-                          <img src="img/portada.png" alt="">
-                          <div class="caption">
-                              <h3>Weekend</h3>
-                              <p>
-                                  <a href="#" class="btn btn-primary">Comprar</a> <a href="#" class="btn btn-default">Suscribirse</a>
-                              </p>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-3 col-sm-6 hero-feature">
-                      <div class="thumbnail">
-                          <img src="img/portada.png" alt="">
-                          <div class="caption">
-                              <h3>Matanza News</h3>
-                              <p>
-                                  <a href="#" class="btn btn-primary">Comprar</a> <a href="#" class="btn btn-default">Suscribirse</a>
-                              </p>
-                          </div>
-                      </div>
-                  </div>
-              </div> -->
             </div>
             </div>
 

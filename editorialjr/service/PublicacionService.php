@@ -304,6 +304,7 @@ class PublicacionService
 					    url_ultima_portada,
 					    destacado
 					FROM publicacion
+          WHERE fecha_utlimo_numero IS NOT NULL
 					LIMIT $offset, $itemsPorPagina;";
 
         try {
