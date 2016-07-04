@@ -21,7 +21,7 @@ function obtenerCantidadPaginas() {
 }
 
 function armarPaginador(cantidadPaginas) {
-    var offset = 1;
+    var offset = 0;
     var itemsPorPagina = 8;
 
     obtenerPublicacionesPaginado(offset, itemsPorPagina);
@@ -82,7 +82,7 @@ function armarHtmlPublicaciones(result){
       html += "            <h3>" + publicacion.nombre + "</h3>";
       html += "            <p>";
       html += "                <a href='#' class='btn btn-primary'>Comprar</a>";
-      html += "                <a href='#' class='btn btn-default'>Descargar</a>";
+      html += "                <a href='#' class='btn btn-default'>Suscribir</a>";
       html += "            </p>";
       html += "        </div>";
       html += "    </div>";

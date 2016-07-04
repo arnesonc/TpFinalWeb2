@@ -295,6 +295,24 @@ class PublicacionService
         return $numeroPublicaciones['publicaciones'];
     }
 
+    public function addUltimaPortadaDelUltimoNumero($url_ultima_portada,$id_publicacion){
+    	$sql = "UPDATE publicacion
+					SET url_ultima_portada= '$url_ultima_portada',
+					fecha_utlimo_numero = DATE(NOW())
+					WHERE id = $id_publicacion;";
+    	
+    	try {
+    		// Ejecuta el insert en la BD
+    		$this->dataAccess->execute($sql);
+    	} catch (Exception $e) {
+    		$logger = Logger::getRootLogger();
+    		$logger->error($e);
+    	
+    		return false;
+    	}
+    	 return true;
+    }
+    
     public function getPublicacionesPaginado($offset, $itemsPorPagina)
     {
         $sql = "SELECT id,

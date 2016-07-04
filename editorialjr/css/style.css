@@ -1,6 +1,12 @@
 #section_footer {
+	color: #fff;
 	background-color: #222;
 	padding-top: 20px;
+}
+
+#section_footer a {
+	text-decoration: none;
+	color: #fff;
 }
 
 .botonNuevo{
