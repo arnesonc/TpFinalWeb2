@@ -116,7 +116,7 @@ class NumeroService {
 	// Crea un nuevo numero, si hay error, retorna un mensaje, sino devuelve true o false, dependiendo de si pudo crear el directorio.
 	public function createNumero($numeroModel) {
 		// añade el path de la portada en su creacion sera generica.
-		$numeroModel->url_portada = "https://avatars1.githubusercontent.com/u/8767588?v=3&s=96";
+		$numeroModel->url_portada = "./img/portada.png";
 		$pathname = $this->createPath($numeroModel);
 		mkdir ( $pathname, 0777, true );
 		//añade el numero de revista en su creacion.
