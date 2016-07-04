@@ -75,125 +75,73 @@
             </div>
             <!-- /.row -->
 
-            <!-- Primera fila -->
-            <div class="row text-center">
+            <div id="divError" class="alert alert-danger oculto">
+    			  </div>
 
-                <div class="col-md-3 col-sm-6 hero-feature">
-                    <div class="thumbnail">
-                        <a href="url-del-numero.html">
-                            <img src="img/portada.png" alt="">
-                        </a>
-                        <div class="caption">
-                            <h3>Feature Label</h3>
-                            <p>
-                                <a href="url-del-numero.html" class="btn btn-primary">      Leer</a>
-                                <a href="#" class="btn btn-default">Download</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <div id="content" class="row text-center">
+              <!-- Primera fila -->
+              <!-- <div class="row text-center">
 
-                <div class="col-md-3 col-sm-6 hero-feature">
-                    <div class="thumbnail">
-                        <img src="img/portada.png" alt="">
-                        <div class="caption">
-                            <h3>Playboy</h3>
-                            <p>
-                                <a href="#" class="btn btn-primary">Comprar</a> <a href="#" class="btn btn-default">Suscribirse</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                  <div class="col-md-3 col-sm-6 hero-feature">
+                      <div class="thumbnail">
+                          <a href="url-del-numero.html">
+                              <img src="img/portada.png" alt="">
+                          </a>
+                          <div class="caption">
+                              <h3>Feature Label</h3>
+                              <p>
+                                  <a href="url-del-numero.html" class="btn btn-primary">Leer</a>
+                                  <a href="#" class="btn btn-default">Download</a>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
 
-                <div class="col-md-3 col-sm-6 hero-feature">
-                    <div class="thumbnail">
-                        <img src="img/portada.png" alt="">
-                        <div class="caption">
-                            <h3>Weekend</h3>
-                            <p>
-                                <a href="#" class="btn btn-primary">Comprar</a> <a href="#" class="btn btn-default">Suscribirse</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                  <div class="col-md-3 col-sm-6 hero-feature">
+                      <div class="thumbnail">
+                          <img src="img/portada.png" alt="">
+                          <div class="caption">
+                              <h3>Playboy</h3>
+                              <p>
+                                  <a href="#" class="btn btn-primary">Comprar</a> <a href="#" class="btn btn-default">Suscribirse</a>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
 
-                <div class="col-md-3 col-sm-6 hero-feature">
-                    <div class="thumbnail">
-                        <img src="img/portada.png" alt="">
-                        <div class="caption">
-                            <h3>Matanza News</h3>
-                            <p>
-                                <a href="#" class="btn btn-primary">Comprar</a> <a href="#" class="btn btn-default">Suscribirse</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                  <div class="col-md-3 col-sm-6 hero-feature">
+                      <div class="thumbnail">
+                          <img src="img/portada.png" alt="">
+                          <div class="caption">
+                              <h3>Weekend</h3>
+                              <p>
+                                  <a href="#" class="btn btn-primary">Comprar</a> <a href="#" class="btn btn-default">Suscribirse</a>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
 
+                  <div class="col-md-3 col-sm-6 hero-feature">
+                      <div class="thumbnail">
+                          <img src="img/portada.png" alt="">
+                          <div class="caption">
+                              <h3>Matanza News</h3>
+                              <p>
+                                  <a href="#" class="btn btn-primary">Comprar</a> <a href="#" class="btn btn-default">Suscribirse</a>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </div> -->
             </div>
-            <!-- /.row -->
-
-            <!-- Segunda fila -->
-            <div class="row text-center">
-
-                <div class="col-md-3 col-sm-6 hero-feature">
-                    <div class="thumbnail">
-                        <img src="img/portada.png" alt="">
-                        <div class="caption">
-                            <h3>Club Play</h3>
-                            <p>
-                                <a href="#" class="btn btn-primary">Comprar</a> <a href="#" class="btn btn-default">Suscribirse</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6 hero-feature">
-                    <div class="thumbnail">
-                        <img src="img/portada.png" alt="">
-                        <div class="caption">
-                            <h3>Mortal Kombat</h3>
-                            <p>
-                                <a href="#" class="btn btn-primary">Comprar</a> <a href="#" class="btn btn-default">Suscribirse</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6 hero-feature">
-                    <div class="thumbnail">
-                        <img src="img/portada.png" alt="">
-                        <div class="caption">
-                            <h3>Top Kids</h3>
-                            <p>
-                                <a href="#" class="btn btn-primary">Comprar</a> <a href="#" class="btn btn-default">Suscribirse</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6 hero-feature">
-                    <div class="thumbnail">
-                        <img src="img/portada.png" alt="">
-                        <div class="caption">
-                            <h3>Lazer</h3>
-                            <p>
-                                <a href="#" class="btn btn-primary">Comprar</a> <a href="#" class="btn btn-default">Suscribirse</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-            <!-- /.row -->
+
             <!-- paginado-->
             <div class="container">
                 <div class="text-center">
                     <ul class="pagination">
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
+                      <div id="page-selection">
+                      </div>
                     </ul>
                 </div>
             </div><!-- /paginado-->
@@ -218,6 +166,12 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.js"></script>
+
+    <!-- Paginacion -->
+    <script src="js/jquery.bootpag.min.js"></script>
+
+    <!-- JS especifico -->
+    <script src="js/index.js"></script>
 
     </body>
 
