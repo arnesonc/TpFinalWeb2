@@ -2,7 +2,9 @@
 require_once (__DIR__ . "/../common/DataAccess.php");
 require_once (__DIR__ . "/../common/AppConfig.php");
 require_once (__DIR__ . "/../model/NumeroModel.php");
+require_once (__DIR__ . "/../service/PublicacionService.php");
 require_once (__DIR__ . "/../helpers/LoggerHelper.php");
+
 class NumeroService {
 	private $dataAccess = null;
 	public function __construct() {
@@ -114,7 +116,7 @@ class NumeroService {
 	// Crea un nuevo numero, si hay error, retorna un mensaje, sino devuelve true o false, dependiendo de si pudo crear el directorio.
 	public function createNumero($numeroModel) {
 		// añade el path de la portada en su creacion sera generica.
-		$numeroModel->url_portada = "url_generica.img";
+		$numeroModel->url_portada = "https://avatars1.githubusercontent.com/u/8767588?v=3&s=96";
 		$pathname = $this->createPath($numeroModel);
 		mkdir ( $pathname, 0777, true );
 		//añade el numero de revista en su creacion.
@@ -258,6 +260,8 @@ class NumeroService {
 
 	public function cambiarEstadoAPublicado($idNumero){
 		
+		$publicacionService = new PublicacionService();
+		
 		$numeroModel = $this->getNumeroById($idNumero);
 		$estadoNoPublicado = 1;
 		
@@ -268,6 +272,8 @@ class NumeroService {
 					fecha_publicado = DATE(NOW())
 					WHERE id= $idNumero;";
 			try {
+				//agregamos a su vez la urle de la portada en la publicacion.
+				$publicacionService->addUltimaPortadaDelUltimoNumero($numeroModel->url_portada,$numeroModel->id_publicacion);
 				$this->dataAccess->execute ( $sql );
 				return "exito!";
 			} catch ( Exception $e ) {
