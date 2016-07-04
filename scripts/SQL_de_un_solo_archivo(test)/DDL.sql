@@ -370,8 +370,8 @@ ALTER TABLE `lectura_articulos`
 -- Filtros para la tabla `numero`
 --
 ALTER TABLE `numero`
-  ADD CONSTRAINT `numero_ibfk_1` FOREIGN KEY (`id_estado_numero`) REFERENCES `estado_numero` (`id`);
-
+  ADD CONSTRAINT `numero_ibfk_1` FOREIGN KEY (`id_estado_numero`) REFERENCES `estado_numero` (`id`),
+  ADD CONSTRAINT `fk_numero_publicacion` FOREIGN key (`id_publicacion`) REFERENCES `publicacion` (`id`);
 --
 -- Filtros para la tabla `publicacion`
 --
@@ -400,26 +400,4 @@ ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id`);
 
   --
-  -- Elimino datos inconsistentes
-  --
-  delete from numero
-  where
-      id in (select
-          id
-      from
-          (select
-              n.id
-          from
-              numero n
-          left join publicacion p ON n.id_publicacion = p.id
 
-          where
-              p.id is null) ids);
-
-  --
-  -- Agrego la ForeignKey
-  --
-  alter table numero
-  add constraint fk_numero_publicacion
-  foreign key (id_publicacion)
-  references publicacion(id);

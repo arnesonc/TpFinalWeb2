@@ -153,6 +153,26 @@
         <footer>
             <div class="container-fluid">
                 <div class="row">
+                    <div class="col-lg-4">
+                      <div class="row">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-11">
+                          <h5>Integrantes</h5>
+                          <ul class="list-unstyled">
+                            <li>German Mazza Gentile</li>
+                            <li>Lucas Akiki Nogueira</li>
+                            <li>Matias Julian Tavera</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                    </div>
+                    <div class="col-lg-4">
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-lg-12 text-center">
                         <p>Copyright &copy; Editorial Jr 2016</p>
                     </div>
