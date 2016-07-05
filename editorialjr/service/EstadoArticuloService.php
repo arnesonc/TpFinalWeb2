@@ -36,6 +36,22 @@ class EstadoArticuloService {
 		return $this->convertEstadoArticuloDBToEstadoArticuloModel($estadoArticuloBD);
 	}
 	
+	
+	public function getCantidadArticulosEnDraft($id_numero){
+				$sql = "SELECT COUNT * cantidad
+				FROM articulo
+				WHERE id_numero = $id_numero AND id_estado_articulo = 1;";
+				//DIE($sql);
+		try{
+			$result = $this->dataAccess->getOneResult($sql);
+		}catch(Exception $e){
+			$logger = Logger::getRootLogger();
+			$logger->error($e);
+			return null;
+		}
+		return $result["cantidad"];
+	}
+
 	/**
 	 * Convierte un estado articulo de la base de datos en un objeto EstadoArticuloModel y lo devuelve
 	 * */

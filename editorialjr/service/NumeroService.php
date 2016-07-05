@@ -4,7 +4,7 @@ require_once (__DIR__ . "/../common/AppConfig.php");
 require_once (__DIR__ . "/../model/NumeroModel.php");
 require_once (__DIR__ . "/../service/PublicacionService.php");
 require_once (__DIR__ . "/../helpers/LoggerHelper.php");
-
+require_once (__DIR__ . "/../service/EstadoArticuloService.php");
 class NumeroService {
 	private $dataAccess = null;
 	public function __construct() {
@@ -261,11 +261,13 @@ class NumeroService {
 	public function cambiarEstadoAPublicado($idNumero){
 		
 		$publicacionService = new PublicacionService();
-		
+		$estadoArticuloService = new EstadoArticuloService();
+
+		$cantidadArticulosEnDraft = $estadoArticuloService->getCantidadArticulosEnDraft($idNumero);
 		$numeroModel = $this->getNumeroById($idNumero);
 		$estadoNoPublicado = 1;
 		
-		if($numeroModel->id_estado_numero == $estadoNoPublicado){
+		if($numeroModel->id_estado_numero == $estadoNoPublicado && $cantidadArticulosEnDraft != 0){
 			
 			$sql = "UPDATE numero
 					SET id_estado_numero= 2,
@@ -283,7 +285,7 @@ class NumeroService {
 			}
 			
 		} else {
-			return("No se puede publicar un numero que ya fue publicado! doh.");
+			return("Verifique que el numero no tenga articulos en draft.");
 		}
 		
 	}
