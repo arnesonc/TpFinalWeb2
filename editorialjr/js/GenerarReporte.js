@@ -1,4 +1,4 @@
-hp$(document).ready(function() {
+$(document).ready(function() {
 
     $("#btnReporteContenidistas").click(function() {
         generarReporteContenidistas();

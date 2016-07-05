@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     obtenerCantidadPaginas();
 });
 
@@ -11,10 +11,10 @@ function obtenerCantidadPaginas() {
         type: 'POST',
         dataType: "json",
         async: false,
-        success: function(numberOfPublications) {
+        success: function (numberOfPublications) {
             armarPaginador(Math.round(numberOfPublications / 8));
         },
-        error: function(error) {
+        error: function (error) {
             mostrarMensaje("divError", "Ups, ocurrio un error!", true);
         }
     });
@@ -28,11 +28,11 @@ function armarPaginador(cantidadPaginas) {
 
     $('#page-selection').bootpag({
         total: cantidadPaginas
-    }).on("page", function(event, num) {
+    }).on("page", function (event, num) {
         offset = (num - 1) * itemsPorPagina;
 
-        if(offset == 0){
-          offset = 1;
+        if (offset == 0) {
+            offset = 1;
         }
 
         obtenerPublicacionesPaginado(offset, itemsPorPagina);
@@ -46,49 +46,49 @@ function armarPaginador(cantidadPaginas) {
 }
 
 function obtenerPublicacionesPaginado(offset, itemsPorPagina) {
-  $.ajax({
-      url: '/helpers/PublicacionAjaxHelper.php',
-      data: {
-          metodo: "getPublicacionesPaginado",
-          offset: offset,
-          itemsPorPagina: itemsPorPagina
-      },
-      type: 'POST',
-      dataType: "json",
-      async: false,
-      success: function(result) {
-          armarHtmlPublicaciones(result);
-      },
-      error: function(error) {
-          mostrarMensaje("divError", "Ups, ocurrio un error!", true);
-      }
-  });
+    $.ajax({
+        url: '/helpers/PublicacionAjaxHelper.php',
+        data: {
+            metodo: "getPublicacionesPaginado",
+            offset: offset,
+            itemsPorPagina: itemsPorPagina
+        },
+        type: 'POST',
+        dataType: "json",
+        async: false,
+        success: function (result) {
+            armarHtmlPublicaciones(result);
+        },
+        error: function (error) {
+            mostrarMensaje("divError", "Ups, ocurrio un error!", true);
+        }
+    });
 }
 
-function armarHtmlPublicaciones(result){
+function armarHtmlPublicaciones(result) {
     var htmlGeneral = "";
     var html = "";
 
     htmlGeneral = "<div class='row text-center'>";
 
-    $.each(result, function(index, publicacion) {
+    $.each(result, function (index, publicacion) {
 
-      html = "<div class='col-md-3 col-sm-6 hero-feature'>";
-      html += "    <div class='thumbnail'>";
-      html += "        <a href='url-del-numero.html'>";
-      html += "            <img src='" + publicacion.url_ultima_portada + "' alt='Imagen de publicación: " + publicacion.nombre + "'>";
-      html += "        </a>";
-      html += "        <div class='caption'>";
-      html += "            <h3>" + publicacion.nombre + "</h3>";
-      html += "            <p>";
-      html += "                <a href='#' class='btn btn-primary'>Comprar</a>";
-      html += "                <a href='#' class='btn btn-default'>Suscribir</a>";
-      html += "            </p>";
-      html += "        </div>";
-      html += "    </div>";
-      html += "</div>";
+        html = "<div class='col-md-3 col-sm-6 hero-feature'>";
+        html += "    <div class='thumbnail'>";
+        html += "        <a href='url-del-numero.html'>";
+        html += "            <img src='" + publicacion.url_ultima_portada + "' alt='Imagen de publicación: " + publicacion.nombre + "'>";
+        html += "        </a>";
+        html += "        <div class='caption'>";
+        html += "            <h3>" + publicacion.nombre + "</h3>";
+        html += "            <p>";
+        html += "                <a href='#' class='btn btn-primary'>Comprar</a>";
+        html += "                <a href='#' class='btn btn-default'>Suscribir</a>";
+        html += "            </p>";
+        html += "        </div>";
+        html += "    </div>";
+        html += "</div>";
 
-      htmlGeneral += html;
+        htmlGeneral += html;
     });
 
     htmlGeneral += "</div>";
