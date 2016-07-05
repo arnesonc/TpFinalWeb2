@@ -267,7 +267,7 @@ class NumeroService {
 		$numeroModel = $this->getNumeroById($idNumero);
 		$estadoNoPublicado = 1;
 		
-		if($numeroModel->id_estado_numero == $estadoNoPublicado && $cantidadArticulosEnDraft != 0){
+		if($numeroModel->id_estado_numero == $estadoNoPublicado && $cantidadArticulosEnDraft == 0){
 			
 			$sql = "UPDATE numero
 					SET id_estado_numero= 2,

@@ -23126,11 +23126,11 @@ insert into rol(id, descripcion)values
 
 -- Creacion del usuario
 
-DROP USER usuarioeditorial@localhost;
+-- DROP USER usuarioeditorial@localhost;
 
-CREATE USER 'usuarioeditorial'@'localhost' IDENTIFIED BY 'usuarioeditorial';
+-- CREATE USER 'usuarioeditorial'@'localhost' IDENTIFIED BY 'usuarioeditorial';
 
-GRANT ALL ON editorialjr.* TO 'usuarioeditorial'@'localhost';
+-- GRANT ALL ON editorialjr.* TO 'usuarioeditorial'@'localhost';
 
 -- Creacion de usuario admin
 TRUNCATE `usuario`;
