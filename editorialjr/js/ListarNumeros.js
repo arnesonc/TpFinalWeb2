@@ -98,7 +98,7 @@ function publicar(id_numero){
 			type : 'POST',
 			dataType : "json",
 			success : function(result) {
-				alert("Se ha publicado el numero. "+result);
+				alert("Estado publicar: "+result);
 				location.reload();
 				//TODO: se puede hacer un reload solo de listar numeros, trayendo en el result el id de la publicacion.
 			},
