@@ -35,7 +35,23 @@ function generarReporteClientes() {
 }
 
 function generarReporteProductos() {
-
+  $.ajax({
+      url: '/helpers/ReporteAjaxHelper.php',
+      data: {
+          metodo: "generarReporteProductos",
+      },
+      type: 'POST',
+      dataType: "json",
+      success: function(html) {
+          $.redirect('/helpers/GetPDF.php', {
+              'contentPDF': html,
+              'namePDF': 'productos'
+          });
+      },
+      error: function(error) {
+          mostrarMensaje("divError", "Ups, ocurrio un error!", true);
+      }
+  });
 }
 
 function generarReporteContenidistas() {

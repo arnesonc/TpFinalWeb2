@@ -300,19 +300,19 @@ class PublicacionService
 					SET url_ultima_portada= '$url_ultima_portada',
 					fecha_utlimo_numero = DATE(NOW())
 					WHERE id = $id_publicacion;";
-    	
+
     	try {
     		// Ejecuta el insert en la BD
     		$this->dataAccess->execute($sql);
     	} catch (Exception $e) {
     		$logger = Logger::getRootLogger();
     		$logger->error($e);
-    	
+
     		return false;
     	}
     	 return true;
     }
-    
+
     public function getPublicacionesPaginado($offset, $itemsPorPagina)
     {
         $sql = "SELECT id,
@@ -343,5 +343,26 @@ class PublicacionService
         }
 
         return $arrayPublicacionModel;
+    }
+
+    /**
+     * Obtiene la cantidad de suscripciones por publicacion. Devuelve los registros directos de la base de datos.
+     * No se mapea con el objeto para que sea mas performante (solo trae los campos que necesita)
+     */
+    public function getCantidadSuscipcionesPorPublicacion(){
+        $sql = "SELECT p.id, p.nombre, count(s.id) cantidadSuscripciones
+                FROM publicacion p left join suscripcion s on s.id_publicacion = p.id
+                group by p.id;";
+
+        try {
+
+            $suscripcionDBArray = $this->dataAccess->getMultipleResults($sql);
+        } catch ( Exception $e ) {
+            $logger = Logger::getRootLogger ();
+            $logger->error ( $e );
+            return null;
+        }
+
+        return $suscripcionDBArray;
     }
 }

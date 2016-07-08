@@ -11,6 +11,9 @@ switch($metodo){
 	case "generarReporteClientes":
 	$result = $reporteService->generarReporteClientes();
 	break;
+	case "generarReporteProductos":
+	$result = $reporteService->generarReporteProductos();
+	break;
 	default:
 	echo "Método inexistente en el switch de ReporteAjaxHelper.php";
 }
