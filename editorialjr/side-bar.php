@@ -30,16 +30,13 @@
                                         echo "<h4>Secciones</h4>";
                                         echo "<a href='/admin-listar-secciones.php'><span class='glyphicon glyphicon-th-list' aria-hidden='true'></span> Listar</a>";
                                         echo "</li>";
+
+                                        echo "<li>";
+                                        echo "<h4>Reportes</h4>";
+                                        echo "<a href='admin-generar-reporte.php'><span class='glyphicon glyphicon-file' aria-hidden='true'></span> Generar reporte</a>";
+                                        echo "</li>";
                                     }
                                 ?>
-                                <!-- <li>
-                                    <h4>Clientes</h4>
-                                    <a href="/admin-listar-clientes.php">Listar <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
-                                </li> -->
-                                <li>
-                                    <h4>Reportes</h4>
-                                    <a href="admin-generar-reporte.php"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Generar reporte</a>
-                                </li>
                             </ul>
                         </div>
                         <!-- /#sidebar-wrapper -->
