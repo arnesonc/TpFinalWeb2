@@ -16,6 +16,7 @@ $arrayPaises = $paisService->getAllPais();
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 	<script src="../js/jquery-1.12.4.min.js" type="text/javascript"></script>
 	<script src="../js/common.js" type="text/javascript"></script>
+    <script src="js/jquery.redirect.js" type="text/javascript"></script>
 	<script src="../js/RegistrarCliente.js" type="text/javascript"></script>
 </head>
 <body>

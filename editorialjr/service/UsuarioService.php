@@ -413,7 +413,6 @@ class UsuarioService {
 		if ($myUser->pass != md5($pass)) {
 			return "Usuario y/o contraseña inválida.";
 		}
-		$myUser->getEstadoUsuario();
 
 		if ($myUser->getEstadoUsuario()->descripcion == "inactivo"){
 			 return "El usuario se encuentra desactivado.";

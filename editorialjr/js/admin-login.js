@@ -34,23 +34,3 @@ function iniciarSesion(){
 		});
   }
 }
-
-function validateEmailPass(email, pass){
-
-  if($.trim(email) == "" || $.trim(email).length < 1 || $.trim(email).length > 50){
-		mostrarMensaje("divMensajeError", "Debe ingresar un email.");
-		return false;
-	}
-
-	if(!isEmail(email)){
-		mostrarMensaje("divMensajeError", "El email ingresado no tiene un formato correcto.");
-		return false;
-	}
-
-	if($.trim(pass) == "" || $.trim(pass).length < 1 || $.trim(pass).length > 50){
-		mostrarMensaje("divMensajeError", "Debe ingresa una contraseña.");
-		return false;
-	}
-
-  return true;
-}

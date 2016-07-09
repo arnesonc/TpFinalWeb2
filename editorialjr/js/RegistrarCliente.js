@@ -134,11 +134,10 @@ $(document).ready(
 							if (result === true) {
 								limpiarFormulario();
 								ocultarMensaje("divMensajeError");
-								alert("Registracion exitosa. Redirigir a la pantalla principal.");
+                                $.redirect('/index.php');
 							} else {
 								mostrarMensaje("divMensajeError", result, true);
 							}
-
 						},
 						error : function(error) {
 							mostrarMensaje("Ups, ocurrio un error! ", true);
@@ -207,7 +206,7 @@ $(document).ready(
  					}
 
  					if($.trim(piso) != "" && ($.trim(piso).length < 1 || $.trim(piso).length > 5)){
- 						mostrarMensaje("divMensajeError", "1El piso no es válido. Debe poseer como máximo 5 caracteres.");
+                        mostrarMensaje("divMensajeError", "1El piso no es válido. Debe poseer como máximo 5 caracteres.");
  						return false;
  					}
 
@@ -216,7 +215,7 @@ $(document).ready(
  						return false;
  					}
 
- 					if($.trim(detalle_direccion) != "" && ($.trim(detalle_direccion).length < 1 || $.trim(detalle_direccion).length > 5)){
+ 					if($.trim(detalle_direccion) != "" && ($.trim(detalle_direccion).length < 1 || $.trim(detalle_direccion).length > 150)){
  						mostrarMensaje("divMensajeError", "El detalle de la dirección no es válido. Debe poseer como máximo 150 caracteres.");
  						return false;
  					}

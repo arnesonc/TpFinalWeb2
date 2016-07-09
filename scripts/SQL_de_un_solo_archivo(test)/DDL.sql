@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `ciudad` (
 CREATE TABLE IF NOT EXISTS `cliente` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(50) NOT NULL,
-  `pass` varchar(30) NOT NULL,
+  `pass` varchar(50) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `apellido` varchar(30) NOT NULL,
   `id_ciudad` int(11) NOT NULL,

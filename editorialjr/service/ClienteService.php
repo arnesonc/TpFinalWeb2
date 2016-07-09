@@ -48,6 +48,42 @@ class ClienteService{
 		return $this->convertClienteDBToClienteModel($clienteDB);
 	}
 
+    public function getClienteByEmail($email){
+
+        $sql = "SELECT id,
+				    email,
+				    pass,
+				    nombre,
+				    apellido,
+				    id_ciudad,
+				    calle,
+				    numero_calle,
+				    codigo_postal,
+				    piso,
+				    departamento,
+				    detalle_direccion,
+				    id_estado_cliente
+				FROM cliente
+				WHERE email = '$email';";
+
+        try{
+
+            $clienteDB = $this->dataAccess->getOneResult($sql);
+
+        }catch(Exception $e){
+
+            $logger = Logger::getRootLogger();
+            $logger->error($e);
+            return null;
+        }
+
+        if(is_null($clienteDB)){
+            return null;
+        }
+
+        return $this->convertClienteDBToClienteModel($clienteDB);
+    }
+
 	/**
 	 * Obtiene una lista de clientes (incluye inactivos)
 	 */
@@ -129,13 +165,18 @@ class ClienteService{
 		// Si esta vacio, no hay mensaje de error por lo tanto es válido
 		if(empty($message)){
 
-			$result = $this->insertCliente($clienteModel);
+			$id = $this->insertCliente($clienteModel);
 		}else{
 			//En caso de ser invalido devuelve un mensaje de validacion
-			$result= $message;
+			return $message;
 		}
 
-		return $result;
+        $usuarioModel = $this->getClienteById($id);
+        // Luego de inserta el usuario le crea la sesión para luego re dirigir a la pantalla principal
+        // con la sesión iniciada
+        $this->createSession($usuarioModel);
+
+		return true;
 	}
 
 	/**
@@ -224,15 +265,15 @@ class ClienteService{
 					return "El código postal no es válido. Debe poseer como máximo 11 caracteres.";
 		}
 
-		if(!isset($clienteModel->piso) && !$validationHelper->validateText($clienteModel->piso, 1, 5)){
+		if(!is_null($clienteModel->piso) && !$validationHelper->validateText($clienteModel->piso, 1, 5)){
 			return "El piso no es válido. Debe poseer como máximo 5 caracteres.";
 		}
 
-		if(!isset($clienteModel->departamento) && !$validationHelper->validateText($clienteModel->departamento, 1, 5)){
+		if(!is_null($clienteModel->departamento) && !$validationHelper->validateText($clienteModel->departamento, 1, 5)){
 			return "El departamento no es válido. Debe poseer como máximo 5 caracteres.";
 		}
 
-		if(!isset($clienteModel->detalle_direccion) && !$validationHelper->validateText($clienteModel->detalle_direccion, 1, 150)){
+		if(!is_null($clienteModel->detalle_direccion) && !$validationHelper->validateText($clienteModel->detalle_direccion, 1, 150)){
 			return "El detalle de la dirección no es válido. Debe poseer como máximo 150 caracteres.";
 		}
 
@@ -298,7 +339,7 @@ class ClienteService{
 		try{
 
 			// Ejecuta el insert en la BD
-			$this->dataAccess->execute($sql);
+			$id = $this->dataAccess->execute($sql, true);
 
 		}catch(Exception $e){
 			$logger = Logger::getRootLogger();
@@ -307,8 +348,50 @@ class ClienteService{
 			return false;
 		}
 
-		return true;
+		return $id;
 	}
+
+    public function checkUserAndPass($email,$pass) {
+        $validationHelper = new ValidationHelper();
+
+        if (is_null ( $email ) || ! isset ( $email ) || ! $validationHelper->validateText ( $email, 1, 50 )) {
+            return "El email no es válido. Debe poseer como máximo 50 caracteres.";
+        }
+
+        if (! filter_var ( $email, FILTER_VALIDATE_EMAIL )) {
+            return "El email ingresado no tiene un formato correcto.";
+        }
+
+        if (is_null ( $pass ) || ! isset ( $pass ) || ! $validationHelper->validateText ( $pass, 1, 50 )) {
+            return "La contraseña no es válida. Debe poseer como máximo 50 caracteres.";
+        }
+
+        $clienteModel = $this->getClienteByEmail($email);
+
+        if(is_null($clienteModel) || !isset($clienteModel)){
+            return "Cliente no registrado en el sistema.";
+        }
+
+        if ($clienteModel->pass != md5(trim($pass))) {
+            return "Usuario y/o contraseña inválida.";
+        }
+
+        if ($clienteModel->getEstadoCliente()->descripcion == "inactivo"){
+            return "El cliente se encuentra desactivado.";
+        }
+
+        $this->createSession($clienteModel);
+
+        return true;
+    }
+
+    public function createSession($clienteModel){
+        session_start();
+        $_SESSION['session'] = array(
+            "login" => "ok",
+            "id" => $clienteModel->id,
+            "nombre" => $clienteModel->nombre);
+    }
 }
 
 ?>
