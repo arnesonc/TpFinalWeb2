@@ -45,13 +45,12 @@ include 'side-bar.php';
 								<input id="nombre" name="nombre" placeholder="Nombre" class="form-control input-md" type="text" maxlength="50">
 							</div>
 						</div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="destacado">¿es una publicacion destacada?</label>
-                                    <div class="col-md-4">
-                                        <input id="destacado" name="destacado" placeholder="" type="checkbox" value="1">
-                                    </div>
-                                </div>
-                                
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="destacado">Tipo de publicacion</label>
+              <div class="checkbox">
+                  <label class="col-md-5 control-label" for="destacado"><input id="destacado" name="destacado" type="checkbox" value="1">Publicacion destacada</label>
+              </div>
+            </div>
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="send"></label>
 							<div class="col-md-5">
