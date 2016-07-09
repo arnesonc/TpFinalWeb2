@@ -1,6 +1,7 @@
 <?php
 include 'header.php';
 include 'side-bar.php';
+require_once(__DIR__."/common/Security.php");
 ?>
 <!-- Page Content -->
 <div id="page-content-wrapper">
