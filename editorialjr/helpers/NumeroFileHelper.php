@@ -7,7 +7,7 @@ require_once (__DIR__ . "/../model/NumeroModel.php");
 		$idNumero = $_POST["idNumero"];
 		$precio = $_POST["precio"];
 
-		$numeroModel = $numeroService->getNumeroById($idNumero);	
+		$numeroModel = $numeroService->getNumeroById($idNumero);
 	/*
 	//El nombre original del fichero en la máquina del cliente.
 	$_FILES['fichero_usuario']['name'];
@@ -16,25 +16,27 @@ require_once (__DIR__ . "/../model/NumeroModel.php");
 	//El código de error asociado a esta subida.
 	$_FILES['fichero_usuario']['error'];
 	*/
-	
+
 	$path = $numeroModel->getPath();
 	$fichero_subido = $path . basename($_FILES['fichero_usuario']['name']);
 	$numeroModel->url_portada = $fichero_subido;
 	$numeroModel->precio = $precio;
 	$numeroService->updateNumero($numeroModel);
 	//echo $fichero_subido;
-	
+	if($_FILES['fichero_usuario']['size'] == 0) {
+		$id_publicacion = $numeroModel->id_publicacion;
+		$path = 'location:/../admin-listar-numeros.php?idpub='.$id_publicacion;
+		header($path);
+	}
+
 	if (move_uploaded_file($_FILES['fichero_usuario']['tmp_name'], $fichero_subido)) {
 		$id_publicacion = $numeroModel->id_publicacion;
 		$path = 'location:/../admin-listar-numeros.php?idpub='.$id_publicacion;
 		header($path);
-	} else {
-	//TODO: validar subida de campos vacios
-		echo "¡Posible ataque de subida de ficheros!\n";
 	}
-	
+
 	echo 'Más información de depuración:';
 	print_r($_FILES);
 
-	
+
 ?>
