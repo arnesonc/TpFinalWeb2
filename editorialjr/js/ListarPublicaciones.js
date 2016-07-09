@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
-
+	//MASK MONEY JQUERY
+			$("#precio").maskMoney({prefix:'AR$ ', allowNegative: true, thousands:'', decimal:'.', affixesStay: false});
 	getAllPublicaciones();
 
 });
@@ -19,8 +20,8 @@ function getAllPublicaciones() {
 				error : function(error) {
 					alert("Ups, ocurrio un error! " + error);
 				}
-		});	
-		
+		});
+
 		function armarTablaPublicaciones(listaPublicaciones){
 
 			  var tabla = "";
@@ -35,7 +36,7 @@ function getAllPublicaciones() {
 				  tabla += "<tr><td>" + publicacion.nombre + "</td><td>" + destacado + "</td>";
 				  tabla += "<td><button id='btnEditarPublicacion' name='"+ publicacion.id +"' class='btn btn-primary' onclick='editarPublicacion(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
 				  tabla += "<button onclick='aNumeros("+ publicacion.id +");' id='btnListarNumeros' name='" + publicacion.id + "' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Números</button> </td></tr> ";
-			   
+
 			  });
 
 			  tabla += "</td></tr></tbody></table>";
@@ -53,7 +54,7 @@ function getAllPublicaciones() {
 			          "url": "../js/datatables.spanish.lang"
 			      }
 			  });
-			}    
+			}
 }
 
 function aNumeros(idPublicacion){
@@ -91,8 +92,8 @@ function actualizarPublicacion(idPublicacion) {
 	var nombre = $("#nombre").val().trim();
 	var destacado = null;
 	($('#destacado').is(':checked')) ?  destacado = 1 : destacado = 0;
-	
-	
+
+
 		$.ajax({
 			url : '/helpers/PublicacionAjaxHelper.php',
 			data : {

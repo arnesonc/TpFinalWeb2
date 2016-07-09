@@ -1,3 +1,8 @@
+$(document).ready(function(){
+	//MASK MONEY JQUERY
+			$("#precio").maskMoney({prefix:'AR$ ', allowNegative: true, thousands:'', decimal:'.', affixesStay: false});
+});
+
 function listarNumeros(id_publicacion) {
 			var idPublicacion = id_publicacion;
 
@@ -15,14 +20,14 @@ function listarNumeros(id_publicacion) {
 				error : function(error) {
 					alert("Ups, ocurrio un error! " + error);
 				}
-		});	
+		});
 }
 
 function armarTablaNumeros(listaNumeros){
 
 	  var tabla = "";
 	  $("#bodyNumeros").html("");
-	  
+
 	  tabla = "<table id='tblNumeros' class='table table-striped table-bordered table-responsive' cellspacing='0'>";
 	  tabla +="<thead><tr><th>Numero</th><th>Precio</th><th>fecha publicado</th>";
 	  tabla +="<th>Acciones</th></tr></thead><tbody>";
@@ -38,14 +43,14 @@ function armarTablaNumeros(listaNumeros){
 				tabla += "<button id='btnEditarNumero' name='"+ numero.id +"' class='btn btn-primary' onclick='editarNumero(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
 				tabla += "<button onclick='publicar("+ numero.id +");' id='btnPublicar' name='" + numero.id + "' class='btn btn-success'><span class='glyphicon glyphicon-share'></span> Publicar</button> </td></tr> ";
 			} else {
-				if(numero.fe_erratas == null){ 
-					tabla += "<button onclick='editarFeErratas(this,"+numero.id_publicacion+");' id='btnFeErratas' name='" + numero.id + "' class='btn btn-warning'><span class='glyphicon glyphicon-edit'></span> Nueva Fe de Erratas</button> </td></tr> ";		
+				if(numero.fe_erratas == null){
+					tabla += "<button onclick='editarFeErratas(this,"+numero.id_publicacion+");' id='btnFeErratas' name='" + numero.id + "' class='btn btn-warning'><span class='glyphicon glyphicon-edit'></span> Nueva Fe de Erratas</button> </td></tr> ";
 				} else {
 					tabla += "<button onclick='editarFeErratas(this,"+numero.id_publicacion+");' id='btnFeErratas' name='" + numero.id + "' class='btn btn-danger'><span class='glyphicon glyphicon-edit'></span> Cambiar Fe de Erratas</button> </td></tr> ";
 				}
 			}
 		});
-	  
+
 
 	  tabla += "</td></tr></tbody></table>";
 
@@ -76,7 +81,7 @@ function editarNumeroFormulario(id_numero){
 */
 function editarNumero(button){
 	$("#idNumero").val(button.name);
-	$("#divMensajeError").hide();  
+	$("#divMensajeError").hide();
 	$("#modalNumero").modal('show');
 }
 
@@ -105,7 +110,7 @@ function publicar(id_numero){
 			error : function(error) {
 				alert("Ups, ocurrio un error! " + error);
 			}
-	});	
+	});
 }
 
 function RedirectArticulos(idNumero,estadoNumero){

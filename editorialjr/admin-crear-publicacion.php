@@ -44,7 +44,7 @@ include 'side-bar.php';
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="precio">Precio de numero</label>
                                     <div class="col-md-4">
-                                        <input id="precio" name="precio" placeholder="Precio" class="form-control" type="number" min="0" max="9999">
+                                        <input id="precio" name="precio" placeholder="Precio" class="form-control" >
                                     </div>
                                 </div>
 
@@ -90,6 +90,8 @@ include 'side-bar.php';
 <!-- Js listar Cliente-->
 <script src="js/CrearPublicacion.js" type="text/javascript"></script>
 
+<!-- Js maskMoney-->
+<script src="js/jquery.maskMoney.js" type="text/javascript"></script>
 
 <!-- js datatables-->
 <script src="js/datatables.min.js" type="text/javascript"></script>

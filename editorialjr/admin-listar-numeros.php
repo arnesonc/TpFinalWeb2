@@ -44,7 +44,7 @@ include 'side-bar.php';
                                         <div id="divPrecioNumero" class="form-group">
                                             <label class="col-md-4 control-label" for="precio">Precio</label>
                                             <div class="col-md-5">
-                                                <input id="precio" name="precio" placeholder="Precio"
+                                                <input id="precio" name="precio" required="true" placeholder="Precio"
                                                        class="form-control input-md" type="text" maxlength="10">
                                             </div>
                                         </div>
@@ -53,7 +53,7 @@ include 'side-bar.php';
                                         <!-- FORMULARIO DE CARGA DE ARCHIVO -->
                                         <div id="formularioDeEdicion">
                                             <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                                            <input type="hidden" name="MAX_FILE_SIZE" value="30000000" /> <input
+                                            <input type="hidden" required="true" name="MAX_FILE_SIZE" value="30000000" /> <input
                                                 type="hidden" id="idNumero" name="idNumero" />
                                             <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
                                             Seleccionar Imagen: <input name="fichero_usuario" type="file" />
@@ -113,6 +113,9 @@ include 'side-bar.php';
 
 <!-- js datatables-->
 <script src="js/datatables.min.js" type="text/javascript"></script>
+
+<!-- js maskmoney-->
+<script src="js/jquery.maskMoney.js" type="text/javascript"></script>
 
 <!-- Negrada -->
 <script>listarNumeros(
