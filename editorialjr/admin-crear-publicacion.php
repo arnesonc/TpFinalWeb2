@@ -29,30 +29,23 @@ include 'side-bar.php';
                                         <input id="nombre" name="nombre" placeholder="Nombre" class="form-control input-md" type="text">
                                     </div>
                                 </div>
-
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="destacado">¿es una publicacion destacada?</label>
+                                    <label class="col-md-4 control-label" for="precio">Precio de numero inicial</label>
                                     <div class="col-md-4">
-                                        <input id="destacado" name="destacado" placeholder="" type="checkbox" value="1">
+                                        <input id="precio" name="precio" placeholder="Precio" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
-                                        <strong>SE CREARA A SU VEZ UN NUMERO EN DRAFT</strong>
-                                    </div>
+                                  <label class="col-md-4 control-label" for="destacado">Tipo de publicacion</label>
+                                  <div class="checkbox">
+                                      <label class="col-md-4 control-label" for="destacado"><input id="destacado" name="destacado" type="checkbox" value="1">Publicacion destacada</label>
+                                  </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="precio">Precio de numero</label>
-                                    <div class="col-md-4">
-                                        <input id="precio" name="precio" placeholder="Precio" class="form-control" >
-                                    </div>
-                                </div>
-
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="send"></label>
                                     <div class="col-md-4">
-                                        <button type="button" id="btnCrear" name="send" class="btn btn-primary btn-lg">Crear Publicacion</button>
-                                        <a href="#" class="btn btn-default btn-lg active" role="button">Cancelar</a>
+                                        <button type="button" id="btnCrear" name="send" class="btn btn-primary btn-md">Crear Publicacion</button>
+                                        <a href="#" class="btn btn-default btn-md active" role="button">Cancelar</a>
                                     </div>
                                 </div>
 
