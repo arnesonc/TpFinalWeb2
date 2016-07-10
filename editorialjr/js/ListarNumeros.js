@@ -83,6 +83,21 @@ function editarNumero(button){
 	$("#idNumero").val(button.name);
 	$("#divMensajeError").hide();
 	$("#modalNumero").modal('show');
+	$.ajax({
+		url : '/helpers/NumeroAjaxHelper.php',
+		data : {
+			metodo : "getNumeroById",
+			idNumero : $("#idNumero").val()
+		},
+		type : 'POST',
+		dataType : "json",
+		success : function(result) {
+			$("#precio").val(result.precio);
+		},
+		error : function(error) {
+			alert("Ups, ocurrio un error! " + error);
+		}});
+
 }
 
 function editarFeErratas(button,idPublicacion){

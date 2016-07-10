@@ -22,6 +22,10 @@ switch($metodo){
 		$idNumero = $_POST["idNumero"];
 		$result = $numeroService->cambiarEstadoAPublicado($idNumero);
 		break;
+	case "getNumeroById":
+		$idNumero = $_POST["idNumero"];
+		$result = $numeroService->getNumeroById($idNumero);
+		break;
 	default:
 		echo "Método inexistente en el switch de NumeroAjaxHelper.php";
 }
