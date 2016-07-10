@@ -33,10 +33,10 @@ require_once (__DIR__ . "/../model/NumeroModel.php");
 		$id_publicacion = $numeroModel->id_publicacion;
 		$path = 'location:/../admin-listar-numeros.php?idpub='.$id_publicacion;
 		header($path);
-	}
-
-	echo 'Más información de depuración:';
-	print_r($_FILES);
-
+	} else {
+ 			echo "¡Posible ataque de subida de ficheros!\n";
+			echo 'Más información de depuración:';
+			print_r($_FILES);
+  	}
 
 ?>
