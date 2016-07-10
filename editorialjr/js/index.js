@@ -88,7 +88,7 @@ function armarHtmlPublicaciones(result) {
         html += "            <h3>" + publicacion.nombre + "</h3>";
         html += "            <p>";
         html += "                <a href='#' class='btn btn-primary'>Comprar</a>";
-        html += "                <a href='#' class='btn btn-default'>Suscribir</a>";
+        html += "                <a onclick='suscribirCliente(this);' name='"+ publicacion.id+ "'class='btn btn-default'>Suscribir</a>";
         html += "            </p>";
         html += "        </div>";
         html += "    </div>";
@@ -142,3 +142,29 @@ function iniciarSesion() {
         });
     }
 }
+
+function suscribirCliente(button){
+  var idCliente = 1; //FIXME: codigo hardcodeado.
+
+      $.ajax({
+          url: '/helpers/SuscripcionAjaxHelper.php',
+          data: {
+              metodo: "suscribirCliente",
+              idPublicacion: button.name,
+              idCliente: 1 //hardcode
+          },
+          type: 'POST',
+          dataType: "json",
+          success: function (result) {
+              if (result === true) {
+                  alert("suscripcion satisfactoria");
+              } else {
+                  mostrarMensaje("no se pudo suscribir");
+                  alert("no se pudo suscribir");
+              }
+          },
+          error: function (error) {
+              mostrarMensaje("divMensajeError", "Ups, ocurrio un error al suscribir! ", true);
+          }
+      });
+  }

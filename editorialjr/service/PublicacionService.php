@@ -235,6 +235,23 @@ class PublicacionService
         return $ultimaFechaDePublicacionDadaDB;
     }
 
+    public function getLastPrecio($id_publicacion)
+    {
+        $sql = "SELECT MAX(precio) as price from numero
+        where fecha_publicado = (select MAX(fecha_publicado) from numero as NU join publicacion PU
+        where NU.id_publicacion = $id_publicacion and id_estado_numero = 2);";
+        //busca los numeros de una publicacion en la bd
+        try {
+            $ultimoPrecioDB = $this->dataAccess->getOneResult($sql);
+        } catch (Exception $e) {
+            $logger = Logger::getRootLogger();
+            $logger->error($e);
+            return;
+        }
+
+        return $ultimoPrecioDB['price'];
+    }
+
     public function updatePublicacionParameters($id, $nombre, $destacado)
     {
         $publicacionModel = new PublicacionModel();

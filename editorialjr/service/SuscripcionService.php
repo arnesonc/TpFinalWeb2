@@ -1,6 +1,7 @@
 <?php
 require_once (__DIR__ . "/../common/DataAccess.php");
 require_once (__DIR__ . "/../model/SuscripcionModel.php");
+require_once (__DIR__ . "/../service/PublicacionService.php");
 require_once (__DIR__ . "/../helpers/LoggerHelper.php");
 class SuscripcionService {
 	private $dataAccess = null;
@@ -76,6 +77,20 @@ class SuscripcionService {
 		return $arraySuscripcionesModel;
 	}
 
+
+			public function suscribirCliente($idCliente,$idPublicacion){
+				$suscripcionModel = new SuscripcionModel ();
+				$publicacionService = new PublicacionService ();
+
+				$suscripcionModel->id_cliente = $idCliente;
+				$suscripcionModel->id_publicacion = $idPublicacion;
+				$suscripcionModel->id_tipo_suscripcion = 3; //FIXME: hardcodeado, siempre suscribe por 6 meses.
+				$suscripcionModel->precio = $publicacionService->getLastPrecio($idPublicacion);
+
+				return $this->createSuscripcion($suscripcionModel); //devuelve true si se suscribio correctamente.
+
+			}
+
 	/*
 	* Convierte una suscripcion de la base de datos en un objeto SuscripcionModel y lo devuelve
 	*/
@@ -102,10 +117,6 @@ class SuscripcionService {
 	}
 
 	private function insertSuscripcion($suscripcionModel){
-
-		$piso = is_null($clienteModel->piso) ? null : "'$articuloModel->latitud'";
-		$departamento = is_null($clienteModel->departamento) ? null : "'$clienteModel->departamento'";
-		$detalle_direccion = is_null($clienteModel->detalle_direccion) ? null : "'$clienteModel->detalle_direccion'";
 
 		$sql = " INSERT
 		INTO suscripcion

@@ -9,6 +9,11 @@ $suscripcionService = new SuscripcionService;
 $result = null;
 
 switch($metodo){
+	case "suscribirCliente":
+		$idCliente = $_POST["idCliente"];
+		$idPublicacion = $_POST["idPublicacion"];
+		$result = $suscripcionService->suscribirCliente($idCliente,$idPublicacion);
+		break;
 	case "getSuscripcionById":
 	$idSuscripcion = $_POST["idSuscripcion"];
 	$result = $suscripcionService->getSuscripcionById($idSuscripcion);
