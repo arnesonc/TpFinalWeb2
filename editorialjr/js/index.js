@@ -151,7 +151,7 @@ function suscribirCliente(button){
           data: {
               metodo: "suscribirCliente",
               idPublicacion: button.name,
-              idCliente: 1 //hardcode
+              idCliente: obtenerSessionID(),
           },
           type: 'POST',
           dataType: "json",
