@@ -63,6 +63,12 @@ require_once(__DIR__."/common/sesionValidaIndex.php");
                       && $_SESSION['session']["login"] == "ok"){
                   ?>
                           <li>
+                              <a href="/client-listar-suscripciones.php">Mis Suscripciones</a>
+                          </li>
+                          <li>
+                              <a href="client-listar-numeros-comprados.php">Mis Compras</a>
+                          </li>
+                          <li>
                               <a href="/logoutIndex.php">Cerrar sesión</a>
                           </li>
                   <?php }else{ ?>

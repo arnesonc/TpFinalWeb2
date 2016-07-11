@@ -41,6 +41,26 @@ class NumeroService {
 		return $this->convertNumeroDBToNumeroModel ( $numeroDB );
 	}
 
+	public function listarNumerosComprados($idCliente){
+		$sql = " SELECT CU.fecha, N.id, N.fe_erratas, N.precio, N.fecha_publicado, N.numero_revista, N.url_portada, N.id_publicacion, N.id_estado_numero
+				FROM editorialjr.numero N
+				join compra_unitaria CU on CU.id_numero = N.id
+				WHERE CU.id_cliente = $idCliente;";
+		// busca los numeros de una publicacion en la bd
+		try {
+			$numeroDBArray = $this->dataAccess->getMultipleResults ( $sql );
+		} catch ( Exception $e ) {
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $e );
+			return null;
+		}
+		$arrayNumeroModel = array ();
+		foreach ( $numeroDBArray as $numeroDB ) {
+			$numeroModel = $this->convertNumeroDBToNumeroModel ( $numeroDB );
+			$arrayNumeroModel [] = $numeroModel;
+		}
+		return $arrayNumeroModel;
+	}
 	/**
 	 * Convierte un numero de la base de datos en un objeto NumeroModel y lo devuelve
 	 */
@@ -56,7 +76,10 @@ class NumeroService {
 		$numeroModel->precio = $numeroDB ["precio"];
 		$numeroModel->fecha_publicado = $numeroDB ["fecha_publicado"];
 		$numeroModel->numero_revista = $numeroDB["numero_revista"];
-
+		if(isset($numeroDB["fecha"])){
+			$numeroModel->fecha_de_compra = $numeroDB["fecha"];
+		}
+		$numeroModel->getPublicacion();
 		return $numeroModel;
 	}
 

@@ -29,7 +29,7 @@ function obtenerSessionID(){
 	// store ajax response in var
 	var ajaxResponse = ajaxObj.responseText;
 	// check ajax response
-	console.log(ajaxResponse);
+	//# console.log(ajaxResponse);
 	// your ajax callback function for success
 	ajaxObj.success(function(response) {
 		id_user = response;

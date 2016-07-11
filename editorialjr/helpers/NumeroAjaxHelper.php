@@ -31,6 +31,10 @@ switch($metodo){
 		$idNumero = $_POST["idNumero"];
 		$result = $numeroService->getNumeroById($idNumero);
 		break;
+	case "listarNumerosComprados":
+		$idCliente = $_POST["idCliente"];
+		$result = $numeroService->listarNumerosComprados($idCliente);
+		break;
 	default:
 		echo "Método inexistente en el switch de NumeroAjaxHelper.php";
 }
