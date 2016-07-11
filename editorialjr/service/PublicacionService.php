@@ -217,8 +217,7 @@ class PublicacionService
         return $idPublicacion;
     }
 
-    public function getLastFecha($id_publicacion)
-    {
+    public function getLastFecha($id_publicacion){
         $sql = "SELECT
 				MAX(fecha_publicado) as fecha_publicado
 				FROM numero WHERE id_publicacion = $id_publicacion;";
@@ -235,8 +234,19 @@ class PublicacionService
         return $ultimaFechaDePublicacionDadaDB;
     }
 
-    public function getLastPrecio($id_publicacion)
-    {
+    public function getIdLastNumero($id_publicacion){
+        $sql = "SELECT MAX(id) as lastid from numero where id_publicacion = $id_publicacion; ";
+        try {
+            $lastID = $this->dataAccess->getOneResult($sql)['lastid'];
+        } catch (Exception $e) {
+            $logger = Logger::getRootLogger();
+            $logger->error($e);
+            return;
+        }
+        return $lastID;
+    }
+
+    public function getLastPrecio($id_publicacion){
         $sql = "SELECT MAX(precio) as price from numero
         where fecha_publicado = (select MAX(fecha_publicado) from numero as NU join publicacion PU
         where NU.id_publicacion = $id_publicacion and id_estado_numero = 2);";

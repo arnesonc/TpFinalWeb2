@@ -2,6 +2,7 @@
 
 require_once(__DIR__."/../common/DataAccess.php");
 require_once(__DIR__."/../model/CompraUnitariaModel.php");
+require_once(__DIR__."/../service/PublicacionService.php");
 require_once(__DIR__."/../helpers/LoggerHelper.php");
 
 class CompraUnitariaService{
@@ -10,6 +11,17 @@ class CompraUnitariaService{
 
 	public function __construct(){
 		$this->dataAccess = new DataAccess;
+	}
+
+	public function comprarUltimoNumero($idCliente,$idPublicacion){
+
+		$publicacionService = new PublicacionService();
+		$lastID = $publicacionService->getIdLastNumero($idPublicacion);
+
+		$compraUnitariaModel = new CompraUnitariaModel();
+		$compraUnitariaModel->id_cliente = $idCliente;
+		$compraUnitariaModel->id_numero = $lastID;
+		return $this->insertCompraUnitaria($compraUnitariaModel);
 	}
 
 	/**

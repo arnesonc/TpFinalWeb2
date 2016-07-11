@@ -121,7 +121,7 @@ function armarHtmlPublicaciones(publicacionesAdquiridas,result) {
         if(publicacionAdquirida){
           html += "                <a href='#' name='"+ publicacion.id+ "'class='btn btn-default'>Ver</a>";
         } else {
-          html += "                <a href='#' class='btn btn-primary'>Comprar</a>";
+          html += "                <a onclick='comprarUltimoNumero(this);' name='"+ publicacion.id+ "' class='btn btn-primary'>Comprar</a>";
           html += "                <a onclick='suscribirCliente(this);' name='"+ publicacion.id+ "'class='btn btn-default'>Suscribir</a>";
         }
         html += "            </p>";
@@ -179,6 +179,7 @@ function iniciarSesion() {
 }
 
 function suscribirCliente(button){
+  //TODO: mercado pago
     $.ajax({
       url: '/helpers/SuscripcionAjaxHelper.php',
       data: {
@@ -203,6 +204,31 @@ function suscribirCliente(button){
   });
 }
 
+function comprarUltimoNumero(button){
+  //TODO: mercado pago
+    $.ajax({
+      url: '/helpers/CompraUnitariaAjaxHelper.php',
+      data: {
+          metodo: "comprarUltimoNumero",
+          idPublicacion: button.name,
+          idCliente: obtenerSessionID(),
+      },
+      type: 'POST',
+      dataType: "json",
+      success: function (result) {
+          if (result === true) {
+              alert("compra satisfactoria");
+              obtenerCantidadPaginas();
+          } else {
+              mostrarMensaje("no se pudo comprar");
+              alert("no se pudo comprar");
+          }
+      },
+      error: function (error) {
+          mostrarMensaje("divMensajeError", "Ups, ocurrio un error al suscribir! ", true);
+      }
+  });
+}
 /*RETORNA TRUE SI EL CLIENTE ESTA SUSCRITO A LA PUBLICACION*/
 function clienteSuscrito(idCliente,idPublicacion){
     $.ajax({

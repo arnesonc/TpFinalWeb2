@@ -300,7 +300,7 @@ class ClienteService{
 	 **/
 	private function insertCliente($clienteModel){
 
-		$pass = md5($clienteModel->pass);
+		$pass = md5(trim($clienteModel->pass));
 
 		//si el campo es null el sql lo coloca null, caso contraro inserta el valor con las 'quotes' correspondientes.
 		$piso = is_null($clienteModel->piso) ? 'null' : "'$clienteModel->piso'";
