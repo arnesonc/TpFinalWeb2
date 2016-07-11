@@ -150,6 +150,7 @@ require_once(__DIR__."/common/sesionValidaIndex.php");
                     </form><!-- /form -->
                 </div>
                 <div class="modal-footer">
+                    <a href="/RegistrarCliente.php" type="button" class="btn btn-warning">Registrarse</a>
                     <button id="btnAceptarInicioSesion" type="button" class="btn btn-primary">Iniciar sesión</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
