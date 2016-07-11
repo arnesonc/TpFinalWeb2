@@ -151,7 +151,7 @@ function armarHtmlPublicaciones(publicacionesAdquiridas,listaPublicaciones,ultim
         if(publicacionAdquirida){
           //TODO:agregar funcionalidad al boton para ver publicacion.
           html += "                <a name='"+ publicacion.id+ "' class='btn btn-success'>Suscripcion adquirida</a>";
-          html += "                <a href='#' name='"+ publicacion.id+ "'class='btn btn-info'>Ver</a>";
+          html += "                <button onclick='verNumerosDeEstaPublicacion(this);' name='"+ publicacion.id+ "'class='btn btn-info'>Ver</button>";
         } else {
           if(numeroComprado){
             //TODO:agregar funcionalidad al boton para ver el numero.
@@ -293,4 +293,9 @@ function clienteSuscrito(idCliente,idPublicacion){
           mostrarMensaje("divMensajeError", "Ups, ocurrio un error interno ", true);
       }
   });
+}
+
+function verNumerosDeEstaPublicacion(button){
+  var idPublicacion = button.name;
+  $.redirect('client-listar-numeros.php', {'idPublicacion': idPublicacion});
 }

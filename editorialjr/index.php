@@ -225,6 +225,8 @@ require_once(__DIR__."/common/sesionValidaIndex.php");
 <!-- JS especifico -->
 <script src="js/index.js"></script>
 
+<!-- jquery redirect-->
+<script src="js/jquery.redirect.js" type="text/javascript"></script>
 </body>
 
 </html>
