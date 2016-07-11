@@ -13,6 +13,11 @@ switch($metodo){
 		$idPublicacion = $_POST["idPublicacion"];
 		$result = $numeroService->getAllNumeros($idPublicacion);
 		break;
+		case "getNumerosPorSuscripcion":
+			$idPublicacion = $_POST["idPublicacion"];
+			$idCliente = $_POST["idCliente"];
+			$result = $numeroService->getNumerosPorSuscripcion($idPublicacion,$idCliente);
+			break;
 	case "editarFeErratas":
 		$idNumero = $_POST["idNumero"];
 		$feErratas = $_POST["feErratas"];

@@ -77,7 +77,7 @@ require_once(__DIR__."/common/sesionValida.php");
                     </ul>
                     <ul class="nav navbar-nav  navbar-right">
                         <li>
-                            <a href="#menu-toggle" class="glyphicon glyphicon-menu-hamburger" title="Menú" id="menu-toggle"></a>
+                            <a href="#menu-toggle" title="Menú" id="menu-toggle">Menú</a>
                         </li>
                     </ul>
                 </div>
