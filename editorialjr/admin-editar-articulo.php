@@ -21,7 +21,7 @@ $arraySeccion = $seccionService->getAllSecciones();
                 <div class="row">
                     <div class="col-lg-12">
                         <!-- form -->
-                        <form class="form-horizontal" id="myForm" action="/helpers/ArticuloAjaxHelper.php" method="POST" enctype="multipart/form-data">
+                        <form class="form-horizontal" id="myForm" action="" method="POST" enctype="multipart/form-data">
                             <fieldset>
 
                                 <!-- Form Name -->
@@ -56,7 +56,7 @@ $arraySeccion = $seccionService->getAllSecciones();
                                     <label class="col-md-3 control-label" for="principal">imagen principal</label>
                                     <div class="col-md-9">
                                         <input type="hidden" required="true" name="MAX_FILE_SIZE" value="30000000" />
-                                        <input id="principal" name="principal" class="input-file" type="file">
+                                        <input id="imagen-file" name="imagen-file" class="input-file" type="file">
                                     </div>
                                 </div>
 

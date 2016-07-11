@@ -19,7 +19,6 @@ switch($metodo){
 		$result = $articuloService->getAllArticulosFromNumByUser($id_user, $id_numero);
 		break;
 	case "test":
-		$titulo = $_POST['titulo'];
 		$copete = $_POST['copete'];
 		$contenido_adicional = $_POST['contenido'];
 		$id_articulo = $_POST['id_articulo'];
@@ -33,6 +32,8 @@ switch($metodo){
 		$id_estado_articulo = 1;
 		$fecha_cierre = null;
 		$url_contenido = "http://www.rischiocalcolato.it/wp-content/uploads/2013/05/Default.jpg";
+
+		echo "pega en el metodo";
 
 		$result = $articuloService->createArticuloParametros($id_seccion, $id_user, $id_estado_articulo,$titulo, $lat, $lng, $fecha_cierre, $copete, $url_contenido, $contenido_adicional, $id_numero );
 		break;
