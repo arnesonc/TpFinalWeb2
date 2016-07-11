@@ -1,10 +1,17 @@
 function editarArticulo(id_numero,id_articulo,id_user){
 	
-	//alert('el id del numero es '+ id_numero +' el id del articulo es '+ id_articulo + ' el id del usuario es '+ id_user);
-
 	$("#btnGuardar").click(function(){
-    	var markupStr = $('#summernote').summernote('code');
-    	alert(markupStr);
+
+		$("#lat").val(window.lat);
+		$("#lng").val(window.lng);
+		$("#idNumero").val(id_numero);
+		$("#idArticulo").val(id_articulo);
+		$("#idUser").val(id_user);
+		$("#contenido").val($('#summernote').summernote('code'));
+
+
+		$( "#myForm" ).submit();
+
 	});
 	
 }

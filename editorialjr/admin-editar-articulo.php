@@ -21,7 +21,7 @@ $arraySeccion = $seccionService->getAllSecciones();
                 <div class="row">
                     <div class="col-lg-12">
                         <!-- form -->
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" id="myForm" action="/helpers/ArticuloAjaxHelper.php" method="POST" enctype="multipart/form-data">
                             <fieldset>
 
                                 <!-- Form Name -->
@@ -31,7 +31,7 @@ $arraySeccion = $seccionService->getAllSecciones();
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="Titulo">titulo</label>
                                     <div class="col-md-9">
-                                        <input id="Titulo" name="Titulo" type="text" placeholder="titulo" class="form-control input-md" required="">
+                                        <input id="titulo" name="titulo" type="text" placeholder="titulo" class="form-control input-md" required="">
                                     </div>
                                 </div>
 
@@ -55,6 +55,7 @@ $arraySeccion = $seccionService->getAllSecciones();
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="principal">imagen principal</label>
                                     <div class="col-md-9">
+                                        <input type="hidden" required="true" name="MAX_FILE_SIZE" value="30000000" />
                                         <input id="principal" name="principal" class="input-file" type="file">
                                     </div>
                                 </div>
@@ -65,7 +66,6 @@ $arraySeccion = $seccionService->getAllSecciones();
                                     <div class="col-md-9">
                                         <select id="seccion" name="seccion" class="form-control">
                                             <?php
-                                            var_dump($arraySeccion);
                                             foreach ($arraySeccion as $key=>$seccion) {
                                                 ?>
                                                 <option  value="<?php echo $seccion->id;  ?>"><?php echo $seccion->nombre; ?></option>
@@ -76,12 +76,19 @@ $arraySeccion = $seccionService->getAllSecciones();
                                     </div>
                                 </div>
 
-                                <!-- Map -->
+                                <!-- Map y demas hidden data-->
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="map">lugar</label>
                                     <div class="col-md-9">
                                         <div id="map"></div>
                                     </div>
+                                    <input id="lat" name="lat" class="" type="hidden" value="">
+                                    <input id="lng" name="lng" class="" type="hidden" value="">
+                                    <input id="idNumero" name="idNumero" class="" type="hidden" value="">
+                                    <input id="idArticulo" name="idArticulo" class="" type="hidden" value="">
+                                    <input id="idUser" name="idUser" class="" type="hidden" value="">
+                                    <input id="contenido" name="contenido" class="" type="hidden" value="">
+                                    <input id="metodo" name="metodo" class="" type="hidden" value="test">
                                 </div>
 
                                 <!-- Button -->
@@ -155,7 +162,10 @@ $(document).ready(function() {
 
     var map;
     function initMap() {
+
         var myLatlng = {lat: -34.6695067, lng: -58.561731};
+        window.lat = myLatlng.lat;
+        window.lng = myLatlng.lng;
 
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 12,
@@ -170,9 +180,8 @@ $(document).ready(function() {
 
         google.maps.event.addListener(map, 'click', function(event) {
             marcador.setPosition(event.latLng);
-            var lat = event.latLng.lat();
-            var lon = event.latLng.lng();
-            alert("la longitud es " + lon + " y la latitud es " +  lat);
+            window.lat = event.latLng.lat();
+            window.lng = event.latLng.lng();
         });
 
     }
@@ -181,6 +190,7 @@ $(document).ready(function() {
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8qdt_ZyQL7Ea1dirrshhtQycf1UYGAQQ&callback=initMap">
 </script>
+
 
 </body>
 
