@@ -33,9 +33,8 @@ switch($metodo){
 		$id_estado_articulo = 1;
 		$fecha_cierre = null;
 		$url_contenido = "http://www.rischiocalcolato.it/wp-content/uploads/2013/05/Default.jpg";
-		
-		$articuloService->createArticuloParametros($id_seccion, $id_user, $id_estado_articulo,$titulo, $lat, $lng, $fecha_cierre, $copete, $url_contenido, $contenido_adicional, $id_numero );
-		echo "forro";
+
+		$result = $articuloService->createArticuloParametros($id_seccion, $id_user, $id_estado_articulo,$titulo, $lat, $lng, $fecha_cierre, $copete, $url_contenido, $contenido_adicional, $id_numero );
 		break;
 	default:
 		echo "Método inexistente en el switch de ArticuloAjaxHelper.php";

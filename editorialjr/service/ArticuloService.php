@@ -359,7 +359,7 @@ class ArticuloService
             // En caso de ser invalido devuelve un mensaje de validacion
             $result = $message;
         }
-
+      
         return $result;
     }
 
@@ -401,36 +401,36 @@ class ArticuloService
             return "Debe selecionar el estado del artículo.";
         }
 
-        if ($this->validationHelper->validateNull($articuloModel->titulo) && !validateText($articuloModel->titulo, 1, 100)) {
+        if ($this->validationHelper->validateNull($articuloModel->titulo) && !$this->validationHelper->validateText($articuloModel->titulo, 1, 100)) {
             return "El título no es válido. Debe poseer como máximo 100 caracteres.";
         }
 
-        if (!$this->validationHelper->validateNull($articuloModel->latitud) && !validateText($articuloModel->latitud, 1, 100)) {
+        if (!$this->validationHelper->validateNull($articuloModel->latitud) && !$this->validationHelper->validateText($articuloModel->latitud, 1, 100)) {
             return "La latitud no es válida. Debe poseer como máximo 100 caracteres.";
         }
 
-        if (!$this->validationHelper->validateNull($articuloModel->longitud) && !validateText($articuloModel->longitud, 1, 100)) {
+        if (!$this->validationHelper->validateNull($articuloModel->longitud) && !$this->validationHelper->validateText($articuloModel->longitud, 1, 100)) {
             return "La longitud no es válida. Debe poseer como máximo 100 caracteres.";
         }
 
-        if (!$this->validationHelper->validateNull($articuloModel->copete) && !validateText($articuloModel->copete, 1, 200)) {
+        if (!$this->validationHelper->validateNull($articuloModel->copete) && !$this->validationHelper->validateText($articuloModel->copete, 1, 200)) {
             return "El copete no es válido. Debe poseer como máximo 200 caracteres.";
         }
 
-        if (!$this->validationHelper->validateNull($articuloModel->url_contenido) && !validateText($articuloModel->url_contenido, 1, 100)) {
+        if (!$this->validationHelper->validateNull($articuloModel->url_contenido) && !$this->validationHelper->validateText($articuloModel->url_contenido, 1, 100)) {
             return "La url del contenido no es válida. Debe poseer como máximo 100 caracteres.";
         }
 
-        if (!$this->validationHelper->validateNull($articuloModel->contenido_adicional) && !validateText($articuloModel->contenido_adicional, 1, 1000)) {
+        if (!$this->validationHelper->validateNull($articuloModel->contenido_adicional) && !$this->validationHelper->validateText($articuloModel->contenido_adicional, 1, 1000)) {
             return "El contenido adicional no es válido. Debe poseer como máximo 1000 caracteres.";
         }
 
         return "";
     }
 
-    /**
-     * Inserta un nuevo articulo a partir de un objeto ArticuloModel, si tuvo exito devuelve verdadero
-     * caso contrario devuelve falso
+    /*
+      Inserta un nuevo articulo a partir de un objeto ArticuloModel, si tuvo exito devuelve verdadero
+      caso contrario devuelve falso
      */
     private function insertArticulo($articuloModel)
     {
