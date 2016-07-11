@@ -151,7 +151,7 @@ function armarHtmlPublicaciones(publicacionesAdquiridas,listaPublicaciones,ultim
         if(publicacionAdquirida){
           //TODO:agregar funcionalidad al boton para ver publicacion.
           html += "                <a name='"+ publicacion.id+ "' class='btn btn-success'>Suscripcion adquirida</a>";
-          html += "                <a href='#' name='"+ publicacion.id+ "'class='btn btn-default'>Ver</a>";
+          html += "                <a href='#' name='"+ publicacion.id+ "'class='btn btn-info'>Ver</a>";
         } else {
           if(numeroComprado){
             //TODO:agregar funcionalidad al boton para ver el numero.

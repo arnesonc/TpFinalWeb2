@@ -29,13 +29,17 @@ switch($metodo){
 		$id = $_POST["idPublicacion"];
 		$result = $publicacionService->updatePublicacionParameters ($id, $nombre, $destacado);
 		break;
-		case "getNumberOfPublications":
+	case "getNumberOfPublications":
 		$result = $publicacionService->getNumberOfPublications();
 		break;
-		case "getPublicacionesPaginado":
+	case "getPublicacionesPaginado":
 		$offset = $_POST["offset"];
 		$itemsPorPagina = $_POST["itemsPorPagina"];
 		$result = $publicacionService->getPublicacionesPaginado($offset, $itemsPorPagina);
+		break;
+	case "obtenerPublicacionesByIdUser":
+		$idCliente = $_POST["idCliente"];
+		$result = $publicacionService->obtenerPublicacionesByIdUser($idCliente);
 		break;
 	default:
 		echo "Método inexistente en el switch de PublicacionAjaxHelper.php";

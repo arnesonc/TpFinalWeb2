@@ -6,6 +6,7 @@ require_once __DIR__.'/../model/PublicacionModel.php';
 require_once __DIR__.'/../helpers/LoggerHelper.php';
 require_once __DIR__.'/../helpers/ValidationHelper.php';
 require_once __DIR__.'/../model/NumeroModel.php';
+require_once __DIR__.'/../service/SuscripcionService.php';
 
 class PublicacionService
 {
@@ -41,6 +42,16 @@ class PublicacionService
         return $this->convertPublicacionDBToPublicacionModel($publicacionDB);
     }
 
+
+    public function obtenerPublicacionesByIdUser($idCliente){
+      $suscripcionService = new SuscripcionService();
+      $suscripcionesDelCliente = $suscripcionService->getSuscripcionesByIdCliente($idCliente);
+      $arrayPublicaciones = array ();
+      foreach ($suscripcionesDelCliente as $susc) {
+        	$arrayPublicaciones [] = $this->getPublicacionById($susc->id_publicacion);
+      }
+      return $arrayPublicaciones;
+    }
     /**
      * Convierte un publicacion de la base de datos en un objeto PublicacionModel y lo devuelve.
      */
