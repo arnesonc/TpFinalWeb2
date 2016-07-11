@@ -155,10 +155,26 @@ $(document).ready(function() {
 
     var map;
     function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 8
+        var myLatlng = {lat: -34.6695067, lng: -58.561731};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: myLatlng
         });
+
+        marcador = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'Lugar de los hechos'
+        });
+
+        google.maps.event.addListener(map, 'click', function(event) {
+            marcador.setPosition(event.latLng);
+            var lat = event.latLng.lat();
+            var lon = event.latLng.lng();
+            alert("la longitud es " + lon + " y la latitud es " +  lat);
+        });
+
     }
 
 </script>
