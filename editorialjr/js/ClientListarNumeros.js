@@ -43,13 +43,12 @@ function armarTablaNumeros(listaNumeros){
 	  $("#bodyNumeros").html("");
 
 	  tabla = "<table id='tblNumeros' class='table table-striped table-bordered table-responsive' cellspacing='0'>";
-	  tabla +="<thead><tr><th>Publicacion</th><th>Numero</th><th>fecha publicado</th>";
+	  tabla +="<thead><tr><th>Publicacion</th><th>Numero</th><th>publicado el dia</th><th>fecha compra</th>";
 	  tabla +="<th>Acciones</th></tr></thead><tbody>";
 
 	  $.each(listaNumeros, function(index, numero) {
-		fecha=(numero.fecha_publicado == null) ? '<strong>DRAFT</strong>' : numero.fecha_publicado;
 		tabla += "<tr><td>" + numero.nombre_publicacion + "</td><td>" + numero.numero_revista + "</td>";
-	    tabla += "<td>" + fecha + "</td>";
+	  tabla += "<td>" + numero.fecha_publicado + "</td><td>" + numero.fecha_de_compra + "</td>";
 		tabla += "<td><button onclick='RedirectArticulos("+ numero.id +","+ numero.id_estado_numero +");' id='btnListarArticulos' name='" + numero.id + "' class='btn btn-success'><span class='glyphicon glyphicon-list'></span> Ver Articulos</button>  ";
 		tabla += "<button onclick='RedirectArticulos("+ numero.id +","+ numero.id_estado_numero +");' id='btnListarArticulos' name='" + numero.id + "' class='btn btn-warning'><span class='glyphicon glyphicon-list'></span> Descargar en PDF</button>  ";
 		});

@@ -15,7 +15,7 @@ class NumeroModel{
 	public $fecha_publicado;
 	public $numero_revista;
 	public $nombre_publicacion;
-
+	public $fecha_de_compra;
 	private $estado_numero;
 	private $publicacion;
 
@@ -59,7 +59,7 @@ class NumeroModel{
 				return null;
 			}
 		}
-		$this->nombre_publicacion = $this->publicacion->nombre; 
+		$this->nombre_publicacion = $this->publicacion->nombre;
 		return $this->publicacion;
 	}
 
