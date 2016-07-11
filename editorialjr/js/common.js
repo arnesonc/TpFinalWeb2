@@ -17,6 +17,10 @@ function ocultarMensaje(nombreDiv){
   $("#" + nombreDiv).hide('fast');
 }
 
+/*
+SI hay un id de session, lo devuelve
+si no hay usuario/cliente logueado, devuelve false.
+*/
 function obtenerSessionID(){
 	// global param
 	var selector = !0;

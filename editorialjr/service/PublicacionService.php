@@ -6,6 +6,7 @@ require_once __DIR__.'/../model/PublicacionModel.php';
 require_once __DIR__.'/../helpers/LoggerHelper.php';
 require_once __DIR__.'/../helpers/ValidationHelper.php';
 require_once __DIR__.'/../model/NumeroModel.php';
+require_once __DIR__.'/../service/SuscripcionService.php';
 
 class PublicacionService
 {
@@ -41,6 +42,16 @@ class PublicacionService
         return $this->convertPublicacionDBToPublicacionModel($publicacionDB);
     }
 
+
+    public function obtenerPublicacionesByIdUser($idCliente){
+      $suscripcionService = new SuscripcionService();
+      $suscripcionesDelCliente = $suscripcionService->getSuscripcionesByIdCliente($idCliente);
+      $arrayPublicaciones = array ();
+      foreach ($suscripcionesDelCliente as $susc) {
+        	$arrayPublicaciones [] = $this->getPublicacionById($susc->id_publicacion);
+      }
+      return $arrayPublicaciones;
+    }
     /**
      * Convierte un publicacion de la base de datos en un objeto PublicacionModel y lo devuelve.
      */
@@ -217,8 +228,7 @@ class PublicacionService
         return $idPublicacion;
     }
 
-    public function getLastFecha($id_publicacion)
-    {
+    public function getLastFecha($id_publicacion){
         $sql = "SELECT
 				MAX(fecha_publicado) as fecha_publicado
 				FROM numero WHERE id_publicacion = $id_publicacion;";
@@ -233,6 +243,34 @@ class PublicacionService
         }
 
         return $ultimaFechaDePublicacionDadaDB;
+    }
+
+    public function getIdLastNumero($id_publicacion){
+        $sql = "SELECT MAX(id) as lastid from numero where id_publicacion = $id_publicacion; ";
+        try {
+            $lastID = $this->dataAccess->getOneResult($sql)['lastid'];
+        } catch (Exception $e) {
+            $logger = Logger::getRootLogger();
+            $logger->error($e);
+            return;
+        }
+        return $lastID;
+    }
+
+    public function getLastPrecio($id_publicacion){
+        $sql = "SELECT MAX(precio) as price from numero
+        where fecha_publicado = (select MAX(fecha_publicado) from numero as NU join publicacion PU
+        where NU.id_publicacion = $id_publicacion and id_estado_numero = 2);";
+        //busca los numeros de una publicacion en la bd
+        try {
+            $ultimoPrecioDB = $this->dataAccess->getOneResult($sql);
+        } catch (Exception $e) {
+            $logger = Logger::getRootLogger();
+            $logger->error($e);
+            return;
+        }
+
+        return $ultimoPrecioDB['price'];
     }
 
     public function updatePublicacionParameters($id, $nombre, $destacado)

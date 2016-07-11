@@ -76,6 +76,11 @@ function editarPublicacion(botonEditar){
 	    success : function(publicacion) {
 	      $("#nombre").val(publicacion.nombre);
 	      $("#destacado").val(publicacion.destacado);
+				if(publicacion.destacado == 1){
+					$("#destacado").prop('checked', true);
+				}else{
+					$("#destacado").prop('checked', false);
+				}
 	      $("#modalPublicacion").modal('show');
 	    },
 	    error : function(error) {

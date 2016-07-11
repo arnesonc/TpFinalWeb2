@@ -79,6 +79,7 @@ CREATE TABLE IF NOT EXISTS `compra_unitaria` (
   `id_cliente` int(11) NOT NULL,
   `id_numero` int(11) NOT NULL,
   `fecha` date NOT NULL,
+  `id_publicacion` int(11) NOT NULL,
   PRIMARY KEY (`id_cliente`,`id_numero`),
   KEY `fk_compra_unitaria_numero` (`id_numero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

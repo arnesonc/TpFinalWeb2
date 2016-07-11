@@ -1,6 +1,7 @@
 <?php
 require_once (__DIR__ . "/../common/DataAccess.php");
 require_once (__DIR__ . "/../model/SuscripcionModel.php");
+require_once (__DIR__ . "/../service/PublicacionService.php");
 require_once (__DIR__ . "/../helpers/LoggerHelper.php");
 class SuscripcionService {
 	private $dataAccess = null;
@@ -39,7 +40,15 @@ class SuscripcionService {
 		}
 		return $this->convertSuscripcionDBToSuscripcionModel ( $suscripcionDB );
 	}
-
+/*
+	public function listarSuscripcionesDelCliente($idCliente){
+		$suscripciones = $this->getSuscripcionesByIdCliente($idCliente);
+		foreach ($suscripciones as $suscripcion){
+			$lista[] = $suscripcion->id_publicacion;
+		}
+		return $lista;
+	}
+*/
 	public function getSuscripcionesByIdCliente($idCliente){
 		$sql = " SELECT
 		s.id,
@@ -76,6 +85,28 @@ class SuscripcionService {
 		return $arraySuscripcionesModel;
 	}
 
+
+public function suscribirCliente($idCliente,$idPublicacion){
+	$suscripcionModel = new SuscripcionModel ();
+	$publicacionService = new PublicacionService ();
+
+	$suscripcionModel->id_cliente = $idCliente;
+	$suscripcionModel->id_publicacion = $idPublicacion;
+	$suscripcionModel->id_tipo_suscripcion = 3; //FIXME: hardcodeado, siempre suscribe por 6 meses.
+	$suscripcionModel->precio = $publicacionService->getLastPrecio($idPublicacion);
+
+	return $this->createSuscripcion($suscripcionModel); //devuelve true si se suscribio correctamente.
+
+}
+
+public function clienteSuscrito($idCliente,$idPublicacion){
+	$arraySuscripcionesModel = $this->getSuscripcionesByIdCliente($idCliente);
+	foreach ($arraySuscripcionesModel as $suscripcion) {
+		if($suscripcion->id_publicacion == $idPublicacion) { $val = true; return $val; }
+	}
+	$val = false;
+	return $val;
+}
 	/*
 	* Convierte una suscripcion de la base de datos en un objeto SuscripcionModel y lo devuelve
 	*/
@@ -102,10 +133,6 @@ class SuscripcionService {
 	}
 
 	private function insertSuscripcion($suscripcionModel){
-
-		$piso = is_null($clienteModel->piso) ? null : "'$articuloModel->latitud'";
-		$departamento = is_null($clienteModel->departamento) ? null : "'$clienteModel->departamento'";
-		$detalle_direccion = is_null($clienteModel->detalle_direccion) ? null : "'$clienteModel->detalle_direccion'";
 
 		$sql = " INSERT
 		INTO suscripcion

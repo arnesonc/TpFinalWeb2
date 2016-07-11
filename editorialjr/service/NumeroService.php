@@ -188,6 +188,28 @@ class NumeroService {
 	/*
 	 * Obtiene todos los numeros relacionados con una publicacion y los aloja en un array.
 	 */
+	public function getNumerosPorSuscripcion($idPublicacion,$idCliente){
+		$sql = " SELECT N.id, N.fe_erratas, N.precio, N.fecha_publicado, N.numero_revista, N.url_portada, N.id_publicacion, N.id_estado_numero
+				FROM editorialjr.numero N
+				join publicacion P on P.id = N.id_publicacion
+				WHERE P.id = $idPublicacion and N.fecha_publicado >= (SELECT fecha FROM suscripcion S
+				WHERE S.id_cliente = $idCliente and S.id_publicacion = $idPublicacion);";
+		// busca los numeros de una publicacion en la bd
+		try {
+			$numeroDBArray = $this->dataAccess->getMultipleResults ( $sql );
+		} catch ( Exception $e ) {
+			$logger = Logger::getRootLogger ();
+			$logger->error ( $e );
+			return null;
+		}
+		$arrayNumeroModel = array ();
+		foreach ( $numeroDBArray as $numeroDB ) {
+			$numeroModel = $this->convertNumeroDBToNumeroModel ( $numeroDB );
+			$arrayNumeroModel [] = $numeroModel;
+		}
+		return $arrayNumeroModel;
+	}
+
 	public function getAllNumeros($id_publicacion) {
 		$sql = " SELECT id,
     			id_publicacion,
@@ -206,16 +228,11 @@ class NumeroService {
 			$logger->error ( $e );
 			return null;
 		}
-
 		$arrayNumeroModel = array ();
-
 		foreach ( $numeroDBArray as $numeroDB ) {
-
 			$numeroModel = $this->convertNumeroDBToNumeroModel ( $numeroDB );
-
 			$arrayNumeroModel [] = $numeroModel;
 		}
-
 		return $arrayNumeroModel;
 	}
 

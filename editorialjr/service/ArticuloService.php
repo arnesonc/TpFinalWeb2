@@ -342,10 +342,11 @@ class ArticuloService
         return $articuloModel;
     }
 
-    /**
-     * Crea un articulo a partir de un objeto ArticuloModel si pasa las validaciones, caso contrario devuelve
-     * el mensaje de validacion correspondiente
+    /*
+      Crea un articulo a partir de un objeto ArticuloModel si pasa las validaciones, caso contrario devuelve
+      el mensaje de validacion correspondiente
      */
+
     public function createArticulo($articuloModel)
     {
         $message = $this->validateArticulo($articuloModel);
@@ -358,13 +359,14 @@ class ArticuloService
             // En caso de ser invalido devuelve un mensaje de validacion
             $result = $message;
         }
-
+      
         return $result;
     }
 
-    /**
-     * Crea un articulo a partir de los datos parametizados (por separado)
+    /*
+      Crea un articulo a partir de los datos parametizados (por separado)
      */
+
     public function createArticuloParametros($id_seccion, $id_usuario, $id_estado_articulo, $titulo, $latitud, $longitud, $fecha_cierre, $copete, $url_contenido, $contenido_adicional, $id_numero)
     {
         $articuloModel = new ArticuloModel ();
@@ -374,7 +376,7 @@ class ArticuloService
         $articuloModel->titulo = $titulo;
         $articuloModel->latitud = $latitud;
         $articuloModel->longitud = $longitud;
-        $articuloModel->fecha_cierre = $fecha_cierre;
+        $articuloModel->fecha_cierre = null;
         $articuloModel->copete = $copete;
         $articuloModel->url_contenido = $url_contenido;
         $articuloModel->contenido_adicional = $contenido_adicional;
@@ -382,8 +384,8 @@ class ArticuloService
         return $this->createArticulo($articuloModel);
     }
 
-    /**
-     * Valida un objeto ArticuloModel
+    /*
+      Valida un objeto ArticuloModel
      */
     private function validateArticulo($articuloModel)
     {
@@ -391,46 +393,46 @@ class ArticuloService
             return "Debe selecionar al menos una sección.";
         }
 
-        if ($this->validationHelper->validateNull($articuloModel->id_usuario) || !$this->validationHelper->validateIsSet($articuloModel->id_usuario) || !$validationHelper->validateNumber($articuloModel->id_usuario)) {
+        if ($this->validationHelper->validateNull($articuloModel->id_usuario) || !$this->validationHelper->validateIsSet($articuloModel->id_usuario) || !$this->validationHelper->validateNumber($articuloModel->id_usuario)) {
             return "Debe selecionar un usuario propietario del artículo.";
         }
 
-        if ($this->validationHelper->validateNull($articuloModel->id_estado_articulo) || !$this->validationHelper->validateIsSet($articuloModel->id_estado_articulo) || !$validationHelper->validateNumber($articuloModel->id_estado_articulo)) {
+        if ($this->validationHelper->validateNull($articuloModel->id_estado_articulo) || !$this->validationHelper->validateIsSet($articuloModel->id_estado_articulo) || !$this->validationHelper->validateNumber($articuloModel->id_estado_articulo)) {
             return "Debe selecionar el estado del artículo.";
         }
 
-        if ($this->validationHelper->validateNull($articuloModel->titulo) && !validateText($articuloModel->titulo, 1, 100)) {
+        if ($this->validationHelper->validateNull($articuloModel->titulo) && !$this->validationHelper->validateText($articuloModel->titulo, 1, 100)) {
             return "El título no es válido. Debe poseer como máximo 100 caracteres.";
         }
 
-        if (!$this->validationHelper->validateNull($articuloModel->latitud) && !validateText($articuloModel->latitud, 1, 100)) {
+        if (!$this->validationHelper->validateNull($articuloModel->latitud) && !$this->validationHelper->validateText($articuloModel->latitud, 1, 100)) {
             return "La latitud no es válida. Debe poseer como máximo 100 caracteres.";
         }
 
-        if (!$this->validationHelper->validateNull($articuloModel->longitud) && !validateText($articuloModel->longitud, 1, 100)) {
+        if (!$this->validationHelper->validateNull($articuloModel->longitud) && !$this->validationHelper->validateText($articuloModel->longitud, 1, 100)) {
             return "La longitud no es válida. Debe poseer como máximo 100 caracteres.";
         }
 
-        if (!$this->validationHelper->validateNull($articuloModel->copete) && !validateText($articuloModel->copete, 1, 200)) {
+        if (!$this->validationHelper->validateNull($articuloModel->copete) && !$this->validationHelper->validateText($articuloModel->copete, 1, 200)) {
             return "El copete no es válido. Debe poseer como máximo 200 caracteres.";
         }
 
-        if (!$this->validationHelper->validateNull($articuloModel->url_contenido) && !validateText($articuloModel->url_contenido, 1, 100)) {
+        if (!$this->validationHelper->validateNull($articuloModel->url_contenido) && !$this->validationHelper->validateText($articuloModel->url_contenido, 1, 100)) {
             return "La url del contenido no es válida. Debe poseer como máximo 100 caracteres.";
         }
 
-        if (!$this->validationHelper->validateNull($articuloModel->contenido_adicional) && !validateText($articuloModel->contenido_adicional, 1, 1000)) {
+        if (!$this->validationHelper->validateNull($articuloModel->contenido_adicional) && !$this->validationHelper->validateText($articuloModel->contenido_adicional, 1, 1000)) {
             return "El contenido adicional no es válido. Debe poseer como máximo 1000 caracteres.";
         }
 
         return "";
     }
 
-    /**
-     * Inserta un nuevo articulo a partir de un objeto ArticuloModel, si tuvo exito devuelve verdadero
-     * caso contrario devuelve falso
+    /*
+      Inserta un nuevo articulo a partir de un objeto ArticuloModel, si tuvo exito devuelve verdadero
+      caso contrario devuelve falso
      */
-    private function insertArticulo($contenido_adicional)
+    private function insertArticulo($articuloModel)
     {
 
         //si el campo es null el sql lo coloca null, caso contraro inserta el valor con las 'quotes' correspondientes.
@@ -441,27 +443,29 @@ class ArticuloService
         $contenido_adicional = is_null($articuloModel->contenido_adicional) ? null : "'$articuloModel->contenido_adicional'";
 
         $sql = " INSERT INTO articulo
-				(id,
-				id_seccion,
+				(id_seccion,
 				id_usuario,
 				id_estado_articulo,
 				titulo,
 				latitud,
 				longitud,
+				fecha_cierre,
 				copete,
 				url_contenido,
-				contenido_adicional)
+				contenido_adicional,
+				id_numero)
 				VALUES
-				(null,
-				$articuloModel->id_seccion,
+				($articuloModel->id_seccion,
 				$articuloModel->id_usuario,
 				$articuloModel->id_estado_articulo,
 				'$articuloModel->titulo',
 				$latitud,
 				$longitud,
+				null,
 				$copete,
 				$url_contenido,
-				$contenido_adicional);";
+				$contenido_adicional,
+				$articuloModel->id_numero);";
 
         try {
 

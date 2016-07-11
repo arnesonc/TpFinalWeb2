@@ -11,8 +11,6 @@ class SuscripcionModel{
 	public $id_tipo_suscripcion;
 	public $precio;
 	public $fecha;
-	public $nombrePublicacion;
-	public $cantidad_meses;
 
 	private $cliente;
 	private $publicacion;
