@@ -63,6 +63,9 @@ require_once(__DIR__."/common/sesionValidaIndex.php");
                         <li>
                             <a href="/logoutIndex.php">Cerrar sesión</a>
                         </li>
+                        <li>
+                            <a href="/client-listar-suscripciones.php">mis suscripciones</a>
+                        </li>
                 <?php }else{ ?>
 
                         <li>

@@ -1,6 +1,6 @@
 <?php
-include 'header.php';
-include 'side-bar.php';
+include 'client-header.php';
+include 'client-side-bar.php';
 ?>
 <!-- Page Content -->
 <div id="page-content-wrapper">
