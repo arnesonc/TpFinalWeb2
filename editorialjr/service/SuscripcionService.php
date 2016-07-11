@@ -137,5 +137,9 @@ class SuscripcionService {
 		return true;
 
 	}
+
+    public function getIdSuscripcionesByIdCliente(){
+
+    }
 }
 ?>

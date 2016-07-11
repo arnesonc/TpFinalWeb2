@@ -81,7 +81,7 @@ function armarHtmlPublicaciones(result) {
 
         html = "<div class='col-md-3 col-sm-6 hero-feature'>";
         html += "    <div class='thumbnail'>";
-        html += "        <a href='url-del-numero.html'>";
+        html += "        <a >";
         html += "            <img src='" + publicacion.url_ultima_portada + "' alt='Imagen de publicación: " + publicacion.nombre + "'>";
         html += "        </a>";
         html += "        <div class='caption'>";
