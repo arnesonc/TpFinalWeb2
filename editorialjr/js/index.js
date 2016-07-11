@@ -63,7 +63,9 @@ function obtenerPublicacionesPaginado(offset, itemsPorPagina) {
         dataType: "json",
         async: false,
         success: function (result) {
-            armarHtmlPublicaciones(result);
+          var listaPublicaciones = result;
+          var idCliente = obtenerSessionID();
+          listarSuscripcionesDelCliente(idCliente,listaPublicaciones);
         },
         error: function (error) {
             mostrarMensaje("divError", "Ups, ocurrio un error!", true);
@@ -71,14 +73,42 @@ function obtenerPublicacionesPaginado(offset, itemsPorPagina) {
     });
 }
 
-function armarHtmlPublicaciones(result) {
+/*RETORNA UN ARRAY CON LAS PUBLICACIONES A LAS QUE ESTA SUSCRITO EL CLIENTE LOGUEADO*/
+function listarSuscripcionesDelCliente(idCliente,listaPublicaciones){
+    $.ajax({
+      url: '/helpers/SuscripcionAjaxHelper.php',
+      data: {
+          metodo: "listarSuscripcionesDelCliente",
+          idCliente: idCliente,
+      },
+      type: 'POST',
+      dataType: "json",
+      success: function (result) {
+        var publicacionesAdquiridas = result;
+        armarHtmlPublicaciones(publicacionesAdquiridas,listaPublicaciones);
+      },
+      error: function (error) {
+          mostrarMensaje("divMensajeError", "Ups, ocurrio un error interno ", true);
+      }
+  });
+}
+
+function armarHtmlPublicaciones(publicacionesAdquiridas,result) {
     var htmlGeneral = "";
     var html = "";
-
+    var clienteID = obtenerSessionID();
     htmlGeneral = "<div class='row text-center'>";
 
     $.each(result, function (index, publicacion) {
-
+        if(publicacionesAdquiridas != null){
+        //DETERMINA SI LA PUBLICACION FUE ADQUIRIDA POR EL CLIENTE
+        var publicacionAdquirida = false;
+        $.each(publicacionesAdquiridas, function (index, pub) {
+          if(pub.id_publicacion == publicacion.id){
+            publicacionAdquirida = true;
+          }
+        });
+      }
         html = "<div class='col-md-3 col-sm-6 hero-feature'>";
         html += "    <div class='thumbnail'>";
         html += "        <a href='url-del-numero.html'>";
@@ -87,8 +117,13 @@ function armarHtmlPublicaciones(result) {
         html += "        <div class='caption'>";
         html += "            <h3>" + publicacion.nombre + "</h3>";
         html += "            <p>";
-        html += "                <a href='#' class='btn btn-primary'>Comprar</a>";
-        html += "                <a onclick='suscribirCliente(this);' name='"+ publicacion.id+ "'class='btn btn-default'>Suscribir</a>";
+        //SI LA PUBLICACION FUE ADQUIRIDA POR EL CLIENTE (el cliente esta suscrito a ella), MOSTRAMOS EL BOTON VER.
+        if(publicacionAdquirida){
+          html += "                <a href='#' name='"+ publicacion.id+ "'class='btn btn-default'>Ver</a>";
+        } else {
+          html += "                <a href='#' class='btn btn-primary'>Comprar</a>";
+          html += "                <a onclick='suscribirCliente(this);' name='"+ publicacion.id+ "'class='btn btn-default'>Suscribir</a>";
+        }
         html += "            </p>";
         html += "        </div>";
         html += "    </div>";
@@ -144,27 +179,47 @@ function iniciarSesion() {
 }
 
 function suscribirCliente(button){
-  var idCliente = 1; //FIXME: codigo hardcodeado.
-
-      $.ajax({
-          url: '/helpers/SuscripcionAjaxHelper.php',
-          data: {
-              metodo: "suscribirCliente",
-              idPublicacion: button.name,
-              idCliente: obtenerSessionID(),
-          },
-          type: 'POST',
-          dataType: "json",
-          success: function (result) {
-              if (result === true) {
-                  alert("suscripcion satisfactoria");
-              } else {
-                  mostrarMensaje("no se pudo suscribir");
-                  alert("no se pudo suscribir");
-              }
-          },
-          error: function (error) {
-              mostrarMensaje("divMensajeError", "Ups, ocurrio un error al suscribir! ", true);
+    $.ajax({
+      url: '/helpers/SuscripcionAjaxHelper.php',
+      data: {
+          metodo: "suscribirCliente",
+          idPublicacion: button.name,
+          idCliente: obtenerSessionID(),
+      },
+      type: 'POST',
+      dataType: "json",
+      success: function (result) {
+          if (result === true) {
+              alert("suscripcion satisfactoria");
+              obtenerCantidadPaginas();
+          } else {
+              mostrarMensaje("no se pudo suscribir");
+              alert("no se pudo suscribir");
           }
-      });
-  }
+      },
+      error: function (error) {
+          mostrarMensaje("divMensajeError", "Ups, ocurrio un error al suscribir! ", true);
+      }
+  });
+}
+
+/*RETORNA TRUE SI EL CLIENTE ESTA SUSCRITO A LA PUBLICACION*/
+function clienteSuscrito(idCliente,idPublicacion){
+    $.ajax({
+      url: '/helpers/SuscripcionAjaxHelper.php',
+      data: {
+          metodo: "clienteSuscrito",
+          idPublicacion: idPublicacion,
+          idCliente: idCliente,
+      },
+      type: 'POST',
+      dataType: "json",
+      async: false,
+      success: function (result) {
+          return result;
+      },
+      error: function (error) {
+          mostrarMensaje("divMensajeError", "Ups, ocurrio un error interno ", true);
+      }
+  });
+}
