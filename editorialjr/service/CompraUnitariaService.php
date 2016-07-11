@@ -21,6 +21,7 @@ class CompraUnitariaService{
 		$compraUnitariaModel = new CompraUnitariaModel();
 		$compraUnitariaModel->id_cliente = $idCliente;
 		$compraUnitariaModel->id_numero = $lastID;
+		$compraUnitariaModel->id_publicacion = $idPublicacion;
 		return $this->insertCompraUnitaria($compraUnitariaModel);
 	}
 
@@ -28,12 +29,14 @@ class CompraUnitariaService{
 	 * Obtiene un CompraUnitariaModel por su id
 	 */
 	public function getComprasUnitariasByIdCliente($idCliente){
-		$sql = "SELECT id_cliente, id_numero, fecha, p.nombre nombrePublicacion
+		/*$sql = "SELECT id_cliente, id_numero, fecha, p.nombre nombrePublicacion
 				from compra_unitaria cu
 				left join numero n on cu.id_numero = n.id
 				left join publicacion p on n.id_publicacion = p.id
 				WHERE id_cliente = $idCliente;";
-
+*/$sql = "SELECT id_cliente, id_numero, fecha, id_publicacion
+					FROM editorialjr.compra_unitaria
+					WHERE id_cliente = $idCliente;";
 		try{
 
 			$comprasUnitariasDBArray = $this->dataAccess->getMultipleResults($sql);
@@ -49,7 +52,6 @@ class CompraUnitariaService{
 
 		foreach ( $comprasUnitariasDBArray as $compraUnitariaDB ) {
 			$compraUnitariaModel = $this->convertCompraUnitariaDBToCompraUnitariaModel($compraUnitariaDB);
-			$compraUnitariaModel->nombrePublicacion = $compraUnitariaDB["nombrePublicacion"];
 			$arrayComprasUnitariasModel [] = $compraUnitariaModel;
 		}
 
@@ -66,7 +68,7 @@ class CompraUnitariaService{
 		$compraUnitariaModel->id_cliente = $compraUnitariaDB["id_cliente"];
 		$compraUnitariaModel->id_numero = $compraUnitariaDB["id_numero"];
 		$compraUnitariaModel->fecha = $compraUnitariaDB["fecha"];
-
+		$compraUnitariaModel->id_publicacion = $compraUnitariaDB["id_publicacion"];
 		return $compraUnitariaModel;
 	}
 
@@ -82,12 +84,14 @@ class CompraUnitariaService{
 		(
 		id_cliente,
 		id_numero,
-		fecha
+		fecha,
+		id_publicacion
 		)
 		VALUES
 		($compraUnitariaModel->id_cliente,
 		$compraUnitariaModel->id_numero,
-		DATE(NOW())
+		DATE(NOW()),
+		$compraUnitariaModel->id_publicacion
 		);";
 
 		try {

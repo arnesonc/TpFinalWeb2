@@ -8,7 +8,7 @@ require_once(__DIR__."/../helpers/LoggerHelper.php");
  	public $id_cliente;
  	public $id_numero;
  	public $fecha;
-
+  public $id_publicacion;
  	private $cliente;
  	private $numero;
 

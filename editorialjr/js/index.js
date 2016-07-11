@@ -85,7 +85,7 @@ function listarSuscripcionesDelCliente(idCliente,listaPublicaciones){
       dataType: "json",
       success: function (result) {
         var publicacionesAdquiridas = result;
-        armarHtmlPublicaciones(publicacionesAdquiridas,listaPublicaciones);
+        ultimosNumerosComprados(idCliente,publicacionesAdquiridas,listaPublicaciones);
       },
       error: function (error) {
           mostrarMensaje("divMensajeError", "Ups, ocurrio un error interno ", true);
@@ -93,22 +93,52 @@ function listarSuscripcionesDelCliente(idCliente,listaPublicaciones){
   });
 }
 
-function armarHtmlPublicaciones(publicacionesAdquiridas,result) {
+/*TRAE UNA LISTA DE PUBLICACIONES DONDE EL ULTIMO NUMERO FUE COMPRADO POR EL CLIENTE LOGUEADO*/
+function ultimosNumerosComprados(idCliente,publicacionesAdquiridas,listaPublicaciones){
+    $.ajax({
+      url: '/helpers/CompraUnitariaAjaxHelper.php',
+      data: {
+          metodo: "getComprasUnitariasByIdCliente",
+          idCliente: idCliente,
+      },
+      type: 'POST',
+      dataType: "json",
+      success: function (result) {
+        var ultimosNumerosComprados = result;
+        armarHtmlPublicaciones(publicacionesAdquiridas,listaPublicaciones,ultimosNumerosComprados);
+      },
+      error: function (error) {
+          mostrarMensaje("divMensajeError", "Ups, ocurrio un error interno ", true);
+      }
+  });
+}
+
+function armarHtmlPublicaciones(publicacionesAdquiridas,listaPublicaciones,ultimosNumerosComprados) {
     var htmlGeneral = "";
     var html = "";
     var clienteID = obtenerSessionID();
     htmlGeneral = "<div class='row text-center'>";
 
-    $.each(result, function (index, publicacion) {
+    $.each(listaPublicaciones, function (index, publicacion) {
+
         if(publicacionesAdquiridas != null){
-        //DETERMINA SI LA PUBLICACION FUE ADQUIRIDA POR EL CLIENTE
-        var publicacionAdquirida = false;
-        $.each(publicacionesAdquiridas, function (index, pub) {
-          if(pub.id_publicacion == publicacion.id){
-            publicacionAdquirida = true;
-          }
-        });
-      }
+          //DETERMINA SI LA PUBLICACION FUE ADQUIRIDA POR EL CLIENTE
+          var publicacionAdquirida = false;
+          $.each(publicacionesAdquiridas, function (index, pub) {
+            if(pub.id_publicacion == publicacion.id){
+              publicacionAdquirida = true;
+            }
+          });
+        }
+        if(ultimosNumerosComprados != null){
+          var numeroComprado = false;
+          $.each(ultimosNumerosComprados, function (index, num) {
+            if(num.id_publicacion == publicacion.id){
+              numeroComprado = true;
+            }
+          });
+        }
+
         html = "<div class='col-md-3 col-sm-6 hero-feature'>";
         html += "    <div class='thumbnail'>";
         html += "        <a href='url-del-numero.html'>";
@@ -119,9 +149,16 @@ function armarHtmlPublicaciones(publicacionesAdquiridas,result) {
         html += "            <p>";
         //SI LA PUBLICACION FUE ADQUIRIDA POR EL CLIENTE (el cliente esta suscrito a ella), MOSTRAMOS EL BOTON VER.
         if(publicacionAdquirida){
+          //TODO:agregar funcionalidad al boton para ver publicacion.
+          html += "                <a name='"+ publicacion.id+ "' class='btn btn-success'>Suscripcion adquirida</a>";
           html += "                <a href='#' name='"+ publicacion.id+ "'class='btn btn-default'>Ver</a>";
         } else {
-          html += "                <a onclick='comprarUltimoNumero(this);' name='"+ publicacion.id+ "' class='btn btn-primary'>Comprar</a>";
+          if(numeroComprado){
+            //TODO:agregar funcionalidad al boton para ver el numero.
+            html += "                <a name='"+ publicacion.id+ "' class='btn btn-success'>Numero Adquirido</a>";
+          } else{
+            html += "                <a onclick='comprarUltimoNumero(this);' name='"+ publicacion.id+ "' class='btn btn-primary'>Comprar</a>";
+          }
           html += "                <a onclick='suscribirCliente(this);' name='"+ publicacion.id+ "'class='btn btn-default'>Suscribir</a>";
         }
         html += "            </p>";
