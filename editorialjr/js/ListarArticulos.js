@@ -72,8 +72,7 @@ function aEditarArticulo(idArticulo){
 
 $("#btnNuevoArticulo").click(function(){
 	var idUser = obtenerSessionID();
-	alert("el usuario es "+ idUser);
-
+	
 	nuevoArticulo(window.idNumero,'false',idUser);
 });
 
