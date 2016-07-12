@@ -26,6 +26,10 @@ switch($metodo){
 		$id_user = $_POST["id_user"];
 		$result = $articuloService->getAllArticulosFromNumByUser($id_user, $id_numero);
 		break;
+	case "cerrarArticulo":
+		$idArticulo = $_POST["idArticulo"];
+		$result = $articuloService->cerrarArticulo($idArticulo);
+		break;
 	case "test":
 
 		echo ("pega en el metodo<br>");
