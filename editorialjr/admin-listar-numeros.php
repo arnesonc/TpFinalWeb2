@@ -14,11 +14,6 @@ include 'side-bar.php';
                         <h3>Numeros</h3>
                     </div>
                 </div>
-                <div class="row botonNuevo">
-					<div class="col-lg-12">
-						<button id='btnNuevoNumero' onclick="nuevoNumero()" class='btn btn-primary'><span class='glyphicon glyphicon-plus'></span> Nuevo numero</button>
-					</div>
-				</div>
                 <div class="row">
                     <div id="divTablaNumeros" class="col-lg-12"></div>
                 </div>

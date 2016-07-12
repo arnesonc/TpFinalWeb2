@@ -317,6 +317,14 @@ class NumeroService {
 				//agregamos a su vez la urle de la portada en la publicacion.
 				$publicacionService->addUltimaPortadaDelUltimoNumero($numeroModel->url_portada,$numeroModel->id_publicacion);
 				$this->dataAccess->execute ( $sql );
+
+				//SE CREA EL NUEVO NUMERO AUTOMATICAMENTE.
+				$id_publicacion = $numeroModel->id_publicacion;
+				$id_estado_numero = $estadoNoPublicado;
+				$fe_erratas = null;
+				$precio = 0.00;
+				$this->createNumeroParametros($id_publicacion, $id_estado_numero, $fe_erratas, $precio);
+
 				return "exito!";
 			} catch ( Exception $e ) {
 				$logger = Logger::getRootLogger ();
