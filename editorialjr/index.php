@@ -5,7 +5,8 @@ require_once(__DIR__."/common/sesionValidaIndex.php");
 <html lang="en">
 
 <head>
-
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/footer-distributed.css">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -163,53 +164,32 @@ require_once(__DIR__."/common/sesionValidaIndex.php");
 </section><!-- /ultimos -->
 
 <!-- Footer -->
-<section id="section_footer">
-    <footer>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-4 col-lg-4">
-                    <div class="row">
-                        <div class="col-lg-1">
-                        </div>
-                        <div class="col-lg-11">
-                            <h5>Integrantes</h5>
-                            <ul class="list-unstyled">
-                                <li>German Mazza Gentile</li>
-                                <li>Lucas Akiki Nogueira</li>
-                                <li>Matias Julian Tavera</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-lg-4">
-                    <div class="row">
-                        <div class="col-lg-1">
-                        </div>
-                        <div class="col-lg-11">
-                            <h5>Secciones</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-lg-4">
-                    <div class="row">
-                        <div class="col-lg-1">
-                        </div>
-                        <div class="col-lg-11">
-                            <a href="./admin-login.php">
-                                <h5>Administrar</h5>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; Editorial Jr 2016</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-</section>
+
+  <footer class="footer-distributed">
+
+    <div class="footer-right">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+      <a href="https://github.com/germg/TpFinalWeb2"><i class="fa fa-github"></i></a>
+
+    </div>
+
+    <div class="footer-left">
+
+      <p class="footer-links">
+        <a href="/index.php">Home</a>
+        ·
+        <a href="#">About</a>
+        ·
+        <a href="/admin-login.php">Administrar</a>
+      </p>
+
+      <p>EditorialJR &copy; 2016</p>
+    </div>
+
+  </footer>
+
 
 
 <!-- jQuery -->
