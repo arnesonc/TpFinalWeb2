@@ -38,7 +38,7 @@ class EstadoArticuloService {
 
 
 	public function getCantidadArticulosEnDraft($id_numero){
-				$sql = "SELECT COUNT(*) as cantidad
+				$sql = "SELECT COUNT(*) cantidad
 				FROM articulo
 				WHERE id_numero = $id_numero AND id_estado_articulo = 1;";
 				//DIE($sql);
