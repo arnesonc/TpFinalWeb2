@@ -1,5 +1,5 @@
 <?php
-require_once('Security.php');
+require_once(__DIR__."/common/Security.php");
 include 'header.php';
 include 'side-bar.php';
 
