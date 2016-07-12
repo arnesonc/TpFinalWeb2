@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `articulo` (
   `longitud` varchar(100) DEFAULT NULL,
   `fecha_cierre` date DEFAULT NULL,
   `copete` varchar(200) DEFAULT NULL,
-  `url_contenido` varchar(4000) DEFAULT NULL,
+  `url_contenido` varchar(8000) DEFAULT NULL,
   `contenido_adicional` varchar(1000) DEFAULT NULL,
   `id_numero` int(11) NOT NULL,
   PRIMARY KEY (`id`),

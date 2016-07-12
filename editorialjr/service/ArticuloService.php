@@ -417,7 +417,7 @@ class ArticuloService
             return "El copete no es válido. Debe poseer como máximo 200 caracteres.";
         }
 
-        if (!$this->validationHelper->validateNull($articuloModel->url_contenido) && !$this->validationHelper->validateText($articuloModel->url_contenido, 1, 4000)) {
+        if (!$this->validationHelper->validateNull($articuloModel->url_contenido) && !$this->validationHelper->validateText($articuloModel->url_contenido, 1, 8000)) {
             return "La url del contenido no es válida. Debe poseer como máximo 100 caracteres.";
         }
 
@@ -585,6 +585,24 @@ class ArticuloService
 
         return true;
     }
+
+    public function ultimoInsert(){
+        $sql = "SELECT MAX(id) AS id FROM editorialjr.articulo;";
+
+        try {
+
+            $sqlResult = $this->dataAccess->getOneResult($sql);
+        } catch (Exception $e) {
+            $logger = Logger::getRootLogger();
+            $logger->error($e);
+
+            return false;
+        }
+
+
+        return $sqlResult["id"];
+    }
 }
 
 ?>
+
