@@ -22,7 +22,7 @@ function obtenerCantidadPaginas() {
         dataType: "json",
         async: false,
         success: function (numberOfPublications) {
-            armarPaginador(Math.round(numberOfPublications / 8));
+            armarPaginador(Math.ceil(numberOfPublications / 8));
         },
         error: function (error) {
             mostrarMensaje("divError", "Ups, ocurrio un error!", true);

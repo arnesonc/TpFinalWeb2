@@ -24,6 +24,7 @@ require_once(__DIR__."/common/sesionValidaIndex.php");
   </div><!-- /row -->
 
 <section id="section_ultimos">
+  
     <!-- paginado-->
     <div class="container">
         <div class="text-center">
