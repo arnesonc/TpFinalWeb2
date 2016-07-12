@@ -35,7 +35,6 @@ include 'side-bar.php';
                                       class="form-horizontal">
                                     <fieldset>
 
-
                                         <div id="divPrecioNumero" class="form-group">
                                             <label class="col-md-4 control-label" for="precio">Precio</label>
                                             <div class="col-md-5">
@@ -43,8 +42,7 @@ include 'side-bar.php';
                                                        class="form-control input-md" type="text" maxlength="10">
                                             </div>
                                         </div>
-
-
+                              
                                         <!-- FORMULARIO DE CARGA DE ARCHIVO -->
                                         <div id="formularioDeEdicion">
                                           <label class="col-md-4 control-label" for="precio">Seleccionar Imagen</label>

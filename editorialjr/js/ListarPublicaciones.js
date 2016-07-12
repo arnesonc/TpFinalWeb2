@@ -20,6 +20,13 @@ function getAllPublicaciones() {
 		});
 
 		function armarTablaPublicaciones(listaPublicaciones){
+				/*TODO: si se necesita mas de un admin esta logica de negocio debe cambiar*/
+				var userAdmin;
+				if(JSON.parse(obtenerSessionID()) == "1"){
+					userAdmin = true;
+				}else{
+					userAdmin = false;
+				}
 
 			  var tabla = "";
 			  $("#bodyPublicaciones").html("");
@@ -30,9 +37,11 @@ function getAllPublicaciones() {
 
 			  $.each(listaPublicaciones, function(index, publicacion) {
 				  destacado=(publicacion.destacado == 1)?'si':'no';
-				  tabla += "<tr><td>" + publicacion.nombre + "</td><td>" + destacado + "</td>";
-				  tabla += "<td><button id='btnEditarPublicacion' name='"+ publicacion.id +"' class='btn btn-primary' onclick='editarPublicacion(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
-				  tabla += "<button onclick='aNumeros("+ publicacion.id +");' id='btnListarNumeros' name='" + publicacion.id + "' class='btn btn-info'><span class='glyphicon glyphicon-list'></span> Ver Números</button> </td></tr> ";
+				  tabla += "<tr><td>" + publicacion.nombre + "</td><td>" + destacado + "</td><td>";
+					if(userAdmin == true){
+				  	tabla += "<button id='btnEditarPublicacion' name='"+ publicacion.id +"' class='btn btn-primary' onclick='editarPublicacion(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
+					}
+					tabla += "<button onclick='aNumeros("+ publicacion.id +");' id='btnListarNumeros' name='" + publicacion.id + "' class='btn btn-warning'><span class='glyphicon glyphicon-edit'></span> Editar Números</button> </td></tr> ";
 
 			  });
 

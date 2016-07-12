@@ -24,6 +24,13 @@ function listarNumeros(id_publicacion) {
 }
 
 function armarTablaNumeros(listaNumeros){
+		/*TODO: si se necesita mas de un admin esta logica de negocio debe cambiar*/
+		var userAdmin;
+		if(JSON.parse(obtenerSessionID()) == "1"){
+			userAdmin = true;
+		}else{
+			userAdmin = false;
+		}
 
 	  var tabla = "";
 	  $("#bodyNumeros").html("");
@@ -41,7 +48,9 @@ function armarTablaNumeros(listaNumeros){
 		//Si esta en draft, coloca publicar u editar, sino coloca fe de erratas.
 			if(numero.id_estado_numero == 1){
 				tabla += "<button id='btnEditarNumero' name='"+ numero.id +"' class='btn btn-primary' onclick='editarNumero(this);'><span class='glyphicon glyphicon-edit'></span> Editar</button>  ";
-				tabla += "<button onclick='publicar("+ numero.id +");' id='btnPublicar' name='" + numero.id + "' class='btn btn-success'><span class='glyphicon glyphicon-share'></span> Publicar</button> </td></tr> ";
+				if(userAdmin == true){
+					tabla += "<button onclick='publicar("+ numero.id +");' id='btnPublicar' name='" + numero.id + "' class='btn btn-success'><span class='glyphicon glyphicon-share'></span> Publicar</button> </td></tr> ";
+					}
 			} else {
 				if(numero.fe_erratas == null){
 					tabla += "<button onclick='editarFeErratas(this,"+numero.id_publicacion+");' id='btnFeErratas' name='" + numero.id + "' class='btn btn-warning'><span class='glyphicon glyphicon-edit'></span> Nueva Fe de Erratas</button> </td></tr> ";
