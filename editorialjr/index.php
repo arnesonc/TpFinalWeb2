@@ -3,64 +3,73 @@ include 'client-header.php';
 ?>
 
 <div class="row">
-<div class="container">
-  <div class="row">
-    <div id="wrapper">
-      <div class="row">
-          <div class="col-lg-12">
-              <h2>Últimos Números</h2>
-          </div>
-      </div>
-    </div><!-- /#wrapper -->
-  </div><!-- /row -->
-  <div class="row">
-    <div id="wrapper">
-      <div id="divError" class="alert alert-danger oculto">
-      </div>
-      <div id="content" class="row text-center">
-      </div>
-    </div><!-- /#wrapper -->
-  </div><!-- /row -->
-
-<section id="section_ultimos">
-
-    <!-- paginado-->
     <div class="container">
-        <div class="text-center">
-            <ul class="pagination">
-                <div id="page-selection">
+        <div class="row">
+            <div id="wrapper">
+                <div class="row">
+
                 </div>
-            </ul>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2>Últimos Números</h2>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            <a href="http://www.accuweather.com/es/ar/buenos-aires/7894/weather-forecast/7894" class="aw-widget-legal">
+                            </a><div id="awcc1468366656627" class="aw-widget-current"  data-locationkey="7894" data-unit="c" data-language="es" data-useip="false" data-uid="awcc1468366656627"></div><script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /#wrapper -->
+        </div><!-- /row -->
+        <div class="row">
+            <div id="wrapper">
+                <div id="divError" class="alert alert-danger oculto">
+                </div>
+                <div id="content" class="row text-center">
+                </div>
+            </div><!-- /#wrapper -->
+        </div><!-- /row -->
+
+        <section id="section_ultimos">
+
+            <!-- paginado-->
+            <div class="container">
+                <div class="text-center">
+                    <ul class="pagination">
+                        <div id="page-selection">
+                        </div>
+                    </ul>
+                </div>
+            </div><!-- /paginado-->
+        </section><!-- /ultimos -->
+    </div>
+    <!-- Footer -->
+
+    <footer class="footer-distributed">
+
+        <div class="footer-right">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/germg/TpFinalWeb2"><i class="fa fa-github"></i></a>
+
         </div>
-    </div><!-- /paginado-->
-</section><!-- /ultimos -->
-</div>
-<!-- Footer -->
 
-  <footer class="footer-distributed">
+        <div class="footer-left">
 
-    <div class="footer-right">
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-linkedin"></i></a>
-      <a href="https://github.com/germg/TpFinalWeb2"><i class="fa fa-github"></i></a>
+            <p class="footer-links">
+                <a href="/index.php">Home</a>
+                ·
+                <a href="#">About</a>
+                ·
+                <a href="/admin-login.php">Administrar</a>
+            </p>
 
-    </div>
+            <p>EditorialJR &copy; 2016</p>
+        </div>
 
-    <div class="footer-left">
-
-      <p class="footer-links">
-        <a href="/index.php">Home</a>
-        ·
-        <a href="#">About</a>
-        ·
-        <a href="/admin-login.php">Administrar</a>
-      </p>
-
-      <p>EditorialJR &copy; 2016</p>
-    </div>
-
-  </footer>
+    </footer>
 
 
     <!-- Modal para login -->
@@ -107,7 +116,9 @@ include 'client-header.php';
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
-
+        </div>
+    </div>
+</div>
 
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
