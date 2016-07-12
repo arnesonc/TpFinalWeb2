@@ -9,21 +9,23 @@ function editarArticulo(id_numero,id_articulo,id_user){
 		$("#idUser").val(id_user);
 		$("#contenido").val($('#summernote').summernote('code'));
 
-		alert("guardar");
+		/*var fm = $('#myForm');
 
-		$("#myForm").submit();
+		var formdata = new FormData(fm[0]);
+
+		for (var key of formdata.keys()){
+			alert(key+" "+formdata.get(key));
+		}*/
+		
+		$('#myForm').submit();
 	});
 
-	$('#myForm').on('sumbit', function(){
-		var form = $(this);
-		var formdata = false;
-		if (window.FormData){
-			formdata = new FormData(form[0]);
-		}
+	function formEnviar(formdata, fm){
+		alert("entro");
 
 		$.ajax({
 			url         : '/helpers/ArticuloAjaxHelper.php',
-			data        : formdata ? formdata : form.serialize(),
+			data        : formdata ? formdata : fm.serialize(),
 			cache       : false,
 			contentType : false,
 			processData : false,
@@ -31,8 +33,11 @@ function editarArticulo(id_numero,id_articulo,id_user){
 			success     : function(data, textStatus, jqXHR){
 				alert(data);
 				// Callback code
-			}
-		});
-	});
+			},
+			error       : function(error){
+				alert("error en el ajax!");
+			} 
 
+		});
+	}
 }

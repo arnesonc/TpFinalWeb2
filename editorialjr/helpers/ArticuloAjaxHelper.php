@@ -19,10 +19,23 @@ switch($metodo){
 		$result = $articuloService->getAllArticulosFromNumByUser($id_user, $id_numero);
 		break;
 	case "test":
+		echo ("pega en el metodo");
+
+		$titulo = $_POST['titulo'];
 		$copete = $_POST['copete'];
 		$contenido_adicional = $_POST['contenido'];
 		$id_articulo = $_POST['id_articulo'];
 		/* imagen */
+
+		echo ("el titulo es ".$titulo);
+
+		if (file_exists($_FILES["imagen-file"])){
+			echo "existe la imagen";
+		} else {
+			echo "no existe";
+		}
+
+		/* guardo ?*/
 		$id_seccion = $_POST['seccion'];
 		$lat = $_POST['lat'];
 		$lng = $_POST['lng'];
@@ -33,9 +46,7 @@ switch($metodo){
 		$fecha_cierre = null;
 		$url_contenido = "http://www.rischiocalcolato.it/wp-content/uploads/2013/05/Default.jpg";
 
-		echo "pega en el metodo";
-
-		$result = $articuloService->createArticuloParametros($id_seccion, $id_user, $id_estado_articulo,$titulo, $lat, $lng, $fecha_cierre, $copete, $url_contenido, $contenido_adicional, $id_numero );
+		$result = $articuloService->createArticuloParametros($id_seccion, $id_user, $id_estado_articulo, $titulo, $lat, $lng, $fecha_cierre, $copete, $url_contenido, $contenido_adicional, $id_numero );
 		break;
 	default:
 		echo "Método inexistente en el switch de ArticuloAjaxHelper.php";
