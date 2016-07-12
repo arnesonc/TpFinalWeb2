@@ -12,7 +12,7 @@ function traerArticulo(idArticulo){
     $.ajax({
         url     :   '/helpers/ArticuloAjaxHelper.php',
         data    : {
-                    metodo : "getAllArticulosFromNumByUser",
+                    metodo : "getArticuloById",
                     id_articulo : idArticulo,
         },
         type : 'POST',
