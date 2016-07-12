@@ -18,8 +18,9 @@ require_once (__DIR__ . "/../model/NumeroModel.php");
 	*/
 
 	$path = $numeroModel->getPath();
-	$fichero_subido = $path . basename($_FILES['fichero_usuario']['name']);
-	$numeroModel->url_portada = $fichero_subido;
+
+	$fichero_subido = $GLOBALS['app_config']["ruta_publicaciones"] . $path . basename($_FILES['fichero_usuario']['name']);
+	$numeroModel->url_portada = $path . basename($_FILES['fichero_usuario']['name']);
 	$numeroModel->precio = $precio;
 	$numeroService->updateNumero($numeroModel);
 	//echo $fichero_subido;

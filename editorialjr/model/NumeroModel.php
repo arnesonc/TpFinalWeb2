@@ -68,7 +68,7 @@ class NumeroModel{
 	public function getPath(){
 		$numeroService = new NumeroService;
 		$this->getPublicacion();
-		$pathname = $GLOBALS ['app_config'] ["ruta_publicaciones"] . $this->publicacion->id . "_" . $this->publicacion->nombre . "/numero" . $this->numero_revista."/";
+		$pathname = $GLOBALS ['app_config'] ["url_imagen"] . $this->publicacion->id . "_" . $this->publicacion->nombre . "/numero" . $this->numero_revista."/";
 
 		return $pathname;
 	}

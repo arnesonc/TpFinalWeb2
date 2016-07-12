@@ -131,17 +131,19 @@ class NumeroService {
 
 		$publicacion = $numeroModel->getPublicacion ();
 		$numeroRevista = $this->generateNumeroRevista($numeroModel);
-		$pathname = $GLOBALS ['app_config'] ["ruta_publicaciones"] . $numeroModel->id_publicacion . "_" . $publicacion->nombre . "/numero" . $numeroRevista;
-
+		$pathname = $GLOBALS['app_config']["url_imagen"] . $numeroModel->id_publicacion . "_" . $publicacion->nombre . "/numero" . $numeroRevista;
 		return $pathname;
 	}
 
 	// Crea un nuevo numero, si hay error, retorna un mensaje, sino devuelve true o false, dependiendo de si pudo crear el directorio.
 	public function createNumero($numeroModel) {
 		// añade el path de la portada en su creacion sera generica.
-		$numeroModel->url_portada = "./img/portada.png";
+		$numeroModel->url_portada = "/img/portada.png";
 		$pathname = $this->createPath($numeroModel);
-		mkdir ( $pathname, 0777, true );
+
+        $fullPath = $GLOBALS ['app_config']["ruta_publicaciones"] . $pathname;
+
+		mkdir ($fullPath , 0777, true );
 		//añade el numero de revista en su creacion.
 		$numeroModel->numero_revista = $this->generateNumeroRevista($numeroModel);
 		$message = $this->validateNumero ( $numeroModel );
@@ -272,7 +274,6 @@ class NumeroService {
 			$logger->error ( $e );
 			return null;
 		}
-
 	}
 
 	public function editarFeErratas($idNumero,$feErratas){

@@ -64,9 +64,6 @@ class ImagenService{
 		return $imagen;
 		
 	}
-	
-
-	
 }
 
 ?>
