@@ -5,7 +5,7 @@ if (isset($_SESSION["session"]) && $_SESSION["session"]["login"] == "ok") {
 
     $_SESSION["session"] = null;
     session_destroy();
-    header("location:admin-login.php");
+    header("location:index.php");
 } else {
     header("location:admin-login.php");
 }

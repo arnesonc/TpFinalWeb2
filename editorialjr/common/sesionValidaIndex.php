@@ -1,5 +1,11 @@
 <?php
 	session_start();
+
+	if($_SESSION['session']['rol'] != null){
+	    header("location:admin-cms.php");
+	    exit();
+	}
+
 /*
 	if( !isset($_SESSION["session"]["login"]) ){
 		session_destroy();
