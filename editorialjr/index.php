@@ -2,20 +2,26 @@
 include 'client-header.php';
 require_once(__DIR__."/common/sesionValidaIndex.php");
 ?>
-<div class="row">
-    <div class="col-lg-12">
-        <h3>Últimos Números</h3>
-    </div>
-</div>
+
 <div class="row">
 <div class="container">
-
-    <div id="divError" class="alert alert-danger oculto">
-    </div>
-    <div id="content" class="row text-center">
-    </div>
-</div>
-</div>
+  <div class="row">
+    <div id="wrapper">
+      <div class="row">
+          <div class="col-lg-12">
+              <h2>Últimos Números</h2>
+          </div>
+      </div>
+    </div><!-- /#wrapper -->
+  </div><!-- /row -->
+  <div class="row">
+    <div id="wrapper">
+      <div id="divError" class="alert alert-danger oculto">
+      </div>
+      <div id="content" class="row text-center">
+      </div>
+    </div><!-- /#wrapper -->
+  </div><!-- /row -->
 
 <section id="section_ultimos">
     <!-- paginado-->
@@ -27,7 +33,35 @@ require_once(__DIR__."/common/sesionValidaIndex.php");
             </ul>
         </div>
     </div><!-- /paginado-->
+</section><!-- /ultimos -->
+</div>
+<!-- Footer -->
+
+  <footer class="footer-distributed">
+
+    <div class="footer-right">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+      <a href="https://github.com/germg/TpFinalWeb2"><i class="fa fa-github"></i></a>
+
     </div>
+
+    <div class="footer-left">
+
+      <p class="footer-links">
+        <a href="/index.php">Home</a>
+        ·
+        <a href="#">About</a>
+        ·
+        <a href="/admin-login.php">Administrar</a>
+      </p>
+
+      <p>EditorialJR &copy; 2016</p>
+    </div>
+
+  </footer>
+
 
     <!-- Modal para login -->
     <div class="modal fade" id="modalSeccion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -73,35 +107,6 @@ require_once(__DIR__."/common/sesionValidaIndex.php");
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
-</section><!-- /ultimos -->
-
-<!-- Footer -->
-
-  <footer class="footer-distributed">
-
-    <div class="footer-right">
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-linkedin"></i></a>
-      <a href="https://github.com/germg/TpFinalWeb2"><i class="fa fa-github"></i></a>
-
-    </div>
-
-    <div class="footer-left">
-
-      <p class="footer-links">
-        <a href="/index.php">Home</a>
-        ·
-        <a href="#">About</a>
-        ·
-        <a href="/admin-login.php">Administrar</a>
-      </p>
-
-      <p>EditorialJR &copy; 2016</p>
-    </div>
-
-  </footer>
-
 
 
 <!-- jQuery -->
