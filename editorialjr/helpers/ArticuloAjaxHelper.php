@@ -26,7 +26,11 @@ switch($metodo){
 		$id_user = $_POST["id_user"];
 		$result = $articuloService->getAllArticulosFromNumByUser($id_user, $id_numero);
 		break;
-	case "createArticuloParametros":
+	case "cerrarArticulo":
+		$idArticulo = $_POST["idArticulo"];
+		$result = $articuloService->cerrarArticulo($idArticulo);
+		break;
+	case "test":
 
 		echo ("pega en el metodo<br>");
 
@@ -44,6 +48,9 @@ switch($metodo){
 		$fecha_cierre = null;
 		$url_contenido = $_POST['contenido'];
 
+		/* -----------------------------imagen-------------------------------- */
+
+
 		$numeroModel = $numeroService->getNumeroById($id_numero);
 
 		$path = $numeroModel->getPath();
@@ -52,9 +59,7 @@ switch($metodo){
 
 		$imagen_url  = $GLOBALS["ruta_publicaciones"] . $path . basename($_FILES['file']['name']);
 
-		$result = $articuloService->createArticuloParametros($id_seccion, $id_user, $id_estado_articulo, $titulo, $lat, $lng, $fecha_cierre, $copete, $url_contenido, $contenido_adicional, $id_numero);
-
-		$id_articulo = $articuloService->ultimoInsert();
+		echo ("la url de la imagen es ".$imagen_url."<br>");
 
 		$imagenService->insertImagen($id_articulo,$imagen_url);
 
@@ -66,20 +71,15 @@ switch($metodo){
 			echo ('no pudo mover el archivo <br>');
 		}
 
+		//$url_fetch = $imagenService->getImagenUrlByArticuloId($id_articulo);
+
+		//echo("<img src='".$url_fetch."' alt='test' width='100%' height='100%'>");
+
+		/*--------------------------------------------------------------------------------*/
+
+		$result = $articuloService->createArticuloParametros($id_seccion, $id_user, $id_estado_articulo, $titulo, $lat, $lng, $fecha_cierre, $copete, $url_contenido, $contenido_adicional, $id_numero);
+
 		break;
-	case "getArticuloById":
-
-		$id_articulo = $_POST['id_articulo'];
-
-		$result = $articuloService->getArticuloById($id_articulo);
-
-		break;
-	case "getImagenUrlByArticuloId":
-
-		$id_articulo = $_POST['id_articulo'];
-
-		$result = $imagenService->getImagenUrlByArticuloId($id_articulo);
-
 	default:
 		echo "Método inexistente en el switch de ArticuloAjaxHelper.php";
 }

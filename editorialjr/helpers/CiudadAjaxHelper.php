@@ -8,9 +8,9 @@ $ciudadService = new CiudadService;
 $result = null;
 
 switch($metodo){
-	case "getCiudadByIdRegion":
+	case "getCiudadesByIdRegion":
 		$idRegion = $_POST["idRegion"];
-		$result = $ciudadService->getCiudadByIdRegion($idRegion);
+		$result = $ciudadService->getCiudadesByIdRegion($idRegion);
 		break;
 	default:
 		echo "Método inexistente en el switch de CiudadAjaxHelper.php";
