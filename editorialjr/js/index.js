@@ -218,7 +218,7 @@ function iniciarSesion() {
 }
 
 function suscribirCliente(button) {
-    //TODO: mercado pago
+    //FIXME: mercado pago
     if (obtenerSessionID() != false) {
         $.ajax({
             url: '/helpers/SuscripcionAjaxHelper.php',
@@ -230,8 +230,8 @@ function suscribirCliente(button) {
             type: 'POST',
             dataType: "json",
             success: function (result) {
-                if (result === true) {
-                    alert("suscripcion satisfactoria");
+                if (result) {
+                    window.open(result,"","height=800, width=800");
                     obtenerCantidadPaginas();
                 } else {
                     mostrarMensaje("no se pudo suscribir");
@@ -248,7 +248,7 @@ function suscribirCliente(button) {
 }
 
 function comprarUltimoNumero(button) {
-    //TODO: mercado pago
+    //FIXME: mercado pago
     if (obtenerSessionID() != false) {
         $.ajax({
             url: '/helpers/CompraUnitariaAjaxHelper.php',
@@ -260,8 +260,8 @@ function comprarUltimoNumero(button) {
             type: 'POST',
             dataType: "json",
             success: function (result) {
-                if (result === true) {
-                    alert("compra satisfactoria");
+                if (result) {
+                    window.open(result,"","height=800, width=800");
                     obtenerCantidadPaginas();
                 } else {
                     mostrarMensaje("no se pudo comprar");

@@ -1,10 +1,12 @@
 <?php
 
 require_once(__DIR__."/../service/SuscripcionService.php");
+require_once(__DIR__."/../service/MercadoPagoService.php");
 
 $metodo = $_POST["metodo"];
 
 $suscripcionService = new SuscripcionService;
+$mpService = new MercadoPagoService;
 
 $result = null;
 
@@ -12,7 +14,8 @@ switch($metodo){
 	case "suscribirCliente":
 		$idCliente = $_POST["idCliente"];
 		$idPublicacion = $_POST["idPublicacion"];
-		$result = $suscripcionService->suscribirCliente($idCliente,$idPublicacion);
+		$result = $mpService->pagar($idPublicacion,6);//monto de 6 numeros sumados
+		$suscripcionService->suscribirCliente($idCliente,$idPublicacion);
 		break;
 	case "getSuscripcionById":
 		$idSuscripcion = $_POST["idSuscripcion"];
