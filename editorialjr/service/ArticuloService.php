@@ -417,7 +417,7 @@ class ArticuloService
             return "El copete no es válido. Debe poseer como máximo 200 caracteres.";
         }
 
-        if (!$this->validationHelper->validateNull($articuloModel->url_contenido) && !$this->validationHelper->validateText($articuloModel->url_contenido, 1, 100)) {
+        if (!$this->validationHelper->validateNull($articuloModel->url_contenido) && !$this->validationHelper->validateText($articuloModel->url_contenido, 1, 4000)) {
             return "La url del contenido no es válida. Debe poseer como máximo 100 caracteres.";
         }
 

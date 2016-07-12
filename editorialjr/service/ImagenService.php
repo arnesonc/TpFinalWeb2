@@ -64,6 +64,52 @@ class ImagenService{
 		return $imagen;
 		
 	}
+
+	public function insertImagen($id_articulo, $url_imagen){
+		/* Convierto la variable de url en modelo */
+		$imagenModel = new ImagenModel;
+
+		$imagenModel->id_articulo = $id_articulo;
+		$imagenModel->url = $url_imagen;
+
+		$sql = " INSERT INTO imagen
+				(id,
+				id_articulo,
+				url)
+				VALUES
+				(null,
+				'$imagenModel->id_articulo',
+				'$imagenModel->url');";
+
+		try {
+
+			// Ejecuta el insert en la BD
+			$this->dataAccess->execute($sql);
+		} catch (Exception $e) {
+			$logger = Logger::getRootLogger();
+			$logger->error($e);
+
+			return false;
+		}
+
+		return true;
+	}
+
+	public function getImagenUrlByArticuloId($id_articulo){
+		$sql = " SELECT url  FROM imagen WHERE id_articulo = $id_articulo;";
+
+		try{
+
+			$imagenDB = $this->dataAccess->getOneResult($sql);
+
+		}catch(Exception $e){
+			$logger = Logger::getRootLogger();
+			$logger->error($e);
+			return null;
+
+		}
+		return $this->convertImagenDBToImagenModel($imagenDB);
+	}
 }
 
 ?>

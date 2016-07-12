@@ -55,7 +55,7 @@ $arraySeccion = $seccionService->getAllSecciones();
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="principal">imagen principal</label>
                                     <div class="col-md-9">
-                                        <input id="imagen-file" name="imagen-file" class="input-file" type="file" accept="image/*">
+                                        <input id="imagen-file" name="file" class="file" type="file" accept="image/*">
                                     </div>
                                 </div>
 
