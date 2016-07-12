@@ -15,7 +15,7 @@ switch($metodo){
 		$idCliente = $_POST["idCliente"];
 		$idPublicacion = $_POST["idPublicacion"];
 		$result = $mpService->pagar($idPublicacion,6);//monto de 6 numeros sumados
-		$suscripcionService->suscribirCliente($idCliente,$idPublicacion);
+		$suscripcionService->suscribirCliente($idCliente,$idPublicacion,"suscripcion");
 		break;
 	case "getSuscripcionById":
 		$idSuscripcion = $_POST["idSuscripcion"];

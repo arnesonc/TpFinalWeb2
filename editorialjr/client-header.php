@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__."/common/sesionValida.php");
+require_once(__DIR__."/common/sesionValidaIndex.php");
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +12,8 @@ require_once(__DIR__."/common/sesionValida.php");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/footer-distributed.css">
     <title>Editorial Jr</title>
 
     <!-- Nuestro CSS -->
@@ -36,52 +37,55 @@ require_once(__DIR__."/common/sesionValida.php");
 
 </head>
 
-    <body>
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/index.php">Editorial Jr</a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
+<body>
+<!-- Navigation -->
+<div class="row">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/index.php">Editorial Jr</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <?php
+                    if(isset($_SESSION['session']) && isset($_SESSION['session']["login"])
+                    && $_SESSION['session']["login"] == "ok"){
+                ?>
                         <li>
-                            <a href="#">About</a>
+                            <a href="/client-listar-suscripciones.php">Suscripciones</a>
                         </li>
                         <li>
-                            <a href="#">Services</a>
+                            <a href="client-listar-numeros-comprados.php">Compras</a>
                         </li>
-                        <?php
-                            if(isset($_SESSION['session']) && isset($_SESSION['session']["login"])
-                            && $_SESSION['session']["login"] == "ok"){
-                        ?>
-                                <li>
-                                    <a href="/logoutIndex.php">Cerrar sesión</a>
-                                </li>
-                        <?php }else{ ?>
-                                <li>
-                                    <a id="btnIniciarSesion" href="#">Iniciar sesión</a>
-                                </li>
-                                <li>
-                                    <a href="RegistrarCliente.php">Registrarse</a>
-                                </li>
-                        <?php } ?>
-                    </ul>
-                    <ul class="nav navbar-nav  navbar-right">
                         <li>
-                            <a href="#menu-toggle" title="Menú" id="menu-toggle">Menú</a>
+                            <a href="/logoutIndex.php">Cerrar sesión</a>
                         </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container -->
-        </nav>
+                <?php }else{ ?>
+                        <li>
+                            <a id="btnIniciarSesion" href="#">Iniciar sesión</a>
+                        </li>
+                        <li>
+                            <a href="RegistrarCliente.php">Registrarse</a>
+                        </li>
+                <?php } ?>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+</div>

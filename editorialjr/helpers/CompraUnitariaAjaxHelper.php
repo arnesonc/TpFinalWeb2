@@ -6,7 +6,7 @@ require_once(__DIR__."/../service/MercadoPagoService.php");
 $metodo = $_POST["metodo"];
 
 $compraUnitariaService = new CompraUnitariaService;
-
+$mpService = new MercadoPagoService;
 $result = null;
 
 switch($metodo){
@@ -17,7 +17,7 @@ switch($metodo){
 	case "comprarUltimoNumero":
 		$idCliente = $_POST["idCliente"];
 		$idPublicacion = $_POST["idPublicacion"];
-		$result = $mpService->pagar($idPublicacion,1);//el monto de un solo numero
+		$result = $mpService->pagar($idPublicacion,1,"compra");//el monto de un solo numero
 		$compraUnitariaService->comprarUltimoNumero($idCliente,$idPublicacion);
 		break;
 	default:
