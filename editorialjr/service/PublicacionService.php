@@ -246,7 +246,7 @@ class PublicacionService
     }
 
     public function getIdLastNumero($id_publicacion){
-        $sql = "SELECT MAX(id) as lastid from numero where id_publicacion = $id_publicacion and and numero.id_estado_numero = 2; ";
+        $sql = "SELECT MAX(id) as lastid from numero where id_publicacion = $id_publicacion and numero.id_estado_numero = 2; ";
         try {
             $lastID = $this->dataAccess->getOneResult($sql)['lastid'];
         } catch (Exception $e) {

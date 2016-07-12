@@ -110,7 +110,7 @@ class CompraUnitariaService
             $logger->error($e);
             return false;
         }
-        return true;
+        return $sql;
     }
 
 }

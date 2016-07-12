@@ -148,7 +148,7 @@ function armarHtmlPublicaciones(publicacionesAdquiridas, listaPublicaciones, ult
             html += "        <div class='caption'>";
             html += "            <h3>" + publicacion.nombre+ " "
             if(publicacion.destacado == true){
-            html += "            <span class='glyphicon glyphicon-ok-circle icon-success' aria-hidden='true'></span>";
+            html += "            <span class='glyphicon glyphicon-ok-circle icon-success' title='publicacion detacada' aria-hidden='true'></span>";
             }
             html += "            </h3><p>";
             //SI LA PUBLICACION FUE ADQUIRIDA POR EL CLIENTE (el cliente esta suscrito a ella), MOSTRAMOS EL BOTON VER.
@@ -185,6 +185,7 @@ function mostrarModalLogin() {
     $("#divMensajeError").hide();
     $("#modalSeccion").modal('show');
     limpiarFormularioLogin();
+    $("#email").focus();
 }
 
 function limpiarFormularioLogin() {
