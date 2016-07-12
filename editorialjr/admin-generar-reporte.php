@@ -1,6 +1,6 @@
 <?php
+require_once('Security.php');
 include 'header.php';
-require_once(__DIR__."/common/Security.php");
 include 'side-bar.php';
 ?>
 <!-- Page Content -->

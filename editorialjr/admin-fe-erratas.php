@@ -1,4 +1,5 @@
 <?php
+require_once('Security.php');
 include 'header.php';
 include 'side-bar.php';
 ?>
@@ -31,7 +32,7 @@ include 'side-bar.php';
 										<textarea id="texto" name="texto" cols="20" rows="5" class="form-control input-md"></textarea>
 									</div>
 								</div>
-								
+
 								<input id="idNumero" name="idNumero" type="hidden" value="<?php echo $_POST["idNumero"]?>">
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="send"></label>
@@ -72,7 +73,7 @@ include 'side-bar.php';
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
-    </script>    
+    </script>
 <!--Js de esta vista-->
     <script src="js/EditarFeErratas.js"></script>
 

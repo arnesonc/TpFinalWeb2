@@ -33,8 +33,10 @@ include 'side-bar.php';
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
+        <?php if($_SESSION['session']['rol'] == '1'){ ?>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title" id="tituloModalPublicacion">Editar Publicacion</h4>
+        <?php } ?>
 			</div>
 			<div class="modal-body">
 				<form id="signupForm" method="post" class="form-horizontal" action="">

@@ -1,4 +1,5 @@
 <?php
+require_once('Security.php');
 include 'header.php';
 include 'side-bar.php';
 ?>
