@@ -3,14 +3,13 @@ include 'client-header.php';
 require_once(__DIR__."/common/sesionValidaIndex.php");
 ?>
 <div class="row">
+    <div class="col-lg-12">
+        <h3>Últimos Números</h3>
+    </div>
+</div>
+<div class="row">
 <div class="container">
-  
-  <!-- Title DOESNT WORK FIXME-->
-  <div class="row">
-      <div class="col-lg-12">
-          <h3>Últimos Números</h3>
-      </div>
-  </div>
+
     <div id="divError" class="alert alert-danger oculto">
     </div>
     <div id="content" class="row text-center">
