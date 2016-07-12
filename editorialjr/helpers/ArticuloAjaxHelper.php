@@ -26,7 +26,7 @@ switch($metodo){
 		$id_user = $_POST["id_user"];
 		$result = $articuloService->getAllArticulosFromNumByUser($id_user, $id_numero);
 		break;
-	case "test":
+	case "createArticuloParametros":
 
 		echo ("pega en el metodo<br>");
 
@@ -75,6 +75,8 @@ switch($metodo){
 
 		$result = $articuloService->createArticuloParametros($id_seccion, $id_user, $id_estado_articulo, $titulo, $lat, $lng, $fecha_cierre, $copete, $url_contenido, $contenido_adicional, $id_numero);
 
+		break;
+	case "leer":
 		break;
 	default:
 		echo "Método inexistente en el switch de ArticuloAjaxHelper.php";

@@ -94,8 +94,13 @@ include 'client-header.php';
     <!-- jquery redirect-->
     <script src="js/jquery.redirect.js" type="text/javascript"></script>
 
-    <!-- jquery redirect-->
-    <script src="js/leerArticulo.js"></script>
+    <!-- leer articulo.js-->
+    <script src="js/LeerArticulo.js"></script>
+
+    <!-- obtener variables post-->
+    <script>
+        leerArticulo(<?php echo $_POST['idArticulo']?>);
+    </script>
 
     </body>
 

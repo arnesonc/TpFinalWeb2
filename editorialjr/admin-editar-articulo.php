@@ -88,7 +88,7 @@ $arraySeccion = $seccionService->getAllSecciones();
                                     <input id="idArticulo" name="idArticulo" class="" type="hidden" value="">
                                     <input id="idUser" name="idUser" class="" type="hidden" value="">
                                     <input id="contenido" name="contenido" class="" type="hidden" value="">
-                                    <input id="metodo" name="metodo" class="" type="hidden" value="test">
+                                    <input id="metodo" name="metodo" class="" type="hidden" value="createArticuloParametros">
                                 </div>
 
                                 <!-- Button -->
