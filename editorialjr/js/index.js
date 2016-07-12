@@ -146,8 +146,11 @@ function armarHtmlPublicaciones(publicacionesAdquiridas, listaPublicaciones, ult
             html += "            <img src='" + publicacion.url_ultima_portada + "' alt='Imagen de publicación: " + publicacion.nombre + "'>";
             html += "        </a>";
             html += "        <div class='caption'>";
-            html += "            <h3>" + publicacion.nombre + "</h3>";
-            html += "            <p>";
+            html += "            <h3>" + publicacion.nombre+ " "
+            if(publicacion.destacado == true){
+            html += "            <span class='glyphicon glyphicon-ok-circle icon-success' aria-hidden='true'></span>";
+            }
+            html += "            </h3><p>";
             //SI LA PUBLICACION FUE ADQUIRIDA POR EL CLIENTE (el cliente esta suscrito a ella), MOSTRAMOS EL BOTON VER.
             if (publicacionAdquirida) {
                 //TODO:agregar funcionalidad al boton para ver publicacion.

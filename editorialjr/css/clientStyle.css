@@ -17,3 +17,7 @@
     position: absolute;
     margin-right: -250px;
 }
+
+.icon-success {
+    color: #5bc0de;
+}
