@@ -99,7 +99,7 @@ include 'client-header.php';
 
 <!-- obtener variables post-->
 <script>
-    leerArticulo(<?php echo $_POST['idArticulo']?>);
+    leerArticulo(14);
 </script>
 
 </body>

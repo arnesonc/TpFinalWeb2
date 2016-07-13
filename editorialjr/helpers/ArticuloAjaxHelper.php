@@ -30,10 +30,8 @@ switch($metodo){
 		$idArticulo = $_POST["idArticulo"];
 		$result = $articuloService->cerrarArticulo($idArticulo);
 		break;
-	case "test":
-
+	case "createArticuloParametros":
 		echo ("pega en el metodo<br>");
-
 		$titulo = $_POST['titulo'];
 		$copete = $_POST['copete'];
 		$contenido_adicional = "contenido adicional";
@@ -47,43 +45,30 @@ switch($metodo){
 		$id_estado_articulo = 1;
 		$fecha_cierre = null;
 		$url_contenido = $_POST['contenido'];
-
-		/* -----------------------------imagen-------------------------------- */
-
-
 		$numeroModel = $numeroService->getNumeroById($id_numero);
-
 		$path = $numeroModel->getPath();
-
 		$structure = $GLOBALS['app_config']["ruta_publicaciones"] . $path;
-
-		$imagen_url  = $path . basename($_FILES['file']['name']);
-
-		echo ("la url de la imagen es ".$imagen_url."<br>");
-
+		$imagen_url  = $GLOBALS["ruta_publicaciones"] . $path . basename($_FILES['file']['name']);
+		$result = $articuloService->createArticuloParametros($id_seccion, $id_user, $id_estado_articulo, $titulo, $lat, $lng, $fecha_cierre, $copete, $url_contenido, $contenido_adicional, $id_numero);
+		$id_articulo = $articuloService->ultimoInsert();
 		$imagenService->insertImagen($id_articulo,$imagen_url);
-
 		mkdir($structure, 0777, true);
-
 		$imagen = $GLOBALS['app_config']["ruta_publicaciones"] . $path . basename($_FILES['file']['name']);
-
 		if(!move_uploaded_file($_FILES['file']['tmp_name'], $imagen)){
 			echo ('no pudo mover el archivo <br>');
 		}
-
-		//$url_fetch = $imagenService->getImagenUrlByArticuloId($id_articulo);
-
-		//echo("<img src='".$url_fetch."' alt='test' width='100%' height='100%'>");
-
-		/*--------------------------------------------------------------------------------*/
-
-		$result = $articuloService->createArticuloParametros($id_seccion, $id_user, $id_estado_articulo, $titulo, $lat, $lng, $fecha_cierre, $copete, $url_contenido, $contenido_adicional, $id_numero);
-
+		break;
+	case "getArticuloById":
+		$id_articulo = $_POST['id_articulo'];
+		$result = $articuloService->getArticuloById($id_articulo);
+		break;
+	case "getImagenUrlByArticuloId":
+		$id_articulo = $_POST['id_articulo'];
+		$result = $imagenService->getImagenUrlByArticuloId($id_articulo);
 		break;
 	default:
 		echo "Método inexistente en el switch de ArticuloAjaxHelper.php";
+		break;
 }
-
 echo json_encode($result);
-
 ?>
