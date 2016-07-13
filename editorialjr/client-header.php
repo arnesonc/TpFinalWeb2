@@ -59,6 +59,9 @@ require_once(__DIR__ . "/common/sesionValidaIndex.php");
                 ) {
                     ?>
                     <li>
+                        <a>Bienvenido <?php echo $_SESSION['session']['nombre']; ?>! </a>
+                    </li>
+                    <li>
                         <a href="/client-listar-suscripciones.php">Suscripciones</a>
                     </li>
                     <li>
