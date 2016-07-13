@@ -103,7 +103,7 @@ include 'client-header.php';
                             <p class="footer-links">
                                 <a href="/index.php">Home</a>
                                 ·
-                                <a href="#">About</a>
+                                <a href="https://github.com/germg/TpFinalWeb2" target="_blank">Nosotros</a>
                                 ·
                                 <a href="/admin-login.php">Administrar</a>
                             </p>
@@ -118,7 +118,7 @@ include 'client-header.php';
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
                                 <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="https://github.com/germg/TpFinalWeb2" target=_blank""><i class="fa fa-github"></i></a>
+                                <a href="https://github.com/germg/TpFinalWeb2" target="_blank"><i class="fa fa-github"></i></a>
                             </div>
                         </div>
                     </div>
