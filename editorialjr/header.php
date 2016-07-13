@@ -18,6 +18,14 @@ require_once(__DIR__."/common/sesionValida.php");
     <!-- Nuestro CSS -->
     <link href="css/style.css" rel="stylesheet">
 
+    <script>
+    function nobackbutton(){
+      //IMPIDE QUE SE VUELVA HACIA ATRAS EN UNA PAGINA
+       window.location.hash="no-back-button";
+       window.location.hash="Again-No-back-button" //chrome
+       window.onhashchange=function(){window.location.hash="no-back-button";}
+    }
+    </script>
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
@@ -36,7 +44,7 @@ require_once(__DIR__."/common/sesionValida.php");
 
 </head>
 
-    <body>
+    <body onload="nobackbutton();">
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">

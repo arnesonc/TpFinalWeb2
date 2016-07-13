@@ -20,7 +20,14 @@ require_once(__DIR__ . "/common/sesionValidaIndex.php");
 
     <!-- Side Bar CSS -->
     <link href="css/clientStyle.css" rel="stylesheet">
-
+    <script>
+    function nobackbutton(){
+      //IMPIDE QUE SE VUELVA HACIA ATRAS EN UNA PAGINA
+       window.location.hash="no-back-button";
+       window.location.hash="Again-No-back-button" //chrome
+       window.onhashchange=function(){window.location.hash="no-back-button";}
+    }
+    </script>
     <!-- CSS de las Datatables-->
     <link rel="stylesheet" type="text/css" href="css/datatables.min.css"/>
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -35,7 +42,7 @@ require_once(__DIR__ . "/common/sesionValidaIndex.php");
     <title>Editorial Jr</title>
 </head>
 
-<body>
+<body onload="nobackbutton();">
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
