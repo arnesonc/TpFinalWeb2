@@ -23,6 +23,10 @@ switch($metodo){
 		$feErratas = $_POST["feErratas"];
 		$result = $numeroService->editarFeErratas($idNumero,$feErratas);
 		break;
+	case "traerFeErratas":
+			$idNumero = $_POST["idNumero"];
+			$result = $numeroService->traerFeErratas($idNumero);
+			break;
 	case "cambiarEstadoAPublicado":
 		$idNumero = $_POST["idNumero"];
 		$result = $numeroService->cambiarEstadoAPublicado($idNumero);

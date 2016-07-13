@@ -299,6 +299,14 @@ class NumeroService {
 
 	}
 
+	public function traerFeErratas($idNumero){
+
+		$numeroModel = $this->getNumeroById($idNumero);
+		$estadoPublicado = 2;
+		return $numeroModel->fe_erratas;
+
+	}
+
 	public function cambiarEstadoAPublicado($idNumero){
 
 		$publicacionService = new PublicacionService();

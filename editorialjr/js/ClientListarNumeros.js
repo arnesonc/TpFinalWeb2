@@ -53,9 +53,11 @@ function armarTablaNumeros(listaNumeros,campoFechaDeCompra){
 		if(campoFechaDeCompra){tabla += "<td>" + numero.fecha_de_compra + "</td>";}
 		tabla += "<td><button onclick='RedirectArticulos("+ numero.id +");' id='btnListarArticulos' name='" + numero.id + "' class='btn btn-success'><span class='glyphicon glyphicon-list'></span> Ver Articulos</button>  ";
 		tabla += "<button onclick='RedirectArticulos("+ numero.id +");' id='btnListarArticulos' name='" + numero.id + "' class='btn btn-warning'><span class='glyphicon glyphicon-list'></span> Descargar en PDF</button>  ";
-		});
 
-
+		if(numero.fe_erratas != null){
+			tabla += "<button onclick='verFeErratas("+ numero.id +");' id='btnVerFeErratas' name='" + numero.id + "' class='btn btn-info'><span class='glyphicon glyphicon-info-sign'></span> Cometimos errores ( leer )</button>  ";
+		}
+});
 	  tabla += "</td></tr></tbody></table>";
 
 	  var tblNumeros = $("#tblNumeros");
@@ -72,6 +74,24 @@ function armarTablaNumeros(listaNumeros,campoFechaDeCompra){
 	      }
 	  });
 	}
+
+function verFeErratas(idNumero){
+	$.ajax({
+		url : '/helpers/NumeroAjaxHelper.php',
+		data : {
+			metodo : "traerFeErratas",
+			idNumero : idNumero
+		},
+		type : 'POST',
+		dataType : "json",
+		success : function(result) {
+			alert(result);
+		},
+		error : function(error) {
+			alert("Ups, ocurrio un error! " + error);
+		}
+});
+}
 
 function RedirectArticulos(idNumero){
 	$.redirect('client-listar-articulos.php', {'idnum': idNumero});

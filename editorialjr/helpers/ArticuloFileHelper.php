@@ -24,8 +24,15 @@ $imagenService->insertImagen($id_articulo,$imagen_url);
 mkdir($structure, 0777, true);
 $imagen = $GLOBALS['app_config']["ruta_publicaciones"] . $path . basename($_FILES['file']['name']);
 
+if (move_uploaded_file($_FILES['fichero_usuario']['tmp_name'], $structure)) {
+  $path = 'location:/../admin-listar-articulos.php?idnum='.$id_numero.'&idest='.$numeroModel->id_estado_numero;
+  header($path);
+} else {
+    echo "¡Posible ataque de subida de ficheros!\n";
+    echo 'Más información de depuración:';
+    print_r($_FILES);
+  }
 //Redirige a la vista de articulos
-$path = 'location:/../admin-listar-articulos.php?idnum='.$id_numero.'&idest='.$numeroModel->id_estado_numero;
-header($path);
+
 
 ?>
