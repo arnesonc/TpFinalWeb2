@@ -10,6 +10,10 @@ $(document).ready(function () {
         event.preventDefault();
         iniciarSesion();
     });
+
+    $("#awcc1468366656627").ready(function(){
+        $("#link_get_widget").remove();
+    });
 });
 
 function obtenerCantidadPaginas() {

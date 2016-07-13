@@ -1,23 +1,22 @@
 <?php
 include 'client-header.php';
 ?>
-
 <div class="row">
     <div class="container">
         <div class="row">
             <div id="wrapper">
-                <div class="row">
-
+                <div clas="row">
+                    <div class="col-md-12">
+                        <a href="http://www.accuweather.com/es/ar/buenos-aires/7894/weather-forecast/7894"
+                           class="aw-widget-legal">
+                        </a>
+                        <div id="awcc1468366656627" class="aw-widget-current" data-locationkey="7894" data-unit="c"
+                             data-language="es" data-useip="false" data-uid="awcc1468366656627"></div>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <h2>Últimos Números</h2>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="col-md-12">
-                            <a href="http://www.accuweather.com/es/ar/buenos-aires/7894/weather-forecast/7894" class="aw-widget-legal">
-                            </a><div id="awcc1468366656627" class="aw-widget-current"  data-locationkey="7894" data-unit="c" data-language="es" data-useip="false" data-uid="awcc1468366656627"></div><script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
-                        </div>
                     </div>
                 </div>
             </div><!-- /#wrapper -->
@@ -32,7 +31,6 @@ include 'client-header.php';
         </div><!-- /row -->
 
         <section id="section_ultimos">
-
             <!-- paginado-->
             <div class="container">
                 <div class="text-center">
@@ -42,8 +40,11 @@ include 'client-header.php';
                     </ul>
                 </div>
             </div><!-- /paginado-->
+
         </section><!-- /ultimos -->
+
     </div>
+
     <!-- Footer -->
 
     <footer class="footer-distributed">
@@ -53,7 +54,6 @@ include 'client-header.php';
             <a href="#"><i class="fa fa-twitter"></i></a>
             <a href="#"><i class="fa fa-linkedin"></i></a>
             <a href="https://github.com/germg/TpFinalWeb2"><i class="fa fa-github"></i></a>
-
         </div>
 
         <div class="footer-left">
@@ -137,6 +137,10 @@ include 'client-header.php';
 
 <!-- jquery redirect-->
 <script src="js/jquery.redirect.js" type="text/javascript"></script>
+
+<!-- Para el clima -->
+<script src="js/launch.js" type="text/javascript"></script>
+
 </body>
 
 </html>

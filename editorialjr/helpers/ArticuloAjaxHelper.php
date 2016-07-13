@@ -57,7 +57,7 @@ switch($metodo){
 
 		$structure = $GLOBALS['app_config']["ruta_publicaciones"] . $path;
 
-		$imagen_url  = $GLOBALS["ruta_publicaciones"] . $path . basename($_FILES['file']['name']);
+		$imagen_url  = $path . basename($_FILES['file']['name']);
 
 		echo ("la url de la imagen es ".$imagen_url."<br>");
 
