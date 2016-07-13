@@ -1,10 +1,10 @@
 <?php
 include 'client-header.php';
+
 ?>
 
-
 <!-- header articulo -->
-<header class="intro-header" style="background-image: url('https://d13yacurqjgara.cloudfront.net/users/58050/screenshots/2412291/boba-starwars.jpg')">
+<header class="intro-header">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -26,7 +26,8 @@ include 'client-header.php';
         </div>
         <div class="col-lg-10">
             <div class="detalles">
-                <p>Escrito por <span id="autor">PEPE</span> | <span id="fecha">12/03/2016</span><p>
+                <p>Escrito por <span id="autor">PEPE</span> | <span id="fecha">12/03/2016</span>
+                <p>
             </div>
         </div>
     </div>
@@ -76,7 +77,6 @@ include 'client-header.php';
 </footer>
 
 
-
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
 
@@ -99,35 +99,12 @@ include 'client-header.php';
 <script src="js/LeerArticulo.js"></script>
 
 <!-- obtener variables post-->
-<script>
-    leerArticulo(14);
+<script type="text/javascript" language="JavaScript">
+    leerArticulo(<?php echo $_POST["idArticulo"] ?>);
 </script>
 
-<script type="text/javascript">
-    var map;
-    function initMap() {
-
-        var myLatlng = {lat: -34.6695067, lng: -58.561731};
-        window.lat = myLatlng.lat;
-        window.lng = myLatlng.lng;
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 12,
-            center: myLatlng
-        });
-
-        marcador = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: 'Lugar de los hechos'
-        });
-    }
-</script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8qdt_ZyQL7Ea1dirrshhtQycf1UYGAQQ&callback=initMap" async defer>
-</script>
-
+<div id="mapa">
+</div>
 </body>
-
 </html>
 

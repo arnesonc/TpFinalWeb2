@@ -94,26 +94,36 @@ include 'client-header.php';
     </div>
     <!-- Footer -->
 
-    <footer class="footer-distributed">
-        <div class="footer-right">
-            <div><?php echo "<img src='generarQr.php?info=https://github.com/germg/TpFinalWeb2' />"; ?></div>
-            <div class="footer-icons">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="https://github.com/germg/TpFinalWeb2" target=_blank""><i class="fa fa-github"></i></a>
-            </div>
-        </div>
-        <div class="footer-left">
-            <p class="footer-links">
-                <a href="/index.php">Home</a>
-                ·
-                <a href="#">About</a>
-                ·
-                <a href="/admin-login.php">Administrar</a>
-            </p>
+    <footer class="container-fluid footer-distributed">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="footer-left">
+                            <p class="footer-links">
+                                <a href="/index.php">Home</a>
+                                ·
+                                <a href="https://github.com/germg/TpFinalWeb2" target="_blank">Nosotros</a>
+                                ·
+                                <a href="/admin-login.php">Administrar</a>
+                            </p>
 
-            <p>EditorialJR &copy; 2016</p>
+                            <p>EditorialJR &copy; 2016</p>
+                            <div class="qr"><?php echo "<img src='generarQr.php?info=https://github.com/germg/TpFinalWeb2' />"; ?></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="footer-right">
+                            <div class="footer-icons">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="https://github.com/germg/TpFinalWeb2" target="_blank"><i class="fa fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 </div>
