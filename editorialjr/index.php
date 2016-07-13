@@ -5,6 +5,15 @@ include 'client-header.php';
     <div class="container">
         <div class="row">
             <div id="wrapper">
+                <div clas="row">
+                    <div class="col-md-12">
+                        <a href="http://www.accuweather.com/es/ar/buenos-aires/7894/weather-forecast/7894"
+                           class="aw-widget-legal">
+                        </a>
+                        <div id="awcc1468366656627" class="aw-widget-current" data-locationkey="7894" data-unit="c"
+                             data-language="es" data-useip="false" data-uid="awcc1468366656627"></div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <h2>Últimos Números</h2>
@@ -31,20 +40,11 @@ include 'client-header.php';
                     </ul>
                 </div>
             </div><!-- /paginado-->
+
         </section><!-- /ultimos -->
-        
-        <div clas="row">
-            <div id="wrapper">
-                <div class="col-md-12">
-                    <a href="http://www.accuweather.com/es/ar/buenos-aires/7894/weather-forecast/7894"
-                       class="aw-widget-legal">
-                    </a>
-                    <div id="awcc1468366656627" class="aw-widget-current" data-locationkey="7894" data-unit="c"
-                         data-language="es" data-useip="false" data-uid="awcc1468366656627"></div>
-                </div>
-            </div>
-        </div>
+
     </div>
+
     <!-- Footer -->
 
     <footer class="footer-distributed">
