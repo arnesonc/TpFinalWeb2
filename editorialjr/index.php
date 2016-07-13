@@ -1,5 +1,6 @@
 <?php
 include 'client-header.php';
+
 ?>
 <div class="row">
     <div class="container">
@@ -94,16 +95,16 @@ include 'client-header.php';
     <!-- Footer -->
 
     <footer class="footer-distributed">
-
         <div class="footer-right">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="https://github.com/germg/TpFinalWeb2" target=_blank""><i class="fa fa-github"></i></a>
+            <div><?php echo "<img src='generarQr.php?info=https://github.com/germg/TpFinalWeb2' />"; ?></div>
+            <div class="footer-icons">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="https://github.com/germg/TpFinalWeb2" target=_blank""><i class="fa fa-github"></i></a>
+            </div>
         </div>
-
         <div class="footer-left">
-
             <p class="footer-links">
                 <a href="/index.php">Home</a>
                 ·
@@ -114,7 +115,6 @@ include 'client-header.php';
 
             <p>EditorialJR &copy; 2016</p>
         </div>
-
     </footer>
 </div>
 
