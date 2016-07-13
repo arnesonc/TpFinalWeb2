@@ -140,7 +140,7 @@ function armarHtmlPublicaciones(publicacionesAdquiridas, listaPublicaciones, ult
                 });
             }
 
-            html = "<div class='col-md-3 col-sm-6 hero-feature'>";
+            html = "<div class='col-lg-3 hero-feature'>";
             html += "    <div class='thumbnail'>";
             html += "        <a >";
             html += "            <img src='" + publicacion.url_ultima_portada + "' alt='Imagen de publicación: " + publicacion.nombre + "'>";
