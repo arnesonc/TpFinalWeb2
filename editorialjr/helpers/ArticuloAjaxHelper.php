@@ -38,7 +38,7 @@ switch($metodo){
 		$result = $articuloService->getArticuloById($id_articulo);
 		break;
 	case "getImagenUrlByArticuloId":
-		$id_articulo = $_POST['id_articulo'];
+		$id_articulo = $_POST['idArticulo'];
 		$result = $imagenService->getImagenUrlByArticuloId($id_articulo);
 		break;
 	default:

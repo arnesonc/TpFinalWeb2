@@ -27,7 +27,7 @@ function initMap() {
 }
 
 function leerArticulo(idArticulo) {
-    //traerImagen(idArticulo);
+    traerImagen(idArticulo);
     traerArticulo(idArticulo);
 }
 
@@ -69,19 +69,18 @@ function traerImagen(idArticulo) {
     $.ajax({
         url: '/helpers/ArticuloAjaxHelper.php',
         data: {
-            metodo: "getAllArticulosFromNumByUser",
-            id_articulo: idArticulo,
+            metodo: "getImagenUrlByArticuloId",
+            idArticulo: idArticulo,
         },
         type: 'POST',
         dataType: "json",
-        success: function (articulo) {
-            alert("hacer algo");
+        success: function (imagen) {
+            $(".intro-header").attr('style', 'background-image: url("' + imagen.url + '")');
         },
         error: function (error) {
-            alert("Upa, ocurrio un error! ");
+            alert("Upa, ocurrio un error!");
         }
     });
-
 }
 
 function traerUsuario(idUsuario) {

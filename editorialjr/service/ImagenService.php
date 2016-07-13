@@ -96,7 +96,7 @@ class ImagenService{
 	}
 
 	public function getImagenUrlByArticuloId($id_articulo){
-		$sql = " SELECT url  FROM imagen WHERE id_articulo = $id_articulo;";
+		$sql = " SELECT id, id_articulo, url  FROM imagen WHERE id_articulo = $id_articulo;";
 
 		try{
 
