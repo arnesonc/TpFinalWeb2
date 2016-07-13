@@ -54,12 +54,6 @@ require_once(__DIR__."/common/sesionValidaIndex.php");
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
                 <?php
                     if(isset($_SESSION['session']) && isset($_SESSION['session']["login"])
                     && $_SESSION['session']["login"] == "ok"){
