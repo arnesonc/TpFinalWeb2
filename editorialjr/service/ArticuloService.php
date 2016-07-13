@@ -171,6 +171,28 @@ class ArticuloService
         return $arrayArticuloModel;
     }
 
+    /*
+      Cuenta la cantidad de articulos de un numero
+     */
+    function countAllArticulosByIdNumero($idNumero){
+
+        $sql = "SELECT COUNT(*) AS cantidad
+		FROM articulo
+		WHERE id_numero = $idNumero;";
+
+        try {
+
+            $result = $this->dataAccess->getOneResult($sql);
+        } catch (Exception $e) {
+            $logger = Logger::getRootLogger();
+            $logger->error($e);
+
+            return null;
+        }
+
+        return $result["cantidad"];
+    }
+
     /**
      * Obtiene una lista de ArticuloModel
      */

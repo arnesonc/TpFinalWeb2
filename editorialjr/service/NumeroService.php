@@ -5,6 +5,8 @@ require_once (__DIR__ . "/../model/NumeroModel.php");
 require_once (__DIR__ . "/../service/PublicacionService.php");
 require_once (__DIR__ . "/../helpers/LoggerHelper.php");
 require_once (__DIR__ . "/../service/EstadoArticuloService.php");
+require_once (__DIR__ . "/../service/ArticuloService.php");
+
 class NumeroService {
 	private $dataAccess = null;
 	public function __construct() {
@@ -314,8 +316,12 @@ class NumeroService {
 		$cantidadArticulosEnDraft = $estadoArticuloService->getCantidadArticulosEnDraft($idNumero);
 		$numeroModel = $this->getNumeroById($idNumero);
 		$estadoNoPublicado = 1;
+		$articuloServive = new ArticuloService();
+		$cantidad = $articuloServive->countAllArticulosByIdNumero($idNumero);
 
-		if($numeroModel->id_estado_numero == $estadoNoPublicado && $cantidadArticulosEnDraft == 0){
+		if($numeroModel->id_estado_numero == $estadoNoPublicado
+			&& $cantidadArticulosEnDraft == 0
+			&& $cantidad > 0){
 
 			$sql = "UPDATE numero
 					SET id_estado_numero= 2,
@@ -341,7 +347,7 @@ class NumeroService {
 			}
 
 		} else {
-			return("Verifique que el numero no tenga articulos en draft.");
+			return("Verifique que el numero tenga articulos y esten cerrados.");
 		}
 	}
 
@@ -375,6 +381,8 @@ class NumeroService {
 
 					return $numeroDBArray;
 	}
+
+
 }
 
 ?>

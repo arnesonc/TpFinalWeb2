@@ -42,8 +42,11 @@ include 'client-header.php';
     <div class="row">
         <div class="col-lg-2">
         </div>
-        <div class="col-lg-10">
+        <div class="col-lg-8">
+            <h4>Sucedió aquí:</h4>
             <div id="map"></div>
+        </div>
+        <div class="col-lg-2">
         </div>
     </div>
 </div>
