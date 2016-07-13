@@ -14,8 +14,8 @@ function traerArticulo(idArticulo){
         data    : {
                     metodo : "getArticuloById",
                     id_articulo : idArticulo,
-        },
-        type : 'POST',
+                  },
+        type    :   'POST',
         dataType : "json",
         success : function(articulo) {
             renderArticulo(articulo);

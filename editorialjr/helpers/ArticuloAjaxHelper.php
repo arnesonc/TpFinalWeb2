@@ -50,7 +50,7 @@ switch($metodo){
 
 		$structure = $GLOBALS['app_config']["ruta_publicaciones"] . $path;
 
-		$imagen_url  = $GLOBALS["ruta_publicaciones"] . $path . basename($_FILES['file']['name']);
+		$imagen_url  = $path . basename($_FILES['file']['name']);
 
 		$result = $articuloService->createArticuloParametros($id_seccion, $id_user, $id_estado_articulo, $titulo, $lat, $lng, $fecha_cierre, $copete, $url_contenido, $contenido_adicional, $id_numero);
 
