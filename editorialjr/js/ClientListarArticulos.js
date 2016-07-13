@@ -27,12 +27,12 @@ function armarTablaArticulos(listaArticulos){
 	  $("#bodyArticulos").html("");
 
 	  tabla = "<table id='tblArticulos' class='table table-striped table-bordered table-responsive' cellspacing='0'>";
-	  tabla +="<thead><tr><th>Titulo</th><th>fecha cierre</th>";
+	  tabla +="<thead><tr><th>Titulo</th><th>Seccion</th><th>fecha</th>";
 	  tabla +="<th>Acciones</th></tr></thead><tbody>";
 
 	  $.each(listaArticulos, function(index, articulo) {
 		fecha=(articulo.fecha_cierre == null)?'<strong>DRAFT</strong>':articulo.fecha_cierre;
-		tabla += "<tr><td>" + articulo.titulo + "</td>";
+		tabla += "<tr><td>" + articulo.titulo + "</td><td>" + articulo.seccion + "</td>";
 	    tabla += "<td>" + fecha + "</td>";
 
 		//aca hay q hacer un if y preguntar si el articulo esta publicado, de estarlo se muestra el boton leer, si no el boton editar.

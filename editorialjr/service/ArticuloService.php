@@ -374,6 +374,7 @@ class ArticuloService
         $articuloModel->url_contenido = $articuloDB ["url_contenido"];
         $articuloModel->contenido_adicional = utf8_encode($articuloDB ["contenido_adicional"]);
         $articuloModel->id_numero = $articuloDB ["id_numero"];
+        $articuloModel->getSeccion();
         return $articuloModel;
     }
 
