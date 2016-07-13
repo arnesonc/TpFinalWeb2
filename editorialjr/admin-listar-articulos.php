@@ -18,7 +18,7 @@ include 'side-bar.php';
                 </div>
                 <div id="divError" class="alert alert-danger oculto">
                 </div>
-                <?php if($_POST['estadoNumero'] == 1 || isset($_GET["idest"]) && $_GET["idest"] == 1) {
+                <?php if((isset($_POST['estadoNumero']) && $_POST['estadoNumero'] == 1) || isset($_GET["idest"]) && $_GET["idest"] == 1) {
                     echo "<div class='row'>";
                     echo "<div class='botonNuevo col-lg-12'>";
                     echo "<button id='btnNuevoArticulo' class='btn btn-primary'><span class='glyphicon glyphicon-plus'></span> Nuevo articulo</button>";
