@@ -85,7 +85,7 @@ function armarTablaArticulos(listaArticulos){
 
 
 function aLeerArticulo(idArticulo){
-	$.redirect('admin-leer-articulos.php', {'idNumero': idArticulo});
+	$.redirect('cliente-leer-articulo.php', {'idArticulo': idArticulo});
 }
 
 function aEditarArticulo(idArticulo){
