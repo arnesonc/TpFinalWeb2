@@ -5,8 +5,8 @@ include 'client-header.php';
     <div class="container">
         <div class="row">
             <div id="wrapper">
-                <div clas="row">
-                    <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
                         <a href="http://www.accuweather.com/es/ar/buenos-aires/7894/weather-forecast/7894"
                            class="aw-widget-legal">
                         </a>
