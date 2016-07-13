@@ -27,7 +27,7 @@
         $.ajax({
             url: '/helpers/ChartHelper.php',
             data: {
-                metodo: "getAllComprasUnitariasPorPeriodo",
+                metodo: "getAllSuscripcionesPorPeriodo",
                 dateStart : '2016-07-11' ,
                 dateEnd : '2016-12-13' ,
             },
@@ -38,20 +38,20 @@
 
               // Create the data table.
               var data = new google.visualization.DataTable();
-              data.addColumn('string', 'nombre');
+              data.addColumn('string', 'fecha');
               data.addColumn('number', 'cantidad');
 
               $.each(result, function (index, resultado) {
-                data.addRow([resultado.nombre, Number(resultado.cantidad)]);
+                data.addRow([resultado.fecha, Number(resultado.cantidad)]);
               });
 
               // Set chart options
-              var options = {'title':'Productos vendidos',
+              var options = {'title':'Suscripciones',
                              'width':1200,
                              'height':800};
 
               // Instantiate and draw our chart, passing in some options.
-              var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+              var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
               chart.draw(data, options);
 
             },
@@ -72,7 +72,7 @@
         <!-- title -->
         <div class="row">
             <div class="col-lg-12">
-                <h3>Listado de numeros vendidos por publicación</h3>
+                <h3>Cantidad de suscripciones por fecha</h3>
             </div>
         </div>
         <div id="chart_div"></div>

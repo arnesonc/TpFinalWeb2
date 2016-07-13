@@ -32,6 +32,22 @@ class CompraUnitariaService
         return $compras;
     }
 
+    public function getAllSuscripcionesPorPeriodo($dateStart,$dateEnd){
+
+        $sql = "SELECT c.fecha, count(*) cantidad
+                from suscripcion c
+                where c.fecha BETWEEN '$dateStart' AND '$dateEnd'
+                group by c.fecha;";
+
+        try {
+            $compras = $this->dataAccess->getMultipleResults($sql);
+        } catch (Exception $e) {
+            $logger = Logger::getRootLogger();
+            $logger->error($sql);
+            return null;
+        }
+        return $compras;
+    }
 
     public function comprarUltimoNumero($idCliente, $idPublicacion)
     {
