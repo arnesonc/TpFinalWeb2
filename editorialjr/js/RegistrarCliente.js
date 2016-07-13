@@ -3,7 +3,6 @@ $(document).ready(
 			$("#divRegion").hide();
 			$("#divCiudad").hide();
 			cargarComboRegiones();
-			// cargarComboCiudades();
 
 			$("#ddlPaises").change(cargarComboRegiones);
 			$("#btnAceptar").click(function(event) {
@@ -14,7 +13,6 @@ $(document).ready(
 			function cargarComboRegiones() {
 
 				var idPais = $("#ddlPaises option:selected").val();
-				// IMPORTANTE: SE DEBEN COLOCAR LAS RUTAS ABSOLUTAS.
 				$.ajax({
 					url : '/helpers/RegionAjaxHelper.php',
 					data : {

@@ -22,7 +22,7 @@ include 'client-header.php';
             </div><!-- /#wrapper -->
         </div><!-- /row -->
         <div class="row">
-            <div id="wrapper">
+            <div class="col-lg-12">
                 <div id="divError" class="alert alert-danger oculto">
                 </div>
                 <div id="content" class="row text-center">

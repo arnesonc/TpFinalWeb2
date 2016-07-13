@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__."/common/sesionValidaIndex.php");
+require_once(__DIR__ . "/common/sesionValidaIndex.php");
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@ require_once(__DIR__."/common/sesionValidaIndex.php");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-        <!-- Nuestro CSS -->
+    <!-- Nuestro CSS -->
     <link href="css/style.css" rel="stylesheet">
 
     <!-- Bootstrap Core CSS -->
@@ -22,17 +22,17 @@ require_once(__DIR__."/common/sesionValidaIndex.php");
     <link href="css/clientStyle.css" rel="stylesheet">
 
     <!-- CSS de las Datatables-->
-    <link rel="stylesheet" type="text/css" href="css/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/datatables.min.css"/>
 
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/footer-distributed.css">
-        <title>Editorial Jr</title>
+    <title>Editorial Jr</title>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="js/html5shiv.js" type="text/javascript"></script>
+    <script src="js/respond.min.js" type="text/javascript"></script>
     <![endif]-->
 
 </head>
@@ -42,38 +42,40 @@ require_once(__DIR__."/common/sesionValidaIndex.php");
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
 
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="/index.php">Editorial Jr</a>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/index.php">Editorial Jr</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <?php
-                    if(isset($_SESSION['session']) && isset($_SESSION['session']["login"])
-                    && $_SESSION['session']["login"] == "ok"){
-                ?>
-                        <li>
-                            <a href="/client-listar-suscripciones.php">Suscripciones</a>
-                        </li>
-                        <li>
-                            <a href="client-listar-numeros-comprados.php">Compras</a>
-                        </li>
-                        <li>
-                            <a href="/logoutIndex.php">Cerrar sesión</a>
-                        </li>
-                <?php }else{ ?>
-                        <li>
-                            <a id="btnIniciarSesion" href="#">Iniciar sesión</a>
-                        </li>
-                        <li>
-                            <a href="RegistrarCliente.php">Registrarse</a>
-                        </li>
+                if (isset($_SESSION['session']) && isset($_SESSION['session']["login"])
+                    && $_SESSION['session']["login"] == "ok"
+                ) {
+                    ?>
+                    <li>
+                        <a href="/client-listar-suscripciones.php">Suscripciones</a>
+                    </li>
+                    <li>
+                        <a href="client-listar-numeros-comprados.php">Compras</a>
+                    </li>
+                    <li>
+                        <a href="/logoutIndex.php">Cerrar sesión</a>
+                    </li>
+                <?php } else { ?>
+                    <li>
+                        <a id="btnIniciarSesion" href="#">Iniciar sesión</a>
+                    </li>
+                    <li>
+                        <a href="RegistrarCliente.php">Registrarse</a>
+                    </li>
                 <?php } ?>
             </ul>
         </div>
