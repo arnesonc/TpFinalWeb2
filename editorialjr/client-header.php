@@ -3,7 +3,7 @@ require_once(__DIR__ . "/common/sesionValidaIndex.php");
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -23,18 +23,16 @@ require_once(__DIR__ . "/common/sesionValidaIndex.php");
 
     <!-- CSS de las Datatables-->
     <link rel="stylesheet" type="text/css" href="css/datatables.min.css"/>
-
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/footer-distributed.css">
-    <title>Editorial Jr</title>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.js" type="text/javascript"></script>
-    <script src="js/respond.min.js" type="text/javascript"></script>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
     <![endif]-->
-
+    <title>Editorial Jr</title>
 </head>
 
 <body>

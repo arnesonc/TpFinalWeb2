@@ -3,7 +3,7 @@ require_once(__DIR__."/common/sesionValida.php");
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 

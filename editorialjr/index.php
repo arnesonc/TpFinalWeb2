@@ -44,34 +44,7 @@ include 'client-header.php';
         </section><!-- /ultimos -->
 
     </div>
-
-    <!-- Footer -->
-
-    <footer class="footer-distributed">
-
-        <div class="footer-right">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="https://github.com/germg/TpFinalWeb2"><i class="fa fa-github"></i></a>
-        </div>
-
-        <div class="footer-left">
-
-            <p class="footer-links">
-                <a href="/index.php">Home</a>
-                ·
-                <a href="#">About</a>
-                ·
-                <a href="/admin-login.php">Administrar</a>
-            </p>
-
-            <p>EditorialJR &copy; 2016</p>
-        </div>
-
-    </footer>
-
-
+    
     <!-- Modal para login -->
     <div class="modal fade" id="modalSeccion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -119,6 +92,32 @@ include 'client-header.php';
         </div>
     </div>
 </div>
+
+<!-- Footer -->
+
+<footer class="footer-distributed">
+
+    <div class="footer-right">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="https://github.com/germg/TpFinalWeb2"><i class="fa fa-github"></i></a>
+    </div>
+
+    <div class="footer-left">
+
+        <p class="footer-links">
+            <a href="/index.php">Home</a>
+            ·
+            <a href="#">About</a>
+            ·
+            <a href="/admin-login.php">Administrar</a>
+        </p>
+
+        <p>EditorialJR &copy; 2016</p>
+    </div>
+
+</footer>
 
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
