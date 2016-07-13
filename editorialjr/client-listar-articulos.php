@@ -1,11 +1,13 @@
 <?php
 include 'client-header.php';
 ?>
+
+<div class="row">
+<div id="wrapper">
 <!-- Page Content -->
 <div id="page-content-wrapper">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-
             <div class="col-lg-12">
                 <!-- title -->
                 <div class="row">
@@ -13,24 +15,15 @@ include 'client-header.php';
                         <h3>Articulos</h3>
                     </div>
                 </div>
-                <div id="divExito" class="alert alert-success oculto">
-                </div>
-                <div id="divError" class="alert alert-danger oculto">
-                </div>
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div id="divTablaArticulos"></div>
-                    </div>
+                    <div id="divTablaArticulos" class="col-lg-12"></div>
                 </div>
             </div>
         </div>
     </div>
 </div><!-- /#page-content-wrapper -->
 </div><!-- /#wrapper -->
-</div><!-- /col -->
 </div><!-- /row -->
-</div>
-
 <!-- Jquery-->
 <script src="js/jquery-1.12.4.min.js" type="text/javascript"></script>
 

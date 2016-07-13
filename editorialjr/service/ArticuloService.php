@@ -320,26 +320,18 @@ class ArticuloService
       $sql = "SELECT *
       FROM editorialjr.articulo
       WHERE id_numero = $idNumero;";
-
         try {
-
             $articuloDBArray = $this->dataAccess->getMultipleResults($sql);
         } catch (Exception $e) {
             $logger = Logger::getRootLogger();
             $logger->error($e);
-
             return null;
         }
-
         $arrayArticuloModel = array();
-
         foreach ($articuloDBArray as $articuloDB) {
-
             $articuloModel = $this->convertArticuloDBToArticuloModel($articuloDB);
-
             $arrayArticuloModel [] = $articuloModel;
         }
-
         return $arrayArticuloModel;
     }
 
