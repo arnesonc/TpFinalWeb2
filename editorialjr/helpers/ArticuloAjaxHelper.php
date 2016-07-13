@@ -31,7 +31,7 @@ switch($metodo){
 		$result = $articuloService->cerrarArticulo($idArticulo);
 		break;
 	case "createArticuloParametros":
-		echo ("pega en el metodo<br>");
+		//echo ("pega en el metodo<br>");
 		$titulo = $_POST['titulo'];
 		$copete = $_POST['copete'];
 		$contenido_adicional = "contenido adicional";
@@ -49,14 +49,21 @@ switch($metodo){
 		$path = $numeroModel->getPath();
 		$structure = $GLOBALS['app_config']["ruta_publicaciones"] . $path;
 		$imagen_url  = $GLOBALS["ruta_publicaciones"] . $path . basename($_FILES['file']['name']);
-		$result = $articuloService->createArticuloParametros($id_seccion, $id_user, $id_estado_articulo, $titulo, $lat, $lng, $fecha_cierre, $copete, $url_contenido, $contenido_adicional, $id_numero);
+
+		$articuloService->createArticuloParametros($id_seccion, $id_user, $id_estado_articulo, $titulo, $lat, $lng, $fecha_cierre, $copete, $url_contenido, $contenido_adicional, $id_numero);
+
 		$id_articulo = $articuloService->ultimoInsert();
 		$imagenService->insertImagen($id_articulo,$imagen_url);
 		mkdir($structure, 0777, true);
 		$imagen = $GLOBALS['app_config']["ruta_publicaciones"] . $path . basename($_FILES['file']['name']);
+
 		if(!move_uploaded_file($_FILES['file']['tmp_name'], $imagen)){
-			echo ('no pudo mover el archivo <br>');
+			//echo ('no pudo mover el archivo <br>');
 		}
+		//Redirige a la vista de articulos
+		$path = 'location:/../admin-listar-articulos.php?idnum='.$id_numero.'&idest='.$numeroModel->id_estado_numero;
+		header($path);
+
 		break;
 	case "getArticuloById":
 		$id_articulo = $_POST['id_articulo'];

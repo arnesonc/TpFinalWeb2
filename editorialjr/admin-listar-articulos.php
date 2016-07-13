@@ -18,7 +18,7 @@ include 'side-bar.php';
                 </div>
                 <div id="divError" class="alert alert-danger oculto">
                 </div>
-                <?php if($_POST['estadoNumero'] == 1) {
+                <?php if($_POST['estadoNumero'] == 1 || isset($_GET["idest"]) && $_GET["idest"] == 1) {
                     echo "<div class='row'>";
                     echo "<div class='botonNuevo col-lg-12'>";
                     echo "<button id='btnNuevoArticulo' class='btn btn-primary'><span class='glyphicon glyphicon-plus'></span> Nuevo articulo</button>";
@@ -66,7 +66,16 @@ include 'side-bar.php';
 <script src="js/jquery.redirect.js" type="text/javascript"></script>
 
 <!-- Negrada -->
-<script>listarArticulos(<?php echo $_POST['idNumero']?>)</script>
+<script>
+listarArticulos(
+<?php if (isset($_GET["idnum"])) {
+		echo $_GET["idnum"];
+	}else{
+		echo $_POST['idNumero'];
+	}
+?>
+);
+</script>
 
 </body>
 
