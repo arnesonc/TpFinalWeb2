@@ -39,9 +39,10 @@ include 'client-header.php';
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12">
-            <div id="map">
-            </div>
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-10">
+            <div id="map"></div>
         </div>
     </div>
 </div>
@@ -100,6 +101,30 @@ include 'client-header.php';
 <!-- obtener variables post-->
 <script>
     leerArticulo(14);
+</script>
+
+<script type="text/javascript">
+    var map;
+    function initMap() {
+
+        var myLatlng = {lat: -34.6695067, lng: -58.561731};
+        window.lat = myLatlng.lat;
+        window.lng = myLatlng.lng;
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: myLatlng
+        });
+
+        marcador = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'Lugar de los hechos'
+        });
+    }
+</script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8qdt_ZyQL7Ea1dirrshhtQycf1UYGAQQ&callback=initMap" async defer>
 </script>
 
 </body>

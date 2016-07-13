@@ -2,7 +2,6 @@ function leerArticulo(idArticulo){
     
     traerImagen(idArticulo);
     traerArticulo(idArticulo);
-
 }
 
 function traerArticulo(idArticulo){
@@ -24,11 +23,24 @@ function traerArticulo(idArticulo){
             alert("Upa, ocurrio un error! " + error);
         }
     });
+
 }
 
 function renderArticulo(articulo){
     //append donde corresponda
+
+    $('.site-heading').find('h1').html(articulo.titulo);
+    $('.subheading').html(articulo.copete);
+    $('#contenido').html(articulo.url_contenido);
+    $('#fecha').html(articulo.fecha_cierre);
+
+    traerUsuario(articulo.id_usuario);
+
+    window.lat = articulo.latitud;
+    window.lng = articulo.longitud;
+    
 }
+
 
 function traerImagen(idArticulo){
 
@@ -50,4 +62,23 @@ function traerImagen(idArticulo){
         }
     });
     
+}
+
+function traerUsuario(idUsuario){
+
+    $.ajax({
+        url     :   '/helpers/UsuarioAjaxHelper.php',
+        data    : {
+            metodo : "getUsuarioById",
+            idUsuario : idUsuario,
+        },
+        type    :   'POST',
+        dataType : "json",
+        success : function(usuario) {
+            $('#autor').html(usuario.nombre);
+        },
+        error : function(error) {
+            alert("Upa, ocurrio un error! " + error);
+        }
+    });
 }
