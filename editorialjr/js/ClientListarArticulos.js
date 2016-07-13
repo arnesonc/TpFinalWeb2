@@ -31,7 +31,7 @@ function armarTablaArticulos(listaArticulos){
 	  tabla +="<th>Acciones</th></tr></thead><tbody>";
 
 	  $.each(listaArticulos, function(index, articulo) {
-		fecha=(articulo.fecha_publicado == null)?'<strong>DRAFT</strong>':articulo.fecha_publicado;
+		fecha=(articulo.fecha_cierre == null)?'<strong>DRAFT</strong>':articulo.fecha_cierre;
 		tabla += "<tr><td>" + articulo.titulo + "</td>";
 	    tabla += "<td>" + fecha + "</td>";
 
@@ -85,7 +85,7 @@ function armarTablaArticulos(listaArticulos){
 
 
 function aLeerArticulo(idArticulo){
-	$.redirect('admin-leer-articulos.php', {'idNumero': idArticulo});
+	$.redirect('cliente-leer-articulo.php', {'idArticulo': idArticulo});
 }
 
 function aEditarArticulo(idArticulo){
