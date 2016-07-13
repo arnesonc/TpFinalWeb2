@@ -241,7 +241,7 @@ function suscribirCliente(button) {
                     mostrarMensaje("no se pudo suscribir");
                     alert("no se pudo suscribir");
                 }
-            },
+            },  
             error: function (error) {
                 mostrarMensaje("divMensajeError", "Ups, ocurrio un error al suscribir! ", true);
             }
@@ -253,13 +253,15 @@ function suscribirCliente(button) {
 
 function comprarUltimoNumero(button) {
     //FIXME: mercado pago
-    if (obtenerSessionID() != false) {
+    var sessionId = obtenerSessionID();
+
+    if (sessionId != false) {
         $.ajax({
             url: '/helpers/CompraUnitariaAjaxHelper.php',
             data: {
                 metodo: "comprarUltimoNumero",
                 idPublicacion: button.name,
-                idCliente: obtenerSessionID(),
+                idCliente: sessionId,
             },
             type: 'POST',
             dataType: "json",
