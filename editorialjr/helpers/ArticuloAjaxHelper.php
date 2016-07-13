@@ -26,6 +26,10 @@ switch($metodo){
 		$id_user = $_POST["id_user"];
 		$result = $articuloService->getAllArticulosFromNumByUser($id_user, $id_numero);
 		break;
+	case "getAllArticulosFromNum":
+			$id_numero = $_POST["id_numero"];
+			$result = $articuloService->getAllArticulosFromNum($id_numero);
+			break;
 	case "cerrarArticulo":
 		$idArticulo = $_POST["idArticulo"];
 		$result = $articuloService->cerrarArticulo($idArticulo);
@@ -38,7 +42,7 @@ switch($metodo){
 		$result = $articuloService->getArticuloById($id_articulo);
 		break;
 	case "getImagenUrlByArticuloId":
-		$id_articulo = $_POST['id_articulo'];
+		$id_articulo = $_POST['idArticulo'];
 		$result = $imagenService->getImagenUrlByArticuloId($id_articulo);
 		break;
 	default:

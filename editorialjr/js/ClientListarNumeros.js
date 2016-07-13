@@ -51,8 +51,8 @@ function armarTablaNumeros(listaNumeros,campoFechaDeCompra){
 		tabla += "<tr><td>" + numero.nombre_publicacion + "</td><td>" + numero.numero_revista + "</td>";
 	  tabla += "<td>" + numero.fecha_publicado + "</td>";
 		if(campoFechaDeCompra){tabla += "<td>" + numero.fecha_de_compra + "</td>";}
-		tabla += "<td><button onclick='RedirectArticulos("+ numero.id +","+ numero.id_estado_numero +");' id='btnListarArticulos' name='" + numero.id + "' class='btn btn-success'><span class='glyphicon glyphicon-list'></span> Ver Articulos</button>  ";
-		tabla += "<button onclick='RedirectArticulos("+ numero.id +","+ numero.id_estado_numero +");' id='btnListarArticulos' name='" + numero.id + "' class='btn btn-warning'><span class='glyphicon glyphicon-list'></span> Descargar en PDF</button>  ";
+		tabla += "<td><button onclick='RedirectArticulos("+ numero.id +");' id='btnListarArticulos' name='" + numero.id + "' class='btn btn-success'><span class='glyphicon glyphicon-list'></span> Ver Articulos</button>  ";
+		tabla += "<button onclick='RedirectArticulos("+ numero.id +");' id='btnListarArticulos' name='" + numero.id + "' class='btn btn-warning'><span class='glyphicon glyphicon-list'></span> Descargar en PDF</button>  ";
 		});
 
 
@@ -73,6 +73,6 @@ function armarTablaNumeros(listaNumeros,campoFechaDeCompra){
 	  });
 	}
 
-function RedirectArticulos(idNumero,estadoNumero){
-	$.redirect('admin-listar-articulos.php', {'idNumero': idNumero, 'estadoNumero': estadoNumero});
+function RedirectArticulos(idNumero){
+	$.redirect('client-listar-articulos.php', {'idnum': idNumero});
 }

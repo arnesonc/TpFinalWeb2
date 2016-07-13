@@ -314,6 +314,36 @@ class ArticuloService
         return $arrayArticuloModel;
     }
 
+
+    public function getAllArticulosFromNum($idNumero){
+
+      $sql = "SELECT *
+      FROM editorialjr.articulo
+      WHERE id_numero = $idNumero;";
+
+        try {
+
+            $articuloDBArray = $this->dataAccess->getMultipleResults($sql);
+        } catch (Exception $e) {
+            $logger = Logger::getRootLogger();
+            $logger->error($e);
+
+            return null;
+        }
+
+        $arrayArticuloModel = array();
+
+        foreach ($articuloDBArray as $articuloDB) {
+
+            $articuloModel = $this->convertArticuloDBToArticuloModel($articuloDB);
+
+            $arrayArticuloModel [] = $articuloModel;
+        }
+
+        return $arrayArticuloModel;
+    }
+
+
     public function cerrarArticulo($idArticulo){
       $aprobado = 4;
       $sql = "UPDATE articulo SET id_estado_articulo = $aprobado, fecha_cierre = DATE(NOW()) WHERE id =$idArticulo;";

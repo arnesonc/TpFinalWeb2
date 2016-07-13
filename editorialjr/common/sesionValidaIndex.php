@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	if($_SESSION['session']['rol'] != null){
+	if(isset($_SESSION['session']['rol'])){
 	    header("location:admin-cms.php");
 	    exit();
 	}
