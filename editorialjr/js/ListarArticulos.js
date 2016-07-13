@@ -88,7 +88,7 @@ function aLeerArticulo(idArticulo){
 }
 
 function aEditarArticulo(idArticulo){
-	$.redirect('admin-editar-articulos.php', {'idArticulo': idArticulo});
+	$.redirect('admin-modificar-articulo.php', {'idArticulo': idArticulo});
 }
 
 $("#btnNuevoArticulo").click(function(){

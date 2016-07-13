@@ -73,6 +73,22 @@ switch($metodo){
 			$path = 'location:/../admin-listar-articulos.php?idnum='.$id_numero.'&idest='.$numeroModel->id_estado_numero;
 			header($path);
 			break;
+			case "updateArticuloParametros":
+					//echo ("pega en el metodo<br>");
+					$titulo = $_POST['titulo'];
+					$copete = $_POST['copete'];
+					$id_seccion = $_POST['seccion'];
+					//$lat = $_POST['lat'];
+					//$lng = $_POST['lng'];
+					$id_numero = $_POST["idNumero"];
+					$id_articulo = $_POST['idArticulo'];
+					$url_contenido = $_POST['contenido'];
+
+					$articuloService->editarArticuloParametros($id_seccion, $titulo, $copete, $url_contenido, $id_articulo);
+					//Redirige a la vista de articulos
+					$path = 'location:/../admin-listar-articulos.php?idnum='.$id_numero;
+					header($path);
+					break;
 	default:
 		echo "Método inexistente en el switch de ArticuloAjaxHelper.php";
 		break;

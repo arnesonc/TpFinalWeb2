@@ -408,7 +408,7 @@ class ArticuloService
     public function createArticulo($articuloModel)
     {
         $message = $this->validateArticulo($articuloModel);
-        
+
         // Si esta vacio, no hay mensaje de error por lo tanto es válido
         if (empty ($message)) {
 
@@ -571,6 +571,26 @@ class ArticuloService
         return $result;
     }
 
+    public function editarArticuloParametros($id_seccion, $titulo, $copete, $url_contenido,  $id_articulo){
+      $sql = "UPDATE articulo
+      SET id_seccion = $id_seccion,
+      titulo = '$titulo',
+      copete = '$copete',
+      url_contenido = '$url_contenido'
+      WHERE id =$id_articulo;";
+
+      $logger = Logger::getRootLogger();
+      $logger->error($sql);
+
+      try {
+          $articuloDBArray = $this->dataAccess->execute($sql);
+          //return $this->getArticuloById($id_articulo)->id_numero;
+      } catch (Exception $e) {
+          $logger = Logger::getRootLogger();
+          $logger->error($e);
+          return null;
+      }
+    }
     /**
      * Actualiza un articulo a partir de un objeto ArticuloModel, si tuvo exito devuelve verdadero
      * caso contrario devuelve falso
