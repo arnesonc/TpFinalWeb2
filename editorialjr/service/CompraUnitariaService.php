@@ -14,6 +14,24 @@ class CompraUnitariaService
     {
         $this->dataAccess = new DataAccess;
     }
+    public function getAllComprasUnitariasPorPeriodo($dateStart,$dateEnd){
+
+        $sql = "SELECT c.id_publicacion, p.nombre, count(*) cantidad
+                from compra_unitaria c
+                inner join publicacion p on c.id_publicacion = p.id
+                where c.fecha BETWEEN '$dateStart' AND '$dateEnd'
+                group by c.id_publicacion;";
+
+        try {
+            $compras = $this->dataAccess->getMultipleResults($sql);
+        } catch (Exception $e) {
+            $logger = Logger::getRootLogger();
+            $logger->error($sql);
+            return null;
+        }
+        return $compras;
+    }
+
 
     public function comprarUltimoNumero($idCliente, $idPublicacion)
     {
