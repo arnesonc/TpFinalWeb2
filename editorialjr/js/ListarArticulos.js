@@ -24,7 +24,7 @@ function armarTablaArticulos(listaArticulos){
 
 	  var tabla = "";
 	  $("#bodyArticulos").html("");
-	  
+
 	  tabla = "<table id='tblArticulos' class='table table-striped table-bordered table-responsive' cellspacing='0'>";
 	  tabla +="<thead><tr><th>Titulo</th><th>fecha cierre</th>";
 	  tabla +="<th>Acciones</th></tr></thead><tbody>";
@@ -35,7 +35,7 @@ function armarTablaArticulos(listaArticulos){
 	    tabla += "<td>" + fecha + "</td>";
 
 		//aca hay q hacer un if y preguntar si el articulo esta publicado, de estarlo se muestra el boton leer, si no el boton editar.
-		if(articulo.id_estado_articulo != 6) {
+		if(articulo.id_estado_articulo != 6 && articulo.id_estado_articulo != 4) {
 			tabla += "<td><button onclick='aEditarArticulo("+ articulo.id +");' id='btnEditarArticulo' name='" + articulo.id + "' class='btn btn-primary'><span class='glyphicon glyphicon-edit'></span> Editar</button></td></tr>";
 		}
 		else {
@@ -43,7 +43,7 @@ function armarTablaArticulos(listaArticulos){
 		}
 
 		});
-	  
+
 
 	  tabla += "</td></tr></tbody></table>";
 
@@ -72,7 +72,7 @@ function aEditarArticulo(idArticulo){
 
 $("#btnNuevoArticulo").click(function(){
 	var idUser = obtenerSessionID();
-	
+
 	nuevoArticulo(window.idNumero,'false',idUser);
 });
 

@@ -37,16 +37,13 @@ class ArticuloService
 			WHERE id = $id;";
 
         try {
-
             $articuloDB = $this->dataAccess->getOneResult($sql);
         } catch (Exception $e) {
             $logger = Logger::getRootLogger();
             $logger->error($e);
-
             return null;
         }
-
-        return $this->convertCiudadDBToCiudadModel($articuloDB);
+        return $this->convertArticuloDBToArticuloModel($articuloDB);
     }
 
     /**
@@ -317,14 +314,30 @@ class ArticuloService
         return $arrayArticuloModel;
     }
 
+    public function cerrarArticulo($idArticulo){
+      $aprobado = 4;
+      $sql = "UPDATE articulo SET id_estado_articulo = $aprobado, fecha_cierre = DATE(NOW()) WHERE id =$idArticulo;";
+      try {
+          $articuloDBArray = $this->dataAccess->execute($sql);
+          return $this->getArticuloById($idArticulo)->id_numero;
+      } catch (Exception $e) {
+          $logger = Logger::getRootLogger();
+          $logger->error($e);
+          return null;
+      }
+    }
+/*
+    public function marcarArticulosComoPublicados($idNumero){
+      $articuloModel = $this->getArticuloById($idArticulo);
+      $aprobado = 4;
+      $sql = "UPDATE articulo SET id_estado_articulo = $aprobado, fecha_cierre = DATE(NOW()) WHERE id =$idArticulo;";
+    }*/
     /*-----------------------------------------------------------------------------------------------------------------*/
 
     /*
       Convierte un articulo de la base de datos en un objeto ArticuloModel y lo devuelve
      */
-    private function convertArticuloDBToArticuloModel($articuloDB)
-    {
-
+    private function convertArticuloDBToArticuloModel($articuloDB){
         /* Convierto el resultado de la BD a un objeto modelado */
         $articuloModel = new ArticuloModel ();
         $articuloModel->id = $articuloDB ["id"];
@@ -359,7 +372,7 @@ class ArticuloService
             // En caso de ser invalido devuelve un mensaje de validacion
             $result = $message;
         }
-      
+
         return $result;
     }
 
@@ -605,4 +618,3 @@ class ArticuloService
 }
 
 ?>
-

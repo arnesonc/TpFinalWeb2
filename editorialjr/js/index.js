@@ -185,6 +185,7 @@ function mostrarModalLogin() {
     $("#divMensajeError").hide();
     $("#modalSeccion").modal('show');
     limpiarFormularioLogin();
+    $("#email").focus();
 }
 
 function limpiarFormularioLogin() {
